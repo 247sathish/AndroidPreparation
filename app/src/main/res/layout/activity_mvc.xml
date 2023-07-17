@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".architecture.mvc.view.activity.MVCMainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="08dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtMainHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="30dp"
+            android:text="Team : "
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="08dp"
+            android:text="Log in"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="30dp"
+            android:text="User Name" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtUserName"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="08dp"
+            android:layout_marginEnd="30dp"
+            android:hint="Please enter user name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="08dp"
+            android:paddingEnd="08dp" />
+
+        <TextView
+            android:id="@+id/txtUserNameError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="02dp"
+            android:layout_marginEnd="30dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="08dp"
+            android:layout_marginEnd="30dp"
+            android:text="Password" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="08dp"
+            android:layout_marginEnd="30dp"
+            android:hint="Please enter password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingStart="08dp"
+            android:paddingEnd="08dp" />
+
+        <TextView
+            android:id="@+id/txtPasswordError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="02dp"
+            android:layout_marginEnd="30dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mButtonLogin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="submit"
+                android:textAllCaps="true"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".network.volley.VolleyActivity">
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="103dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <Button
+                android:id="@+id/img_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Image Request"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_posting_id" />
+
+            <Button
+                android:id="@+id/json_array_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Json Array"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_id" />
+
+            <Button
+                android:id="@+id/str_id"
+                android:layout_width="395dp"
+                android:layout_height="wrap_content"
+                android:text="String Request"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/json_id" />
+
+            <Button
+                android:id="@+id/json_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JSONObject Request"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/json_array_id" />
+
+
+
+            <Button
+                android:id="@+id/add_posting_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adding Post Parameters"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+
+            <Button
+                android:id="@+id/adding_request_header_id"
+                android:layout_width="395dp"
+                android:layout_height="wrap_content"
+                android:text="Adding Request Header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/str_id" />
+
+            <Button
+                android:id="@+id/handling_volley_cache_id"
+                android:layout_width="395dp"
+                android:layout_height="wrap_content"
+                android:text="Handling Volley Cache"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adding_request_header_id" />
+
+            <Button
+                android:id="@+id/cancelling_request_id"
+                android:layout_width="395dp"
+                android:layout_height="wrap_content"
+                android:text="Cancelling Request"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/handling_volley_cache_id" />
+
+            <Button
+                android:id="@+id/request_prioritization"
+                android:layout_width="395dp"
+                android:layout_height="wrap_content"
+                android:text="Request Prioritization"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cancelling_request_id" />
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Hello World!"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/request_prioritization"
+                app:layout_constraintVertical_bias="0.242" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Hello World!"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

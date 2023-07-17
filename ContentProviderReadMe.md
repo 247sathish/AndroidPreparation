@@ -1,0 +1,1 @@
+https://www.geeksforgeeks.org/content-providers-in-android-with-example/

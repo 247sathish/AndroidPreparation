@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:layout_height="match_parent"
+    tools:context=".asynchronous.coroutines.CoroutineActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/suspending_functions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Suspending Functions" />
+
+        <Button
+            android:id="@+id/global_scope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Global Scope" />
+        <Button
+            android:id="@+id/lifecycle_scope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LifeCycle Scope" />
+
+        <Button
+            android:id="@+id/viewmodel_scope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ViewModel Scope" />
+
+        <Button
+            android:id="@+id/main_dispatcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Main Dispatcher" />
+
+        <Button
+            android:id="@+id/io_dispatcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IO Dispatcher" />
+
+        <Button
+            android:id="@+id/default_dispatcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Default Dispatcher" />
+        <Button
+            android:id="@+id/withcontext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="withContext" />
+
+        <Button
+            android:id="@+id/coroutine_builder_launch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coroutine Builder launch" />
+        <Button
+            android:id="@+id/coroutine_builder_async"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coroutine Builder async" />
+        <Button
+            android:id="@+id/coroutine_builder_runBlocking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Coroutine Builder runBlocking" />
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>

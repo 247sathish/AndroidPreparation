@@ -1,0 +1,236 @@
+package com.androidpreparation.asynchronous.workmanagerexample
+
+import android.annotation.SuppressLint
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.work.*
+import com.androidpreparation.asynchronous.workmanagerexample.chain.FirstChainWorker
+import com.androidpreparation.asynchronous.workmanagerexample.chain.SecondChainWorker
+import com.androidpreparation.asynchronous.workmanagerexample.chain.ThirdChainWorker
+import com.androidpreparation.asynchronous.workmanagerexample.worker.SimpleWorker
+import com.androidpreparation.asynchronous.workmanagerexample.worker.SimpleWorkerRetry
+
+import com.androidpreparation.databinding.ActivityWorkmanagerexampleBinding
+import java.util.concurrent.TimeUnit
+
+class WorkmanagerexampleActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityWorkmanagerexampleBinding
+    private val workInstance = WorkManager.getInstance(this)
+
+    @SuppressLint("EnqueueWork")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityWorkmanagerexampleBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.buttonStartWork.setOnClickListener {
+
+            val constraints = Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .setRequiresCharging(true)
+                .build()
+
+            val data = workDataOf("WORK_DATA" to "YOUR MESSAGE.")
+
+            val workRequest = OneTimeWorkRequestBuilder<SimpleWorker>()
+                .setInputData(data)
+                .setConstraints(constraints)
+                .build()
+
+            workInstance.enqueue(workRequest)
+        }
+
+        binding.buttonWorkStatus.setOnClickListener {
+            Toast.makeText(
+                this,
+                "WorkStatus: ${WorkStatusSingleton.workStatus} && Message: ${WorkStatusSingleton.workStatusMessage}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        binding.buttonResetStatus.setOnClickListener {
+            WorkStatusSingleton.workStatus = false
+            WorkStatusSingleton.workStatusMessage = ""
+            WorkStatusSingleton.workRetryCount = 0
+        }
+
+
+        binding.buttonRetryWork.setOnClickListener {
+            val workRequest = OneTimeWorkRequestBuilder<SimpleWorkerRetry>()
+                .setBackoffCriteria(
+                    BackoffPolicy.LINEAR, // Default is Exponential
+                    10, //Default is 10 Seconds
+                    TimeUnit.SECONDS
+                )
+                .build()
+
+            workInstance.enqueue(workRequest)
+        }
+
+
+        binding.buttonSingleChainWorkSuccess.setOnClickListener {
+            val firstWorkRequest = OneTimeWorkRequestBuilder<FirstChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val secondWorkRequest = OneTimeWorkRequestBuilder<SecondChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val thirdWorkRequest = OneTimeWorkRequestBuilder<ThirdChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            workInstance.beginWith(firstWorkRequest)
+                .then(secondWorkRequest)
+                .then(thirdWorkRequest)
+                .enqueue()
+        }
+
+
+        binding.buttonSingleChainWorkFail.setOnClickListener {
+            val firstWorkRequest = OneTimeWorkRequestBuilder<FirstChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val secondWorkRequest = OneTimeWorkRequestBuilder<SecondChainWorker>()
+                .setInputData(workDataOf("isSuccess" to false))
+                .build()
+
+            val thirdWorkRequest = OneTimeWorkRequestBuilder<ThirdChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            workInstance.beginWith(firstWorkRequest)
+                .then(secondWorkRequest)
+                .then(thirdWorkRequest)
+                .enqueue()
+        }
+
+        binding.buttonGroupChainWorkSuccess.setOnClickListener {
+            val firstWorkRequest1 = OneTimeWorkRequestBuilder<FirstChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val firstWorkRequest2 = OneTimeWorkRequestBuilder<FirstChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val secondWorkRequest = OneTimeWorkRequestBuilder<SecondChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val thirdWorkRequest = OneTimeWorkRequestBuilder<ThirdChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            workInstance.beginWith(listOf(firstWorkRequest1, firstWorkRequest2))
+                .then(secondWorkRequest)
+                .then(thirdWorkRequest)
+                .enqueue()
+        }
+
+        binding.buttonGroupChainWorkFail.setOnClickListener {
+            val firstWorkRequest1 = OneTimeWorkRequestBuilder<FirstChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val firstWorkRequest2 = OneTimeWorkRequestBuilder<FirstChainWorker>()
+                .setInputData(workDataOf("isSuccess" to false))
+                .build()
+
+            val secondWorkRequest = OneTimeWorkRequestBuilder<SecondChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val thirdWorkRequest = OneTimeWorkRequestBuilder<ThirdChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            workInstance.beginWith(listOf(firstWorkRequest1, firstWorkRequest2))
+                .then(secondWorkRequest)
+                .then(thirdWorkRequest)
+                .enqueue()
+        }
+
+        binding.buttonMultipleChainWorkSuccess.setOnClickListener {
+
+            val firstWorkRequest1 = OneTimeWorkRequestBuilder<FirstChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val firstWorkRequest2 = OneTimeWorkRequestBuilder<FirstChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val secondWorkRequest1 = OneTimeWorkRequestBuilder<SecondChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val secondWorkRequest2 = OneTimeWorkRequestBuilder<SecondChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val thirdWorkRequest1 = OneTimeWorkRequestBuilder<ThirdChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val thirdWorkRequest2 = OneTimeWorkRequestBuilder<ThirdChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val workFlowOne = workInstance.beginWith(firstWorkRequest1)
+                .then(secondWorkRequest1)
+                .then(thirdWorkRequest1)
+
+            val workFlowTwo = workInstance.beginWith(firstWorkRequest2)
+                .then(secondWorkRequest2)
+                .then(thirdWorkRequest2)
+
+            val rootFlow = WorkContinuation.combine(listOf(workFlowOne, workFlowTwo))
+            rootFlow.enqueue()
+
+        }
+
+        binding.buttonMultipleChainWorkFail.setOnClickListener {
+
+            val firstWorkRequest1 = OneTimeWorkRequestBuilder<FirstChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val firstWorkRequest2 = OneTimeWorkRequestBuilder<FirstChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val secondWorkRequest1 = OneTimeWorkRequestBuilder<SecondChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val secondWorkRequest2 = OneTimeWorkRequestBuilder<SecondChainWorker>()
+                .setInputData(workDataOf("isSuccess" to false))
+                .build()
+
+            val thirdWorkRequest1 = OneTimeWorkRequestBuilder<ThirdChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val thirdWorkRequest2 = OneTimeWorkRequestBuilder<ThirdChainWorker>()
+                .setInputData(workDataOf("isSuccess" to true))
+                .build()
+
+            val workFlowOne = workInstance.beginWith(firstWorkRequest1)
+                .then(secondWorkRequest1)
+                .then(thirdWorkRequest1)
+
+            val workFlowTwo = workInstance.beginWith(firstWorkRequest2)
+                .then(secondWorkRequest2)
+                .then(thirdWorkRequest2)
+
+            val rootFlow = WorkContinuation.combine(listOf(workFlowOne, workFlowTwo))
+            rootFlow.enqueue()
+
+        }
+    }
+}
