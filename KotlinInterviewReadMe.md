@@ -151,29 +151,40 @@ val intValue: Int = doubleValue.toInt() // Explicit conversion from Double to In
 ````
 Explicit conversion requires the use of a conversion function to convert a value of one data type to another.
 
-3.	Safe conversion:
+### 3.	Safe conversion:
+```kotlin
 val stringValue: String = "10"
 val intValue: Int? = stringValue.toIntOrNull() // Safe conversion from String to Int
+```
 Safe conversion returns a nullable value that is either the converted value or null if the conversion fails.
-4.	Non-safe conversion:
+### 4.	Non-safe conversion:
+```kotlin
 val stringValue: String = "10"
 val intValue: Int = stringValue.toInt() // Non-safe conversion from String to Int
+```
 Non-safe conversion can throw a NumberFormatException if the conversion fails, so it is recommended to use safe conversion whenever possible.
-5.	Range conversion:
+### 5.	Range conversion:
+```kotlin
 val charValue: Char = 'A'
 val intValue: Int = charValue.toInt() // Range conversion from Char to Int
+```
 Range conversion can be used to convert a value from one data type to another that is within the same range of values.
-6.	Widening conversion:
+### 6.	Widening conversion:
+```kotlin
 val byteValue: Byte = 10
 val intValue: Int = byteValue.toInt() // Widening conversion from Byte to Int
+```
 Widening conversion is used to convert a value from a smaller data type to a larger data type without loss of precision.
-7.	Narrowing conversion:
+### 7.	Narrowing conversion:
+```kotlin
 val doubleValue: Double = 3.14159265359
 val floatValue: Float = doubleValue.toFloat() // Narrowing conversion from Double to Float
+```
 Narrowing conversion is used to convert a value from a larger data type to a smaller data type, which may result in loss of precision.
 
-Kotlin Operator
-1.Arithmetic operators:
+## Kotlin Operator
+### 1.Arithmetic operators:
+```kotlin
 val a = 10
 val b = 5
 val sum = a + b // Addition
@@ -181,7 +192,9 @@ val difference = a - b // Subtraction
 val product = a * b // Multiplication
 val quotient = a / b // Division
 val remainder = a % b // Modulo
-2.Comparison operators:
+```
+### 2.Comparison operators:
+```kotlin
 val a = 10
 val b = 5
 val c = 10
@@ -191,32 +204,41 @@ val isGreaterThan = a > b // Greater than check
 val isLessThan = a < b // Less than check
 val isGreaterThanOrEqual = a >= c // Greater than or equal to check
 val isLessThanOrEqual = a <= c // Less than or equal to check
-3.Logical operators:
+```
+### 3.Logical operators:
+```kotlin
 val a = true
 val b = false
 val andResult = a && b // Logical AND
 val orResult = a || b // Logical OR
 val notResult = !a // Logical NOT
-4.Assignment operators:
+```
+### 4.Assignment operators:
+```kotlin
 var a = 10
 a += 5 // Addition and assignment, equivalent to a = a + 5
 a -= 5 // Subtraction and assignment, equivalent to a = a - 5
 a *= 2 // Multiplication and assignment, equivalent to a = a * 2
 a /= 2 // Division and assignment, equivalent to a = a / 2
 a %= 3 // Modulo and assignment, equivalent to a = a % 3
-5.Increment and decrement operators:
+```
+### 5.Increment and decrement operators:
+```kotlin
 var a = 10
 a++ // Post-increment, equivalent to a = a + 1
 ++a // Pre-increment, equivalent to a = a + 1
 a-- // Post-decrement, equivalent to a = a - 1
 --a // Pre-decrement, equivalent to a = a - 1
-6.Range operator:
+```
+### 6.Range operator:
+```kotlin
 val range = 1..10 // Range operator to create a range from 1 to 10 (inclusive)
 val rangeExclusive = 1 until 10 // Range operator to create a range from 1 to 9 (exclusive)
 val isInRange = 5 in range // Check if a value is in a range
-These are some of the commonly used Kotlin operators.
+```
 
-Kotlin Input/Output:
+## Kotlin Input/Output:
+```kotlin
 fun main() {
 // Taking input from user
 print("Enter your name: ")
@@ -234,24 +256,29 @@ val name = readLine()
 			println("The square of $number is ${number * number}")
 		}
 	}
-
-Kotlin Comment:
+```
+## Kotlin Comment:
 1.The first syntax is the same as Java, which uses the double forward slash // to add a single-line comment:
+```kotlin
 // This is a single-line comment
-
-	2.The second syntax uses /* to begin a multi-line comment and */ to end it:
+```
+2.The second syntax uses /* to begin a multi-line comment and */ to end it:
+```kotlin
 		/*
 		This is a multi-line comment
 		that can span across multiple lines
 		*/
-
-Kotlin if Expression:
+```
+## Kotlin if Expression:
 Sure, here are some examples of using the if expression in Kotlin:
-1.Basic usage of if expression:
+### 1.Basic usage of if expression:
+```kotlin
 val number = 5
 val result = if (number > 0) "Positive" else "Non-positive"
 println(result) // Output: Positive
-2.Using if expression as a statement:
+```
+### 2.Using if expression as a statement:
+```kotlin
 val number = 10
 if (number % 2 == 0) {
 println("$number is even")
@@ -259,7 +286,9 @@ println("$number is even")
 println("$number is odd")
 }
 // Output: 10 is even
-3.Chaining if expressions:
+```
+### 3.Chaining if expressions:
+```kotlin
 val number = 15
 val result = if (number < 0) {
 "Negative"
@@ -269,7 +298,9 @@ val result = if (number < 0) {
 "Positive"
 }
 println(result) // Output: Positive
-4.Using if expression with blocks of code:
+```
+### 4.Using if expression with blocks of code:
+```kotlin
 val number = 20
 val result = if (number > 0) {
 println("$number is positive")
@@ -279,17 +310,21 @@ println("$number is non-positive")
 "Non-positive"
 }
 println(result) // Output: 20 is positive\nPositive
-5.Using if expression to return a value:
+```
+### 5.Using if expression to return a value:
+```kotlin
 fun max(a: Int, b: Int): Int {
 return if (a > b) a else b
 }
 val result = max(10, 20)
 println(result) // Output: 20
-I hope these examples help you understand how to use the if expression in Kotlin!
+```
 
 
-Kotlin when Expression:
-1.Matching on a value:
+
+## Kotlin when Expression:
+### 1.Matching on a value:
+```kotlin
 val x = 1
 val result = when (x) {
 1 -> "One"
@@ -297,7 +332,9 @@ val result = when (x) {
 else -> "Other"
 }
 println(result) // "One"
-2.Matching on a range:
+```
+### 2.Matching on a range:
+```kotlin
 val x = 5
 val result = when (x) {
 in 1..10 -> "Between 1 and 10"
@@ -305,7 +342,9 @@ in 11..20 -> "Between 11 and 20"
 else -> "Other"
 }
 println(result) // "Between 1 and 10"
-3.Matching on a type:
+```
+### 3.Matching on a type:
+```kotlin
 val x: Any = "Hello"
 val result = when (x) {
 is String -> "It's a string"
@@ -313,7 +352,9 @@ is Int -> "It's an integer"
 else -> "Other"
 }
 println(result) // "It's a string"
-4.Matching on multiple conditions:
+```
+### 4.Matching on multiple conditions:
+```kotlin
 val x = 3
 val y = 4
 val result = when {
@@ -322,7 +363,9 @@ x == 3 || y == 4 -> "At least one is true"
 else -> "Neither is true"
 }
 println(result) // "Both are true"
-5.Using else as a catch-all:
+```
+### 5.Using else as a catch-all:
+```kotlin
 val x = 6
 val result = when (x) {
 1 -> "One"
@@ -330,47 +373,56 @@ val result = when (x) {
 else -> "Some other number"
 }
 println(result) // "Some other number"
+```
 
-
-
-
-Kotlin for loop
+## Kotlin for loop
 Sure, here are some examples of using the Kotlin for loop:
-1.Iterating over a range of numbers:
+### 1.Iterating over a range of numbers:
+```kotlin
 for (i in 1..5) {
 println(i)
 }
+```
 Output:
 1
 2
 3
 4
 5
-2.Iterating over an array:
+
+### 2.Iterating over an array:
+```kotlin
 val numbers = arrayOf(1, 2, 3, 4, 5)
 for (number in numbers) {
 println(number)
 }
+```
 Output:
 1
 2
 3
 4
 5
-3.Iterating over a collection with an index:
+
+### 3.Iterating over a collection with an index:
+```kotlin
 val names = listOf("Alice", "Bob", "Charlie")
 for ((index, name) in names.withIndex()) {
 println("$index: $name")
 }
+```
 Output:
 0: Alice
 1: Bob
 2: Charlie
-4.Iterating over a string:
+
+### 4.Iterating over a string:
+```kotlin
 val word = "Kotlin"
 for (char in word) {
 println(char)
 }
+```
 Output:
 K
 o
@@ -378,31 +430,36 @@ t
 l
 i
 n
-5.Iterating over a map:
+### 5.Iterating over a map:
+```kotlin
 val map = mapOf("one" to 1, "two" to 2, "three" to 3)
 for ((key, value) in map) {
 println("$key = $value")
 }
+```
 Output:
 one = 1
 two = 2
 three = 3
 
-Kotlin while Loop:
+## Kotlin while Loop:
 Sure, here are some examples of using the Kotlin while loop:
-1.Using a while loop to print numbers from 1 to 5:
+### 1.Using a while loop to print numbers from 1 to 5:
+```kotlin
 var i = 1
 while (i <= 5) {
 println(i)
 i++
 }
+```
 Output:
 1
 2
 3
 4
 5
-2.Using a while loop to print the Fibonacci sequence up to a certain limit:
+### 2.Using a while loop to print the Fibonacci sequence up to a certain limit:
+```kotlin
 val limit = 20
 var a = 0
 var b = 1
@@ -412,6 +469,7 @@ val sum = a + b
 a = b
 b = sum
 }
+```
 Output:
 0
 1
@@ -421,13 +479,15 @@ Output:
 5
 8
 13
-3.Using a while loop to process elements of an array:
+### 3.Using a while loop to process elements of an array:
+```kotlin
 val numbers = arrayOf(1, 2, 3, 4, 5)
 var i = 0
 while (i < numbers.size) {
 println(numbers[i])
 i++
 }
+```
 Output:
 1
 2
@@ -436,27 +496,31 @@ Output:
 5
 
 
-Kotlin do while :
+## Kotlin do while :
 Sure, here are some examples of using the Kotlin do-while loop:
-1.Using a do-while loop to print numbers from 1 to 5:
+### 1.Using a do-while loop to print numbers from 1 to 5:
+```kotlin
 var i = 1
 do {
 println(i)
 i++
 } while (i <= 5)
+```
 Output:
 1
 2
 3
 4
 5
-2.Using a do-while loop to process elements of an array:
+### 2.Using a do-while loop to process elements of an array:
+```kotlin
 val numbers = arrayOf(1, 2, 3, 4, 5)
 var i = 0
 do {
 println(numbers[i])
 i++
 } while (i < numbers.size)
+```
 Output:
 1
 2
@@ -464,9 +528,10 @@ Output:
 4
 5
 
-Return and Jump Kotlin:
+##Return and Jump Kotlin:
 Sure, here are some examples of using the return and jump statements in Kotlin:
-1.Using the return statement to exit a function early:
+### 1.Using the return statement to exit a function early:
+```kotlin
 fun calculateSum(numbers: List<Int>): Int {
 var sum = 0
 for (number in numbers) {
@@ -477,9 +542,11 @@ sum += number
 }
 return sum
 }
+```
 This function calculates the sum of a list of integers. If the list contains a negative number, the function immediately returns -1. Otherwise, it continues to sum up the remaining numbers and returns the result.
 
-	2.Using the break statement to exit a loop early:
+### 2.Using the break statement to exit a loop early:
+```kotlin
 		val numbers = arrayOf(1, 2, 3, 4, 5)
 		for (number in numbers) {
 			if (number == 3) {
@@ -487,12 +554,14 @@ This function calculates the sum of a list of integers. If the list contains a n
 			}
 			println(number)
 		}
+```
 		Output:
 		1
 		2
-	3.This loop iterates over an array of integers and prints each number. However, if the number 3 is encountered, the loop is exited early using the break statement.
+### 3.This loop iterates over an array of integers and prints each number. However, if the number 3 is encountered, the loop is exited early using the break statement.
 
 		Using the continue statement to skip over an iteration in a loop:
+```kotlin
 		val numbers = arrayOf(1, 2, 3, 4, 5)
 		for (number in numbers) {
 			if (number == 3) {
@@ -500,6 +569,7 @@ This function calculates the sum of a list of integers. If the list contains a n
 			}
 			println(number)
 		}
+```
 		Output:
 		1
 		2
@@ -507,7 +577,8 @@ This function calculates the sum of a list of integers. If the list contains a n
 		5
 		This loop iterates over an array of integers and prints each number except for the number 3. When the number 3 is encountered, the loop skips over that iteration using the continue statement.
 
-	4.Using the return statement with a label to exit nested loops:
+### 4.Using the return statement with a label to exit nested loops:
+```kotlin
 		outer@ for (i in 1..5) {
 			for (j in 1..5) {
 				if (i * j > 10) {
@@ -516,6 +587,7 @@ This function calculates the sum of a list of integers. If the list contains a n
 				println("$i * $j = ${i * j}")
 			}
 		}
+```
 		Output:
 		1 * 1 = 1
 		1 * 2 = 2
@@ -529,24 +601,28 @@ This function calculates the sum of a list of integers. If the list contains a n
 		2 * 5 = 10
 		In this example, two nested loops are used to print the multiplication table from 1 to 5. However, if the product of the two numbers is greater than 10, the loops are exited early using the return@outer statement with a label.
 
-	5.Using the throw statement to throw an exception:
+### 5.Using the throw statement to throw an exception:
+```kotlin
 		fun divide(a: Int, b: Int): Int {
 			if (b == 0) {
 				throw IllegalArgumentException("Cannot divide by zero.")
 			}
 			return a / b
 		}
+```
 	This function performs integer division of two numbers, but throws an exception if the second number is zero. The throw statement is used to create and throw an exception of type IllegalArgumentException with a custom error message.
 
-Continue Structure in kotlin:
+## Continue Structure in kotlin:
 In Kotlin, the continue keyword is used to skip the current iteration of a loop and continue with the next iteration. Here are some examples of using the continue statement in Kotlin:
-1.Skipping even numbers in a loop:
+### 1.Skipping even numbers in a loop:
+```kotlin
 for (i in 1..10) {
 if (i % 2 == 0) {
 continue
 }
 println(i)
 }
+```
 Output:
 1
 3
@@ -555,7 +631,8 @@ Output:
 9
 This loop iterates over the numbers 1 to 10 and prints only the odd numbers. When an even number is encountered, the continue statement is used to skip that iteration and move on to the next number.
 
-	2.Skipping elements in a list:
+### 2.Skipping elements in a list:
+```kotlin
 		val names = listOf("Alice", "Bob", "Charlie", "Dave", "Eve")
 		for (name in names) {
 			if (name.length > 4) {
@@ -563,6 +640,7 @@ This loop iterates over the numbers 1 to 10 and prints only the odd numbers. Whe
 			}
 			println(name)
 		}
+````
 		Output:
 
 		Copy code
@@ -571,7 +649,8 @@ This loop iterates over the numbers 1 to 10 and prints only the odd numbers. Whe
 		Eve
 		This loop iterates over a list of names and prints only the names that are four characters or less in length. When a name longer than four characters is encountered, the continue statement is used to skip that iteration.
 
-	3.Skipping nested loops:
+### 3.Skipping nested loops:
+```kotlin
 		for (i in 1..5) {
 			for (j in 1..5) {
 				if (i == j) {
@@ -580,6 +659,7 @@ This loop iterates over the numbers 1 to 10 and prints only the odd numbers. Whe
 				println("$i,$j")
 			}
 		}
+```
 		Output:
 		1,2
 		1,3
@@ -603,7 +683,8 @@ This loop iterates over the numbers 1 to 10 and prints only the odd numbers. Whe
 		5,4
 		In this example, two nested loops are used to print all possible pairs of numbers from 1 to 5, except for pairs where the two numbers are the same. When i and j are equal, the continue statement is used to skip that iteration of the inner loop.
 
-	4.Skipping loop iteration with while loop:
+### 4.Skipping loop iteration with while loop:
+```kotlin
 		var i = 0
 		while (i < 10) {
 			i++
@@ -612,9 +693,8 @@ This loop iterates over the numbers 1 to 10 and prints only the odd numbers. Whe
 			}
 			println(i)
 		}
+```
 		Output:
-
-		Copy code
 		1
 		3
 		5
@@ -623,26 +703,37 @@ This loop iterates over the numbers 1 to 10 and prints only the odd numbers. Whe
 		This example is similar to the first example, but the loop is implemented using a while loop instead of a for loop. When an even number is encountered, the continue statement is used to skip that iteration and move on to the next number.
 
 
-Kotlin Function :
+##Kotlin Function :
 In Kotlin, there are several ways to define and use functions. Here are some examples of using functions in Kotlin:
-1.Defining a basic function:
+### 1.Defining a basic function:
+```kotlin
 fun addNumbers(a: Int, b: Int): Int {
 return a + b
 }
+```
 This function takes two integer parameters and returns their sum. To call this function, you can simply use its name and provide the required arguments:
+```kotlin
 val result = addNumbers(3, 4)
 println(result) // Output: 7
+```
 
-	2.Defining a function with default parameter:
+### 2.Defining a function with default parameter:
+```kotlin
 		fun greet(name: String, greeting: String = "Hello") {
 			println("$greeting, $name!")
 		}
-		This function takes a required name parameter and an optional greeting parameter, which defaults to "Hello". To call this function, you can either provide both parameters:
-		greet("Alice", "Hi") // Output: Hi, Alice!
-		Or omit the second parameter to use the default value:
-		greet("Bob") // Output: Hello, Bob!
+```
+This function takes a required name parameter and an optional greeting parameter, which defaults to "Hello". To call this function, you can either provide both parameters:
+```kotlin		
+greet("Alice", "Hi") // Output: Hi, Alice!
+```
+Or omit the second parameter to use the default value:
+```kotlin
+greet("Bob") // Output: Hello, Bob!
+```
 		
-	3.Defining a function with variable number of arguments:
+### 3.Defining a function with variable number of arguments:
+```kotlin
 		fun sum(vararg numbers: Int): Int {
 			var total = 0
 			for (number in numbers) {
@@ -650,13 +741,14 @@ println(result) // Output: 7
 			}
 			return total
 		}
+```
 		This function takes a variable number of integer arguments and returns their sum. To call this function, you can provide any number of arguments:
 		val result1 = sum(1, 2, 3)
 		println(result1) // Output: 6
 		val result2 = sum(10, 20, 30, 40, 50)
 		println(result2) // Output: 150
 		
-	4.Defining a function with lambda parameter:
+### 4.Defining a function with lambda parameter:
 		fun printMessage(message: String, printer: (String) -> Unit) {
 			printer(message)
 		}
@@ -665,7 +757,7 @@ println(result) // Output: 7
 		Output:
 		Hello, world!
 		
-	5.Defining a function as a member of a class:
+### 5.Defining a function as a member of a class:
 		class Person(val name: String) {
 			fun sayHello() {
 				println("Hello, my name is $name")
@@ -676,9 +768,9 @@ println(result) // Output: 7
 		person.sayHello() // Output: Hello, my name is Alice
 		These are just a few examples of the many ways you can define and use functions in Kotlin.
 
-Default and Named Argument:
+##Default and Named Argument:
 In Kotlin, you can define default values for function parameters, which allows you to call the function without passing a value for that parameter. You can also use named arguments to pass values for specific parameters in any order you want. Here are some examples:
-1.Default argument values:
+### 1.Default argument values:
 fun greet(name: String = "World") {
 println("Hello, $name!")
 }
@@ -690,7 +782,7 @@ println("Hello, $name!")
 		greet("John") // Output: Hello, John!
 		In this example, the greet() function has a default value of "World" for the name parameter. You can call the function without passing a value for name, in which case it uses the default value. Alternatively, you can pass a specific name as an argument.
 
-	2.Named arguments:
+### 2.Named arguments:
 		fun createUser(name: String, age: Int, email: String) {
 			println("Name: $name, Age: $age, Email: $email")
 		}
@@ -700,7 +792,7 @@ println("Hello, $name!")
 		// Output: Name: John, Age: 30, Email: john@example.com
 		In this example, the createUser() function takes three parameters: name, age, and email. You can pass these arguments in any order by using named arguments. This makes it easier to read and understand the function call, especially if you have many parameters or if their types are similar.
 
-	3.Using both default and named arguments:
+### 3.Using both default and named arguments:
 		fun buyItem(itemName: String, price: Double = 10.0, isOnSale: Boolean = false) {
 			val saleText = if (isOnSale) "on sale for " else ""
 			println("$itemName is $saleText$$price")
@@ -719,21 +811,21 @@ println("Hello, $name!")
 
 
 
-Kotlin Lambdas :
+## Kotlin Lambdas :
 Lambdas in Kotlin are a way to create functions anonymously without needing to declare a function name. Here are some examples of using lambdas in Kotlin:
 
-	Basic Lambda expression:
+### Basic Lambda expression:
 		val add = { a: Int, b: Int -> a + b }
 		println(add(2, 3)) // Output: 5
 	In this example, we define a lambda expression that takes two integer arguments and returns their sum. We assign the lambda to the variable add and then call it with arguments 2 and 3.
 
-	Lambda as a function argument:
+### Lambda as a function argument:
 		fun performOperation(a: Int, b: Int, operation: (Int, Int) -> Int): Int {
 			return operation(a, b)
 		}
 		println(performOperation(2, 3) { a, b -> a + b }) // Output: 5
 	In this example, we define a function performOperation that takes two integer arguments a and b and a lambda expression operation that takes two integers and returns an integer. The performOperation function then calls the operation lambda with arguments a and b and returns the result. We call the performOperation function and pass in a lambda that adds a and b.
-	Lambda with receiver:
+### Lambda with receiver:
 		fun buildString(builderAction: StringBuilder.() -> Unit): String {
 			val stringBuilder = StringBuilder()
 			stringBuilder.builderAction()
@@ -748,8 +840,8 @@ Lambdas in Kotlin are a way to create functions anonymously without needing to d
 	Lambdas in Kotlin are a powerful feature that can be used in many ways, including higher-order functions, DSLs, and more. They can make your code more concise, flexible, and expressive.
 
 
-Kotlin Higher order Function :
-Kotlin Kotlin Inline Function :
+## Kotlin Higher order Function :
+## Kotlin Kotlin Inline Function :
 
 
 
