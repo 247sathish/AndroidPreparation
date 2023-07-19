@@ -571,10 +571,10 @@ Using the continue statement to skip over an iteration in a loop:
 ```
 
 Output:
-1
-2
-4
-5
+1 
+2 
+4 
+5 
 
 This loop iterates over an array of integers and prints each number except for the number 3. When the number 3 is encountered, the loop skips over that iteration using the continue statement.
 
@@ -589,17 +589,18 @@ This loop iterates over an array of integers and prints each number except for t
 			}
 		}
 ```
+
 Output:
-1 * 1 = 1
-1 * 2 = 2
-1 * 3 = 3
-1 * 4 = 4
-1 * 5 = 5
-2 * 1 = 2
-2 * 2 = 4
-2 * 3 = 6
-2 * 4 = 8
-2 * 5 = 10
+1 * 1 = 1 
+1 * 2 = 2 
+1 * 3 = 3 
+1 * 4 = 4 
+1 * 5 = 5 
+2 * 1 = 2 
+2 * 2 = 4 
+2 * 3 = 6 
+2 * 4 = 8 
+2 * 5 = 10 
 
 In this example, two nested loops are used to print the multiplication table from 1 to 5. However, if the product of the two numbers is greater than 10, the loops are exited early using the return@outer statement with a label.
 
@@ -781,7 +782,7 @@ This class defines a member function called sayHello, which simply prints a gree
 
 These are just a few examples of the many ways you can define and use functions in Kotlin.
 
-##Default and Named Argument:
+## Default and Named Argument:
 In Kotlin, you can define default values for function parameters, which allows you to call the function without passing a value for that parameter. You can also use named arguments to pass values for specific parameters in any order you want. Here are some examples:
 ### 1.Default argument values:
 ```kotlin
@@ -1095,22 +1096,23 @@ println(word.trim())
 		return 0
 	}
 ```
-	In this example, the function "divide" attempts to divide "a" by "b" inside the try block. If "b" is zero, an ArithmeticException will be thrown. The catch block catches the exception and prints a message. The function then returns 0 to indicate that the division operation failed.
+In this example, the function "divide" attempts to divide "a" by "b" inside the try block. If "b" is zero, an ArithmeticException will be thrown. The catch block catches the exception and prints a message. The function then returns 0 to indicate that the division operation failed.
+You can call the function like this:
+```kotlin
+    val result = divide(10, 0)
+```
 
-	You can call the function like this:
+In this case, the function will catch the ArithmeticException and print "Cannot divide by zero". The result variable will be assigned the value 0, which was returned by the function.
 
-		val result = divide(10, 0)
-	
-	In this case, the function will catch the ArithmeticException and print "Cannot divide by zero". The result variable will be assigned the value 0, which was returned by the function.
-
-	If you call the function with non-zero values for "a" and "b", it will return the result of the division operation:
-
-		val result = divide(10, 2)
-	In this case, the function will divide 10 by 2 and return the result, which will be assigned to the result variable. The catch block will not be executed because no exception was thrown in the try block.
+If you call the function with non-zero values for "a" and "b", it will return the result of the division operation:
+```kotlin
+    val result = divide(10, 2)
+```
+In this case, the function will divide 10 by 2 and return the result, which will be assigned to the result variable. The catch block will not be executed because no exception was thrown in the try block.
 
 
 ## Kotlin Multiple catch Block
-
+```kotlin
 	fun main(args: Array<String>){  
 		try {  
 			val a = IntArray(5)  
@@ -1124,13 +1126,14 @@ println(word.trim())
 		}  
 		println("code after try catch...")  
 	}  
-	
-	Output:
-	arithmetic exception catch
-	code after try catch...
+```	
+Output:
+arithmetic exception catch   
+code after try catch...
 
 
 ## Kotlin Nested try-catch block
+```kotlin
 fun main(args: Array<String>) {  
 val nume = intArrayOf(4, 8, 16, 32, 64, 128, 256, 512)  
 val deno = intArrayOf(2, 0, 4, 4, 0, 8)  
@@ -1147,7 +1150,7 @@ println("Can't divided by Zero!")
 			println("Element not found.")  
 		}  
 	}  
-	
+```	
 	Output:
 	4 / 2 is 2
 	Can't divided by Zero!
@@ -3137,13 +3140,14 @@ In Android, a Button is a UI component that allows the user to perform an action
 
 ## View binding::
 
-	View binding is a feature in Android that allows you to easily access views in your layout files using a generated binding class. By using view binding, you can eliminate the need to call findViewById and reduce the risk of null pointer exceptions.
-	build.gradle::
-		buildFeatures {
-			viewBinding = true
-		}
-		
+View binding is a feature in Android that allows you to easily access views in your layout files using a generated binding class. By using view binding, you can eliminate the need to call findViewById and reduce the risk of null pointer exceptions.
+`build.gradle::
+	buildFeatures {
+		viewBinding = true
+}`
+	
 	XML::
+```xml
 	<?xml version="1.0" encoding="utf-8"?>
 	<RelativeLayout 
 		tools:context=".MainActivity ">
@@ -3153,8 +3157,9 @@ In Android, a Button is a UI component that allows the user to perform an action
 			android:layout_height="wrap_content"
 			android:text="Hello, world!" />
 	</RelativeLayout>
-	
+```	
 	Kotlin::
+```kotlin
 		import com.example.myapp.databinding.ActivityMainBinding
 		
 		class MainActivity : AppCompatActivity() {
@@ -3167,6 +3172,7 @@ In Android, a Button is a UI component that allows the user to perform an action
 				binding.textView.text = "Hello, view binding!"
 			}
 		}
+```
 		
 		
 
