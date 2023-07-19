@@ -2,7 +2,7 @@
 
 ## Kotlin Variable:
 
-### 1.Immutable variables:
+### 1. Immutable variables:
 ```kotlin
 val name: String = "John"
 val age: Int = 25
@@ -10,7 +10,7 @@ val heightInCm: Double = 175.5
 ```
 Immutable variables are declared using the val keyword, and their values cannot be changed after initialization.
 
-### 2.Mutable variables:
+### 2. Mutable variables:
 ```kotlin
 var count: Int = 0
 var price: Double = 9.99
@@ -18,26 +18,26 @@ var message: String = "Hello, world!"
 ```
 Mutable variables are declared using the var keyword, and their values can be changed after initialization.
 
-### 3.Nullable variables:
+### 3. Nullable variables:
 ```kotlin
 var phoneNumber: String? = null
 var address: String? = "123 Main St"
 ```
 Nullable variables can hold either a non-null value or a null value. They are declared using the ? symbol after the data type.
 
-### 4.Late-initialized variables:
+### 4. Late-initialized variables:
 ```kotlin
 lateinit var myObject: MyClass
 ```
 Late-initialized variables are declared using the lateinit keyword and must be initialized before they are used, otherwise a UninitializedPropertyAccessException will be thrown.
 
-### 5.Constant variables:
+### 5. Constant variables:
 ```kotlin
 const val PI: Double = 3.14159265359
 ```
 Constant variables are declared using the const keyword and must be initialized with a compile-time constant value. They can only be used at the top level or in objects, and not in local scopes or as properties of classes.
 
-### 6.Local variables:
+### 6. Local variables:
 ```kotlin
 fun calculateArea(width: Int, height: Int): Int {
 	val area = width * height
@@ -46,7 +46,7 @@ fun calculateArea(width: Int, height: Int): Int {
 ```
 Local variables are declared within a function or block of code and can only be accessed within that scope.
 
-### 7.Class-level variables:
+### 7. Class-level variables:
 ```kotlin
 class Person(val name: String, var age: Int) {
     var address: String? = null
@@ -59,80 +59,98 @@ Class-level variables are declared within a class and can be accessed by any fun
 ## Kotlin Data Type:
 
 ### 1.	Byte:
-
-		val byteValue: Byte = 10 
-		The Byte data type represents 8-bit signed integers (-128 to 127).
+```kotlin
+val byteValue: Byte = 10
+``` 
+The Byte data type represents 8-bit signed integers (-128 to 127).
 
 ### 2.	Short:
-
-		val shortValue: Short = 1000 
-		The Short data type represents 16-bit signed integers (-32768 to 32767).
+```kotlin
+val shortValue: Short = 1000 
+```
+The Short data type represents 16-bit signed integers (-32768 to 32767).
 
 ### 3.	Int:
-
-		val intValue: Int = 100000 
-		The Int data type represents 32-bit signed integers (-2^31 to 2^31-1).
+```kotlin
+val intValue: Int = 100000
+``` 
+The Int data type represents 32-bit signed integers (-2^31 to 2^31-1).
 
 ### 4.	Long:
-
-		val longValue: Long = 10000000000L 
-		The Long data type represents 64-bit signed integers (-2^63 to 2^63-1).
+```kotlin
+val longValue: Long = 10000000000L 
+```
+The Long data type represents 64-bit signed integers (-2^63 to 2^63-1).
 
 ### 5.	Float:
-
-		val floatValue: Float = 3.14f 
-		The Float data type represents 32-bit floating-point numbers.
+```kotlin
+val floatValue: Float = 3.14f
+```
+The Float data type represents 32-bit floating-point numbers.
 
 ### 6.	Double:
-
-		val doubleValue: Double = 3.14159265359 
-		The Double data type represents 64-bit floating-point numbers.
+```kotlin
+val doubleValue: Double = 3.14159265359
+``` 
+The Double data type represents 64-bit floating-point numbers.
 
 ### 7.	Boolean:
-
-		val isOnline: Boolean = true 
-		The Boolean data type represents a value that is either true or false.
+```kotlin
+val isOnline: Boolean = true
+```
+The Boolean data type represents a value that is either true or false.
 
 ### 8.	Char:
-
-		val letter: Char = 'a' 
-		The Char data type represents a single character.
+```kotlin
+val letter: Char = 'a'
+``` 
+The Char data type represents a single character.
 
 ### 9.	String:
-
-		val message: String = "Hello, world!" 
-		The String data type represents a sequence of characters.
+```kotlin
+val message: String = "Hello, world!" 
+```
+The String data type represents a sequence of characters.
 
 ### 10.	Array:
-
-		val numbers: IntArray = intArrayOf(1, 2, 3, 4, 5) 
-		The Array data type represents a collection of values of the same data type.
+```kotlin
+val numbers: IntArray = intArrayOf(1, 2, 3, 4, 5) 
+```
+The Array data type represents a collection of values of the same data type.
 
 ### 11.	List:
-
-		val fruits: List<String> = listOf("apple", "banana", "orange") 
-		The List data type represents an ordered collection of values.
+```kotlin
+val fruits: List<String> = listOf("apple", "banana", "orange") 
+```
+The List data type represents an ordered collection of values.
 
 ### 12.	Set:
-
-		val vowels: Set<Char> = setOf('a', 'e', 'i', 'o', 'u') 
-		The Set data type represents an unordered collection of unique values.
+```kotlin
+val vowels: Set<Char> = setOf('a', 'e', 'i', 'o', 'u')
+``` 
+The Set data type represents an unordered collection of unique values.
 
 ### 13.	Map:
+```kotlin
+val colors: Map<String, String> = mapOf("red" to "#FF0000", "green" to "#00FF00", "blue" to "#0000FF")
+``` 
+The Map data type represents a collection of key-value pairs.
 
-		val colors: Map<String, String> = mapOf("red" to "#FF0000", "green" to "#00FF00", "blue" to "#0000FF") 
-		The Map data type represents a collection of key-value pairs.
 
-
-Kotlin Type Conversion
-1.	Implicit conversion:
+## Kotlin Type Conversion
+### 1.	Implicit conversion:
+```kotlin
 val intValue: Int = 10
 val doubleValue: Double = intValue.toDouble() // Implicit conversion from Int to Double
+```
 Implicit conversion happens automatically when a value of one data type is assigned to a variable of another data type that can hold that value.
-2.	Explicit conversion:
+### 2.	Explicit conversion:
+```kotlin
 val doubleValue: Double = 3.14159265359
 val intValue: Int = doubleValue.toInt() // Explicit conversion from Double to Int
+````
 Explicit conversion requires the use of a conversion function to convert a value of one data type to another.
+
 3.	Safe conversion:
 val stringValue: String = "10"
 val intValue: Int? = stringValue.toIntOrNull() // Safe conversion from String to Int
