@@ -1,6 +1,6 @@
-# **Kotlin**
+# Kotlin
 
-## **Kotlin Variable:**
+## Kotlin Variable:
 
 ### 1.Immutable variables:
 ```kotlin
@@ -31,64 +31,95 @@ lateinit var myObject: MyClass
 ```
 Late-initialized variables are declared using the lateinit keyword and must be initialized before they are used, otherwise a UninitializedPropertyAccessException will be thrown.
 
-	5.Constant variables:
-		const val PI: Double = 3.14159265359
-		Constant variables are declared using the const keyword and must be initialized with a compile-time constant value. They can only be used at the top level or in objects, and not in local scopes or as properties of classes.
+### 5.Constant variables:
+```kotlin
+const val PI: Double = 3.14159265359
+```
+Constant variables are declared using the const keyword and must be initialized with a compile-time constant value. They can only be used at the top level or in objects, and not in local scopes or as properties of classes.
 
-	6.Local variables:
-		fun calculateArea(width: Int, height: Int): Int {
-			val area = width * height
-			return area
-		}
-		Local variables are declared within a function or block of code and can only be accessed within that scope.
+### 6.Local variables:
+```kotlin
+fun calculateArea(width: Int, height: Int): Int {
+	val area = width * height
+	return area
+}
+```
+Local variables are declared within a function or block of code and can only be accessed within that scope.
 
-	7.Class-level variables:
-		class Person(val name: String, var age: Int) {
-			var address: String? = null
-		}
-		Class-level variables are declared within a class and can be accessed by any function or method within that class. In this example, name is an immutable class-level variable, age is a mutable class-level variable, and address is a nullable class-level variable.
+### 7.Class-level variables:
+```kotlin
+class Person(val name: String, var age: Int) {
+    var address: String? = null
+}
+```
+Class-level variables are declared within a class and can be accessed by any function or method within that class. In this example, name is an immutable class-level variable, age is a mutable class-level variable, and address is a nullable class-level variable.
 
 
 
-Kotlin Data Type:
+## Kotlin Data Type:
 
-	1.	Byte:
+### 1.	Byte:
+
 		val byteValue: Byte = 10 
 		The Byte data type represents 8-bit signed integers (-128 to 127).
-	2.	Short:
+
+### 2.	Short:
+
 		val shortValue: Short = 1000 
 		The Short data type represents 16-bit signed integers (-32768 to 32767).
-	3.	Int:
+
+### 3.	Int:
+
 		val intValue: Int = 100000 
 		The Int data type represents 32-bit signed integers (-2^31 to 2^31-1).
-	4.	Long:
+
+### 4.	Long:
+
 		val longValue: Long = 10000000000L 
 		The Long data type represents 64-bit signed integers (-2^63 to 2^63-1).
-	5.	Float:
+
+### 5.	Float:
+
 		val floatValue: Float = 3.14f 
 		The Float data type represents 32-bit floating-point numbers.
-	6.	Double:
+
+### 6.	Double:
+
 		val doubleValue: Double = 3.14159265359 
 		The Double data type represents 64-bit floating-point numbers.
-	7.	Boolean:
+
+### 7.	Boolean:
+
 		val isOnline: Boolean = true 
 		The Boolean data type represents a value that is either true or false.
-	8.	Char:
+
+### 8.	Char:
+
 		val letter: Char = 'a' 
 		The Char data type represents a single character.
-	9.	String:
+
+### 9.	String:
+
 		val message: String = "Hello, world!" 
 		The String data type represents a sequence of characters.
-	10.	Array:
+
+### 10.	Array:
+
 		val numbers: IntArray = intArrayOf(1, 2, 3, 4, 5) 
 		The Array data type represents a collection of values of the same data type.
-	11.	List:
+
+### 11.	List:
+
 		val fruits: List<String> = listOf("apple", "banana", "orange") 
 		The List data type represents an ordered collection of values.
-	12.	Set:
+
+### 12.	Set:
+
 		val vowels: Set<Char> = setOf('a', 'e', 'i', 'o', 'u') 
 		The Set data type represents an unordered collection of unique values.
-	13.	Map:
+
+### 13.	Map:
+
 		val colors: Map<String, String> = mapOf("red" to "#FF0000", "green" to "#00FF00", "blue" to "#0000FF") 
 		The Map data type represents a collection of key-value pairs.
 
