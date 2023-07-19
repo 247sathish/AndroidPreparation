@@ -1,17 +1,19 @@
 # **Kotlin Variable:**
 
 ## 1.Immutable variables:
-
+```kotlin
         val name: String = "John"
         val age: Int = 25
         val heightInCm: Double = 175.5
+```
         Immutable variables are declared using the val keyword, and their values cannot be changed after initialization.
 
 ## 2.Mutable variables:
-
+```kotlin
         var count: Int = 0
         var price: Double = 9.99
         var message: String = "Hello, world!"
+```
         Mutable variables are declared using the var keyword, and their values can be changed after initialization.
     
 ## 3.Nullable variables:
