@@ -1,5 +1,7 @@
 # Kotlin
 
+[https://github.com/247sathish/AndroidPreparation/blob/master/KotlinInterviewReadMe.md#class-in-kotlin](class-in-kotlin)
+
 ## Kotlin Variable:
 
 ### 1. Immutable variables:
@@ -3183,7 +3185,7 @@ In this example, we set the background attribute of the Button to a custom drawa
 
 View binding is a feature in Android that allows you to easily access views in your layout files using a generated binding class. By using view binding, you can eliminate the need to call findViewById and reduce the risk of null pointer exceptions.
 
-```kotlin
+```groovy
 build.gradle::
 	buildFeatures {
 		viewBinding = true
