@@ -1,20 +1,24 @@
-**Kotlin Variable:**
-1.Immutable variables:
-val name: String = "John"
-val age: Int = 25
-val heightInCm: Double = 175.5
-Immutable variables are declared using the val keyword, and their values cannot be changed after initialization.
+# **Kotlin Variable:**
 
-2.Mutable variables:
-var count: Int = 0
-var price: Double = 9.99
-var message: String = "Hello, world!"
-Mutable variables are declared using the var keyword, and their values can be changed after initialization.
+## 1.Immutable variables:
 
-3.Nullable variables:
-var phoneNumber: String? = null
-var address: String? = "123 Main St"
-Nullable variables can hold either a non-null value or a null value. They are declared using the ? symbol after the data type.
+        val name: String = "John"
+        val age: Int = 25
+        val heightInCm: Double = 175.5
+        Immutable variables are declared using the val keyword, and their values cannot be changed after initialization.
+
+## 2.Mutable variables:
+
+        var count: Int = 0
+        var price: Double = 9.99
+        var message: String = "Hello, world!"
+        Mutable variables are declared using the var keyword, and their values can be changed after initialization.
+    
+## 3.Nullable variables:
+
+        var phoneNumber: String? = null
+        var address: String? = "123 Main St"
+        Nullable variables can hold either a non-null value or a null value. They are declared using the ? symbol after the data type.
 
 	4.Late-initialized variables:
 		lateinit var myObject: MyClass
