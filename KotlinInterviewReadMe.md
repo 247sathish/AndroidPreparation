@@ -2866,6 +2866,7 @@ Sure! Here are some examples of calling Java code from Kotlin:
 			myJavaObject.printString("Hello from Java!")
 ### 5.Implementing a Java interface:
 		Java code:
+```java
 			public interface MyJavaInterface {
 				void myMethod();
 			}
@@ -2875,7 +2876,9 @@ Sure! Here are some examples of calling Java code from Kotlin:
 					System.out.println("Hello from Java!");
 				}
 			}
+```
 		Kotlin code:
+```kotlin
 			class MyKotlinClass : MyJavaInterface {
 				override fun myMethod() {
 					println("Hello from Kotlin!")
@@ -2884,13 +2887,15 @@ Sure! Here are some examples of calling Java code from Kotlin:
 
 			val myJavaObject = MyJavaClass()
 			myJavaObject.myMethod()
-	These are just a few examples of how to call Java code from Kotlin. In general, you can call Java classes and methods from Kotlin as you would in Java. Kotlin is interoperable with Java, so you can easily use Java libraries and code in your Kotlin projects.
+```
+These are just a few examples of how to call Java code from Kotlin. In general, you can call Java classes and methods from Kotlin as you would in Java. Kotlin is interoperable with Java, so you can easily use Java libraries and code in your Kotlin projects.
 
 
 ## Regular Expressions:
 Sure! Here are some examples of using regular expressions in Kotlin:
 
 ### 1.Matching a pattern in a string:
+```kotlin
 		val inputString = "The quick brown fox jumps over the lazy dog."
 		val pattern = Regex("fox")
 
@@ -2899,17 +2904,21 @@ Sure! Here are some examples of using regular expressions in Kotlin:
 		} else {
 			println("Match not found.")
 		}
+```
 		Output:
 			Match found!
 ### 2.Replacing a pattern in a string:
+```kotlin
 		val inputString = "The quick brown fox jumps over the lazy dog."
 		val pattern = Regex("fox")
 
 		val outputString = pattern.replace(inputString, "cat")
 		println(outputString)
+  ```
 		Output:
 			The quick brown cat jumps over the lazy dog.
 ### 3.Extracting parts of a string using groups:
+```kotlin
 		val inputString = "John Smith (123) 456-7890"
 		val pattern = Regex("^(\\w+) (\\w+) \\((\\d{3})\\) (\\d{3})-(\\d{4})$")
 
@@ -2922,11 +2931,13 @@ Sure! Here are some examples of using regular expressions in Kotlin:
 		} else {
 			println("Match not found.")
 		}
+  ```
 		Output:
 			First name: John
 			Last name: Smith
 			Phone number: 123-456-7890
 ### 4.Splitting a string based on a pattern:
+```kotlin
 		val inputString = "The quick brown fox jumps over the lazy dog."
 		val pattern = Regex("\\s+")
 
@@ -2934,7 +2945,8 @@ Sure! Here are some examples of using regular expressions in Kotlin:
 		for (word in words) {
 			println(word)
 		}
-		Output:
+```
+  Output:
 			The
 			quick
 			brown
@@ -2944,7 +2956,7 @@ Sure! Here are some examples of using regular expressions in Kotlin:
 			the
 			lazy
 			dog.
-			These are just a few examples of how to use regular expressions in Kotlin. Regular expressions can be used for a wide range of string manipulation tasks, including validation, search and replace, and text parsing.
+These are just a few examples of how to use regular expressions in Kotlin. Regular expressions can be used for a wide range of string manipulation tasks, including validation, search and replace, and text parsing.
 
 
 
@@ -2953,14 +2965,15 @@ Sure! Here are some examples of using regular expressions in Kotlin:
 	Sure, here are some examples of using TextView in Kotlin for various use cases:
 
 ### 1.Setting text and text appearance programmatically:
-
+```kotlin
 		val myTextView = findViewById<TextView>(R.id.my_text_view)
 
 		myTextView.text = "Hello, world!"
 		myTextView.setTextColor(ContextCompat.getColor(this, R.color.textColor))
 		myTextView.textSize = 18f
+```
 ### 2.Setting text and text appearance using XML:
-	
+```xml	
 		<TextView
 			android:id="@+id/my_text_view"
 			android:layout_width="wrap_content"
@@ -2968,27 +2981,31 @@ Sure! Here are some examples of using regular expressions in Kotlin:
 			android:text="Hello, world!"
 			android:textColor="@color/textColor"
 			android:textSize="18sp" />
+```
 ### 3.Setting text with a custom font:
-
+```kotlin
 		val myTextView = findViewById<TextView>(R.id.my_text_view)
 		val typeface = Typeface.createFromAsset(assets, "fonts/myfont.ttf")
 
 		myTextView.typeface = typeface
 		myTextView.text = "Hello, world!"
+```
 ### 4.Setting text with HTML formatting:
-
+```kotlin
 		val myTextView = findViewById<TextView>(R.id.my_text_view)
 		val htmlText = "<b>Hello</b>, <i>world</i>!"
 
 		myTextView.text = HtmlCompat.fromHtml(htmlText, HtmlCompat.FROM_HTML_MODE_COMPACT)
+```
 ### 5.Handling TextView click events:
-
+```kotlin
 		val myTextView = findViewById<TextView>(R.id.my_text_view)
 		myTextView.setOnClickListener {
 			Toast.makeText(this, "TextView clicked!", Toast.LENGTH_SHORT).show()
 		}
+```
 ### 6.Displaying an image in a TextView using SpannableString:
-
+```kotlin
 		val myTextView = findViewById<TextView>(R.id.my_text_view)
 		val drawable = ContextCompat.getDrawable(this, R.drawable.my_image)
 
@@ -3000,26 +3017,29 @@ Sure! Here are some examples of using regular expressions in Kotlin:
 
 			myTextView.text = spannableString
 		}
-	These are just a few examples of how to use TextView in Kotlin for different use cases. The TextView class provides a wide range of customization options and can be used for various text display purposes in an Android app.
+```
+These are just a few examples of how to use TextView in Kotlin for different use cases. The TextView class provides a wide range of customization options and can be used for various text display purposes in an Android app.
 
 
 ## Kotlin EditText:
 Sure, here are some examples of using EditText in Kotlin for various use cases:
 
 ### 1.Retrieving text from an EditText:
-	
+```kotlin	
 		val myEditText = findViewById<EditText>(R.id.my_edit_text)
 		val text = myEditText.text.toString()
+```
 ### 2.Setting a hint and limiting the number of characters:
-	
+```xml	
 		<EditText
 			android:id="@+id/my_edit_text"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:hint="Enter your name"
 			android:maxLength="50" />
+```
 ### 3.Handling input validation:
-	
+```kotlin	
 		val myEditText = findViewById<EditText>(R.id.my_edit_text)
 
 		if (myEditText.text.isNullOrEmpty()) {
@@ -3028,20 +3048,23 @@ Sure, here are some examples of using EditText in Kotlin for various use cases:
 			val name = myEditText.text.toString()
 			// do something with the name
 		}
+```
 ### 3.Disabling editing:
-	
+```kotlin	
 		val myEditText = findViewById<EditText>(R.id.my_edit_text)
 		myEditText.isEnabled = false
+```
 ### 4.Password input with masking:
-	
+```xml	
 		<EditText
 			android:id="@+id/my_edit_text"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="textPassword"
 			android:maxLength="20" />
+```
 ### 5.Using a custom input type with a regular expression:
-	
+```kotlin	
 		val myEditText = findViewById<EditText>(R.id.my_edit_text)
 		myEditText.addTextChangedListener(object : TextWatcher {
 			override fun afterTextChanged(s: Editable?) {}
@@ -3055,8 +3078,9 @@ Sure, here are some examples of using EditText in Kotlin for various use cases:
 				myEditText.setSelection(text.length)
 			}
 		})
+```
 ### 6.Listening for changes in text:
-	
+```kotlin	
 		val myEditText = findViewById<EditText>(R.id.my_edit_text)
 		myEditText.addTextChangedListener(object : TextWatcher {
 			override fun afterTextChanged(s: Editable?) {
@@ -3067,7 +3091,8 @@ Sure, here are some examples of using EditText in Kotlin for various use cases:
 
 			override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 		})
-	These are just a few examples of how to use EditText in Kotlin for different use cases. The EditText class provides a wide range of customization options and can be used for various text input purposes in an Android app.
+```
+These are just a few examples of how to use EditText in Kotlin for different use cases. The EditText class provides a wide range of customization options and can be used for various text input purposes in an Android app.
 
 
 
@@ -3075,12 +3100,15 @@ Sure, here are some examples of using EditText in Kotlin for various use cases:
 In Android, Toast is a small popup message that shows a brief message to the user. Here are some examples of using Toast in Kotlin for different use cases:
 
 ### 1.Displaying a simple Toast message:
-	
+```kotlin	
 		Toast.makeText(context, "Hello World", Toast.LENGTH_SHORT).show()
+```
 ### 2.Displaying a long duration Toast message:
-
+```kotlin
 		Toast.makeText(context, "This is a long message", Toast.LENGTH_LONG).show()
+```
 ### 3.Displaying a custom Toast message with a custom layout:
+```kotlin
 
 		val inflater = layoutInflater
 		val layout = inflater.inflate(R.layout.custom_toast_layout, findViewById(R.id.custom_toast_container))
@@ -3089,54 +3117,64 @@ In Android, Toast is a small popup message that shows a brief message to the use
 		toast.duration = Toast.LENGTH_SHORT
 		toast.view = layout
 		toast.show()
-		In the above code, we first inflate the custom layout R.layout.custom_toast_layout using the layoutInflater. We then create a new Toast object and set the duration to Toast.LENGTH_SHORT. We then set the view of the Toast to our custom layout using the view property, and finally, we show the Toast using the show() method.
+```
+In the above code, we first inflate the custom layout R.layout.custom_toast_layout using the layoutInflater. We then create a new Toast object and set the duration to Toast.LENGTH_SHORT. We then set the view of the Toast to our custom layout using the view property, and finally, we show the Toast using the show() method.
 
 ### 4.Displaying a Toast message on the main thread using runOnUiThread:
-	
+```kotlin	
 		runOnUiThread {
 			Toast.makeText(context, "This is a message on the main thread", Toast.LENGTH_SHORT).show()
 		}
-	In this code, we use the runOnUiThread method to run the Toast message on the main thread, which is required when trying to update the UI from a background thread.
-	These are just a few examples of how to use Toast in Kotlin for different use cases. The Toast class provides a variety of customization options and can be used to show different types of messages to the user in an Android app.
+```
+In this code, we use the runOnUiThread method to run the Toast message on the main thread, which is required when trying to update the UI from a background thread.
+These are just a few examples of how to use Toast in Kotlin for different use cases. The Toast class provides a variety of customization options and can be used to show different types of messages to the user in an Android app.
 
 ## kotlin Android Button:
 In Android, a Button is a UI component that allows the user to perform an action or navigate to another screen. Here are some examples of using Button in Kotlin for different use cases:
 
 ### 1.Handling button clicks:
-
+```kotlin
 		val myButton = findViewById<Button>(R.id.my_button)
 		myButton.setOnClickListener {
 			// do something when the button is clicked
 		}
+```
 ### 2.Disabling the button:
-	
+```kotlin
 		val myButton = findViewById<Button>(R.id.my_button)
 		myButton.isEnabled = false
+```
 ### 3.Changing the text of the button:
+```kotlin
 		val myButton = findViewById<Button>(R.id.my_button)
 		myButton.text = "Click me"
+```
 ### 4.Changing the background color of the button:
+```kotlin
 		val myButton = findViewById<Button>(R.id.my_button)
 		myButton.setBackgroundColor(Color.BLUE)
+```
 ### 5.Adding a ripple effect to the button:
+```xml
 		<Button
 			android:id="@+id/my_button"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="Click me"
 			android:background="?attr/selectableItemBackground" />
-		In this example, we set the background attribute of the Button to ?attr/selectableItemBackground, which adds a ripple effect to the button when it is clicked.
+```
+In this example, we set the background attribute of the Button to ?attr/selectableItemBackground, which adds a ripple effect to the button when it is clicked.
 
 ### 6.Styling the button with a custom background drawable:
-        ```xml
+```xml
 		<Button
 			android:id="@+id/my_button"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="Click me"
 			android:background="@drawable/custom_button_background" />
-		In this example, we set the background attribute of the Button to a custom drawable resource @drawable/custom_button_background that defines the background color, stroke, and corner radius of the button.
-        These are just a few examples of how to use Button in Kotlin for different use cases. The Button class provides a variety of customization options and can be used to create different types of UI elements in an Android app.
+```
+In this example, we set the background attribute of the Button to a custom drawable resource @drawable/custom_button_background that defines the background color, stroke, and corner radius of the button.These are just a few examples of how to use Button in Kotlin for different use cases. The Button class provides a variety of customization options and can be used to create different types of UI elements in an Android app.
 
 
 
