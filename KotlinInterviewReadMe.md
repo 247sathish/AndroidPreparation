@@ -1,6 +1,6 @@
 # Kotlin
 
-[https://github.com/247sathish/AndroidPreparation/blob/master/KotlinInterviewReadMe.md#class-in-kotlin](class-in-kotlin)
+[https://github.com/247sathish/AndroidPreparation/blob/master/KotlinInterviewReadMe.md#class-in-kotlin](https://github.com/247sathish/AndroidPreparation/blob/master/KotlinInterviewReadMe.md#class-in-kotlin)
 
 ## Kotlin Variable:
 
