@@ -559,7 +559,6 @@ Output:
 1
 2
 ### 3.This loop iterates over an array of integers and prints each number. However, if the number 3 is encountered, the loop is exited early using the break statement.
-
 Using the continue statement to skip over an iteration in a loop:
 ```kotlin
 		val numbers = arrayOf(1, 2, 3, 4, 5)
@@ -570,11 +569,13 @@ Using the continue statement to skip over an iteration in a loop:
 			println(number)
 		}
 ```
+
 Output:
 1
 2
 4
 5
+
 This loop iterates over an array of integers and prints each number except for the number 3. When the number 3 is encountered, the loop skips over that iteration using the continue statement.
 
 ### 4.Using the return statement with a label to exit nested loops:
@@ -599,6 +600,7 @@ Output:
 2 * 3 = 6
 2 * 4 = 8
 2 * 5 = 10
+
 In this example, two nested loops are used to print the multiplication table from 1 to 5. However, if the product of the two numbers is greater than 10, the loops are exited early using the return@outer statement with a label.
 
 ### 5.Using the throw statement to throw an exception:
