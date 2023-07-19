@@ -1,5 +1,4 @@
-Tell all the Android application components
-
+**Tell all the Android application components**
 	Android application components are the building blocks of an Android app. 
 	They are the different parts of an app that allow it to perform certain functions and to communicate with other apps and with the system. 
 	There are four main types of Android application components:
@@ -15,8 +14,7 @@ Tell all the Android application components
 		•	Resources: Resources are external files and static content that your app can use, such as strings, images, and layouts.
 
 
-What is the project structure of an Android Application?
-
+**What is the project structure of an Android Application?**
 	The project structure of an Android application typically includes the following directories and files:
 		1.	app: This directory contains the main source code files for your app, including the build.gradle file that defines how your app is built.
 		2.	res: This directory contains your app's resources, such as drawables, layouts, and strings.
@@ -30,7 +28,7 @@ What is the project structure of an Android Application?
 		10.	local.properties: This file contains the path to the Android SDK on your development machine.
 
 
-What is Context? How is it used?
+**What is Context? How is it used?**
 
 	In Android, the Context class is a global information object that provides access to system services and application-level resources. It is the most important class in the Android application framework.
 	The Context class allows you to:
@@ -55,7 +53,7 @@ What is Context? How is it used?
 		•	Use the "ContextWrapper" class. If you need a Context object in a class that does not have access to one, you can use the ContextWrapper class to wrap an existing Context object.
 
 
-What is AndroidManifest.xml?
+**What is AndroidManifest.xml?**
 
 	AndroidManifest.xml is a configuration file that is used to describe the characteristics and requirements of an Android app. It is a required file for all Android apps and is located at the root of the app's project directory.
 	The AndroidManifest.xml file contains information about the app, such as:
@@ -467,12 +465,15 @@ What is an Intent ?
 
 	An Intent is basically a message ,that message is passed between components (such as Activities, Services, Broadcast Receivers, and Content Providers).
 	There are two types of intents in android:
-	Implicit intent is used to invoke the system components
-		Intent i = newIntent(android.content.Intent.ACTION_VIEW,Uri.parse(“http://www.amazon.com”));
-		startActivity(i);
-	Explicit intent is used to invoke the activity class
-		Intent intent = newIntent (this, SecondActivity.class);
-		startActivity(intent);
+	//An implicit intent is used when you want to request an action or service without specifying the target component.
+	Intent i = newIntent(android.content.Intent.ACTION_VIEW,Uri.parse(“http://www.amazon.com”));
+	startActivity(i);
+	//An explicit intent is used when you want to explicitly specify the target component that should handle the intent.
+	Intent intent = newIntent (this, SecondActivity.class);
+	startActivity(intent);
+
+	//In summary, implicit intents are used to request an action or service without specifying the target component, while explicit intents are used to explicitly specify the target component within your own app or another app.
+
 
 Pass data between activities-in-android-application
 
