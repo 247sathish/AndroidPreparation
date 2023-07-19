@@ -1080,8 +1080,11 @@ println(word.trim())
 ### 10.Using the "assert" function to check for a condition and throw an AssertionError if it's not met:
 ```kotlin
 		fun calculateDiscount(price: Int, discountPercent: Int): Int {
-			assert(discountPercent in 0..100) { "Discount percent must be between 0 and 100" }
-			return price * (100 - discountPercent) / 100
+			assert(discountPercent in 0..100) {
+                "Discount percent must be between 0 and 100"
+            }
+        }
+return price * (100 - discountPercent) / 100
 
 ```
 
@@ -1127,6 +1130,7 @@ In this case, the function will divide 10 by 2 and return the result, which will
 		println("code after try catch...")  
 	}  
 ```	
+
 Output:
 arithmetic exception catch   
 code after try catch...
@@ -3124,7 +3128,7 @@ In Android, a Button is a UI component that allows the user to perform an action
 		In this example, we set the background attribute of the Button to ?attr/selectableItemBackground, which adds a ripple effect to the button when it is clicked.
 
 ### 6.Styling the button with a custom background drawable:
-
+        ```xml
 		<Button
 			android:id="@+id/my_button"
 			android:layout_width="wrap_content"
@@ -3132,8 +3136,7 @@ In Android, a Button is a UI component that allows the user to perform an action
 			android:text="Click me"
 			android:background="@drawable/custom_button_background" />
 		In this example, we set the background attribute of the Button to a custom drawable resource @drawable/custom_button_background that defines the background color, stroke, and corner radius of the button.
-
-		These are just a few examples of how to use Button in Kotlin for different use cases. The Button class provides a variety of customization options and can be used to create different types of UI elements in an Android app.
+        These are just a few examples of how to use Button in Kotlin for different use cases. The Button class provides a variety of customization options and can be used to create different types of UI elements in an Android app.
 
 
 
@@ -3141,12 +3144,16 @@ In Android, a Button is a UI component that allows the user to perform an action
 ## View binding::
 
 View binding is a feature in Android that allows you to easily access views in your layout files using a generated binding class. By using view binding, you can eliminate the need to call findViewById and reduce the risk of null pointer exceptions.
-`build.gradle::
+
+```kotlin
+build.gradle::
 	buildFeatures {
 		viewBinding = true
-}`
+}
+```
 	
-	XML::
+XML::
+
 ```xml
 	<?xml version="1.0" encoding="utf-8"?>
 	<RelativeLayout 
@@ -3157,8 +3164,8 @@ View binding is a feature in Android that allows you to easily access views in y
 			android:layout_height="wrap_content"
 			android:text="Hello, world!" />
 	</RelativeLayout>
-```	
-	Kotlin::
+```
+Kotlin::
 ```kotlin
 		import com.example.myapp.databinding.ActivityMainBinding
 		
