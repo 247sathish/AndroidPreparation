@@ -270,3 +270,486 @@ val num = 12321
         println("$num is not a palindrome number.")
 }
 ```
+
+**Factorial**
+4! = 4*3*2*1 = 24
+
+```java
+public class Factorial {
+public static int factorial(int n) {
+if (n == 0 || n == 1)
+return 1;
+
+        int result = 1;
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int number = 5;
+        int factorialResult = factorial(number);
+        System.out.println("The factorial of " + number + " is: " + factorialResult);
+    }
+}
+```
+
+```kotlin
+fun factorial(n: Int): Int {
+        if (n == 0 || n == 1)
+            return 1
+
+        var result = 1
+        for (i in 2..n) {
+            result *= i
+        }
+
+        return result
+    }
+
+ 
+    fun main() {
+        val number = 5
+        val factorialResult = factorial(number)
+        println("The factorial of $number is: $factorialResult")
+    }
+```
+Factorial Program using recursion
+```java
+public class Factorial {
+public static int factorial(int n) {
+if (n == 0 || n == 1)
+return 1;
+else
+return n * factorial(n - 1);
+}
+
+    public static void main(String[] args) {
+        int number = 5;
+        int factorialResult = factorial(number);
+        System.out.println("The factorial of " + number + " is: " + factorialResult);
+    }
+}
+```
+```kotlin
+fun factorial(n: Int): Int {
+    return if (n == 0 || n == 1) {
+        1
+    } else {
+        n * factorial(n - 1)
+    }
+}
+
+fun main() {
+    val number = 5
+    val factorialResult = factorial(number)
+    println("The factorial of $number is: $factorialResult")
+}
+
+```
+
+
+
+**Reverse a Number**
+```java
+public class ReverseNumber {
+    public static int reverse(int number) {
+        int reversedNumber = 0;
+
+        while (number != 0) {
+            int digit = number % 10;
+            reversedNumber = reversedNumber * 10 + digit;
+            number /= 10;
+        }
+
+        return reversedNumber;
+    }
+
+    public static void main(String[] args) {
+        int number = 12345;
+        int reversedNumber = reverse(number);
+        System.out.println("Original number: " + number);
+        System.out.println("Reversed number: " + reversedNumber);
+    }
+}
+
+```
+
+```kotlin
+fun reverse(number: Int): Int {
+    var n = number
+    var reversedNumber = 0
+
+    while (n != 0) {
+        val digit = n % 10
+        reversedNumber = reversedNumber * 10 + digit
+        n /= 10
+    }
+
+    return reversedNumber
+}
+
+fun main() {
+    val number = 12345
+    val reversedNumber = reverse(number)
+    println("Original number: $number")
+    println("Reversed number: $reversedNumber")
+}
+```
+
+**Find Largest of Three Numbers**
+
+```java
+public class LargestOfThree {
+    public static int findLargest(int num1, int num2, int num3) {
+        int largest = num1;
+
+        if (num2 > largest)//change to lesthan means find smallest number
+            largest = num2;
+        
+        if (num3 > largest)
+            largest = num3;
+
+        return largest;
+    }
+
+    public static void main(String[] args) {
+        int number1 = 10;
+        int number2 = 20;
+        int number3 = 15;
+
+        int largestNumber = findLargest(number1, number2, number3);
+
+        System.out.println("The largest number among " + number1 + ", " + number2 + ", and " + number3 + " is: " + largestNumber);
+    }
+}
+
+```
+```kotlin
+fun findLargest(num1: Int, num2: Int, num3: Int): Int {
+    var largest = num1
+
+    if (num2 > largest)
+        largest = num2
+
+    if (num3 > largest)
+        largest = num3
+
+    return largest
+}
+
+fun main() {
+    val number1 = 50
+    val number2 = 20
+    val number3 = 15
+
+    val largestNumber = findLargest(number1, number2, number3)
+
+    println("The largest number among $number1, $number2, and $number3 is: $largestNumber")
+}
+
+```
+
+Display Even Numbers 
+```java
+public class EvenNumbers {
+    public static void displayEvenNumbers(int start, int end) {
+        System.out.println("Even numbers between " + start + " and " + end + ":");
+        for (int i = start; i <= end; i++) {
+            //if (i % 2 != 0)//odd number
+            if (i % 2 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // Print a newline after displaying the even numbers
+    }
+
+    public static void main(String[] args) {
+        int startNumber = 1;
+        int endNumber = 20;
+
+        displayEvenNumbers(startNumber, endNumber);
+    }
+}
+
+```
+```kotlin
+fun displayEvenNumbers(start: Int, end: Int) {
+    println("Even numbers between $start and $end:")
+    for (i in start..end) {
+        if (i % 2 == 0) {
+            print("$i ")
+        }
+    }
+    println() // Print a newline after displaying the even numbers
+}
+
+fun main() {
+    val startNumber = 1
+    val endNumber = 20
+
+    displayEvenNumbers(startNumber, endNumber)
+}
+
+```
+copy all elements of one array into another array
+```java
+public class ArrayCopy {
+public static void main(String[] args) {
+int[] sourceArray = {1, 2, 3, 4, 5};
+int[] destinationArray = new int[sourceArray.length];
+
+        // Copy elements from sourceArray to destinationArray
+        for (int i = 0; i < sourceArray.length; i++) {
+            destinationArray[i] = sourceArray[i];
+        }
+
+        // Print the elements of destinationArray
+        System.out.print("Copied elements: ");
+        for (int num : destinationArray) {
+            System.out.print(num + " ");
+        }
+    }
+}
+```
+```kotlin
+fun main() {
+    val sourceArray = intArrayOf(1, 2, 3, 4, 5)
+    val destinationArray = IntArray(sourceArray.size)
+
+    // Copy elements from sourceArray to destinationArray
+    for (i in sourceArray.indices) {
+        destinationArray[i] = sourceArray[i]
+    }
+
+    // Print the elements of destinationArray
+    print("Copied elements: ")
+    for (num in destinationArray) {
+        print("$num ")
+    }
+}
+
+```
+
+
+**duplicate elements of an array**
+```java
+public class DuplicateElements {
+    public static void findDuplicates(int[] arr) {
+        System.out.print("Duplicate elements in the array: ");
+        
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    System.out.print(arr[i] + " ");
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 2, 5, 6, 1, 3};
+
+        findDuplicates(array);
+    }
+}
+
+```
+```kotlin
+fun findDuplicates(arr: IntArray) {
+    print("Duplicate elements in the array: ")
+
+    for (i in 0 until arr.size - 1) {
+        for (j in i + 1 until arr.size) {
+            if (arr[i] == arr[j]) {
+                print("${arr[i]} ")
+                break
+            }
+        }
+    }
+}
+
+fun main() {
+    val array = intArrayOf(1, 2, 3, 4, 2, 5, 6, 1, 3)
+
+    findDuplicates(array)
+}
+
+```
+
+
+**print the elements of an array in reverse order**
+
+```java
+public class ReverseArray {
+    public static void printArrayInReverse(int[] arr) {
+        System.out.print("Array in reverse order: ");
+        for (int i = arr.length - 1; i >= 0; i--) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5};
+
+        printArrayInReverse(array);
+    }
+}
+
+```
+```kotlin
+fun printArrayInReverse(arr: IntArray) {
+    print("Array in reverse order: ")
+    for (i in arr.size - 1 downTo 0) {
+        print("${arr[i]} ")
+    }
+}
+
+fun main() {
+    val array = intArrayOf(1, 2, 3, 4, 5)
+
+    printArrayInReverse(array)
+}
+
+```
+**print the elements of an array present on even position**
+```java
+public class EvenPositionElements {
+    public static void printEvenPositionElements(int[] arr) {
+        System.out.print("Elements at even positions: ");
+        for (int i = 0; i < arr.length; i += 2) //int i=1 means odd
+        {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
+
+        printEvenPositionElements(array);
+    }
+}
+```
+```kotlin
+fun printEvenPositionElements(arr: IntArray) {
+    print("Elements at even positions: ")
+    for (i in arr.indices step 2) //for (i in 1 until arr.size step 2) means odd
+    {
+        print("${arr[i]} ")
+    }
+}
+
+fun main() {
+    val array = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8)
+
+    printEvenPositionElements(array)
+}
+
+```
+
+**print the largest element in an array**
+```java
+public class LargestElement {
+    public static int findLargest(int[] arr) {
+        int largest = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > largest) //< lessthan using for find smallest
+            {
+                largest = arr[i];
+            }
+        }
+
+        return largest;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {5, 3, 9, 2, 7};
+
+        int largestElement = findLargest(array);
+        System.out.println("The largest element in the array is: " + largestElement);
+    }
+}
+
+```
+```kotlin
+fun findLargest(arr: IntArray): Int {
+    var largest = arr[0]
+
+    for (i in 1 until arr.size) {
+        if (arr[i] > largest) {
+            largest = arr[i]
+        }
+    }
+
+    return largest
+}
+
+fun main() {
+    val array = intArrayOf(5, 3, 9, 2, 7)
+
+    val largestElement = findLargest(array)
+    println("The largest element in the array is: $largestElement")
+}
+
+```
+
+**sort the elements of an array in ascending order**
+```java
+public class SortAsc {
+    public static void sortArrayAscending(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j])//< lessthan using for decending order
+                {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] array = {5, 2, 8, 7, 1};
+
+        sortArrayAscending(array);
+
+        System.out.println("Elements of array sorted in ascending order: ");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+}
+
+
+```
+
+```kotlin
+fun sortArrayAscending(arr: IntArray) {
+    for (i in 0 until arr.size - 1) {
+        for (j in i + 1 until arr.size) {
+            if (arr[i] > arr[j]) {
+                val temp = arr[i]
+                arr[i] = arr[j]
+                arr[j] = temp
+            }
+        }
+    }
+}
+
+fun main() {
+    val array = intArrayOf(5, 2, 8, 7, 1)
+
+    sortArrayAscending(array)
+
+    println("Elements of array sorted in ascending order: ")
+    for (num in array) {
+        print("$num ")
+    }
+}
+```
+
