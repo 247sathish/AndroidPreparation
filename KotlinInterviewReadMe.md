@@ -1,6 +1,6 @@
 # Kotlin
 
-# **[class-in-kotlin](https://github.com/247sathish/AndroidPreparation/blob/master/KotlinInterviewReadMe.md#class-in-kotlin)**
+# **[return and jump](https://github.com/247sathish/AndroidPreparation/blob/master/KotlinInterviewReadMe.md#return-and-jump-kotlin)**
 
 ## Kotlin Variable:
 
