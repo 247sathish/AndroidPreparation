@@ -5,33 +5,33 @@ They are the different parts of an app that allow it to perform certain function
 
 #### There are four main types of Android application components:
 
-1. **_Activities:_** An activity represents a single screen with a user interface. It is the part of the app that the user interacts with.
-2. **_Services:_** A service is a component that runs in the background to perform long-running operations or to perform work for remote processes.
-3. **_Broadcast receivers:_** A broadcast receiver is a component that listens for and responds to system-wide broadcast announcements. 
-4. **_Content providers:_** A content provider manages a shared set of app data that you can store in the file system, in a SQLite database, 
+1. **Activities:** An activity represents a single screen with a user interface. It is the part of the app that the user interacts with.
+2. **Services:** A service is a component that runs in the background to perform long-running operations or to perform work for remote processes.
+3. **Broadcast receivers:** A broadcast receiver is a component that listens for and responds to system-wide broadcast announcements. 
+4. **Content providers:** A content provider manages a shared set of app data that you can store in the file system, in a SQLite database, 
 	on the web, or on any other persistent storage location.
 
 #### There are also several other types of Android application components that are used for specific purposes, such as:
 
-1. **_Fragments:_** A fragment represents a portion of a user interface. You can use fragments to build dynamic and reusable UI components that can be combined to create a complete user interface.
-2. **_Views:_** A view is a basic building block for user interface components. Views can be used to build an interface from scratch or to combine existing views to create complex layouts.
-3. **_Layouts:_** A layout defines the structure for a user interface in an Android app. It can be used to arrange the user interface components in a specific way.
-4. **_Resources:_** Resources are external files and static content that your app can use, such as strings, images, and layouts.
+1. **Fragments:** A fragment represents a portion of a user interface. You can use fragments to build dynamic and reusable UI components that can be combined to create a complete user interface.
+2. **Views:** A view is a basic building block for user interface components. Views can be used to build an interface from scratch or to combine existing views to create complex layouts.
+3. **Layouts:** A layout defines the structure for a user interface in an Android app. It can be used to arrange the user interface components in a specific way.
+4. **Resources:** Resources are external files and static content that your app can use, such as strings, images, and layouts.
 
 
 ### What is the project structure of an Android Application?
 
 The project structure of an Android application typically includes the following directories and files:
-1. **_app:_** This directory contains the main source code files for your app, including the build.gradle file that defines how your app is built.
-2. **_res:_** This directory contains your app's resources, such as drawables, layouts, and strings.
-3. **_manifests:_** This directory contains the AndroidManifest.xml file, which is a required file that defines the fundamental characteristics of your app, such as its package name, minimum required API level, and the components of the app.
-4. **_gradle:_** This directory contains the files used by the Gradle build system to build your app.
-5. **_build:_** This directory contains the output of the build process, including the APK file that can be installed on a device.
-6. **_.gitignore:_** This file lists the files and directories that should be ignored by version control systems, such as Git.
-7. **_build.gradle:_** This file defines the build configuration for your app, including the dependencies it needs and the target SDK version.
-8. **_proguard-rules.pro:_** This file contains configuration for the ProGuard tool, which is used to shrink, optimize, and obfuscate your code.
-9. **_settings.gradle:_** This file is used by the Gradle build system to include projects that are part of your app.
-10. **_local.properties:_** This file contains the path to the Android SDK on your development machine.
+1. **app:** This directory contains the main source code files for your app, including the build.gradle file that defines how your app is built.
+2. **res:** This directory contains your app's resources, such as drawables, layouts, and strings.
+3. **manifests:** This directory contains the AndroidManifest.xml file, which is a required file that defines the fundamental characteristics of your app, such as its package name, minimum required API level, and the components of the app.
+4. **gradle:** This directory contains the files used by the Gradle build system to build your app.
+5. **build:** This directory contains the output of the build process, including the APK file that can be installed on a device.
+6. **.gitignore:** This file lists the files and directories that should be ignored by version control systems, such as Git.
+7. **build.gradle:** This file defines the build configuration for your app, including the dependencies it needs and the target SDK version.
+8. **proguard-rules.pro:** This file contains configuration for the ProGuard tool, which is used to shrink, optimize, and obfuscate your code.
+9. **settings.gradle:** This file is used by the Gradle build system to include projects that are part of your app.
+10. **local.properties:** This file contains the path to the Android SDK on your development machine.
 
 
 ### What is Context? How is it used?
@@ -71,36 +71,49 @@ It is also used to access application-level resources, such as the package manag
 
 ### What is AndroidManifest.xml?
 
-	AndroidManifest.xml is a configuration file that is used to describe the characteristics and requirements of an Android app. It is a required file for all Android apps and is located at the root of the app's project directory.
-	The AndroidManifest.xml file contains information about the app, such as:
-		•	The app's package name
-		•	The components of the app, including activities, services, broadcast receivers, and content providers
-		•	The permissions that the app requires, such as access to the internet or the ability to read the phone's contact list
-		•	The minimum and target versions of the Android operating system required by the app
-		•	The app's hardware and software requirements, such as the required screen size and camera
-	The AndroidManifest.xml file is used by the Android system to:
-		•	Install the app on a device
-		•	Run the app
-		•	Verify that the app has the required permissions to access system resources and perform certain actions
-		•	Determine which device configurations are supported by the app
-	The AndroidManifest.xml file is also used by the Google Play Store to:
-		•	Determine the app's compatibility with different devices
-		•	Display the app's information to users, such as the app's name, icon, and description
-		•	Enforce the app's usage of permissions and hardware requirements
-	Overall, the AndroidManifest.xml file is an important part of the Android app development process and is used to ensure that the app functions correctly and is properly distributed and installed on devices.
+AndroidManifest.xml is a configuration file that is used to describe the characteristics and requirements of an Android app. It is a required file for all Android apps and is located at the root of the app's project directory.
+
+#### The AndroidManifest.xml file contains information about the app, such as:
+
+* The app's package name
+* The components of the app, including activities, services, broadcast receivers, and content providers
+* The permissions that the app requires, such as access to the internet or the ability to read the phone's contact list
+* The minimum and target versions of the Android operating system required by the app
+* The app's hardware and software requirements, such as the required screen size and camera
+
+#### The AndroidManifest.xml file is used by the Android system to:
+
+* Install the app on a device
+* Run the app
+* Verify that the app has the required permissions to access system resources and perform certain actions
+* Determine which device configurations are supported by the app
+
+#### The AndroidManifest.xml file is also used by the Google Play Store to:
+
+* Determine the app's compatibility with different devices
+* Display the app's information to users, such as the app's name, icon, and description
+* Enforce the app's usage of permissions and hardware requirements
+
+Overall, the AndroidManifest.xml file is an important part of the Android app development process and is used to ensure that the app functions correctly and is properly distributed and installed on devices.
 
 
 ### What is Application class?
 
-	The Application class in Android is a class that represents the application itself. It is a base class for maintaining global application state and is used to initialize global variables and objects that need to be accessed by the app.
-	The Application class is not the same as the Activity class. While an Activity represents a single screen with a user interface, the Application class represents the entire app and is used to manage global application-level components and resources.
-	You can create a custom Application class by extending the Android Application class and overriding the "onCreate()" method. In the "onCreate()" method, you can initialize global variables and objects that need to be accessed by the app.
-	The Application class is a singleton, which means that there is only one instance of the class that is created for the entire app. You can access the Application object from anywhere in the app using the "getApplication()" method.
-	The Application class is useful for:
-		•	Initializing global variables and objects that need to be accessed by the app
-		•	Managing global application-level resources, such as database connections or network sockets
-		•	Performing tasks that need to be done when the app is first launched, such as checking for updates or initializing a cache
-	Overall, the Application class is an important part of the Android app development process and is used to manage global application-level components and resources.
+The Application class in Android is a class that represents the application itself. It is a base class for maintaining global application state and is used to initialize global variables and objects that need to be accessed by the app.
+
+The Application class is not the same as the Activity class. While an Activity represents a single screen with a user interface, the Application class represents the entire app and is used to manage global application-level components and resources.
+
+You can create a custom Application class by extending the Android Application class and overriding the "onCreate()" method. In the "onCreate()" method, you can initialize global variables and objects that need to be accessed by the app.
+
+The Application class is a singleton, which means that there is only one instance of the class that is created for the entire app. You can access the Application object from anywhere in the app using the "getApplication()" method.
+
+#### The Application class is useful for:
+
+* Initializing global variables and objects that need to be accessed by the app
+* Managing global application-level resources, such as database connections or network sockets
+* Performing tasks that need to be done when the app is first launched, such as checking for updates or initializing a cache
+
+Overall, the Application class is an important part of the Android app development process and is used to manage global application-level components and resources.
 
 
 ### What is Activity and its lifecycle?
