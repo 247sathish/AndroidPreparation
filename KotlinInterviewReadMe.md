@@ -1168,6 +1168,8 @@ println("Can't divided by Zero!")
 
 ## Kotlin finally Block
 Kotlin finally block such block which is always executes whether exception is handled or not. So it is used to execute important code statement.
+
+```kotlin
 fun main (args: Array<String>){  
 try {  
 val data = 5 / 0  
@@ -1179,7 +1181,7 @@ println("finally block always executes")
 }  
 println("below codes...")  
 }
-
+```
 	Output:
 	finally block always executes
 	Exception in thread "main" java.lang.ArithmeticException: / by zero
@@ -1188,6 +1190,7 @@ println("below codes...")
 ## Kotlin throw keyword:
 Kotlin throw keyword is used to throw an explicit exception. It is used to throw a custom exception.
 To throw an exception object we will use the throw-expression.
+```kotlin
 fun main(args: Array<String>) {  
 validate(15)  
 println("code after validation check...")  
@@ -1198,6 +1201,7 @@ throw ArithmeticException("under age")
 else  
 println("eligible for drive")  
 }
+```
 
 	Output:
 	Exception in thread "main" java.lang.ArithmeticException: under age
@@ -1206,36 +1210,47 @@ println("eligible for drive")
 ## Nullable Non Nullable Types kotlin
 
 ### 1.Non-nullable types:
+```kotlin
 		val x: Int = 5
 		val name: String = "John"
 		val y: Double = 3.14
-		In these examples, x, name, and y are all non-nullable types because they cannot hold a null value.
+```
+In these examples, x, name, and y are all non-nullable types because they cannot hold a null value.
 
 ### 2.Nullable types:
+```kotlin
 		var age: Int? = null
 		var city: String? = "New York"
 		var weight: Double? = 75.5
-		In these examples, age, city, and weight are nullable types because they can hold either a value of the specified type or a null value.
+```
+In these examples, age, city, and weight are nullable types because they can hold either a value of the specified type or a null value.
 
 ### 3.Nullable type with safe operator:
+```kotlin
 		var name: String? = null
 		val length = name?.length
-		Here, name is a nullable type, and the ?. operator is used to safely access its length property. If name is null, length will also be null instead of throwing a null pointer exception.
+```
+Here, name is a nullable type, and the ?. operator is used to safely access its length property. If name is null, length will also be null instead of throwing a null pointer exception.
 
 ### 4.Nullable type with null coalescing operator:
+```kotlin
 		var name: String? = null
 		val length = name?.length ?: 0
-		Here, the ?: operator is used to provide a default value of 0 in case name is null. If name is not null, its length property will be returned.
+```
+Here, the ?: operator is used to provide a default value of 0 in case name is null. If name is not null, its length property will be returned.
 
 ### 5.Non-nullable type with not-null assertion operator:
+```kotlin
 		var name: String? = null
 		val length = name!!.length
-		Here, the !! operator is used to assert that name is not null, and its length property is accessed directly without any null-checks. If name is null, a null pointer exception will be thrown at runtime. This should be used with caution as it can lead to runtime exceptions if used incorrectly.
+```
+Here, the !! operator is used to assert that name is not null, and its length property is accessed directly without any null-checks. If name is null, a null pointer exception will be thrown at runtime. This should be used with caution as it can lead to runtime exceptions if used incorrectly.
 
 ## Kotlin Smart Cast :
 In Kotlin, smart casting is a feature that allows the compiler to automatically cast a variable to a more specific type based on certain conditions. This can make code more concise and readable by reducing the need for explicit type casting. Here are some examples of Kotlin smart casting:
 
 ### 1.Checking type with "is" keyword:
+```kotlin
 		fun printLength(s: Any) {
 			if (s is String) {
 				println(s.length)
@@ -1243,10 +1258,11 @@ In Kotlin, smart casting is a feature that allows the compiler to automatically 
 		}
 
 		printLength("Hello, world!") // Output: 13
-		In this example, the is keyword is used to check if the variable s is of type String. If it is, the length property is printed. Since s is only of type Any outside the if block, the smart cast is required to access the length property inside the block.
+```
+In this example, the is keyword is used to check if the variable s is of type String. If it is, the length property is printed. Since s is only of type Any outside the if block, the smart cast is required to access the length property inside the block.
 
 ### 2.Checking type with "when" expression:
-
+```kotlin
 		fun printLength(s: Any) {
 			when (s) {
 				is String -> println(s.length)
@@ -1256,10 +1272,11 @@ In Kotlin, smart casting is a feature that allows the compiler to automatically 
 
 		printLength("Hello, world!") // Output: 13
 		printLength(42) // Output: 42
-		In this example, the when expression is used to check the type of s. If it is a String, the length property is printed, and if it is an Int, the value of s is printed.
+```
+In this example, the when expression is used to check the type of s. If it is a String, the length property is printed, and if it is an Int, the value of s is printed.
 
 ### 3.Checking type and nullability:
-
+```kotlin
 
 		fun printLength(s: Any?) {
 			if (s is String && s.isNotEmpty()) {
@@ -1270,10 +1287,11 @@ In Kotlin, smart casting is a feature that allows the compiler to automatically 
 		printLength(null) // No output
 		printLength("") // No output
 		printLength("Hello, world!") // Output: 13
-		In this example, the is keyword is used to check if s is of type String and if it is not null and not empty. If all conditions are met, the length property is printed.
+  ```
+In this example, the is keyword is used to check if s is of type String and if it is not null and not empty. If all conditions are met, the length property is printed.
 
 ### 4.Checking type with "as?" operator:
-
+```kotlin
 
 		fun printLength(s: Any?) {
 			val str = s as? String
@@ -1285,7 +1303,8 @@ In Kotlin, smart casting is a feature that allows the compiler to automatically 
 		printLength(null) // No output
 		printLength(42) // No output
 		printLength("Hello, world!") // Output: 13
-		In this example, the as? operator is used to cast s to type String. If the cast is successful, the length property is printed. The as? operator returns null if the cast is not possible, so a null check is required to avoid a null pointer exception.		
+```
+In this example, the as? operator is used to cast s to type String. If the cast is successful, the length property is printed. The as? operator returns null if the cast is not possible, so a null check is required to avoid a null pointer exception.		
 
 
 
@@ -1294,6 +1313,7 @@ In Kotlin, there are two main types of casting: safe casting and unsafe casting.
 Safe casting returns null if the cast fails, while unsafe casting will throw a ClassCastException if the cast fails. Here are some examples of how to use safe and unsafe casting in Kotlin:
 
 ### 1.Safe casting:
+```kotlin
 		val x: Any = "Hello"
 		val y: String? = x as? String
 		println(y) // Output: "Hello"
@@ -1301,13 +1321,17 @@ Safe casting returns null if the cast fails, while unsafe casting will throw a C
 		val z: Any = 42
 		val w: String? = z as? String
 		println(w) // Output: null
+```
 ### 2.Unsafe casting:
+```kotlin
 			val x: Any = "Hello"
 			val y: String = x as String
 			println(y) // Output: "Hello"
 			val z: Any = 42
 			val w: String = z as String // Throws ClassCastException
-		It's important to note that unsafe casting should be used with caution, as it can cause runtime errors if the cast fails. To avoid these errors, you can use safe casting with a null check or use an if statement to handle the null case:
+```
+It's important to note that unsafe casting should be used with caution, as it can cause runtime errors if the cast fails. To avoid these errors, you can use safe casting with a null check or use an if statement to handle the null case:
+```kotlin
 			val x: Any? = null
 			val y: String? = x as? String
 			if (y != null) {
@@ -1315,7 +1339,9 @@ Safe casting returns null if the cast fails, while unsafe casting will throw a C
 			} else {
 				println("x cannot be cast to String")
 			}
-		Another way to handle casting in Kotlin is to use the "is" operator to check the type of an object before casting it:
+```
+Another way to handle casting in Kotlin is to use the "is" operator to check the type of an object before casting it:
+  ```kotlin
 			val x: Any = "Hello"
 			if (x is String) {
 				val y: String = x // safe cast here, no need for "as"
@@ -1323,213 +1349,298 @@ Safe casting returns null if the cast fails, while unsafe casting will throw a C
 			}
 
 
-
+```
 ## Kotlin Elvis Operator :
 Sure, here are some examples of using the Kotlin Elvis operator in different scenarios:
 ### 1.Providing a default value for a nullable variable:
+```kotlin
 val nullableValue: String? = null
 val result = nullableValue ?: "default value"
 println(result) // Output: "default value"
+```
 ### 2.Returning a value from a function that might return null:
+```kotlin
 fun getStringLength(str: String?): Int {
 return str?.length ?: 0
 }
 val length1 = getStringLength("Hello") // length1 = 5
 val length2 = getStringLength(null) // length2 = 0
+```
 ### 3.Accessing a property of an object that might be null:
+```kotlin
 data class Person(val name: String, val age: Int?)
 val person1: Person? = Person("John", 30)
 val person2: Person? = null
 val age1 = person1?.age ?: 0 // age1 = 30
 val age2 = person2?.age ?: 0 // age2 = 0
-
+````
 ### 4.Providing a default value for a nullable value in a map:
+```kotlin
 		val map = mapOf("key1" to "value1", "key2" to null)
 		val value1 = map["key1"] ?: "default value" // value1 = "value1"
 		val value2 = map["key2"] ?: "default value" // value2 = "default value"
+```
 ### 5.Using the Elvis operator in a lambda expression:
+```kotlin
 		val nullableString: String? = null
 		val result = nullableString?.let { it.length } ?: 0
 		println(result) // Output: 0
-	In this example, we use the let function to access the length property of nullableString. If nullableString is not null, the let function returns the length, which is then assigned to result. If nullableString is null, the Elvis operator provides a default value of 0.
-	The Elvis operator is a useful tool for handling null values in Kotlin. By providing a default value for nullable variables or expressions, it helps prevent null pointer exceptions and makes code more concise and readable.
+```
+In this example, we use the let function to access the length property of nullableString. If nullableString is not null, the let function returns the length, which is then assigned to result. If nullableString is null, the Elvis operator provides a default value of 0.
+The Elvis operator is a useful tool for handling null values in Kotlin. By providing a default value for nullable variables or expressions, it helps prevent null pointer exceptions and makes code more concise and readable.
 
 
 ## Mutable Array:
 
 ### 1.Create an empty mutable array of strings and add elements to it:
+```kotlin
 		val myArray = mutableListOf<String>()
 		myArray.add("apple")
 		myArray.add("banana")
 		myArray.add("orange")
 		println(myArray) // output: [apple, banana, orange]
+```
 ### 2.Create a mutable array with initial values:
+```kotlin
 		val myArray = mutableListOf(1, 2, 3, 4, 5)
 		println(myArray) // output: [1, 2, 3, 4, 5]
+```
 ### 3.Modify an element in a mutable array:
+```kotlin
 		val myArray = mutableListOf(1, 2, 3)
 		myArray[1] = 4
 		println(myArray) // output: [1, 4, 3]
+```
 ### 4.Remove an element from a mutable array:
+```kotlin
 		val myArray = mutableListOf(1, 2, 3)
 		myArray.removeAt(1)
 		println(myArray) // output: [1, 3]
+```
 ### 5.Add elements to a mutable array using the addAll() method:
+```kotlin
 		val myArray = mutableListOf(1, 2, 3)
 		myArray.addAll(listOf(4, 5, 6))
 		println(myArray) // output: [1, 2, 3, 4, 5, 6]
+```
 ### 6.Sort a mutable array:
+```kotlin
 		val myArray = mutableListOf(3, 1, 4, 1, 5, 9, 2, 6, 5)
 		myArray.sort()
 		println(myArray) // output: [1, 1, 2, 3, 4, 5, 5, 6, 9]
+```
 ### 6.Reverse a mutable array:
+```kotlin
 		val myArray = mutableListOf(1, 2, 3, 4, 5)
 		myArray.reverse()
 		println(myArray) // output: [5, 4, 3, 2, 1]
+```
 ### 7.Clear all elements from a mutable array:
+```kotlin
 		val myArray = mutableListOf(1, 2, 3)
 		myArray.clear()
 		println(myArray) // output: []
-	Mutable arrays in Kotlin are very flexible and provide many useful methods for adding, removing, and modifying elements. You can use them in a variety of situations where you need to store and manipulate a collection of data.
+```
+Mutable arrays in Kotlin are very flexible and provide many useful methods for adding, removing, and modifying elements. You can use them in a variety of situations where you need to store and manipulate a collection of data.
 
 
 ## Kotlin Collections
 
 ### 1.List:
+```kotlin
 		val myList = listOf("apple", "banana", "orange")
 		println(myList) // output: [apple, banana, orange]
+```
 ### 2.Mutable List:
+```kotlin
 		val myMutableList = mutableListOf("apple", "banana", "orange")
 		myMutableList.add("grape")
 		println(myMutableList) // output: [apple, banana, orange, grape]
+```
 ### 3.Set:
+```kotlin
 		val mySet = setOf("apple", "banana", "orange")
 		println(mySet) // output: [apple, banana, orange]
+```
 ### 4.Mutable Set:
+```kotlin
 		val myMutableSet = mutableSetOf("apple", "banana", "orange")
 		myMutableSet.add("grape")
 		println(myMutableSet) // output: [apple, banana, orange, grape]
+```
 ### 5.Map:
+```kotlin
 		val myMap = mapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		println(myMap) // output: {apple=1, banana=2, orange=3}
+```
 ### 6.Mutable Map:
+```kotlin
 		val myMutableMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		myMutableMap.put("grape", 4)
 		println(myMutableMap) // output: {apple=1, banana=2, orange=3, grape=4}
+```
 ### 7.Filter a collection:
+```kotlin
 		val myList = listOf(1, 2, 3, 4, 5)
 		val filteredList = myList.filter { it > 3 }
 		println(filteredList) // output: [4, 5]
+```
 ### 8.Map a collection:
+```kotlin
 		val myList = listOf(1, 2, 3)
 		val mappedList = myList.map { it * 2 }
 		println(mappedList) // output: [2, 4, 6]
+```
 ### 9.Fold a collection:
+```kotlin
 		val myList = listOf(1, 2, 3, 4, 5)
 		val foldedValue = myList.fold(0) { acc, value -> acc + value }
 		println(foldedValue) // output: 15
+```
 ### 10.Group a collection by a key:
+```kotlin
 		data class Person(val name: String, val age: Int)
 		val people = listOf(Person("Alice", 25), Person("Bob", 30), Person("Charlie", 25))
 		val groupedPeople = people.groupBy { it.age }
 		println(groupedPeople) // output: {25=[Person(name=Alice, age=25), Person(name=Charlie, age=25)], 30=[Person(name=Bob, age=30)]}
-	Kotlin collections are very powerful and provide many useful methods for filtering, mapping, folding, grouping, and more. You can use them in a variety of situations where you need to store and manipulate a collection of data.
+```
+Kotlin collections are very powerful and provide many useful methods for filtering, mapping, folding, grouping, and more. You can use them in a variety of situations where you need to store and manipulate a collection of data.
 
 
 ## List: listOf() kotlin:
 
 ### 1.Create a list of integers:
+```kotlin
 		val myList = listOf(1, 2, 3, 4, 5)
 		println(myList) // output: [1, 2, 3, 4, 5]
+```
 ### 2.Create a list of strings:
+```kotlin
 		val myList = listOf("apple", "banana", "orange")
 		println(myList) // output: [apple, banana, orange]
+```
 ### 3.Create a list of custom objects:
+```kotlin
 		data class Person(val name: String, val age: Int)
 		val myList = listOf(Person("Alice", 25), Person("Bob", 30))
 		println(myList) // output: [Person(name=Alice, age=25), Person(name=Bob, age=30)]
+```
 ### 4.Create an empty list:
+```kotlin
 		val myList = listOf<Int>()
 		println(myList) // output: []
+```
 ### 5.Access a specific element of the list:
+```kotlin
 		val myList = listOf("apple", "banana", "orange")
 		val firstElement = myList[0]
 		println(firstElement) // output: apple
+```
 ### 6.Get the size of the list:
+```kotlin
 		val myList = listOf("apple", "banana", "orange")
 		val size = myList.size
 		println(size) // output: 3
+```
 ### 7.Check if a list contains an element:
+```kotlin
 		val myList = listOf("apple", "banana", "orange")
 		val containsApple = myList.contains("apple")
 		println(containsApple) // output: true
+```
 ### 8.Filter the list based on a condition:
+```kotlin
 		val myList = listOf(1, 2, 3, 4, 5)
 		val filteredList = myList.filter { it > 3 }
 		println(filteredList) // output: [4, 5]
+```
 ### 9.Map the list to another list:
+```kotlin
 		val myList = listOf(1, 2, 3)
 		val mappedList = myList.map { it * 2 }
 		println(mappedList) // output: [2, 4, 6]
+```
 ### 10.Fold the list to a single value:
+```kotlin
 		val myList = listOf(1, 2, 3, 4, 5)
 		val foldedValue = myList.fold(0) { acc, value -> acc + value }
 		println(foldedValue) // output: 15
-	These are just a few examples of what you can do with the listOf() function in Kotlin. The possibilities are endless, and you can use it in a variety of situations where you need to store and manipulate a list of data.
+```
+These are just a few examples of what you can do with the listOf() function in Kotlin. The possibilities are endless, and you can use it in a variety of situations where you need to store and manipulate a list of data.
 
 
 ## mutableListOf() kotlin:
 
-	Certainly! Here are some examples of working with the mutableListOf() function in Kotlin:
+Certainly! Here are some examples of working with the mutableListOf() function in Kotlin:
 
 ### 1.Create a mutable list of integers:
+```kotlin
 		val myList = mutableListOf(1, 2, 3, 4, 5)
 		println(myList) // output: [1, 2, 3, 4, 5]
+```
 	
 ### 2.Add an element to the mutable list:
+```kotlin
 		val myList = mutableListOf("apple", "banana")
 		myList.add("orange")
 		println(myList) // output: [apple, banana, orange]
+```
 ### 3.Remove an element from the mutable list:
+```kotlin
 		val myList = mutableListOf("apple", "banana", "orange")
 		myList.remove("banana")
 		println(myList) // output: [apple, orange]
+```
 ### 4.Clear all elements from the mutable list:
+```kotlin
 		val myList = mutableListOf("apple", "banana", "orange")
 		myList.clear()
 		println(myList) // output: []
+```
 ### 5.Replace an element in the mutable list:
+```kotlin
 		val myList = mutableListOf("apple", "banana", "orange")
 		myList[1] = "grape"
 		println(myList) // output: [apple, grape, orange]
+```
 ### 6.Sort the mutable list:
+```kotlin
 		val myList = mutableListOf(3, 2, 1, 5, 4)
 		myList.sort()
 		println(myList) // output: [1, 2, 3, 4, 5]
+```
 ### 7.Filter the mutable list based on a condition:
+```kotlin
 		val myList = mutableListOf(1, 2, 3, 4, 5)
 		val filteredList = myList.filter { it > 3 }
 		println(filteredList) // output: [4, 5]
+```
 ### 8.Map the mutable list to another list:
+```kotlin
 		val myList = mutableListOf(1, 2, 3)
 		val mappedList = myList.map { it * 2 }
 		println(mappedList) // output: [2, 4, 6]
+```
 ### 9.Fold the mutable list to a single value:
+```kotlin
 		val myList = mutableListOf(1, 2, 3, 4, 5)
 		val foldedValue = myList.fold(0) { acc, value -> acc + value }
 		println(foldedValue) // output: 15
+```
 ### 10.Check if the mutable list contains an element:
+```kotlin
 		val myList = mutableListOf("apple", "banana", "orange")
 		val containsApple = myList.contains("apple")
 		println(containsApple) // output: true
-	These are just a few examples of what you can do with the mutableListOf() function in Kotlin. The mutable list allows you to change its elements after its creation, which makes it more flexible than the immutable listOf() function. You can use it in a variety of situations where you need to store and manipulate a list of data that can be changed over time.
+```
+These are just a few examples of what you can do with the mutableListOf() function in Kotlin. The mutable list allows you to change its elements after its creation, which makes it more flexible than the immutable listOf() function. You can use it in a variety of situations where you need to store and manipulate a list of data that can be changed over time.
 
 
 ## Kotlin ArrayList :
 In Kotlin, an ArrayList is a resizable array implementation of the MutableList interface. This means that you can add, remove, or modify elements in the list after its creation.
 
-	Here's an example of creating and using an ArrayList in Kotlin:
-		
+Here's an example of creating and using an ArrayList in Kotlin:
+ ```kotlin
 		val arrayList = ArrayList<String>()
 		arrayList.add("apple")
 		arrayList.add("banana")
@@ -1542,31 +1653,31 @@ In Kotlin, an ArrayList is a resizable array implementation of the MutableList i
 
 		arrayList[0] = "grape"
 		println(arrayList) // output: [grape, orange]
-		
-	In this example, we create an empty ArrayList of type String using the ArrayList() constructor. We then use the add() method to add three strings to the list. We print the list using println() to verify that the elements were added correctly.
+```		
+In this example, we create an empty ArrayList of type String using the ArrayList() constructor. We then use the add() method to add three strings to the list. We print the list using println() to verify that the elements were added correctly.
 
-	Next, we use the removeAt() method to remove the element at index 1 (which is "banana"). We print the list again to verify that "banana" was removed.
+Next, we use the removeAt() method to remove the element at index 1 (which is "banana"). We print the list again to verify that "banana" was removed.
 
-	Finally, we use the index operator ([]) to replace the first element ("apple") with "grape". We print the list again to verify that the replacement was successful.
+Finally, we use the index operator ([]) to replace the first element ("apple") with "grape". We print the list again to verify that the replacement was successful.
 
-	In addition to add(), removeAt(), and the index operator, ArrayList provides many other useful methods for working with lists, such as get(), set(), size, indexOf(), lastIndexOf(), and subList(). You can also use the addAll() method to add multiple elements to the list at once, and the remove() method to remove a specific element from the list.
+In addition to add(), removeAt(), and the index operator, ArrayList provides many other useful methods for working with lists, such as get(), set(), size, indexOf(), lastIndexOf(), and subList(). You can also use the addAll() method to add multiple elements to the list at once, and the remove() method to remove a specific element from the list.
 
-	Overall, ArrayList is a useful data structure in Kotlin for storing and manipulating lists of elements that can be changed over time.
+Overall, ArrayList is a useful data structure in Kotlin for storing and manipulating lists of elements that can be changed over time.
 
 ## arrayListOf() kotlin:
 
-	In Kotlin, arrayListOf() is a convenient function to create a new ArrayList. The function returns an ArrayList with the specified elements.
+In Kotlin, arrayListOf() is a convenient function to create a new ArrayList. The function returns an ArrayList with the specified elements.
 
-	Here's an example of using arrayListOf() to create a new ArrayList with some initial elements:
-	
+Here's an example of using arrayListOf() to create a new ArrayList with some initial elements:
+```kotlin	
 		val fruits = arrayListOf("apple", "banana", "orange")
-	
-	In this example, we create a new ArrayList of type String called fruits using the arrayListOf() function. We pass in three String values: "apple", "banana", and "orange". The function creates a new ArrayList object and initializes it with these three elements.
+```	
+In this example, we create a new ArrayList of type String called fruits using the arrayListOf() function. We pass in three String values: "apple", "banana", and "orange". The function creates a new ArrayList object and initializes it with these three elements.
 
-	Once we have the ArrayList object, we can manipulate it just like any other ArrayList object. For example, we can add or remove elements using the add() and remove() methods, access elements using the index operator ([]), and so on.
+Once we have the ArrayList object, we can manipulate it just like any other ArrayList object. For example, we can add or remove elements using the add() and remove() methods, access elements using the index operator ([]), and so on.
 
-	Here are some more examples of using arrayListOf():
-
+Here are some more examples of using arrayListOf():
+```kotlin
 		// Create an empty ArrayList of type Int
 		val numbers = arrayListOf<Int>()
 
@@ -1575,263 +1686,393 @@ In Kotlin, an ArrayList is a resizable array implementation of the MutableList i
 
 		// Create an ArrayList with multiple elements of different types
 		val mixed = arrayListOf("apple", 1, true)
+```
 		
-	In the second example, we create an ArrayList with a single element "hello". In the third example, we create an ArrayList with three elements: "apple", 1 (an Int), and true (a Boolean). Note that Kotlin's type inference allows us to create a list of elements of different types without having to specify the type explicitly.
+In the second example, we create an ArrayList with a single element "hello". In the third example, we create an ArrayList with three elements: "apple", 1 (an Int), and true (a Boolean). Note that Kotlin's type inference allows us to create a list of elements of different types without having to specify the type explicitly.
 
-	Overall, arrayListOf() is a convenient function for creating new ArrayList objects with initial elements. You can use it whenever you need to create an ArrayList with some predefined elements, without having to call the add() method repeatedly.
+Overall, arrayListOf() is a convenient function for creating new ArrayList objects with initial elements. You can use it whenever you need to create an ArrayList with some predefined elements, without having to call the add() method repeatedly.
 
 
 
 ## Map: mapOf() kotlin
 
-	Sure, here are some examples of working with mapOf() in Kotlin:
+Sure, here are some examples of working with mapOf() in Kotlin:
 
 ### 1.Create an empty Map:
+```kotlin
 		val map = mapOf<String, Int>()
+```
 ### 2.Create a Map with some initial key-value pairs:
+```kotlin
 		val map = mapOf("apple" to 1, "banana" to 2, "orange" to 3)
+```
 ### 3.Access a value by key:
+```kotlin
 		val map = mapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val value = map["banana"]
+```
 ### 4.Add a new key-value pair to the Map:
+```kotlin
 		val map = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		map["grape"] = 4
+```
 ### 5.Remove a key-value pair from the Map:
+```kotlin
 		val map = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		map.remove("banana")
+```
 ### 6.Get the size of the Map:
 		val map = mapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val size = map.size
 ### 7.Check if the Map contains a key:
+```kotlin
 		val map = mapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val containsApple = map.containsKey("apple")
+```
 ### 8.Check if the Map contains a value:
+```kotlin
 		val map = mapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val containsValueTwo = map.containsValue(2)
+```
 ### 9.Iterate over the key-value pairs in the Map:
+```kotlin
 		val map = mapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		for ((key, value) in map) {
 			println("$key -> $value")
 		}
+```
 ### 10.Create a mutable Map and modify it:
+```kotlin
 		val map = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		map["apple"] = 4
 		map.remove("banana")
+```
 ### 11.Create a Map with values computed from the keys:
+```kotlin
 		val fruits = listOf("apple", "banana", "orange")
 		val map = fruits.associateWith { fruit -> fruit.length }
-	In this example, we create a List of fruits, and then use the associateWith() function to create a Map where each fruit is associated with its length. The associateWith() function takes a lambda expression that computes a value from each key (in this case, the length of the fruit), and returns a new Map with the same keys and computed values.
-	These are just a few examples of what you can do with Map and mapOf() in Kotlin. The classes provide many other methods and properties that you can use to manipulate the map and access its elements. Map is a very useful data structure when you need to store and manipulate key-value pairs.
+```
+In this example, we create a List of fruits, and then use the associateWith() function to create a Map where each fruit is associated with its length. The associateWith() function takes a lambda expression that computes a value from each key (in this case, the length of the fruit), and returns a new Map with the same keys and computed values.
+These are just a few examples of what you can do with Map and mapOf() in Kotlin. The classes provide many other methods and properties that you can use to manipulate the map and access its elements. Map is a very useful data structure when you need to store and manipulate key-value pairs.
 
 ## Kotlin HashMap:
-
-	Sure, here are some examples of working with HashMap in Kotlin:
+Sure, here are some examples of working with HashMap in Kotlin:
 ### 1.Create an empty HashMap:
+```kotlin
 		val hashMap = HashMap<String, Int>()
+```
 ### 2.Create a HashMap with some initial key-value pairs:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
+```
 ### 3.Access a value by key:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val value = hashMap["banana"]
+```
 ### 4.Add a new key-value pair to the HashMap:
+```kotlin
 		val hashMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		hashMap["grape"] = 4
+```
 ### 5.Remove a key-value pair from the HashMap:
+```kotlin
 		val hashMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		hashMap.remove("banana")
+```
 ### 6.Get the size of the HashMap:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val size = hashMap.size
+```
 ### 7.Check if the HashMap contains a key:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val containsApple = hashMap.containsKey("apple")
+```
 ### 8.Check if the HashMap contains a value:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val containsValueTwo = hashMap.containsValue(2)
+```
 ### 9.Iterate over the key-value pairs in the HashMap:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		for ((key, value) in hashMap) {
 			println("$key -> $value")
 		}
+```
 ### 10.Create a mutable HashMap and modify it:
+```kotlin
 		val hashMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		hashMap["apple"] = 4
 		hashMap.remove("banana")
+```
 ### 11.Create a HashMap with values computed from the keys:
+```kotlin
 		val fruits = listOf("apple", "banana", "orange")
 		val hashMap = HashMap<String, Int>()
 		for (fruit in fruits) {
 			hashMap[fruit] = fruit.length
 		}
-	In this example, we create a List of fruits, and then use a for loop to create a HashMap where each fruit is associated with its length. We iterate over the List of fruits, and for each fruit, we add a key-value pair to the HashMap where the key is the fruit itself, and the value is the length of the fruit.
+```
+In this example, we create a List of fruits, and then use a for loop to create a HashMap where each fruit is associated with its length. We iterate over the List of fruits, and for each fruit, we add a key-value pair to the HashMap where the key is the fruit itself, and the value is the length of the fruit.
 
-	These are just a few examples of what you can do with HashMap in Kotlin. The class provides many other methods and properties that you can use to manipulate the map and access its elements. HashMap is a very useful data structure when you need to store and manipulate key-value pairs, and it is often used in conjunction with other Kotlin collections.
+These are just a few examples of what you can do with HashMap in Kotlin. The class provides many other methods and properties that you can use to manipulate the map and access its elements. HashMap is a very useful data structure when you need to store and manipulate key-value pairs, and it is often used in conjunction with other Kotlin collections.
 
 
 ## hashMapOf() Kotlin:
-
+```kotlin
 	Certainly! Here are some examples of working with hashMapOf() in Kotlin:
+```
 ### 1.Create an empty HashMap:
+```kotlin
 		val hashMap = hashMapOf<String, Int>()
+```
 ### 2.Create a HashMap with some initial key-value pairs:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
+```
 ### 3.Access a value by key:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val value = hashMap["banana"]
+```
 ### 4.Add a new key-value pair to the HashMap:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		hashMap["grape"] = 4
+```
 ### 5.Remove a key-value pair from the HashMap:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		hashMap.remove("banana")
+```
 ### 6.Get the size of the HashMap:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val size = hashMap.size
+```
 ### 7.Check if the HashMap contains a key:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val containsApple = hashMap.containsKey("apple")
+```
 ### 8.Check if the HashMap contains a value:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val containsValueTwo = hashMap.containsValue(2)
+```
 ### 9.Iterate over the key-value pairs in the HashMap:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		for ((key, value) in hashMap) {
 			println("$key -> $value")
 		}
+```
 ### 10.Create a mutable HashMap and modify it:
+```kotlin
 		val hashMap = hashMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		hashMap["apple"] = 4
 		hashMap.remove("banana")
-	These are just a few examples of what you can do with hashMapOf() in Kotlin. The class provides many other methods and properties that you can use to manipulate the map and access its elements. HashMap is a very useful data structure when you need to store and manipulate key-value pairs, and it is often used in conjunction with other Kotlin collections.
+```
+These are just a few examples of what you can do with hashMapOf() in Kotlin. The class provides many other methods and properties that you can use to manipulate the map and access its elements. HashMap is a very useful data structure when you need to store and manipulate key-value pairs, and it is often used in conjunction with other Kotlin collections.
 
 
 
 ## mutableMapOf() kotlin:
-
+```kotlin
 	Certainly! Here are some examples of working with mutableMapOf() in Kotlin:
+```
 ### 1.Create an empty MutableMap:
+```kotlin
 		val mutableMap = mutableMapOf<String, Int>()
+```
 ### 2.Create a MutableMap with some initial key-value pairs:
+```kotlin
 		val mutableMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
+```
 ### 3.Access a value by key:
+```kotlin
 		val mutableMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val value = mutableMap["banana"]
+```
 ### 4.Add a new key-value pair to the MutableMap:
+```kotlin
 		val mutableMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		mutableMap["grape"] = 4
+```
 ### 5.Remove a key-value pair from the MutableMap:
+```kotlin
 		val mutableMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		mutableMap.remove("banana")
+```
 ### 6.Get the size of the MutableMap:
+```kotlin
 		val mutableMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val size = mutableMap.size
+```
 ### 7.Check if the MutableMap contains a key:
+```kotlin
 		val mutableMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val containsApple = mutableMap.containsKey("apple")
+```
 ### 8.Check if the MutableMap contains a value:
+```kotlin
 		val mutableMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		val containsValueTwo = mutableMap.containsValue(2)
-### 9.Iterate over the key-value pairs in the MutableMap:	
+```
+### 9.Iterate over the key-value pairs in the MutableMap:
+```kotlin
 		val mutableMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		for ((key, value) in mutableMap) {
 			println("$key -> $value")
 		}
+```
 ### 10.Create a mutable MutableMap and modify it:
+```kotlin
 		val mutableMap = mutableMapOf("apple" to 1, "banana" to 2, "orange" to 3)
 		mutableMap["apple"] = 4
 		mutableMap.remove("banana")
-	These are just a few examples of what you can do with mutableMapOf() in Kotlin. The class provides many other methods and properties that you can use to manipulate the map and access its elements. MutableMap is a very useful data structure when you need to store and manipulate key-value pairs, and it is often used in conjunction with other Kotlin collections.
+```
+These are just a few examples of what you can do with mutableMapOf() in Kotlin. The class provides many other methods and properties that you can use to manipulate the map and access its elements. MutableMap is a very useful data structure when you need to store and manipulate key-value pairs, and it is often used in conjunction with other Kotlin collections.
 
 ## Set: setOf() Kotlin:
 Sure, here are some examples of working with setOf() in Kotlin:
 ### 1.Create an empty Set:
+```kotlin
 val set = setOf<String>()
+```
 ### 2.Create a Set with some initial elements:
+```kotlin
 val set = setOf("apple", "banana", "orange")
+```
 ### 3.Check if an element is in the Set:
+```kotlin
 val set = setOf("apple", "banana", "orange")
 val containsApple = set.contains("apple")
+```
 ### 4.Add an element to the Set:
+```kotlin
 val set = setOf("apple", "banana", "orange").toMutableSet()
 set.add("grape")
+```
 ### 5.Remove an element from the Set:
+```kotlin
 val set = setOf("apple", "banana", "orange").toMutableSet()
 set.remove("banana")
+```
 ### 6.Get the size of the Set:
+```kotlin
 val set = setOf("apple", "banana", "orange")
 val size = set.size
+```
 ### 7.Iterate over the elements in the Set:
+```kotlin
 val set = setOf("apple", "banana", "orange")
 for (element in set) {
 println(element)
 }
+```
 ### 8.Create a Set and combine it with another Set:
+```kotlin
 val set1 = setOf("apple", "banana", "orange")
 val set2 = setOf("grape", "banana")
 val combinedSet = set1.union(set2)
+```
 ### 9.Create a Set and intersect it with another Set:
+```kotlin
 val set1 = setOf("apple", "banana", "orange")
 val set2 = setOf("grape", "banana")
 val intersectedSet = set1.intersect(set2)
+```
 ### 10.Create a Set and subtract another Set from it:
+```kotlin
 val set1 = setOf("apple", "banana", "orange")
 val set2 = setOf("grape", "banana")
 val subtractedSet = set1.subtract(set2)
+```
 These are just a few examples of what you can do with setOf() in Kotlin. The class provides many other methods and properties that you can use to manipulate the set and access its elements. Set is a very useful data structure when you need to store unique elements and perform set operations on them, and it is often used in conjunction with other Kotlin collections.
 
 ## mutableSetOf() kotlin
 In Kotlin, the mutableSetOf() function is used to create a new empty mutable set. Here are some of the possible solutions for using mutableSetOf():
 
 ### 1.Create an empty mutable set of strings
+```kotlin
 		val setOfStrings: MutableSet<String> = mutableSetOf()
+```
 ### 2.Create an empty mutable set of integers:
+```kotlin
 		val setOfIntegers: MutableSet<Int> = mutableSetOf()
+```
 ### 3.Create an empty mutable set of custom objects:
+```kotlin
 		data class Person(val name: String, val age: Int)
 		val setOfPeople: MutableSet<Person> = mutableSetOf()
+```
 ### 4.Create a mutable set with initial values:
+```kotlin
 		val setOfNumbers: MutableSet<Int> = mutableSetOf(1, 2, 3, 4)
+```
 ### 5.Create a mutable set using the spread operator:
+```kotlin
 		val setOfNumbers: MutableSet<Int> = mutableSetOf(*arrayOf(1, 2, 3, 4))
+```
 ### 6.Create a mutable set using a range:
+```kotlin
 		val setOfNumbers: MutableSet<Int> = (1..10).toMutableSet()
-	Note that since mutableSetOf() returns a mutable set, you can add or remove elements from the set as needed.
+```
+Note that since mutableSetOf() returns a mutable set, you can add or remove elements from the set as needed.
 
 ## hashSetOf() kotlin:
 hashSetOf() is a function in Kotlin that creates a new HashSet collection with the elements provided as arguments. Here are some possible ways to use hashSetOf() in Kotlin:
 ### 1.Creating a HashSet with initial elements:
+```kotlin
 val fruits = hashSetOf("apple", "banana", "orange")
+```
 This creates a new HashSet called fruits that contains the elements "apple", "banana", and "orange".
 ### 2.Creating an empty HashSet and adding elements later:
+```kotlin
 val numbers = hashSetOf<Int>()
 numbers.add(1)
 numbers.add(2)
 numbers.add(3)
+```
 This creates a new HashSet called numbers that initially contains no elements. Elements can be added to it using the add() method.
 
 ### 3.Creating a HashSet from an existing collection:
+```kotlin
 		val list = listOf("apple", "banana", "orange")
 		val set = hashSetOf(*list.toTypedArray())
-		This creates a new HashSet called set with the same elements as the list collection.
+```
+This creates a new HashSet called set with the same elements as the list collection.
 
 ### 4.Creating a HashSet with a single element:
+```kotlin
 		val set = hashSetOf("apple")
-		This creates a new HashSet called set that contains the single element "apple".
+```
+This creates a new HashSet called set that contains the single element "apple".
+  
 ### 5.Creating a HashSet with no initial elements:
+```kotlin
 		val set = hashSetOf<String>()
-		This creates a new empty HashSet called set. Note that you need to specify the type parameter <String> since hashSetOf() creates a HashSet with type inference.
+```
+This creates a new empty HashSet called set. Note that you need to specify the type parameter <String> since hashSetOf() creates a HashSet with type inference.
 
-	These are some of the possible ways to use hashSetOf() in Kotlin. It is a convenient way to create a HashSet with a set of initial elements without having to manually add each element individually.
+These are some of the possible ways to use hashSetOf() in Kotlin. It is a convenient way to create a HashSet with a set of initial elements without having to manually add each element individually.
 
 
 ## Kotlin Reflection::
 Kotlin Reflection is a powerful feature that allows developers to inspect, analyze, and modify code at runtime. Here are some examples of Kotlin Reflection that demonstrate its capabilities:
 
 ### 1.Getting the class name of an object:
+```kotlin
 		val obj = MyClass()
 		val className = obj::class.simpleName
 		println(className) // prints "MyClass"
+  ```
 ### 2.Accessing properties and functions of a class at runtime:
+```kotlin
 		class MyClass(val name: String) {
 			fun sayHello() {
 				println("Hello, $name!")
@@ -1842,7 +2083,9 @@ Kotlin Reflection is a powerful feature that allows developers to inspect, analy
 		val func = obj::sayHello
 		println(prop.get()) // prints "John"
 		func() // prints "Hello, John!"
+  ```
 ### 3.Creating a new instance of a class at runtime:
+```kotlin
 		class MyClass(val name: String) {
 			fun sayHello() {
 				println("Hello, $name!")
@@ -1851,7 +2094,9 @@ Kotlin Reflection is a powerful feature that allows developers to inspect, analy
 		val constructor = MyClass::class.java.getConstructor(String::class.java)
 		val obj = constructor.newInstance("John")
 		obj.sayHello() // prints "Hello, John!"
+  ```
 ### 4.Analyzing annotations on a class or function:
+```kotlin
 		@Target(AnnotationTarget.CLASS)
 		@Retention(AnnotationRetention.RUNTIME)
 		annotation class MyAnnotation(val value: String)
@@ -1861,49 +2106,58 @@ Kotlin Reflection is a powerful feature that allows developers to inspect, analy
 
 		val annotation = MyClass::class.annotations.firstOrNull { it is MyAnnotation } as? MyAnnotation
 		println(annotation?.value) // prints "Hello"
+```
 ### 5.Dynamically loading a class at runtime:
+```kotlin
 		val className = "com.example.MyClass"
 		val klass = Class.forName(className)
 		val obj = klass.newInstance() as MyClass
 
 		obj.sayHello() // prints "Hello!"
+```
 These are just a few examples of what Kotlin Reflection can do. With Reflection, you can also analyze and modify code, access class hierarchy information, and more. However, Reflection should be used with caution, as it can have performance implications and can make code harder to understand and maintain.
 
 ### Class in Kotlin:
 Sure! Here are some examples of Kotlin classes, along with detailed explanations:
 
 ### Example 1: Basic class declaration
+```kotlin
 		class Person
-		This example declares a basic class called Person. The class body is empty, so this class doesn't have any properties or methods.
+```
+This example declares a basic class called Person. The class body is empty, so this class doesn't have any properties or methods.
 
 ### Example 2: Class declaration with a primary constructor
+```kotlin
 		class Person(name: String, age: Int) {
 			init {
 				println("Name is $name and age is $age")
 			}
 		}
-		This example declares a class called Person with a primary constructor that takes two parameters: name and age. The constructor is called when a new instance of the class is created, and it prints out the values of name and age using the init block.
+```
+This example declares a class called Person with a primary constructor that takes two parameters: name and age. The constructor is called when a new instance of the class is created, and it prints out the values of name and age using the init block.
 
 ### Example 3: Class declaration with secondary constructor
-
+```kotlin
 		class Person {
 			constructor(name: String, age: Int) {
 				println("Name is $name and age is $age")
 			}
 		}
-		This example declares a class called Person with a secondary constructor that takes two parameters: name and age. Secondary constructors are used when you need to provide additional ways to create an instance of the class. In this example, the constructor prints out the values of name and age.
+  ```
+This example declares a class called Person with a secondary constructor that takes two parameters: name and age. Secondary constructors are used when you need to provide additional ways to create an instance of the class. In this example, the constructor prints out the values of name and age.
 
 ### Example 4: Class declaration with properties
-
+```kotlin
 		class Person(val name: String, var age: Int) {
 			fun sayHello() {
 				println("Hello, my name is $name and I'm $age years old.")
 			}
 		}
-		This example declares a class called Person with two properties: name (a read-only property) and age (a mutable property). The class also has a method called sayHello() that prints out a greeting using the values of name and age.
+```
+This example declares a class called Person with two properties: name (a read-only property) and age (a mutable property). The class also has a method called sayHello() that prints out a greeting using the values of name and age.
 
 ### Example 5: Class declaration with a companion object
-
+```kotlin
 		class MyClass {
 			companion object {
 				fun sayHello() {
@@ -1911,10 +2165,11 @@ Sure! Here are some examples of Kotlin classes, along with detailed explanations
 				}
 			}
 		}
-		This example declares a class called MyClass with a companion object. A companion object is an object that is associated with the class and can be used to define static methods or properties. In this example, the companion object has a method called sayHello() that prints out a greeting.
+```
+This example declares a class called MyClass with a companion object. A companion object is an object that is associated with the class and can be used to define static methods or properties. In this example, the companion object has a method called sayHello() that prints out a greeting.
 
 ### Example 6: Class declaration with an inner class
-
+```kotlin
 		class OuterClass {
 			private val message = "Hello from outer class!"
 			
@@ -1924,16 +2179,18 @@ Sure! Here are some examples of Kotlin classes, along with detailed explanations
 				}
 			}
 		}
-		This example declares a class called OuterClass with an inner class called InnerClass. An inner class is a class that is nested inside another class and has access to its properties and methods. In this example, the InnerClass has a method called printMessage() that prints out the value of a private property called message from the OuterClass.
+```
+This example declares a class called OuterClass with an inner class called InnerClass. An inner class is a class that is nested inside another class and has access to its properties and methods. In this example, the InnerClass has a method called printMessage() that prints out the value of a private property called message from the OuterClass.
 
-	These are just a few examples of Kotlin classes. There are many more features available, such as data classes, sealed classes, abstract classes, and more.
+These are just a few examples of Kotlin classes. There are many more features available, such as data classes, sealed classes, abstract classes, and more.
 
 
 ## Class and object in Kotlin:
 
-	In Kotlin, a class is a blueprint for creating objects, while an object is a singleton instance of a class. Here are some examples of classes and objects in Kotlin:
+In Kotlin, a class is a blueprint for creating objects, while an object is a singleton instance of a class. Here are some examples of classes and objects in Kotlin:
 
 ### 1.Class with Properties and Methods:
+```kotlin
 			class Person(val name: String, var age: Int) {
 				fun sayHello() {
 					println("Hello, my name is $name and I am $age years old.")
@@ -1941,7 +2198,9 @@ Sure! Here are some examples of Kotlin classes, along with detailed explanations
 			}
 			val person = Person("John", 25)
 			person.sayHello() // prints "Hello, my name is John and I am 25 years old."
+```
 ## 2.Class Inheritance:
+```kotlin
 			open class Vehicle(val brand: String, var model: String) {
 				open fun drive() {
 					println("Driving $brand $model.")
@@ -1957,8 +2216,9 @@ Sure! Here are some examples of Kotlin classes, along with detailed explanations
 
 			val car = Car("Toyota", "Camry", "Red")
 			car.drive() // prints "Driving Toyota Camry. It's a Red Toyota Camry."
+```
 ### 3.Object Declaration:
-
+```kotlin
 			object MySingleton {
 				fun sayHello() {
 					println("Hello, I am a Singleton!")
@@ -1966,8 +2226,9 @@ Sure! Here are some examples of Kotlin classes, along with detailed explanations
 			}
 
 			MySingleton.sayHello() // prints "Hello, I am a Singleton!"
+```
 ### 4.Companion Object:
-
+```kotlin
 			class MyClass {
 				companion object {
 					fun create(): MyClass {
@@ -1977,8 +2238,9 @@ Sure! Here are some examples of Kotlin classes, along with detailed explanations
 			}
 
 			val obj = MyClass.create()
+```
 ### 5.Anonymous Object:
-
+```kotlin
 			interface MyInterface {
 				fun doSomething()
 			}
@@ -1990,12 +2252,14 @@ Sure! Here are some examples of Kotlin classes, along with detailed explanations
 			}
 
 			obj.doSomething() // prints "Doing something..."
-		These are just a few examples of classes and objects in Kotlin. With classes, you can create instances of objects with properties and methods, inherit from other classes, and more. With objects, you can create singletons, companion objects, and anonymous objects to provide implementation for interfaces or abstract classes.
+```
+These are just a few examples of classes and objects in Kotlin. With classes, you can create instances of objects with properties and methods, inherit from other classes, and more. With objects, you can create singletons, companion objects, and anonymous objects to provide implementation for interfaces or abstract classes.
 
 
 ## Nested and Inner Class
 Sure, here are some possible examples of nested and inner classes in Kotlin:
 ### 1.Example of a Nested Class:
+```kotlin
 class OuterClass {
 private val outerProperty = "Outer property"
 
@@ -2011,9 +2275,11 @@ private val outerProperty = "Outer property"
 			val nested = OuterClass.NestedClass()
 			nested.printOuterProperty() // prints "Inside nested class"
 		}
-		In the above example, NestedClass is a nested class of OuterClass, but it can't access the outerProperty property of the outer class because it is static by default.
+  ```
+In the above example, NestedClass is a nested class of OuterClass, but it can't access the outerProperty property of the outer class because it is static by default.
 
 ### 2.Example of an Inner Class:
+```kotlin
 		class OuterClass {
 			private val outerProperty = "Outer property"
 
@@ -2029,9 +2295,11 @@ private val outerProperty = "Outer property"
 			val inner = outer.InnerClass()
 			inner.printOuterProperty() // prints "Inside inner class: Outer property"
 		}
-		In this example, InnerClass is an inner class of OuterClass, which means it has access to the outerProperty property of the outer class using the this@OuterClass syntax.
+```
+In this example, InnerClass is an inner class of OuterClass, which means it has access to the outerProperty property of the outer class using the this@OuterClass syntax.
 
 ### 3.Example of a Nested Class with a Companion Object:
+```kotlin
 		class OuterClass {
 			private val outerProperty = "Outer property"
 
@@ -2052,10 +2320,11 @@ private val outerProperty = "Outer property"
 			nested.printProperties()
 			// prints "Outer property: Outer property" and "Nested property: Nested property"
 		}
-		In this example, NestedClass is a nested class of OuterClass that contains a companion object. The companion object has a constant property that can be accessed using the class name. The printProperties function of NestedClass can access both the outer property and the nested property.
+  ```
+In this example, NestedClass is a nested class of OuterClass that contains a companion object. The companion object has a constant property that can be accessed using the class name. The printProperties function of NestedClass can access both the outer property and the nested property.
 
 ### 4.Example of an Inner Class with a Sealed Class:
-
+```kotlin
 		sealed class OuterSealed {
 			private val sealedProperty = "Sealed property"
 
@@ -2071,14 +2340,15 @@ private val outerProperty = "Outer property"
 			val inner = outer.InnerClass()
 			inner.printSealedProperty() // prints "Inside inner class: Sealed property"
 		}
-		In this example, InnerClass is an inner class of a sealed class called OuterSealed. The sealed class has a private property called sealedProperty, which the InnerClass can access. The sealed class can also have subclasses that inherit from it, but those subclasses cannot access the sealedProperty property.
+  ```
+In this example, InnerClass is an inner class of a sealed class called OuterSealed. The sealed class has a private property called sealedProperty, which the InnerClass can access. The sealed class can also have subclasses that inherit from it, but those subclasses cannot access the sealedProperty property.
 
 ## Kotlin Constructor:
 Sure, here are some examples of constructors in Kotlin:
 
 ### 1.Primary Constructor
-		The primary constructor is defined in the class header after the class name. It can contain parameters, which can be used to initialize the properties of the class.
-
+The primary constructor is defined in the class header after the class name. It can contain parameters, which can be used to initialize the properties of the class.
+```kotlin
 		class Person(val name: String, var age: Int) {
 			// ...
 		}
@@ -2088,11 +2358,12 @@ Sure, here are some examples of constructors in Kotlin:
 			println(person.name) // prints "John"
 			println(person.age) // prints 30
 		}
-		In this example, the Person class has a primary constructor that takes two parameters: name (which is a val) and age (which is a var). The constructor initializes the properties of the class with the provided values.
+  ```
+In this example, the Person class has a primary constructor that takes two parameters: name (which is a val) and age (which is a var). The constructor initializes the properties of the class with the provided values.
 
 ### 2.Secondary Constructor
-		A secondary constructor is defined in the body of the class using the constructor keyword. It must call the primary constructor using the this keyword.
-
+A secondary constructor is defined in the body of the class using the constructor keyword. It must call the primary constructor using the this keyword.
+```kotlin
 		class Person(val name: String, var age: Int) {
 			constructor() : this("Unknown", 0) {
 				// ...
@@ -2104,11 +2375,12 @@ Sure, here are some examples of constructors in Kotlin:
 			println(person.name) // prints "Unknown"
 			println(person.age) // prints 0
 		}
-		In this example, the Person class has a secondary constructor that takes no parameters. It calls the primary constructor with default values for name and age.
+  ```
+In this example, the Person class has a secondary constructor that takes no parameters. It calls the primary constructor with default values for name and age.
 
 ### 3.Init Block
-		The init block is executed after the primary constructor and can be used to perform additional initialization logic.
-
+The init block is executed after the primary constructor and can be used to perform additional initialization logic.
+```kotlin
 		class Person(val name: String, var age: Int) {
 			init {
 				println("Person $name created with age $age")
@@ -2119,11 +2391,12 @@ Sure, here are some examples of constructors in Kotlin:
 			val person = Person("John", 30)
 			// prints "Person John created with age 30"
 		}
-		In this example, the Person class has an init block that prints a message when a new instance of the class is created.
+  ```
+In this example, the Person class has an init block that prints a message when a new instance of the class is created.
 
 ### 4.Secondary Constructor with Init Block
-		A secondary constructor can also include an init block, which will be executed after the primary constructor and before the code inside the secondary constructor.
-
+A secondary constructor can also include an init block, which will be executed after the primary constructor and before the code inside the secondary constructor.
+```kotlin
 		class Person(val name: String, var age: Int) {
 			constructor() : this("Unknown", 0) {
 				init {
@@ -2136,10 +2409,12 @@ Sure, here are some examples of constructors in Kotlin:
 			val person = Person()
 			// prints "Person created with default values"
 		}
-		In this example, the Person class has a secondary constructor that includes an init block. When this constructor is used, the message inside the init block will be printed.
+  ```
+In this example, the Person class has a secondary constructor that includes an init block. When this constructor is used, the message inside the init block will be printed.
 
 ### 5.Private Constructor
-		A private constructor can be used to prevent external instantiation of a class. This is useful for utility classes that contain only static methods.
+A private constructor can be used to prevent external instantiation of a class. This is useful for utility classes that contain only static methods.
+  ```kotlin
 		class MyUtilityClass private constructor() {
 			companion object {
 				fun doSomething() {
@@ -2153,11 +2428,12 @@ Sure, here are some examples of constructors in Kotlin:
 			// val util = MyUtilityClass()
 			MyUtilityClass.doSomething() // prints "Utility function called"
 		}
-		In this example, the MyUtilityClass class has a private constructor that prevents external instantiation of the class. The doSomething function is a static method that can be called on the class without creating an instance.
+```
+In this example, the MyUtilityClass class has a private constructor that prevents external instantiation of the class. The doSomething function is a static method that can be called on the class without creating an instance.
 
 ### 6.Inner Class Constructor
-		An inner class constructor can be defined inside the inner class header, similar to the primary constructor.
-
+An inner class constructor can be defined inside the inner class header, similar to the primary constructor.
+```kotlin
 		class OuterClass {
 			inner class InnerClass(val name: String) {
 				init {
@@ -2172,24 +2448,25 @@ Sure, here are some examples of constructors in Kotlin:
 		val inner = outer.InnerClass("John")
 		// prints "InnerClass created with name John"
 		}
-		
-		In this example, the OuterClass has an inner class InnerClass with a primary constructor that takes a name parameter. When an instance of InnerClass is created, the init block inside the class will be executed. The inner class can only be instantiated from an instance of the outer class, hence the use of outer.InnerClass("John").
-		I hope these examples help illustrate the different ways constructors can be used in Kotlin!
+```		
+In this example, the OuterClass has an inner class InnerClass with a primary constructor that takes a name parameter. When an instance of InnerClass is created, the init block inside the class will be executed. The inner class can only be instantiated from an instance of the outer class, hence the use of outer.InnerClass("John").
+I hope these examples help illustrate the different ways constructors can be used in Kotlin!
 
 ## Visibility Modifier in kotlin:
 In Kotlin, there are four visibility modifiers that can be used to control the visibility of a class, object, interface, constructor, property, function, or type parameter:
 
-		Public - This is the default visibility modifier in Kotlin. It means that the declaration is visible everywhere, both inside and outside the module.
+Public - This is the default visibility modifier in Kotlin. It means that the declaration is visible everywhere, both inside and outside the module.
 
-		Private - This modifier restricts the visibility of a declaration to the containing class or file.
+Private - This modifier restricts the visibility of a declaration to the containing class or file.
 
-		Protected - This modifier restricts the visibility of a declaration to the containing class and its subclasses.
+Protected - This modifier restricts the visibility of a declaration to the containing class and its subclasses.
 
-		Internal - This modifier restricts the visibility of a declaration to the same module. A module is a set of Kotlin files compiled together.
+Internal - This modifier restricts the visibility of a declaration to the same module. A module is a set of Kotlin files compiled together.
 
-	Here are some examples of how to use these modifiers in Kotlin:
+Here are some examples of how to use these modifiers in Kotlin:
 
 ### 1.Public Modifier:
+```kotlin
 		class MyClass {
 			val myProperty = 1
 
@@ -2197,9 +2474,11 @@ In Kotlin, there are four visibility modifiers that can be used to control the v
 				println("This is a public function")
 			}
 		}
-		In this example, both myProperty and myFunction have the default public visibility modifier. This means that they can be accessed from anywhere in the code, both inside and outside the module.
+```
+In this example, both myProperty and myFunction have the default public visibility modifier. This means that they can be accessed from anywhere in the code, both inside and outside the module.
 
 ### 2.Private Modifier:
+```kotlin
 		class MyClass {
 			private val myProperty = 1
 
@@ -2207,9 +2486,11 @@ In Kotlin, there are four visibility modifiers that can be used to control the v
 				println("This is a private function")
 			}
 		}
-		In this example, both myProperty and myFunction have the private visibility modifier. This means that they can only be accessed from within the same class. They are not visible from outside the class or from any subclasses.
+  ```
+In this example, both myProperty and myFunction have the private visibility modifier. This means that they can only be accessed from within the same class. They are not visible from outside the class or from any subclasses.
 
 ### 3.Protected Modifier:
+```kotlin
 		open class MyBaseClass {
 			protected val myProperty = 1
 
@@ -2227,10 +2508,11 @@ In Kotlin, there are four visibility modifiers that can be used to control the v
 				myFunction()
 			}
 		}
-		In this example, myProperty and myFunction have the protected visibility modifier in the MyBaseClass. This means that they are only visible to the class itself and its subclasses. In the MySubClass, both functions can be accessed by calling them from the subclass.
+  ```
+In this example, myProperty and myFunction have the protected visibility modifier in the MyBaseClass. This means that they are only visible to the class itself and its subclasses. In the MySubClass, both functions can be accessed by calling them from the subclass.
 
 ### 4.Internal Modifier:
-
+```kotlin
 		internal class MyInternalClass {
 			internal val myProperty = 1
 
@@ -2244,9 +2526,10 @@ In Kotlin, there are four visibility modifiers that can be used to control the v
 			println(myClass.myProperty)
 			myClass.myFunction()
 		}
-		In this example, MyInternalClass, myProperty, and myFunction have the internal visibility modifier. This means that they are only visible within the same module. They cannot be accessed from outside the module.
+  ```
+In this example, MyInternalClass, myProperty, and myFunction have the internal visibility modifier. This means that they are only visible within the same module. They cannot be accessed from outside the module.
 
-		I hope these examples help explain the different visibility modifiers available in Kotlin!
+I hope these examples help explain the different visibility modifiers available in Kotlin!
 
 
 
@@ -2254,7 +2537,7 @@ In Kotlin, there are four visibility modifiers that can be used to control the v
 Here are some examples of inheritance in Kotlin:
 
 ### Example 1: Simple Inheritance
-	
+```kotlin	
 		open class Animal(val name: String) {
 		  open fun makeSound() {
 			println("The animal makes a sound.")
@@ -2270,10 +2553,11 @@ Here are some examples of inheritance in Kotlin:
 		// Usage:
 		val cat = Cat("Fluffy")
 		cat.makeSound() // prints "Meow!"
-		In this example, Cat inherits from Animal. The Cat class overrides the makeSound method defined in Animal to make the cat sound like "Meow!" instead of the default message. The Cat class also calls the superclass constructor using the Animal(name) syntax.
+  ```
+In this example, Cat inherits from Animal. The Cat class overrides the makeSound method defined in Animal to make the cat sound like "Meow!" instead of the default message. The Cat class also calls the superclass constructor using the Animal(name) syntax.
 
 ### Example 2: Overriding Properties
-	
+```kotlin	
 		open class Person(var name: String, var age: Int) {
 		  open fun getDetails(): String {
 			return "Name: $name, Age: $age"
@@ -2289,10 +2573,11 @@ Here are some examples of inheritance in Kotlin:
 		// Usage:
 		val employee = Employee("John Doe", 30, 50000.0)
 		println(employee.getDetails()) // prints "Name: John Doe, Age: 30, Salary: 50000.0"
-		In this example, Employee inherits from Person. The Employee class overrides the getDetails method defined in Person to include the salary property of the Employee class. The Employee class also calls the superclass implementation of getDetails using super.getDetails() and concatenates the salary to the returned string.
+```
+In this example, Employee inherits from Person. The Employee class overrides the getDetails method defined in Person to include the salary property of the Employee class. The Employee class also calls the superclass implementation of getDetails using super.getDetails() and concatenates the salary to the returned string.
 
 ### Example 3: Multiple Inheritance (through Interfaces)
-
+```kotlin
 		interface Vehicle {
 		  fun start()
 		  fun stop()
@@ -2317,10 +2602,11 @@ Here are some examples of inheritance in Kotlin:
 		car.start() // prints "Starting the car..."
 		car.stop() // prints "Stopping the car..."
 		println(car.numWheels) // prints "4"
-		In this example, Car implements the Vehicle and HasWheels interfaces. The Vehicle interface defines the start and stop methods, while the HasWheels interface defines the numWheels property. The Car class provides implementations for both methods and property.
+```
+In this example, Car implements the Vehicle and HasWheels interfaces. The Vehicle interface defines the start and stop methods, while the HasWheels interface defines the numWheels property. The Car class provides implementations for both methods and property.
 
 ### Example 4: Abstract Class
-
+```kotlin
 		abstract class Shape(val name: String) {
 		  abstract fun getArea(): Double
 		  abstract fun getPerimeter(): Double
@@ -2343,13 +2629,14 @@ Here are some examples of inheritance in Kotlin:
 		// Usage:
 		val rect = Rectangle(5.0, 3.0)
 		println(rect) // prints "Shape: Rectangle, Area: 15.0, Perimeter: 16.0"
-		In this example, Shape is an abstract class that defines two abstract methods: getArea and getPerimeter. Any class that inherits from Shape must provide implementations for these methods. The Shape class also provides a concrete implementation for the toString method. Rectangle inherits from Shape and provides implementations for getArea and getPerimeter. When the rect object is printed, the toString method defined in Shape is called to produce a formatted string that displays the name of the shape, its area, and its perimeter.
+```
+In this example, Shape is an abstract class that defines two abstract methods: getArea and getPerimeter. Any class that inherits from Shape must provide implementations for these methods. The Shape class also provides a concrete implementation for the toString method. Rectangle inherits from Shape and provides implementations for getArea and getPerimeter. When the rect object is printed, the toString method defined in Shape is called to produce a formatted string that displays the name of the shape, its area, and its perimeter.
 
 ## Abstract Class in kotlin:
 An abstract class is a class that cannot be instantiated, meaning you cannot create an object of that class. It is intended to be subclassed by other classes, which implement the abstract methods and/or properties defined in the abstract class.
 
-	Here's an example of an abstract class in Kotlin:
-
+Here's an example of an abstract class in Kotlin:
+ ```kotlin
 		abstract class Shape(val name: String) {
 			abstract fun area(): Double
 			abstract fun perimeter(): Double
@@ -2380,14 +2667,15 @@ An abstract class is a class that cannot be instantiated, meaning you cannot cre
 			println("Area of circle is ${circle.area()}")
 			println("Circumference of circle is ${circle.perimeter()}")
 		}
-	In this example, Shape is an abstract class with two abstract methods area() and perimeter(), and an open method description(). Rectangle and Circle are concrete classes that inherit from Shape and provide implementations for the abstract methods.
+```
+In this example, Shape is an abstract class with two abstract methods area() and perimeter(), and an open method description(). Rectangle and Circle are concrete classes that inherit from Shape and provide implementations for the abstract methods.
 
-	Note that in order to subclass an abstract class, all of its abstract methods and/or properties must be implemented in the subclass. Additionally, the override keyword is used to indicate that the method is overriding the abstract method defined in the superclass.
+Note that in order to subclass an abstract class, all of its abstract methods and/or properties must be implemented in the subclass. Additionally, the override keyword is used to indicate that the method is overriding the abstract method defined in the superclass.
 
 
 ## Kotlin Interface:
 In Kotlin, an interface is a contract that defines a set of methods and/or properties that a class must implement. Here's an example of an interface in Kotlin:
-
+```kotlin
 		interface Animal {
 			val name: String
 			fun makeSound()
@@ -2424,32 +2712,42 @@ In Kotlin, an interface is a contract that defines a set of methods and/or prope
 			cat.makeSound()
 			cat.move()
 		}
-	In this example, Animal is an interface that defines three methods: name, makeSound(), and move(). Dog and Cat are two classes that implement the Animal interface and provide implementations for the interface methods.
+```
+In this example, Animal is an interface that defines three methods: name, makeSound(), and move(). Dog and Cat are two classes that implement the Animal interface and provide implementations for the interface methods.
 
-	Note that in order to implement an interface, a class must provide implementations for all of its methods and/or properties. Additionally, the override keyword is used to indicate that the method is implementing the method defined in the interface.
+Note that in order to implement an interface, a class must provide implementations for all of its methods and/or properties. Additionally, the override keyword is used to indicate that the method is implementing the method defined in the interface.
 
 
 ## Data Class in kotlin:
 Sure, here are some examples of how to use the data class in Kotlin with explanations:
 ### 1.Basic data class with properties:
+```kotlin
 data class Person(val name: String, val age: Int)
+```
 This is a basic example of a data class that contains two properties: name of type String and age of type Int. Data classes automatically generate equals(), hashCode(), and toString() methods based on their properties.
 
 ### 2.Data class with properties and functions:
+```kotlin
 		data class Rectangle(val width: Int, val height: Int) {
 			fun area() = width * height
 		}
-		This is another example of a data class that contains two properties: width and height. Additionally, it has a function area() that calculates the area of the rectangle.
+```
+This is another example of a data class that contains two properties: width and height. Additionally, it has a function area() that calculates the area of the rectangle.
 
 ### 3.Data class with default values:
+```kotlin
 		data class Car(val make: String, val model: String, val year: Int = 2022)
-		This example is similar to the first example, but it also contains a default value for the year property. If a value is not provided for year when creating an instance of Car, it defaults to 2022.
+  ```
+This example is similar to the first example, but it also contains a default value for the year property. If a value is not provided for year when creating an instance of Car, it defaults to 2022.
 
 ### 4.Data class with a nullable property:
+```kotlin
 		data class User(val name: String, val email: String?)
-		This example shows how to define a nullable property in a data class. The email property is marked with a ?, which means it can be null. This is useful when you have optional data that may or may not be present.
+```
+This example shows how to define a nullable property in a data class. The email property is marked with a ?, which means it can be null. This is useful when you have optional data that may or may not be present.
 
 ### 5.Data class with a custom equals() function:
+```kotlin
 		data class Point(val x: Int, val y: Int) {
 			override fun equals(other: Any?): Boolean {
 				if (other == null || other !is Point) {
@@ -2458,21 +2756,25 @@ This is a basic example of a data class that contains two properties: name of ty
 				return x == other.x && y == other.y
 			}
 		}
-		By default, data classes use the properties defined in the class for equality checks. However, you can override the equals() function to provide your own custom equality check. In this example, the equals() function checks if the x and y properties of two Point objects are equal.
+```
+By default, data classes use the properties defined in the class for equality checks. However, you can override the equals() function to provide your own custom equality check. In this example, the equals() function checks if the x and y properties of two Point objects are equal.
 
 ### 6.Data class with a copy() function:
+```kotlin
 		data class Book(val title: String, val author: String, val year: Int) {
 			fun copy(title: String = this.title, author: String = this.author, year: Int = this.year) = Book(title, author, year)
 		}
-		Data classes also have a copy() function that allows you to create a new instance of the data class with updated properties. This is useful when you want to make a copy of an object with some changes to its properties. In this example, the copy() function creates a new Book object with the same author and year properties, but a new title property.
+```
+Data classes also have a copy() function that allows you to create a new instance of the data class with updated properties. This is useful when you want to make a copy of an object with some changes to its properties. In this example, the copy() function creates a new Book object with the same author and year properties, but a new title property.
 
-		These are just a few examples of how to use data classes in Kotlin. Data classes are useful when you need to represent plain old data structures, such as domain objects or transfer objects, and they provide a lot of functionality out of the box.
+These are just a few examples of how to use data classes in Kotlin. Data classes are useful when you need to represent plain old data structures, such as domain objects or transfer objects, and they provide a lot of functionality out of the box.
 
 
 ## Sealed Class in kotlin :
 A sealed class in Kotlin is a special kind of abstract class that is used to represent restricted class hierarchies. A sealed class can be subclassed, but only within the same file where it is declared. This makes it useful when you have a limited number of possible subclasses, and you want to ensure that all of them are handled in a particular way.
 
-	Here is an example of a sealed class hierarchy in Kotlin:
+Here is an example of a sealed class hierarchy in Kotlin:
+ ```kotlin
 		sealed class Animal {
 			abstract fun makeSound()
 		}
@@ -2494,9 +2796,11 @@ A sealed class in Kotlin is a special kind of abstract class that is used to rep
 				println("Tweet!")
 			}
 		}
-	In this example, the Animal class is declared as a sealed class. This means that it can only be subclassed in the same file where it is declared. The Dog, Cat, and Bird classes are subclasses of Animal.
+```
+In this example, the Animal class is declared as a sealed class. This means that it can only be subclassed in the same file where it is declared. The Dog, Cat, and Bird classes are subclasses of Animal.
 
-	To use this hierarchy, you can create an instance of one of the subclasses and call its makeSound method:
+To use this hierarchy, you can create an instance of one of the subclasses and call its makeSound method:
+ ```kotlin
 		fun main() {
 			val dog = Dog()
 			val cat = Cat()
@@ -2506,9 +2810,10 @@ A sealed class in Kotlin is a special kind of abstract class that is used to rep
 			cat.makeSound() // Output: Meow!
 			bird.makeSound() // Output: Tweet!
 		}
-	Another example of using sealed classes is to represent the state of a UI component:
-
-		sealed class UIState {
+```
+Another example of using sealed classes is to represent the state of a UI component:
+ ```kotlin
+ sealed class UIState {
 			object Loading : UIState()
 			class Success(val data: List<String>) : UIState()
 			class Error(val message: String) : UIState()
@@ -2521,32 +2826,35 @@ A sealed class in Kotlin is a special kind of abstract class that is used to rep
 				is UIState.Error -> showError(state.message)
 			}
 		}
-	In this example, the UIState class is declared as a sealed class. It has three subclasses: Loading, Success, and Error. Each of these subclasses can have additional properties or methods. The updateUI function takes a UIState object and uses pattern matching to determine which subclass it belongs to. Depending on the subclass, it calls a different function to update the UI.
+```
+In this example, the UIState class is declared as a sealed class. It has three subclasses: Loading, Success, and Error. Each of these subclasses can have additional properties or methods. The updateUI function takes a UIState object and uses pattern matching to determine which subclass it belongs to. Depending on the subclass, it calls a different function to update the UI.
 
-	Overall, sealed classes are a powerful tool in Kotlin for modeling restricted class hierarchies. They can help you write safer and more concise code by enforcing that all possible cases are handled in a certain way.
+Overall, sealed classes are a powerful tool in Kotlin for modeling restricted class hierarchies. They can help you write safer and more concise code by enforcing that all possible cases are handled in a certain way.
 
 
 
 ## Extension Function in kotlin :
 
-	In Kotlin, extension functions allow you to add new functionality to existing classes without having to modify their source code. Here are some examples of extension functions in Kotlin:
+In Kotlin, extension functions allow you to add new functionality to existing classes without having to modify their source code. Here are some examples of extension functions in Kotlin:
 ### 1.Adding an extension function to the String class to capitalize the first letter of a string:
-
+```kotlin
 		fun String.capitalizeFirstLetter(): String {
 			if (this.isEmpty()) {
 				return ""
 			}
 			return this.substring(0, 1).toUpperCase() + this.substring(1)
 		}
+```
 ### 2.Adding an extension function to the List class to shuffle the elements of a list:
-
+```kotlin
 		fun <T> List<T>.shuffle(): List<T> {
 			val shuffledList = this.toMutableList()
 			Collections.shuffle(shuffledList)
 			return shuffledList
 		}
+```
 ### 3.Adding an extension function to the Int class to convert an integer to a Roman numeral:
-
+```kotlin
 		fun Int.toRomanNumeral(): String {
 			val values = listOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
 			val symbols = listOf("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
@@ -2560,41 +2868,47 @@ A sealed class in Kotlin is a special kind of abstract class that is used to rep
 			}
 			return romanNumeral
 		}
+```
 ### 4.Adding an extension function to the ImageView class to load an image from a URL:
-
+```kotlin
 		fun ImageView.loadUrl(url: String) {
 			Picasso.get().load(url).into(this)
 		}
+```
 ### 5.Adding an extension function to the CharSequence class to check if a string contains only digits:
-
+```kotlin
 		fun CharSequence.isDigitsOnly(): Boolean {
 			return this.all { it.isDigit() }
 		}
-	These are just a few examples of what you can do with extension functions in Kotlin. The possibilities are endless, and you can add extension functions to any class or interface that you want to extend with new functionality.
+```
+These are just a few examples of what you can do with extension functions in Kotlin. The possibilities are endless, and you can add extension functions to any class or interface that you want to extend with new functionality.
 
 
 ## Kotlin Generics:
 Sure, I'd be happy to explain the examples I provided for Kotlin generics with some sample programs.
 
 ### 1.Simple generic class:
+```kotlin
 		class Box<T>(val item: T)
 
 		val intBox = Box(42)
 		val stringBox = Box("Hello, world!")
-		In this example, Box is a simple generic class with a single type parameter T. The class has a property item of type T, which can hold any type that is passed as the type argument when creating an instance of the class. We create two instances of the Box class, one with an integer and one with a string.
+  ```
+In this example, Box is a simple generic class with a single type parameter T. The class has a property item of type T, which can hold any type that is passed as the type argument when creating an instance of the class. We create two instances of the Box class, one with an integer and one with a string.
 
 ### 2.Generic function:
-
+```kotlin
 		fun <T> printItem(item: T) {
 			println(item)
 		}
 
 		printItem("Hello, world!")
 		printItem(42)
-		In this example, printItem is a generic function that takes an argument of any type T and prints it to the console. We call the function twice with different types of arguments, a string and an integer.
+```
+In this example, printItem is a generic function that takes an argument of any type T and prints it to the console. We call the function twice with different types of arguments, a string and an integer.
 
 ### 3.Generic extension function:
-
+```kotlin
 		fun <T> List<T>.secondOrNull(): T? {
 			if (size < 2) {
 				return null
@@ -2604,10 +2918,11 @@ Sure, I'd be happy to explain the examples I provided for Kotlin generics with s
 
 		val myList = listOf(1, 2, 3)
 		val secondItem = myList.secondOrNull()
-		In this example, we define an extension function secondOrNull for the List class that returns the second item in the list, or null if there is no second item. We create a list of integers and call the secondOrNull function on it to retrieve the second item.
+```
+In this example, we define an extension function secondOrNull for the List class that returns the second item in the list, or null if there is no second item. We create a list of integers and call the secondOrNull function on it to retrieve the second item.
 
 ### 4.Generic interface:
-
+```kotlin
 		interface ListFilter<T> {
 			fun filter(list: List<T>, predicate: (T) -> Boolean): List<T>
 		}
@@ -2620,26 +2935,29 @@ Sure, I'd be happy to explain the examples I provided for Kotlin generics with s
 
 		val myList = listOf("apple", "banana", "cherry")
 		val filteredList = StringListFilter().filter(myList) { it.length > 5 }
-		In this example, we define a generic interface ListFilter with a single type parameter T and a method filter that takes a list of type T and a predicate function that returns true for items that should be included in the filtered list. We then create a class StringListFilter that implements the ListFilter interface with type argument String and filters a list of strings based on the predicate function.
+```
+In this example, we define a generic interface ListFilter with a single type parameter T and a method filter that takes a list of type T and a predicate function that returns true for items that should be included in the filtered list. We then create a class StringListFilter that implements the ListFilter interface with type argument String and filters a list of strings based on the predicate function.
 
 ### 5.Generic constraint:
-
+```kotlin
 		class NumberBox<T : Number>(val item: T)
 
 		val intBox = NumberBox(42)
 		val doubleBox = NumberBox(3.14)
-		In this example, NumberBox is a generic class that only accepts type arguments that are subclasses of Number. This is achieved using the type constraint T : Number. We create two instances of the NumberBox class, one with an integer and one with a double.
+```
+In this example, NumberBox is a generic class that only accepts type arguments that are subclasses of Number. This is achieved using the type constraint T : Number. We create two instances of the NumberBox class, one with an integer and one with a double.
 
 ### 6.Multiple generic types:
-
+```kotlin
 		class Pair<T, U>(val first: T, val second: U)
 
 		val myPair = Pair(42, "Hello, world!")
 		val anotherPair = Pair("pi", 3.14)
-		In this example, Pair is a generic class that has two type parameters T and U. The class represents a pair of two items, one of type T and one of type U. We create two instances of the Pair class, one with an integer and a string, and one with a string and a double.
+```
+In this example, Pair is a generic class that has two type parameters T and U. The class represents a pair of two items, one of type T and one of type U. We create two instances of the Pair class, one with an integer and a string, and one with a string and a double.
 		
 ### 7.Generic class with multiple constraints:
-
+```kotlin
 		class AnimalShelter<T>(private val animals: List<T>) where T : Animal, T : Adoptable {
 			fun adopt(animal: T): Boolean {
 				if (animal in animals) {
@@ -2674,13 +2992,15 @@ Sure, I'd be happy to explain the examples I provided for Kotlin generics with s
 		val shelter = AnimalShelter(animalList)
 		shelter.adopt(Dog("Rex")) // returns true
 		shelter.adopt(Cat("Whiskers")) // returns false
-	In this example, AnimalShelter is a generic class that takes a list of animals as its type parameter. The class has two constraints, T : Animal and T : Adoptable, meaning that the type argument must be a subclass of both Animal and Adoptable. The Animal interface defines a property name, while the Adoptable interface defines a method adopt that returns a boolean value indicating whether the adoption was successful. The Dog and Cat classes implement the Animal interface, and the Dog class also implements the Adoptable interface. We create a list of animals and an AnimalShelter instance that takes the list as its argument. We then attempt to adopt two animals from the shelter using the adopt method, which returns true for a dog that is in the shelter and false for a cat that is not in the shelter.
+```
+In this example, AnimalShelter is a generic class that takes a list of animals as its type parameter. The class has two constraints, T : Animal and T : Adoptable, meaning that the type argument must be a subclass of both Animal and Adoptable. The Animal interface defines a property name, while the Adoptable interface defines a method adopt that returns a boolean value indicating whether the adoption was successful. The Dog and Cat classes implement the Animal interface, and the Dog class also implements the Adoptable interface. We create a list of animals and an AnimalShelter instance that takes the list as its argument. We then attempt to adopt two animals from the shelter using the adopt method, which returns true for a dog that is in the shelter and false for a cat that is not in the shelter.
 
 
 
 ## Kotlin Ranges:
 Kotlin range is defined as an interval from start value to the end value. Range expressions are created with operator (. .)
 ### Integral Type Ranges:
+```kotlin
 fun main(args: Array<String>) {  
 for (a in 1..5){  
 print(a )  
@@ -2694,30 +3014,37 @@ val range = 1.0..5.0
 println(range)  
 println("3.14 in range is ${3.14 in range}")  
 }
-
+```
 	Output:
 		12345
 		abcdef
 		1.0..5.0
 		3.14 in range is true
 		
-	What happened when we try to iterate a r range in decreasing order using . . operator ? This will print nothing.
+What happened when we try to iterate a r range in decreasing order using . . operator ? This will print nothing.
+```kotlin
 	for (a in 5..1){
         print(a )// print nothing
     }
-	To iterate the element in decreasing order, use the standard library downTo() function or downTo keyword.
+```
+To iterate the element in decreasing order, use the standard library downTo() function or downTo keyword.
+```kotlin
 	for (a in 5 downTo 1){  
         print(a )// 54321  
     }
-	
+```
 ### until range:
-		The until() function or until keyword in range is used to exclude the last element. It iterates range from start to 1 less than end.
-		for (a in 1 until 5){  
+
+The until() function or until keyword in range is used to exclude the last element. It iterates range from start to 1 less than end.
+```kotlin
+	for (a in 1 until 5){  
 			print(a ) // print 1234  
 		} 
-	The above range excludes 5 and iterate from 1 to 4.
+``` 
+The above range excludes 5 and iterate from 1 to 4.
 	
 ### Kotlin range of integer:
+```kotlin
 		fun main(args: Array<String>) {  
 				for (x in 1..5)  
 					print(x)  
@@ -2732,6 +3059,7 @@ println("3.14 in range is ${3.14 in range}")
 					print(x)  
 		println()  
 			} 
+```
 	
 	Output:
 		12345
@@ -2740,6 +3068,7 @@ println("3.14 in range is ${3.14 in range}")
 		54321
 		
 ### Kotlin range of characters:
+```kotlin
 		fun main(args: Array<String>) {  
 		 (x in 'a'..'e')  
 				print("$x ")  
@@ -2747,13 +3076,14 @@ println("3.14 in range is ${3.14 in range}")
 			for (x in 'e' downTo 'a')  
 				print("$x ")  
 		}
-		
+```	
 	Output:
 		a bcde
 		edcba
 		
 ### Kotlin range step:
-		Kotlin step keyword in range is used to iterate the range in the interval of given step value (int value).
+Kotlin step keyword in range is used to iterate the range in the interval of given step value (int value).
+```kotlin
 		fun main(args: Array<String>) {  
 			for (x in 1..10 step 2)  
 				print("$x ")  
@@ -2761,13 +3091,14 @@ println("3.14 in range is ${3.14 in range}")
 				for (x in 10 downTo 1 step 3)  
 					print("$x ")  
 			}  
-			
+```	
 		Output:
 		1 3 5 7 9 
 		10 7 4 1
 		
 ### Kotlin range iterator:
-		An iterator() method is also be used to iterate the range value. It uses hasNext() method which checks the next element in the range and next() method returns the next element of the range.
+An iterator() method is also be used to iterate the range value. It uses hasNext() method which checks the next element in the range and next() method returns the next element of the range.
+```kotlin
 		fun main(args: Array<String>) {  
   
 		val chars = ('a'..'e')  
@@ -2777,7 +3108,7 @@ println("3.14 in range is ${3.14 in range}")
 				print("$x ")  
 			}  
 		}  
-		
+  ```
 		Output:
 			a b c d e
 
@@ -2786,15 +3117,19 @@ println("3.14 in range is ${3.14 in range}")
 In Kotlin, the range is a type of collection that represents an interval of values. The range is defined by its start and end values, which can be of any comparable type such as Int, Char, or Date. The range can be created using the .. operator or the rangeTo() function. Here are some examples of how ranges work in Kotlin:
 
 ### 1.Creating a range using the .. operator:
+```
 		val range1 = 1..10 // a range from 1 to 10 (inclusive)
 		val range2 = 'a'..'z' // a range from 'a' to 'z' (inclusive)
 		val range3 = 10.0..20.0 // a range from 10.0 to 20.0 (inclusive)
+```kotlin
 ### 2.Creating a range using the rangeTo() function:
+```kotlin
 		val range4 = 1.rangeTo(10) // a range from 1 to 10 (inclusive)
 		val range5 = 'a'.rangeTo('z') // a range from 'a' to 'z' (inclusive)
 		val range6 = 10.0.rangeTo(20.0) // a range from 10.0 to 20.0 (inclusive)
-
+```
 ### 3.Using a range in a loop:
+```kotlin
 
 		for (i in 1..10) {
 			println(i) // prints 1 to 10
@@ -2807,41 +3142,57 @@ In Kotlin, the range is a type of collection that represents an interval of valu
 		for (num in 10.0..20.0 step 0.5) {
 			print(num + " ") // prints 10.0 10.5 11.0 ... 20.0
 		}
+```
 ### 4.Checking if a value is in a range:
+```kotlin
 		val range7 = 1..10
 		println(5 in range7) // true
 		println(15 in range7) // false
+```
 ### 5.Using a range to filter a collection:
+```kotlin
 		val list = listOf(1, 5, 10, 15, 20)
 		val filteredList = list.filter { it in 5..15 }
 		println(filteredList) // prints [5, 10, 15]
+```
 ### 6.Using a range to generate a sequence:
+```kotlin
 		val sequence = generateSequence(1) { it + 1 }.takeWhile { it <= 10 }
 		println(sequence.toList()) // prints [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-	These are some examples of how ranges work in Kotlin. Ranges are very useful for iterating over a sequence of values or filtering a collection based on a range of values.
+```
+These are some examples of how ranges work in Kotlin. Ranges are very useful for iterating over a sequence of values or filtering a collection based on a range of values.
 
 
 ## Calling Java code from Kotlin:
 Sure! Here are some examples of calling Java code from Kotlin:
 
 ### 1.Calling a static Java method:
-		Java code:
+Java code:
+```java
 			public class MyJavaClass {
 				public static void myMethod() {
 					System.out.println("Hello from Java!");
 				}
 			}
-		Kotlin code:
+```
+Kotlin code:
+```kotlin
 			MyJavaClass.myMethod()
+```
 ### 2.Accessing a Java static field:
-		Java code:
+Java code:
+```java
 			public class MyJavaClass {
 				public static String MY_STRING = "Hello from Java!";
 			}
-		Kotlin code:
+```
+Kotlin code:
+```kotlin
 			val myString = MyJavaClass.MY_STRING
+```
 ### 3.Creating an instance of a Java class:
-		Java code:
+Java code:
+```java
 			public class MyJavaClass {
 				public String myString;
 
@@ -2853,33 +3204,40 @@ Sure! Here are some examples of calling Java code from Kotlin:
 					System.out.println(myString);
 				}
 			}
-		Kotlin code:
+```
+Kotlin code:
+```kotlin
 			val myJavaObject = MyJavaClass("Hello from Java!")
 			myJavaObject.printString()
+```
 ### 4.Calling a Java instance method with parameters:
-		Java code:
+Java code:
+```java
 			public class MyJavaClass {
 				public void printString(String stringToPrint) {
 					System.out.println(stringToPrint);
 				}
 			}
-		Kotlin code:
+```
+Kotlin code:
+```kotlin
 			val myJavaObject = MyJavaClass()
 			myJavaObject.printString("Hello from Java!")
+```
 ### 5.Implementing a Java interface:
-		Java code:
+Java code:
 ```java
 			public interface MyJavaInterface {
 				void myMethod();
 			}
-		Java code:
+
 			public class MyJavaClass implements MyJavaInterface {
 				public void myMethod() {
 					System.out.println("Hello from Java!");
 				}
 			}
 ```
-		Kotlin code:
+Kotlin code:
 ```kotlin
 			class MyKotlinClass : MyJavaInterface {
 				override fun myMethod() {
@@ -2916,7 +3274,7 @@ Sure! Here are some examples of using regular expressions in Kotlin:
 
 		val outputString = pattern.replace(inputString, "cat")
 		println(outputString)
-  ```
+```
 		Output:
 			The quick brown cat jumps over the lazy dog.
 ### 3.Extracting parts of a string using groups:
@@ -2964,7 +3322,7 @@ These are just a few examples of how to use regular expressions in Kotlin. Regul
 
 ## Kotlin TextView
 
-	Sure, here are some examples of using TextView in Kotlin for various use cases:
+Sure, here are some examples of using TextView in Kotlin for various use cases:
 
 ### 1.Setting text and text appearance programmatically:
 ```kotlin
