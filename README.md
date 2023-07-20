@@ -37,27 +37,36 @@ The project structure of an Android application typically includes the following
 ### What is Context? How is it used?
 
 In Android, the Context class is a global information object that provides access to system services and application-level resources. It is the most important class in the Android application framework.
-**The Context class allows you to:**
-	_•	Access resources and themes
-	•	Create new views
-	•	Access databases
-	•	Access system services
-	•	Send and receive broadcasts_
-**The Context class is often used to:**
-	_•	Retrieve resources, such as strings and layout files
-	•	Create and access databases
-	•	Start and stop services
-	•	Send and receive broadcasts_
+
+#### The Context class allows you to:
+
+* Access resources and themes
+* Create new views
+* Access databases
+* Access system services
+* Send and receive broadcasts
+
+#### The Context class is often used to:
+
+* Retrieve resources, such as strings and layout files
+* Create and access databases
+* Start and stop services
+* Send and receive broadcasts
+
 The Context class is also used to access system services, such as the window manager, activity manager, and power manager. 
 It is also used to access application-level resources, such as the package manager and the telephony manager.
-**There are two types of Context in Android:**
-	•	`Application context:` The application context is associated with the lifecycle of an app. It is the context of the current state of the app.
-	•	`Activity context:` The activity context is associated with the lifecycle of an activity. It is the context of the current state of the activity.
-**There are several ways to get the Context object in Android:**
-	•	Use `"this" `in an Activity or Service. The Activity and Service classes both extend Context, so you can use "this" to get the Context object.
-	•	Use `"getApplicationContext()"` in any class. The Application object extends Context, so you can use "getApplicationContext()" to get the Context object for the entire app.
-	•	Use `"getContext()"` in a View. Some classes, such as View and Service, have a method to retrieve the Context object. For example, you can use "getContext()" to get the Context object for a View.
-	•	Use the `"ContextWrapper"` class. If you need a Context object in a class that does not have access to one, you can use the ContextWrapper class to wrap an existing Context object.
+
+#### There are two types of Context in Android:
+
+* **Application context:** The application context is associated with the lifecycle of an app. It is the context of the current state of the app.
+* **Activity context:** The activity context is associated with the lifecycle of an activity. It is the context of the current state of the activity.
+
+#### There are several ways to get the Context object in Android:
+
+* Use **"this"** in an Activity or Service. The Activity and Service classes both extend Context, so you can use "this" to get the Context object.
+* Use **"getApplicationContext()"** in any class. The Application object extends Context, so you can use "getApplicationContext()" to get the Context object for the entire app.
+* Use **"getContext()"** in a View. Some classes, such as View and Service, have a method to retrieve the Context object. For example, you can use "getContext()" to get the Context object for a View.
+* Use the **"ContextWrapper"** class. If you need a Context object in a class that does not have access to one, you can use the ContextWrapper class to wrap an existing Context object.
 
 
 ### What is AndroidManifest.xml?
