@@ -1,18 +1,22 @@
 ### Tell all the Android application components
 
-	Android application components are the building blocks of an Android app. 
-	They are the different parts of an app that allow it to perform certain functions and to communicate with other apps and with the system. 
-	There are four main types of Android application components:
-		1.	Activities: An activity represents a single screen with a user interface. It is the part of the app that the user interacts with.
-		2.	Services: A service is a component that runs in the background to perform long-running operations or to perform work for remote processes.
-		3.	Broadcast receivers: A broadcast receiver is a component that listens for and responds to system-wide broadcast announcements.
-		4.	Content providers: A content provider manages a shared set of app data that you can store in the file system, in a SQLite database, 
-		on the web, or on any other persistent storage location.
-	There are also several other types of Android application components that are used for specific purposes, such as:
-		•	Fragments: A fragment represents a portion of a user interface. You can use fragments to build dynamic and reusable UI components that can be combined to create a complete user interface.
-		•	Views: A view is a basic building block for user interface components. Views can be used to build an interface from scratch or to combine existing views to create complex layouts.
-		•	Layouts: A layout defines the structure for a user interface in an Android app. It can be used to arrange the user interface components in a specific way.
-		•	Resources: Resources are external files and static content that your app can use, such as strings, images, and layouts.
+Android application components are the building blocks of an Android app. 
+They are the different parts of an app that allow it to perform certain functions and to communicate with other apps and with the system. 
+
+##### There are four main types of Android application components:
+
+1. Activities: An activity represents a single screen with a user interface. It is the part of the app that the user interacts with.
+2. Services: A service is a component that runs in the background to perform long-running operations or to perform work for remote processes.
+3. Broadcast receivers: A broadcast receiver is a component that listens for and responds to system-wide broadcast announcements. 
+4. Content providers: A content provider manages a shared set of app data that you can store in the file system, in a SQLite database, 
+	on the web, or on any other persistent storage location.
+
+##### There are also several other types of Android application components that are used for specific purposes, such as:
+
+1. Fragments: A fragment represents a portion of a user interface. You can use fragments to build dynamic and reusable UI components that can be combined to create a complete user interface.
+2. Views: A view is a basic building block for user interface components. Views can be used to build an interface from scratch or to combine existing views to create complex layouts.
+3. Layouts: A layout defines the structure for a user interface in an Android app. It can be used to arrange the user interface components in a specific way.
+4. Resources: Resources are external files and static content that your app can use, such as strings, images, and layouts.
 
 
 ### What is the project structure of an Android Application?
