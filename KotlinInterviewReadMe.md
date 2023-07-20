@@ -838,7 +838,7 @@ Output:
 This example is similar to the first example, but the loop is implemented using a while loop instead of a for loop. When an even number is encountered, the continue statement is used to skip that iteration and move on to the next number.
 
 
-##Kotlin Function :
+## Kotlin Function :
 In Kotlin, there are several ways to define and use functions. Here are some examples of using functions in Kotlin:
 #### 1.Defining a basic function:
 ```kotlin
@@ -2249,7 +2249,7 @@ Kotlin Reflection is a powerful feature that allows developers to inspect, analy
 ```
 These are just a few examples of what Kotlin Reflection can do. With Reflection, you can also analyze and modify code, access class hierarchy information, and more. However, Reflection should be used with caution, as it can have performance implications and can make code harder to understand and maintain.
 
-#### Class in Kotlin:
+## Class in Kotlin:
 Sure! Here are some examples of Kotlin classes, along with detailed explanations:
 
 #### Example 1: Basic class declaration
@@ -3249,11 +3249,11 @@ An iterator() method is also be used to iterate the range value. It uses hasNext
 In Kotlin, the range is a type of collection that represents an interval of values. The range is defined by its start and end values, which can be of any comparable type such as Int, Char, or Date. The range can be created using the .. operator or the rangeTo() function. Here are some examples of how ranges work in Kotlin:
 
 #### 1.Creating a range using the .. operator:
-```
+```kotlin
 		val range1 = 1..10 // a range from 1 to 10 (inclusive)
 		val range2 = 'a'..'z' // a range from 'a' to 'z' (inclusive)
 		val range3 = 10.0..20.0 // a range from 10.0 to 20.0 (inclusive)
-```kotlin
+```
 #### 2.Creating a range using the rangeTo() function:
 ```kotlin
 		val range4 = 1.rangeTo(10) // a range from 1 to 10 (inclusive)
