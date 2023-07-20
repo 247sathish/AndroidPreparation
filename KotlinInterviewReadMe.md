@@ -3709,6 +3709,7 @@ Kotlin::
 				binding.textView.text = "Hello, view binding!"
 			}
 		}
+
 ```
 		
 		
