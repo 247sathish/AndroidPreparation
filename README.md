@@ -58,19 +58,15 @@ It is also used to access application-level resources, such as the package manag
 
 #### There are two types of Context in Android:
 
-**Application context:** The application context is associated with the lifecycle of an app. It is the context of the current state of the app.
-
-**Activity context:** The activity context is associated with the lifecycle of an activity. It is the context of the current state of the activity.
+1. **Application context:** The application context is associated with the lifecycle of an app. It is the context of the current state of the app.
+2. **Activity context:** The activity context is associated with the lifecycle of an activity. It is the context of the current state of the activity.
 
 #### There are several ways to get the Context object in Android:
 
-Use **"this"** in an Activity or Service. The Activity and Service classes both extend Context, so you can use "this" to get the Context object.
-
-Use **"getApplicationContext()"** in any class. The Application object extends Context, so you can use "getApplicationContext()" to get the Context object for the entire app.
-
-Use **"getContext()"** in a View. Some classes, such as View and Service, have a method to retrieve the Context object. For example, you can use "getContext()" to get the Context object for a View.
-
-Use the **"ContextWrapper"** class. If you need a Context object in a class that does not have access to one, you can use the ContextWrapper class to wrap an existing Context object.
+1. Use **"this"** in an Activity or Service. The Activity and Service classes both extend Context, so you can use "this" to get the Context object.
+2. Use **"getApplicationContext()"** in any class. The Application object extends Context, so you can use "getApplicationContext()" to get the Context object for the entire app.
+3. Use **"getContext()"** in a View. Some classes, such as View and Service, have a method to retrieve the Context object. For example, you can use "getContext()" to get the Context object for a View.
+4. Use the **"ContextWrapper"** class. If you need a Context object in a class that does not have access to one, you can use the ContextWrapper class to wrap an existing Context object.
 
 
 ### What is AndroidManifest.xml?
@@ -122,84 +118,116 @@ Overall, the Application class is an important part of the Android app developme
 
 ### What is Activity and its lifecycle?
 
-	An activity in Android represents a single screen with a user interface. It is the part of an app that the user interacts with.
-	The activity lifecycle refers to the different states that an activity goes through as it is created, started, paused, stopped, and destroyed. The activity lifecycle is managed by the Android system, and it is important for developers to understand how the lifecycle works in order to create apps that are efficient and that have a smooth user experience.
-	The activity lifecycle has the following states:
-		1.	Created: The activity is first created and is in the "created" state. This is the state where you can perform initialization tasks, such as inflating the activity's layout and binding data to the views.
-		2.	Started: When the activity becomes visible to the user, it enters the "started" state. This is the state where the activity is running and is active.
-		3.	Resumed: If the activity is in the "started" state and the user starts interacting with it, the activity enters the "resumed" state. This is the state where the activity is running and is in the foreground, and the user can interact with it.
-		4.	Paused: If another activity enters the foreground, the current activity enters the "paused" state. This is a transient state, and the activity is still visible to the user but is no longer in the foreground.
-		5.	Stopped: If the activity is no longer visible to the user, it enters the "stopped" state. This is a transient state, and the activity is still in memory but is not visible to the user.
-		6.	Destroyed: If the activity is no longer needed and is being removed from memory, it enters the "destroyed" state. This is the final state of the activity, and the activity is no longer in memory.
-	The activity lifecycle is managed by the Android system, and it is important for developers to understand how the lifecycle works in order to create apps that are efficient and that have a smooth user experience.
+An activity in Android represents a single screen with a user interface. It is the part of an app that the user interacts with.
+
+The activity lifecycle refers to the different states that an activity goes through as it is created, started, paused, stopped, and destroyed. 
+
+The activity lifecycle is managed by the Android system, and it is important for developers to understand how the lifecycle works in order to create apps that are efficient and that have a smooth user experience.
+
+#### The activity lifecycle has the following states:
+
+1. **Created:** The activity is first created and is in the "created" state. This is the state where you can perform initialization tasks, such as inflating the activity's layout and binding data to the views.
+2. **Started:** When the activity becomes visible to the user, it enters the "started" state. This is the state where the activity is running and is active.
+3. **Resumed:** If the activity is in the "started" state and the user starts interacting with it, the activity enters the "resumed" state. This is the state where the activity is running and is in the foreground, and the user can interact with it.
+4. **Paused:** If another activity enters the foreground, the current activity enters the "paused" state. This is a transient state, and the activity is still visible to the user but is no longer in the foreground.
+5. **Stopped:** If the activity is no longer visible to the user, it enters the "stopped" state. This is a transient state, and the activity is still in memory but is not visible to the user.
+6. **Destroyed:** If the activity is no longer needed and is being removed from memory, it enters the "destroyed" state. This is the final state of the activity, and the activity is no longer in memory.
+
+The activity lifecycle is managed by the Android system, and it is important for developers to understand how the lifecycle works in order to create apps that are efficient and that have a smooth user experience.
 
 ### Activity lifecycle scenarios
 
-	https://www.javacodegeeks.com/2020/08/android-activity-life-cycle-the-complete-guide.html
-	Activity Life Cycle (on app launch)
-		Activity A: onCreate()
-		Activity A: onStart() 
-		Activity A: onResume() 
-	Launching ActivityB over ActivityA *Important*
-		Activity A: onPause() 
-		Activity B: onCreate
-		Activity B: onStart() 
-		Activity B: onResume() 
-		Activity A: onStop() 
-		Activity A: onSaveInstanceState() 
-		Important point to note here is that ActivityA is stopped (not destroyed) after ActivityB has been created and is interactive.
-	Pressing Back Button from ActivityB 
-		Activity B: onPause() 
-		Activity A: onRestart()
-		Activity A: onStart() 
-		Activity A: onResume() 
-		Activity B: onStop() 
-		Activity B: onDestroy()
-		Here we see that at the end, ActivityB is destroyed. Notice that when launching B on A, ActivityA wasn’t destroyed but stopped, and it’s process lived on.
-	Pressing Back Button from ActivityA
-		Activity A: onPause() 
-		Activity A: onStop() 
-		Activity A: onSaveInstanceState()
-	Return back application
-		Activity A: onRestart()
-		Activity A: onStart() 
-		Activity A: onResume() 
-	mobile screen off timing or Pressing home button from  and return back to application
-		Activity A: onPause() 
-		Activity A: onStop() 
-		Activity A: onSaveInstanceState()	
-	And when you come back from paused state (by pressing recents button on android), following is the sequence:
-		Activity A: onRestart()
-		Activity A: onStart() 
-		Activity A: onResume()
-	Rotating the device (activity life cycle in orientation change) *Important*
-		Activity A: onPause() 
-		Activity A: onStop() 
-		Activity A: onSaveInstanceState() 
-		Activity A: onDestroy() 
-		Activity A: onCreate
-		Activity A: onStart() 
-		Activity A: onRestoreInstanceState()
-		Activity A: onResume() 
-		->You can get the key value pairs you store from onSaveInstanceState, inside onRestoreInstanceState.
-	Receiving a phone call while in ActivityA
-		->onPause() -Activity A
-		->onStop() -Activity A
-		->onSaveInstanceState() -Activity A
-		->onRestart() -Activity A
-		->onStart() -Activity A
-		->onResume() -Activity A
-	Which Lifecycle method will get called when a dialog appears in an activiy?
-		https://medium.com/android-news/in-depth-analysis-of-activitys-lifecycle-676179d8a520
-		Nothing Happen:
-			A new, semi-transparent activity (such as a dialog) opens. As long as the activity is still partially visible but not in focus, it remains paused.
+https://www.javacodegeeks.com/2020/08/android-activity-life-cycle-the-complete-guide.html
+
+#### Activity Life Cycle (on app launch)
+
+	Activity A: onCreate()
+	Activity A: onStart() 
+	Activity A: onResume() 
+
+#### Launching ActivityB over ActivityA *Important*
+
+	Activity A: onPause() 
+	Activity B: onCreate
+	Activity B: onStart() 
+	Activity B: onResume() 
+	Activity A: onStop() 
+	Activity A: onSaveInstanceState() 
+
+Important point to note here is that ActivityA is stopped (not destroyed) after ActivityB has been created and is interactive.
+
+#### Pressing Back Button from ActivityB 
+
+	Activity B: onPause() 
+	Activity A: onRestart()
+	Activity A: onStart() 
+	Activity A: onResume() 
+	Activity B: onStop() 
+	Activity B: onDestroy()
+
+Here we see that at the end, ActivityB is destroyed. Notice that when launching B on A, ActivityA wasn’t destroyed but stopped, and it’s process lived on.
+
+#### Pressing Back Button from ActivityA
+
+	Activity A: onPause() 
+	Activity A: onStop() 
+	Activity A: onSaveInstanceState()
+
+#### Return back application
+
+	Activity A: onRestart()
+	Activity A: onStart() 
+	Activity A: onResume() 
+
+#### mobile screen off timing or Pressing home button from  and return back to application
+
+	Activity A: onPause() 
+	Activity A: onStop() 
+	Activity A: onSaveInstanceState()
+
+And when you come back from paused state (by pressing recents button on android), following is the sequence:
+
+	Activity A: onRestart()
+	Activity A: onStart() 
+	Activity A: onResume()
+
+#### Rotating the device (activity life cycle in orientation change) *Important*
+
+	Activity A: onPause() 
+	Activity A: onStop() 
+	Activity A: onSaveInstanceState() 
+	Activity A: onDestroy() 
+	Activity A: onCreate
+	Activity A: onStart() 
+	Activity A: onRestoreInstanceState()
+	Activity A: onResume() 
+
+->You can get the key value pairs you store from onSaveInstanceState, inside onRestoreInstanceState.
+
+#### Receiving a phone call while in ActivityA
+
+	->onPause() -Activity A
+	->onStop() -Activity A
+	->onSaveInstanceState() -Activity A
+	->onRestart() -Activity A
+	->onStart() -Activity A
+	->onResume() -Activity A
+
+#### Which Lifecycle method will get called when a dialog appears in an activiy?
+
+https://medium.com/android-news/in-depth-analysis-of-activitys-lifecycle-676179d8a520
+**Nothing Happen:**
+		A new, semi-transparent activity (such as a dialog) opens. As long as the activity is still partially visible but not in focus, it remains paused.
 
 ### What is the difference between onCreate() and onStart()
 
-	onCreate() and onStart() are two methods that are part of the Android Activity lifecycle. They are called when an activity is created and started, respectively.
-	onCreate() is called when the activity is first created. It is used to perform setup for the activity, such as inflating the activity's user interface and initializing class variables.
-	onStart() is called after onCreate(), when the activity is becoming visible to the user. It is used to start any required animations or UI updates, as well as to begin any tasks that need to run while the activity is visible to the user.
-	In general, onCreate() is used for setup that needs to be done when the activity is first created, and onStart() is used for tasks that need to be performed when the activity becomes visible to the user.
+onCreate() and onStart() are two methods that are part of the Android Activity lifecycle. They are called when an activity is created and started, respectively.
+
+onCreate() is called when the activity is first created. It is used to perform setup for the activity, such as inflating the activity's user interface and initializing class variables.
+
+onStart() is called after onCreate(), when the activity is becoming visible to the user. It is used to start any required animations or UI updates, as well as to begin any tasks that need to run while the activity is visible to the user.
+
+In general, onCreate() is used for setup that needs to be done when the activity is first created, and onStart() is used for tasks that need to be performed when the activity becomes visible to the user.
 
 
 ### When  onDestroy is called ?
