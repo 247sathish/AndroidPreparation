@@ -3117,11 +3117,11 @@ An iterator() method is also be used to iterate the range value. It uses hasNext
 In Kotlin, the range is a type of collection that represents an interval of values. The range is defined by its start and end values, which can be of any comparable type such as Int, Char, or Date. The range can be created using the .. operator or the rangeTo() function. Here are some examples of how ranges work in Kotlin:
 
 #### 1.Creating a range using the .. operator:
-```
+```kotlin
 		val range1 = 1..10 // a range from 1 to 10 (inclusive)
 		val range2 = 'a'..'z' // a range from 'a' to 'z' (inclusive)
 		val range3 = 10.0..20.0 // a range from 10.0 to 20.0 (inclusive)
-```kotlin
+```
 #### 2.Creating a range using the rangeTo() function:
 ```kotlin
 		val range4 = 1.rangeTo(10) // a range from 1 to 10 (inclusive)
