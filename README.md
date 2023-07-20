@@ -58,15 +58,19 @@ It is also used to access application-level resources, such as the package manag
 
 #### There are two types of Context in Android:
 
-* **Application context:** The application context is associated with the lifecycle of an app. It is the context of the current state of the app.
-* **Activity context:** The activity context is associated with the lifecycle of an activity. It is the context of the current state of the activity.
+**Application context:** The application context is associated with the lifecycle of an app. It is the context of the current state of the app.
+
+**Activity context:** The activity context is associated with the lifecycle of an activity. It is the context of the current state of the activity.
 
 #### There are several ways to get the Context object in Android:
 
-* Use **"this"** in an Activity or Service. The Activity and Service classes both extend Context, so you can use "this" to get the Context object.
-* Use **"getApplicationContext()"** in any class. The Application object extends Context, so you can use "getApplicationContext()" to get the Context object for the entire app.
-* Use **"getContext()"** in a View. Some classes, such as View and Service, have a method to retrieve the Context object. For example, you can use "getContext()" to get the Context object for a View.
-* Use the **"ContextWrapper"** class. If you need a Context object in a class that does not have access to one, you can use the ContextWrapper class to wrap an existing Context object.
+Use **"this"** in an Activity or Service. The Activity and Service classes both extend Context, so you can use "this" to get the Context object.
+
+Use **"getApplicationContext()"** in any class. The Application object extends Context, so you can use "getApplicationContext()" to get the Context object for the entire app.
+
+Use **"getContext()"** in a View. Some classes, such as View and Service, have a method to retrieve the Context object. For example, you can use "getContext()" to get the Context object for a View.
+
+Use the **"ContextWrapper"** class. If you need a Context object in a class that does not have access to one, you can use the ContextWrapper class to wrap an existing Context object.
 
 
 ### What is AndroidManifest.xml?
