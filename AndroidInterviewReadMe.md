@@ -1,33 +1,34 @@
-### **Tell all the Android application components**
+## **Tell all the Android application components**
 Android application components are the building blocks of an Android app. 
-They are the different parts of an app that allow it to perform certain functions and to communicate with other apps and with the system. 
+They are the different parts of an app that allow it to perform certain functions and to communicate with other apps and with the system.
 
 There are four main types of Android application components:
-`Activities:` An activity represents a single screen with a user interface. It is the part of the app that the user interacts with.
-`Services: `A service is a component that runs in the background to perform long-running operations or to perform work for remote processes.
-`Broadcast receivers:` A broadcast receiver is a component that listens for and responds to system-wide broadcast announcements.
-`Content providers:` A content provider manages a shared set of app data that you can store in the file system, in a SQLite database, on the web, or on any other persistent storage location.
+
+1. [ ] Activities: An activity represents a single screen with a user interface. It is the part of the app that the user interacts with.
+2. [ ] Services: A service is a component that runs in the background to perform long-running operations or to perform work for remote processes.
+3. [ ] Broadcast receivers: A broadcast receiver is a component that listens for and responds to system-wide broadcast announcements.
+4. [ ] Content providers: A content provider manages a shared set of app data that you can store in the file system, in a SQLite database, on the web, or on any other persistent storage location.
 
 There are also several other types of Android application components that are used for specific purposes, such as:
 
-`Fragments:` A fragment represents a portion of a user interface. You can use fragments to build dynamic and reusable UI components that can be combined to create a complete user interface.
-`Views:` A view is a basic building block for user interface components. Views can be used to build an interface from scratch or to combine existing views to create complex layouts.
-`Layouts: `A layout defines the structure for a user interface in an Android app. It can be used to arrange the user interface components in a specific way.
-`Resources: `Resources are external files and static content that your app can use, such as strings, images, and layouts.
+1. Fragments: A fragment represents a portion of a user interface. You can use fragments to build dynamic and reusable UI components that can be combined to create a complete user interface.
+2. Views: A view is a basic building block for user interface components. Views can be used to build an interface from scratch or to combine existing views to create complex layouts.
+3. Layouts: A layout defines the structure for a user interface in an Android app. It can be used to arrange the user interface components in a specific way.
+4. Resources: Resources are external files and static content that your app can use, such as strings, images, and layouts.
 
 
 **What is the project structure of an Android Application?**
-	The project structure of an Android application typically includes the following directories and files:
-		1.	app: This directory contains the main source code files for your app, including the build.gradle file that defines how your app is built.
-		2.	res: This directory contains your app's resources, such as drawables, layouts, and strings.
-		3.	manifests: This directory contains the AndroidManifest.xml file, which is a required file that defines the fundamental characteristics of your app, such as its package name, minimum required API level, and the components of the app.
-		4.	gradle: This directory contains the files used by the Gradle build system to build your app.
-		5.	build: This directory contains the output of the build process, including the APK file that can be installed on a device.
-		6.	.gitignore: This file lists the files and directories that should be ignored by version control systems, such as Git.
-		7.	build.gradle: This file defines the build configuration for your app, including the dependencies it needs and the target SDK version.
-		8.	proguard-rules.pro: This file contains configuration for the ProGuard tool, which is used to shrink, optimize, and obfuscate your code.
-		9.	settings.gradle: This file is used by the Gradle build system to include projects that are part of your app.
-		10.	local.properties: This file contains the path to the Android SDK on your development machine.
+The project structure of an Android application typically includes the following directories and files:
+1. app: This directory contains the main source code files for your app, including the build.gradle file that defines how your app is built.
+2. res: This directory contains your app's resources, such as drawables, layouts, and strings.
+3. manifests: This directory contains the AndroidManifest.xml file, which is a required file that defines the fundamental characteristics of your app, such as its package name, minimum required API level, and the components of the app.
+4. gradle: This directory contains the files used by the Gradle build system to build your app.
+5. build: This directory contains the output of the build process, including the APK file that can be installed on a device.
+6. .gitignore: This file lists the files and directories that should be ignored by version control systems, such as Git.
+7. build.gradle: This file defines the build configuration for your app, including the dependencies it needs and the target SDK version.
+8. proguard-rules.pro: This file contains configuration for the ProGuard tool, which is used to shrink, optimize, and obfuscate your code.
+9. settings.gradle: This file is used by the Gradle build system to include projects that are part of your app.
+10. local.properties: This file contains the path to the Android SDK on your development machine.
 
 
 **What is Context? How is it used?**
