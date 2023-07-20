@@ -706,7 +706,7 @@ Output:
 This example is similar to the first example, but the loop is implemented using a while loop instead of a for loop. When an even number is encountered, the continue statement is used to skip that iteration and move on to the next number.
 
 
-##Kotlin Function :
+## Kotlin Function :
 In Kotlin, there are several ways to define and use functions. Here are some examples of using functions in Kotlin:
 #### 1.Defining a basic function:
 ```kotlin
