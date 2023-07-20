@@ -2117,7 +2117,7 @@ Kotlin Reflection is a powerful feature that allows developers to inspect, analy
 ```
 These are just a few examples of what Kotlin Reflection can do. With Reflection, you can also analyze and modify code, access class hierarchy information, and more. However, Reflection should be used with caution, as it can have performance implications and can make code harder to understand and maintain.
 
-#### Class in Kotlin:
+## Class in Kotlin:
 Sure! Here are some examples of Kotlin classes, along with detailed explanations:
 
 #### Example 1: Basic class declaration
