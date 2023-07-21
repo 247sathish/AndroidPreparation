@@ -216,6 +216,7 @@ And when you come back from paused state (by pressing recents button on android)
 #### Which Lifecycle method will get called when a dialog appears in an activiy?
 
 https://medium.com/android-news/in-depth-analysis-of-activitys-lifecycle-676179d8a520
+
 **Nothing Happen:**
 		A new, semi-transparent activity (such as a dialog) opens. As long as the activity is still partially visible but not in focus, it remains paused.
 
@@ -232,58 +233,62 @@ In general, onCreate() is used for setup that needs to be done when the activity
 
 ### When  onDestroy is called ?
 
-	The activity is finishing, either because the user has requested it (by pressing the back button) or because the system is destroying the activity due to low memory. In either case, onDestroy() will be called after onStop().
+The activity is finishing, either because the user has requested it (by pressing the back button) or because the system is destroying the activity due to low memory. In either case, onDestroy() will be called after onStop().
 
 ### When only onDestroy is called for an activity without onPause() and onStop()?
 
-	This happens when we call finish method to activity Example: inside your activity call this.finish();
+This happens when we call finish method to activity Example: inside your activity call this.finish();
 
 ### Why do we need to call setContentView() in onCreate() of Activity class?
 
-	1.onResume you may call it serval times. onCreate is just one time.
-	2.The onResume() method is called every time the activity is resumed, not just when it is first created. If you called setContentView() in onResume(), the layout would be set every time the activity was resumed, which could cause performance issues.
+1. onResume you may call it serval times. onCreate is just one time.
+2. The onResume() method is called every time the activity is resumed, not just when it is first created. If you called setContentView() in onResume(), the layout would be set every time the activity was resumed, which could cause performance issues.
 
 
 ### What is onSavedInstanceState() and onRestoreInstanceState() in activity?
 
-	onSaveInstanceState() and onRestoreInstanceState() are two methods that are part of the Android Activity lifecycle. They are used to save and restore the state of an activity, respectively.
+onSaveInstanceState() and onRestoreInstanceState() are two methods that are part of the Android Activity lifecycle. They are used to save and restore the state of an activity, respectively.
 
-	onSaveInstanceState() is called when the activity is about to be destroyed, and is used to save the activity's current state. This can be useful if you want to preserve the activity's state when the activity is being destroyed, for example, if the activity is being destroyed due to a configuration change (such as the device being rotated). The state can be saved in a bundle, which is a mapping from string keys to values, and passed as an argument to onSaveInstanceState().
+onSaveInstanceState() is called when the activity is about to be destroyed, and is used to save the activity's current state. This can be useful if you want to preserve the activity's state when the activity is being destroyed, for example, if the activity is being destroyed due to a configuration change (such as the device being rotated). The state can be saved in a bundle, which is a mapping from string keys to values, and passed as an argument to onSaveInstanceState().
 
-	onRestoreInstanceState() is called after onStart() when the activity is being recreated, and is used to restore the activity's state from a previously saved bundle. This can be useful if you want to restore the activity's state when the activity is being recreated, for example, if the activity is being recreated due to a configuration change.
+onRestoreInstanceState() is called after onStart() when the activity is being recreated, and is used to restore the activity's state from a previously saved bundle. This can be useful if you want to restore the activity's state when the activity is being recreated, for example, if the activity is being recreated due to a configuration change.
 
-	In general, onSaveInstanceState() is used to save the state of an activity when the activity is being destroyed, and onRestoreInstanceState() is used to restore the saved state when the activity is being recreated.
-	
-		@Override
-		public void onSaveInstanceState(Bundle outState) {
-			super.onSaveInstanceState(outState);
-			outState.putString("editTextContents", mEditText.getText().toString());
-		}
-	
-		@Override
-		public void onRestoreInstanceState(Bundle savedInstanceState) {
-			super.onRestoreInstanceState(savedInstanceState);
-			mEditText.setText(savedInstanceState.getString("editTextContents"));
-		}
+In general, onSaveInstanceState() is used to save the state of an activity when the activity is being destroyed, and onRestoreInstanceState() is used to restore the saved state when the activity is being recreated.
 
+```java	
+@Override
+public void onSaveInstanceState(Bundle outState) {
+	super.onSaveInstanceState(outState);
+	outState.putString("editTextContents", mEditText.getText().toString());
+}
+
+@Override
+public void onRestoreInstanceState(Bundle savedInstanceState) {
+	super.onRestoreInstanceState(savedInstanceState);
+	mEditText.setText(savedInstanceState.getString("editTextContents"));
+}
+```
 
 ### What is Fragment and its lifecycle.
 
-	A Fragment is a modular piece of a larger user interface or activity, which allows you to build reusable and flexible UI components. 
-	Fragments represent multiple screen inside one activity.
-	The Fragment lifecycle has several methods that are called in different stages of its lifecycle. These methods are:
-		1.onAttach(Activity)  called only once when it is attached with activity.
-		2.onCreate(Bundle)   used to initialize the fragment.
-		3.onCreateView(LayoutInflater, ViewGroup, Bundle) creates and returns view hierarchy.
-		4.onActivityCreated(Bundle) 	It is invoked after the completion of onCreate() method.
-		5.onViewStateRestored(Bundle)  	It provides information to the fragment that all the saved state of fragment view hierarchy has been restored.
-		6.onStart() makes the fragment visible.
-		7.onResume() makes the fragment interactive.
-		8.onPause() is called when fragment is no longer interactive.
-		9.onStop() is called when fragment is no longer visible.
-		10.onDestroyView() allows the fragment to clean up resources.
-		11.onDestroy() allows the fragment to do final clean up of fragment state.
-		12.onDetach() It is called immediately prior to the fragment no longer being associated with its activity.
+A Fragment is a modular piece of a larger user interface or activity, which allows you to build reusable and flexible UI components. Fragments represent multiple screen inside one activity.
+
+The Fragment lifecycle has several methods that are called in different stages of its lifecycle. 
+
+These methods are:
+
+1. onAttach(Activity)  called only once when it is attached with activity.
+2. onCreate(Bundle)   used to initialize the fragment.
+3. onCreateView(LayoutInflater, ViewGroup, Bundle) creates and returns view hierarchy.
+4. onActivityCreated(Bundle) 	It is invoked after the completion of onCreate() method.
+5. onViewStateRestored(Bundle)  	It provides information to the fragment that all the saved state of fragment view hierarchy has been restored.
+6. onStart() makes the fragment visible.
+7. onResume() makes the fragment interactive.
+8. onPause() is called when fragment is no longer interactive.
+9. onStop() is called when fragment is no longer visible.
+10. onDestroyView() allows the fragment to clean up resources.
+11. onDestroy() allows the fragment to do final clean up of fragment state.
+12. onDetach() It is called immediately prior to the fragment no longer being associated with its activity.
 
 
 ### What are "launch modes"?
