@@ -293,299 +293,397 @@ These methods are:
 
 ### What are "launch modes"?
 
-	https://ayusch.com/android-launch-modes-explained/
-	1.Standard
-		This is the default launch mode. If you don’t specify any launch mode, activity will open with standard launch mode.
-		This is the simplest of all. It’ll just launch one activity over the other. Even if the activity is already present.
-		Let’s say we have five Activities. A, B, C, D, and E all are defined as Standard.
-		So, our stack can be like this: A-B-C-A-A-B-B.
-		
-	2.SingleTop
-		1.If the Activity is present on the top, then a new instance is NOT created. Instead the onNewIntent() method is invoked.
-		2.If the activity is NOT present on the top, then a new instance is created and added to the top. Just like the standard launch mode.
-		Let’s say we have three Activities: A, B, and C. B is defined as singleTop.
-		Step 1: Launch A -> A
-		Step 2: Launch B -> A-B 
-		Step 3: Launch C -> A-B-C 
-		Step 4: Launch B -> A-B-C-B
-		Step 5: Launch B -> A-B-C-B*
-		
-	3.SingleTask
-		If an activity has SingleTask launch mode, then a new Task is created when the activity is launched the first time.
-		And this activity instance is placed at the root. 
-		1.If an Activity is present on top, then a new instance is NOT created. Instead the onNewIntent() method is invoked.
-		2.If an instance of the Activity is already present but NOT ON TOP, it pops all the other activities and invokes the onNewIntent() method.
-		
-	4.SingleInstance
-		In this android launch mode, just like Single Task a new Task is created and the activity placed at the root.
-		But this new task will only contain that activity instance and nothing else. 
-		If a new activity is launched from this, then it’s done in a separate task.
-		1.If an instance of the activity exists in a different task, then onNewIntent() method is called for that activity.
-		2.If a new Activity is launched from a singleInstance activity, it’s launched in a separate task
+https://ayusch.com/android-launch-modes-explained/
+
+#### 1.Standard
+
+This is the default launch mode. If you don’t specify any launch mode, activity will open with standard launch mode.
+This is the simplest of all. It’ll just launch one activity over the other. Even if the activity is already present.
+
+Let’s say we have five Activities. A, B, C, D, and E all are defined as Standard.
+So, our stack can be like this: A-B-C-A-A-B-B.
 	
-	Difference between singleTask and singleInstance :
-		In singleTask, a new Task is launched and that new task can contain other activities as well. 
-		In singleInstance, a new Task is launched and that cannot contain other activities.
+#### 2.SingleTop
+
+1. If the Activity is present on the top, then a new instance is NOT created. Instead the onNewIntent() method is invoked.
+2. If the activity is NOT present on the top, then a new instance is created and added to the top. Just like the standard launch mode.
+
+Let’s say we have three Activities: A, B, and C. B is defined as singleTop.
+
+* Step 1: Launch A -> A
+* Step 2: Launch B -> A-B 
+* Step 3: Launch C -> A-B-C 
+* Step 4: Launch B -> A-B-C-B
+* Step 5: Launch B -> A-B-C-B*
+	
+#### 3.SingleTask
+
+If an activity has SingleTask launch mode, then a new Task is created when the activity is launched the first time.
+
+And this activity instance is placed at the root. 
+
+1. If an Activity is present on top, then a new instance is NOT created. Instead the onNewIntent() method is invoked.
+2. If an instance of the Activity is already present but NOT ON TOP, it pops all the other activities and invokes the onNewIntent() method.
+	
+#### 4.SingleInstance
+
+In this android launch mode, just like Single Task a new Task is created and the activity placed at the root.
+But this new task will only contain that activity instance and nothing else. 
+
+If a new activity is launched from this, then it’s done in a separate task.
+
+1. If an instance of the activity exists in a different task, then onNewIntent() method is called for that activity.
+2. If a new Activity is launched from a singleInstance activity, it’s launched in a separate task
+
+#### Difference between singleTask and singleInstance :
+
+In singleTask, a new Task is launched and that new task can contain other activities as well. 
+
+In singleInstance, a new Task is launched and that cannot contain other activities.
 
 
 ### What is the difference between a Fragment and an Activity?
 
-	An Activity represents a single screen in an Android app. It is typically used to display UI elements and handle user interactions.
-	A Fragment represents a portion of a user interface or a behavior that can be attached to an Activity. A Fragment is a reusable component that can be used in different parts of an app's UI, or in multiple apps.
-	One key difference between an Activity and a Fragment is that an Activity represents a single screen, while a Fragment represents a portion of a screen. This means that an Activity is typically used to display a complete UI, while a Fragment is used to display a part of a UI.
-	Another difference is that an Activity has its own lifecycle and receives its own input events, while a Fragment is closely tied to the Activity it is associated with and relies on the Activity to receive input events.
+An Activity represents a single screen in an Android app. It is typically used to display UI elements and handle user interactions.
+
+A Fragment represents a portion of a user interface or a behavior that can be attached to an Activity. A Fragment is a reusable component that can be used in different parts of an app's UI, or in multiple apps.
+
+One key difference between an Activity and a Fragment is that an Activity represents a single screen, while a Fragment represents a portion of a screen. This means that an Activity is typically used to display a complete UI, while a Fragment is used to display a part of a UI.
+
+Another difference is that an Activity has its own lifecycle and receives its own input events, while a Fragment is closely tied to the Activity it is associated with and relies on the Activity to receive input events.
 
 
 ### When should you use a Fragment rather than an Activity?
 
-	There are a few situations where it might make sense to use a Fragment rather than an Activity:
-	When you want to build a user interface that can be reused in multiple places in your app. Because Fragments are reusable components, you can use a single Fragment to build a user interface that can be used in multiple Activities. This can help to reduce the complexity of your code and make it easier to maintain.
-	When you want to build a user interface that can be added or removed from an Activity at runtime. Because Fragments can be added or removed from an Activity at runtime, they are more flexible than Activities and can be used to build user interfaces that are more dynamic.
-	When you want to build a user interface that can be used on both phones and tablets. Because Fragments can be combined to build a user interface that spans multiple screens, they are well-suited for building user interfaces that can be used on both phones and tablets.
-	Overall, Fragments are a useful tool for building complex and reusable user interfaces, and they are particularly well-suited for building user interfaces that can be used on both phones and tablets. However, it's important to consider the trade-offs between Fragments and Activities when deciding which to use in your app.
+There are a few situations where it might make sense to use a Fragment rather than an Activity:
+
+When you want to build a user interface that can be reused in multiple places in your app. Because Fragments are reusable components, you can use a single Fragment to build a user interface that can be used in multiple Activities. This can help to reduce the complexity of your code and make it easier to maintain.
+
+When you want to build a user interface that can be added or removed from an Activity at runtime. Because Fragments can be added or removed from an Activity at runtime, they are more flexible than Activities and can be used to build user interfaces that are more dynamic.
+
+When you want to build a user interface that can be used on both phones and tablets. Because Fragments can be combined to build a user interface that spans multiple screens, they are well-suited for building user interfaces that can be used on both phones and tablets.
+
+Overall, Fragments are a useful tool for building complex and reusable user interfaces, and they are particularly well-suited for building user interfaces that can be used on both phones and tablets. However, it's important to consider the trade-offs between Fragments and Activities when deciding which to use in your app.
+
 
 ### What is the difference between FragmentPagerAdapter vs FragmentStatePagerAdapter?
 
-	FragmentPagerAdapter and FragmentStatePagerAdapter are both implementations of the PagerAdapter class in the Android support library, and they are used to populate a ViewPager with Fragments.
-	There are a few key differences between FragmentPagerAdapter and FragmentStatePagerAdapter:
-	1.	FragmentPagerAdapter keeps all of the Fragments in memory, while FragmentStatePagerAdapter only keeps the Fragments in memory that are currently visible to the user. This means that FragmentStatePagerAdapter is better suited for handling large numbers of Fragments, as it will use less memory than FragmentPagerAdapter.
-	2.	FragmentPagerAdapter is generally easier to use and more straightforward than FragmentStatePagerAdapter, as it does not require you to implement additional methods for saving and restoring the state of the Fragments.
-	3.	FragmentPagerAdapter is generally better suited for situations where the Fragments in the adapter do not change very often, while FragmentStatePagerAdapter is better suited for situations where the Fragments in the adapter are frequently updated or replaced.
-	Overall, it's important to choose the right PagerAdapter for your use case. If you are dealing with a small number of Fragments that do not change very often, FragmentPagerAdapter may be the best choice. If you are dealing with a large number of Fragments that are frequently updated or replaced, FragmentStatePagerAdapter may be a better choice.
+FragmentPagerAdapter and FragmentStatePagerAdapter are both implementations of the PagerAdapter class in the Android support library, and they are used to populate a ViewPager with Fragments.
+
+There are a few key differences between FragmentPagerAdapter and FragmentStatePagerAdapter:
+
+1. FragmentPagerAdapter keeps all of the Fragments in memory, while FragmentStatePagerAdapter only keeps the Fragments in memory that are currently visible to the user. This means that FragmentStatePagerAdapter is better suited for handling large numbers of Fragments, as it will use less memory than FragmentPagerAdapter.
+2. FragmentPagerAdapter is generally easier to use and more straightforward than FragmentStatePagerAdapter, as it does not require you to implement additional methods for saving and restoring the state of the Fragments.
+3. FragmentPagerAdapter is generally better suited for situations where the Fragments in the adapter do not change very often, while FragmentStatePagerAdapter is better suited for situations where the Fragments in the adapter are frequently updated or replaced.
+
+4. Overall, it's important to choose the right PagerAdapter for your use case. If you are dealing with a small number of Fragments that do not change very often, FragmentPagerAdapter may be the best choice. If you are dealing with a large number of Fragments that are frequently updated or replaced, FragmentStatePagerAdapter may be a better choice.
 
 ### What is the difference between add(), replace(), and addToBackStack()?
 
-	add(), replace(), and addToBackStack() are all methods that can be used when performing Fragment transactions in Android.
-	add() is used to add a Fragment to an Activity. When a Fragment is added to an Activity using add(), it is placed on top of the existing Fragments in the Activity. The Fragment is not added to the back stack, so the user cannot navigate back to the previous Fragment by pressing the back button.
-	replace() is used to replace a Fragment in an Activity. When a Fragment is replaced using replace(), the new Fragment is placed on top of the existing Fragments in the Activity, and the previous Fragment is removed. The Fragment is not added to the back stack, so the user cannot navigate back to the previous Fragment by pressing the back button.
-	addToBackStack() is used to add a Fragment transaction to the back stack. When a Fragment transaction is added to the back stack, the user can navigate back to the previous Fragment by pressing the back button.
-	Overall, add() and replace() are used to add or replace Fragments in an Activity, while addToBackStack() is used to allow the user to navigate back to the previous Fragment by pressing the back button.
+add(), replace(), and addToBackStack() are all methods that can be used when performing Fragment transactions in Android.
+
+add() is used to add a Fragment to an Activity. When a Fragment is added to an Activity using add(), it is placed on top of the existing Fragments in the Activity. The Fragment is not added to the back stack, so the user cannot navigate back to the previous Fragment by pressing the back button.
+
+replace() is used to replace a Fragment in an Activity. When a Fragment is replaced using replace(), the new Fragment is placed on top of the existing Fragments in the Activity, and the previous Fragment is removed. The Fragment is not added to the back stack, so the user cannot navigate back to the previous Fragment by pressing the back button.
+
+addToBackStack() is used to add a Fragment transaction to the back stack. When a Fragment transaction is added to the back stack, the user can navigate back to the previous Fragment by pressing the back button.
+
+Overall, add() and replace() are used to add or replace Fragments in an Activity, while addToBackStack() is used to allow the user to navigate back to the previous Fragment by pressing the back button.
+
 
 ### Why is it recommended to use only the default constructor to create a Fragment?
 
-	It is recommended to use only the default constructor to create a Fragment because the system may need to re-create the Fragment after it has been destroyed, and it will do so using the default constructor.
-	If you need to pass arguments to a Fragment, you should use the setArguments() method to supply the arguments after the Fragment has been created, but before it is added to the FragmentManager. This will allow the system to properly recreate the Fragment if it needs to.
-	Here is an example of how you might use the default constructor and setArguments() to pass arguments to a Fragment:
-		MyFragment fragment = new MyFragment();
-		Bundle args = new Bundle();
-		args.putInt("key", value);
-		fragment.setArguments(args);
-	By using the default constructor and setArguments(), you can ensure that your Fragment is properly initialized and that it can be properly recreated if necessary.
+It is recommended to use only the default constructor to create a Fragment because the system may need to re-create the Fragment after it has been destroyed, and it will do so using the default constructor.
+
+If you need to pass arguments to a Fragment, you should use the setArguments() method to supply the arguments after the Fragment has been created, but before it is added to the FragmentManager. This will allow the system to properly recreate the Fragment if it needs to.
+
+Here is an example of how you might use the default constructor and setArguments() to pass arguments to a Fragment:
+```java
+MyFragment fragment = new MyFragment();
+Bundle args = new Bundle();
+args.putInt("key", value);
+fragment.setArguments(args);
+
+```
+By using the default constructor and setArguments(), you can ensure that your Fragment is properly initialized and that it can be properly recreated if necessary.
+
 
 ### How would you communicate between two Fragments?
 
 There are a few different ways you can communicate between two Fragments:
+
 1.	Use an interface: You can define an interface in the Fragment that needs to communicate with another Fragment, and implement that interface in the host Activity. The first Fragment can then call methods on the interface to send data to the second Fragment, which will be received by the host Activity and forwarded to the second Fragment.
 2.	Use a ViewModel: You can use a ViewModel to store shared data and communicate between Fragments. The ViewModel will survive configuration changes, so it is a good choice for storing data that needs to be shared between Fragments.
 3.	Use a shared ViewModel: If you are using the Android Architecture Components library, you can use the sharedViewModel attribute to share a ViewModel between Fragments. This allows you to store shared data in a ViewModel and have it automatically shared between Fragments.
 4.	Use arguments: You can pass data between Fragments by using the arguments Bundle. You can put data in the Bundle when you create the first Fragment, and then access the data in the second Fragment by reading the arguments from the Bundle.
+
 Overall, there are a few different ways you can communicate between Fragments, and the best approach will depend on your specific needs.
 
 ### What is retained Fragment?
 
-	A retained Fragment is a Fragment that is not destroyed when the host Activity is destroyed. Retained Fragments are useful for storing data that needs to be shared between Fragments or between an Activity and a Fragment.
-	To create a retained Fragment, you should override the onCreate() method and set the setRetainInstance() method to true. This will prevent the Fragment from being destroyed when the host Activity is destroyed.
-	Here is an example of how you might create a retained Fragment:
-	public class MyRetainedFragment extends Fragment {
+A retained Fragment is a Fragment that is not destroyed when the host Activity is destroyed. Retained Fragments are useful for storing data that needs to be shared between Fragments or between an Activity and a Fragment.
 
-		@Override
-		public void onCreate(@Nullable Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			setRetainInstance(true);
-		}
+To create a retained Fragment, you should override the onCreate() method and set the setRetainInstance() method to true. This will prevent the Fragment from being destroyed when the host Activity is destroyed.
+
+Here is an example of how you might create a retained Fragment:
+```java
+public class MyRetainedFragment extends Fragment {
+
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setRetainInstance(true);
 	}
-	
-	You can then use the retained Fragment to store data that needs to be shared between Fragments or between an Activity and a Fragment.
-	It's important to note that retained Fragments are not the same as headless Fragments, which are Fragments that do not have a user interface. Headless Fragments are often used for background tasks that do not need to interact with the user.
+}
+```
+You can then use the retained Fragment to store data that needs to be shared between Fragments or between an Activity and a Fragment.
+
+It's important to note that retained Fragments are not the same as headless Fragments, which are Fragments that do not have a user interface. Headless Fragments are often used for background tasks that do not need to interact with the user.
 
 
 ### What is View in Android?
 
-	In Android, a View is a class that represents a basic building block for user interface (UI) components. Views are used to create the visual structure of an app's UI, and to handle user interactions with the UI.
-	Each View occupies a rectangular area on the screen and is responsible for drawing and event handling within that area. Views are subclassed to create more specific UI components, such as buttons, text fields, and lists.
-	The View class is the base class for all UI components in Android. It provides several methods that you can override to customize the appearance and behavior of your View, such as onDraw() for custom drawing, onMeasure() for custom layout, and onTouchEvent() for handling touch events.
-	Overall, Views are an essential part of the Android UI system and are used to create and interact with UI components in Android apps.
+In Android, a View is a class that represents a basic building block for user interface (UI) components. Views are used to create the visual structure of an app's UI, and to handle user interactions with the UI.
+
+Each View occupies a rectangular area on the screen and is responsible for drawing and event handling within that area. Views are subclassed to create more specific UI components, such as buttons, text fields, and lists.
+
+The View class is the base class for all UI components in Android. It provides several methods that you can override to customize the appearance and behavior of your View, such as onDraw() for custom drawing, onMeasure() for custom layout, and onTouchEvent() for handling touch events.
+
+Overall, Views are an essential part of the Android UI system and are used to create and interact with UI components in Android apps.
 
 ### What is ViewGroup in Android?
 
-	In Android, a ViewGroup is a subclass of View that is used to contain other Views and ViewGroups. ViewGroup is the base class for layouts, which are used to define the structure of the user interface.
-	ViewGroups are used to organize Views into a hierarchy, with the top-level ViewGroup being the root of the hierarchy. This hierarchy is used to define the layout of the user interface.
-	There are several different types of ViewGroups available in the Android framework, including LinearLayout, RelativeLayout, and ConstraintLayout. Each type of ViewGroup has its own set of layout parameters that can be used to control the position and size of the Views it contains.
-	You can define a ViewGroup in your app's layout XML file, or you can create a ViewGroup programmatically in your Java code.
+In Android, a ViewGroup is a subclass of View that is used to contain other Views and ViewGroups. ViewGroup is the base class for layouts, which are used to define the structure of the user interface.
+
+ViewGroups are used to organize Views into a hierarchy, with the top-level ViewGroup being the root of the hierarchy. This hierarchy is used to define the layout of the user interface.
+
+There are several different types of ViewGroups available in the Android framework, including LinearLayout, RelativeLayout, and ConstraintLayout. Each type of ViewGroup has its own set of layout parameters that can be used to control the position and size of the Views it contains.
+
+You can define a ViewGroup in your app's layout XML file, or you can create a ViewGroup programmatically in your Java code.
 
 ### Difference between View.GONE and View.INVISIBLE?
 
-	View.GONE This view is invisible, and it doesn't take any space for layout purposes.
-	View.INVISIBLE This view is invisible, but it still takes up space for layout purposes.
+View.GONE This view is invisible, and it doesn't take any space for layout purposes.
+	
+View.INVISIBLE This view is invisible, but it still takes up space for layout purposes.
 
 ### Can you a create custom view? How?
 
-	Yes, you can create a custom View in Android by extending the View class or one of its subclasses and overriding one or more of its methods.
-	To create a custom View, you will need to do the following:
-		1.	Create a new class that extends View or one of its subclasses.
-		2.	Override the onDraw() method to draw the View on the canvas.
+Yes, you can create a custom View in Android by extending the View class or one of its subclasses and overriding one or more of its methods.
+
+To create a custom View, you will need to do the following:
+
+Create a new class that extends View or one of its subclasses.
+Override the onDraw() method to draw the View on the canvas.
 
 ### What are ViewGroups and how they are different from the Views?
 
-	Overall, the main difference between Views and ViewGroups is that Views are the basic UI elements(EditText, Button, CheckBox etc) that are used to display content and handle user input, while ViewGroups are used to organize Views into a hierarchy and define the layout of the user interface.
+Overall, the main difference between Views and ViewGroups is that Views are the basic UI elements(EditText, Button, CheckBox etc) that are used to display content and handle user input, while ViewGroups are used to organize Views into a hierarchy and define the layout of the user interface.
 
 ### What is a Canvas?
 
-	In Android, a Canvas is an object that is used to draw graphics onto a View. The Canvas class provides methods for drawing text, lines, bitmaps, and other graphics objects onto the View.
-	A Canvas is associated with a Paint object, which is used to control the style and color of the graphics drawn onto the Canvas.
-	You can draw onto a Canvas in your custom View by overriding the onDraw() method and calling the appropriate Canvas drawing methods.
+In Android, a Canvas is an object that is used to draw graphics onto a View. The Canvas class provides methods for drawing text, lines, bitmaps, and other graphics objects onto the View.
+
+A Canvas is associated with a Paint object, which is used to control the style and color of the graphics drawn onto the Canvas.
+
+You can draw onto a Canvas in your custom View by overriding the onDraw() method and calling the appropriate Canvas drawing methods.
 
 ### What is a SurfaceView?
 
-	In Android, a SurfaceView is a subclass of View that is used to display graphics that are drawn onto a separate Surface. A Surface is an off-screen buffer that is used to draw graphics and control the pixels on the screen.
-	SurfaceView is useful for displaying graphics that need to be updated frequently or that require a high frame rate, such as games or video playback. Because the graphics are drawn onto a separate Surface, the system can composite the SurfaceView onto the screen without blocking the UI thread.
-	To draw onto a SurfaceView, you will need to create a SurfaceHolder and implement a Thread that draws onto the Surface. You can then use the Canvas and Paint classes to draw onto the Surface.
+In Android, a SurfaceView is a subclass of View that is used to display graphics that are drawn onto a separate Surface. A Surface is an off-screen buffer that is used to draw graphics and control the pixels on the screen.
+
+SurfaceView is useful for displaying graphics that need to be updated frequently or that require a high frame rate, such as games or video playback. Because the graphics are drawn onto a separate Surface, the system can composite the SurfaceView onto the screen without blocking the UI thread.
+
+To draw onto a SurfaceView, you will need to create a SurfaceHolder and implement a Thread that draws onto the Surface. You can then use the Canvas and Paint classes to draw onto the Surface.
 
 ### Explain some Layout?
 
-	1.	LinearLayout: A layout that arranges its children in a single column or row. Children can be aligned vertically or horizontally within the layout.
-	2.	RelativeLayout: A layout that allows children to be positioned relative to one another or to the parent layout.
-	3.	ConstraintLayout: A layout that allows children to be positioned using constraints. Children can be constrained to the parent layout or to other children within the layout.
-	4.	FrameLayout: A layout that allows children to be overlaid on top of one another. Only the topmost child is visible at a given time.
-	5.	GridLayout: A layout that arranges its children in a grid of rows and columns. Children can be positioned within the grid using row and column indices.
-	6.	CoordinatorLayout: A layout that is used to coordinate the behavior of child views. It is often used in conjunction with FloatingActionButton to implement material design elements.
+1.	LinearLayout: A layout that arranges its children in a single column or row. Children can be aligned vertically or horizontally within the layout.
+2.	RelativeLayout: A layout that allows children to be positioned relative to one another or to the parent layout.
+3.	ConstraintLayout: A layout that allows children to be positioned using constraints. Children can be constrained to the parent layout or to other children within the layout.
+4.	FrameLayout: A layout that allows children to be overlaid on top of one another. Only the topmost child is visible at a given time.
+5.	GridLayout: A layout that arranges its children in a grid of rows and columns. Children can be positioned within the grid using row and column indices.
+6.	CoordinatorLayout: A layout that is used to coordinate the behavior of child views. It is often used in conjunction with FloatingActionButton to implement material design elements.
 
 ### Do you know what is the view tree?
 
-	The view tree is an important part of the Android user interface system, and it plays a key role in organizing and rendering the user interface on the screen.
+The view tree is an important part of the Android user interface system, and it plays a key role in organizing and rendering the user interface on the screen.
 
 ### What is the difference between ListView and RecyclerView?
 
-	ListView and RecyclerView are both used to display a scrollable list of items in Android. However, there are several key differences between the two classes:
-		1.	ListView is an older class that was introduced in Android 1.0, while RecyclerView is a newer class that was introduced in Android 5.0 (Lollipop).
-		2.	ListView uses an Adapter to bind the list of items to the ListView, while RecyclerView uses a LayoutManager to position the items in the list.
-		3.	RecyclerView has better performance and memory efficiency than ListView, because it uses a view recycling mechanism to reuse views as the user scrolls the list. This means that RecyclerView can handle large lists more efficiently than ListView.
-		4.	RecyclerView allows for more customization and flexibility than ListView, because you can use any ViewGroup as a parent for the list items, and you can easily add dividers, headers, and footers to the list.
-	Overall, while ListView is a powerful and widely used class, RecyclerView is generally a better choice for most applications due to its improved performance and customization options.
+ListView and RecyclerView are both used to display a scrollable list of items in Android. However, there are several key differences between the two classes:
+		
+1.	ListView is an older class that was introduced in Android 1.0, while RecyclerView is a newer class that was introduced in Android 5.0 (Lollipop).
+2.	ListView uses an Adapter to bind the list of items to the ListView, while RecyclerView uses a LayoutManager to position the items in the list.
+3.	RecyclerView has better performance and memory efficiency than ListView, because it uses a view recycling mechanism to reuse views as the user scrolls the list. This means that RecyclerView can handle large lists more efficiently than ListView.
+4.	RecyclerView allows for more customization and flexibility than ListView, because you can use any ViewGroup as a parent for the list items, and you can easily add dividers, headers, and footers to the list.
+	
+Overall, while ListView is a powerful and widely used class, RecyclerView is generally a better choice for most applications due to its improved performance and customization options.
 
 ### How does RecyclerView work internally?
 
-	RecyclerView works by using a view recycling mechanism to reuse views as the user scrolls the list. When a RecyclerView is first displayed, it creates a fixed number of views to display the visible items. As the user scrolls the list, the RecyclerView removes the views that are no longer visible and creates new views to display the newly visible items.
-	Overall, RecyclerView uses a combination of view recycling and a LayoutManager and Adapter to efficiently display and bind data to a scrollable list of items.
+RecyclerView works by using a view recycling mechanism to reuse views as the user scrolls the list. When a RecyclerView is first displayed, it creates a fixed number of views to display the visible items. As the user scrolls the list, the RecyclerView removes the views that are no longer visible and creates new views to display the newly visible items.
+
+Overall, RecyclerView uses a combination of view recycling and a LayoutManager and Adapter to efficiently display and bind data to a scrollable list of items.
 
 ### ScrapView?
 
-	ScrapView is a term that is sometimes used to refer to a View that is temporarily created and used by the RecyclerView to display items as the user scrolls the list. The RecyclerView maintains a list of ScrapViews that it can use to quickly create new views as needed, rather than creating a new view from scratch every time.
-	When the RecyclerView needs to create a new view, it first checks if there are any ScrapViews available to reuse. If there are, it will use one of the ScrapViews and bind the new data to it. If there are no ScrapViews available, it will create a new view using the Adapter's onCreateViewHolder() method.
-	Using ScrapViews helps to improve the performance of the RecyclerView, because it reduces the number of views that need to be created and garbage collected as the user scrolls the list. However, it is important to note that ScrapView is not an official term, and the RecyclerView does not have a ScrapView class or property. Instead, it is a concept used to describe the view recycling mechanism used by the RecyclerView.
+ScrapView is a term that is sometimes used to refer to a View that is temporarily created and used by the RecyclerView to display items as the user scrolls the list. The RecyclerView maintains a list of ScrapViews that it can use to quickly create new views as needed, rather than creating a new view from scratch every time.
+
+When the RecyclerView needs to create a new view, it first checks if there are any ScrapViews available to reuse. If there are, it will use one of the ScrapViews and bind the new data to it. If there are no ScrapViews available, it will create a new view using the Adapter's onCreateViewHolder() method.
+
+Using ScrapViews helps to improve the performance of the RecyclerView, because it reduces the number of views that need to be created and garbage collected as the user scrolls the list. However, it is important to note that ScrapView is not an official term, and the RecyclerView does not have a ScrapView class or property. Instead, it is a concept used to describe the view recycling mechanism used by the RecyclerView.
 
 ### ScrapView?
 
-	ScrapView is the view in RecyclerView which was once visible and now are not visible on the phone's screen to the user.
+ScrapView is the view in RecyclerView which was once visible and now are not visible on the phone's screen to the user.
 
 ### dirty views?
 
-	The views which we take from scrap view collection and then after re-bound happens by the recyclerView adapter before it is drawn to the screen are called dirty views.
+The views which we take from scrap view collection and then after re-bound happens by the recyclerView adapter before it is drawn to the screen are called dirty views.
 
 ### What is the ViewHolder pattern? Why should we use it?
 
-	ViewHolder design pattern is used to speed up rendering of your ListView or RecyclerViews - actually to make it work smoothly. 
-	Your code might call findViewById() frequently during the scrolling of ListView, which can slow down performance.
+ViewHolder design pattern is used to speed up rendering of your ListView or RecyclerViews - actually to make it work smoothly. 
+
+Your code might call findViewById() frequently during the scrolling of ListView, which can slow down performance.
 
 ### RecyclerView Optimization - Scrolling Performance Improvement
 
-	Use the ViewHolder pattern: The ViewHolder pattern is a common pattern used in Android to improve the performance of ListViews and RecyclerViews. It is a pattern that is used to improve the performance of list-based views by reducing the number of calls to the findViewById() method, which can be expensive in terms of performance.
-	Use the ConstraintLayout: The ConstraintLayout is a ViewGroup that allows you to position and size views using constraints. It is more efficient than other layouts, such as RelativeLayout and LinearLayout, because it uses a flat view hierarchy and allows views to be positioned directly on the canvas.
-	Use RecyclerView.ViewHolder: The RecyclerView.ViewHolder is a static inner class that holds references to the views in each list item. By using the ViewHolder pattern, the Adapter can avoid calling the findViewById() method every time it needs to bind data to a list item, because the views are already stored in the ViewHolder.
-	Use RecyclerView.ItemAnimator: The RecyclerView.ItemAnimator is a class that is responsible for animating the addition, removal, and movement of items in the RecyclerView. By default, the RecyclerView uses a DefaultItemAnimator, which animates changes to the list using simple fade-in and fade-out effects. You can create a custom ItemAnimator to customize the animation of changes to the list.
-	Use RecyclerView.ItemDecoration: The RecyclerView.ItemDecoration is a class that is used to draw decorations around the items in the RecyclerView. By default, the RecyclerView does not draw any decorations around its items. You can use an ItemDecoration to add dividers, margins, or other visual elements to the list.
-	By using these strategies, you can improve the scrolling performance of your RecyclerView and make it more efficient and smooth
+Use the ViewHolder pattern: The ViewHolder pattern is a common pattern used in Android to improve the performance of ListViews and RecyclerViews. It is a pattern that is used to improve the performance of list-based views by reducing the number of calls to the findViewById() method, which can be expensive in terms of performance.
+
+Use the ConstraintLayout: The ConstraintLayout is a ViewGroup that allows you to position and size views using constraints. It is more efficient than other layouts, such as RelativeLayout and LinearLayout, because it uses a flat view hierarchy and allows views to be positioned directly on the canvas.
+
+Use RecyclerView.ViewHolder: The RecyclerView.ViewHolder is a static inner class that holds references to the views in each list item. By using the ViewHolder pattern, the Adapter can avoid calling the findViewById() method every time it needs to bind data to a list item, because the views are already stored in the ViewHolder.
+
+Use RecyclerView.ItemAnimator: The RecyclerView.ItemAnimator is a class that is responsible for animating the addition, removal, and movement of items in the RecyclerView. By default, the RecyclerView uses a DefaultItemAnimator, which animates changes to the list using simple fade-in and fade-out effects. You can create a custom ItemAnimator to customize the animation of changes to the list.
+
+Use RecyclerView.ItemDecoration: The RecyclerView.ItemDecoration is a class that is used to draw decorations around the items in the RecyclerView. By default, the RecyclerView does not draw any decorations around its items. You can use an ItemDecoration to add dividers, margins, or other visual elements to the list.
+
+By using these strategies, you can improve the scrolling performance of your RecyclerView and make it more efficient and smooth
 	
-	1.Set a specific width and height to ImageView in RecyclerView items
-	2.Avoid using NestedView
-	3.Use the setHasFixedsize method
-	4.Use the image loading library for loading images
-	5.Do less work in the OnBindViewHolder method
-	6.Use the NotifyItem method for your RecyclerView
+1. Set a specific width and height to ImageView in RecyclerView items
+2. Avoid using NestedView
+3. Use the setHasFixedsize method
+4. Use the image loading library for loading images
+5. Do less work in the OnBindViewHolder method
+6. Use the NotifyItem method for your RecyclerView
 
 ### What is SnapHelper?
 
-	SnapHelper is a helper class that is used to snap any child of our RecyclerView. 
-	With the help of this class, we can display the specific number of RecyclerView items on our screen, 
-	and we can avoid the RecyclerView children's display inside our RecyclerView.
+SnapHelper is a helper class that is used to snap any child of our RecyclerView. 
+
+With the help of this class, we can display the specific number of RecyclerView items on our screen, 
+and we can avoid the RecyclerView children's display inside our RecyclerView.
 
 ### What is Dialog in Android?
 
-	A Dialog in Android is a small window that appears on top of the current Activity. 
-	Dialogs are useful for displaying additional content or prompting the user for input without leaving the current Activity.
+A Dialog in Android is a small window that appears on top of the current Activity. 
+
+Dialogs are useful for displaying additional content or prompting the user for input without leaving the current Activity.
 
 ### What is Toast in Android?
 
-	A Toast in Android is a small message that is displayed on the screen for a short period of time. It is used to provide simple feedback about an operation or to display a simple message. Toasts do not interrupt the user and do not require any action to be taken. They automatically disappear after a short period of time.
-	Toasts are created and displayed in an Activity or Fragment by calling the Toast.makeText() method and then calling the show() method on the Toast object. Toasts can be customized with different text styles and gravity settings, and they can be positioned on the screen using the setGravity() and setMargin() methods.
-	Toasts are useful for displaying simple feedback or messages to the user. They are an important part of the Android UI and are often used in application development.
+A Toast in Android is a small message that is displayed on the screen for a short period of time. It is used to provide simple feedback about an operation or to display a simple message. Toasts do not interrupt the user and do not require any action to be taken. They automatically disappear after a short period of time.
+
+Toasts are created and displayed in an Activity or Fragment by calling the Toast.makeText() method and then calling the show() method on the Toast object. Toasts can be customized with different text styles and gravity settings, and they can be positioned on the screen using the setGravity() and setMargin() methods.
+
+Toasts are useful for displaying simple feedback or messages to the user. They are an important part of the Android UI and are often used in application development.
 
 
 ### What the difference between Dialog and Dialog Fragment?
 
-	Dialog: A dialog is a small window that prompts the user to make a decision or enter additional information.
-	DialogFragment: A DialogFragment is a special fragment subclass that is designed for creating and hosting dialogs. 
-	It allows the FragmentManager to manage the state of the dialog and automatically restore the dialog when a configuration change occurs.
-	The main difference between Dialogs and DialogFragments is the way that they are displayed and the fact that DialogFragments are retained across configuration changes.
+Dialog: A dialog is a small window that prompts the user to make a decision or enter additional information.
+
+DialogFragment: A DialogFragment is a special fragment subclass that is designed for creating and hosting dialogs. 
+	
+It allows the FragmentManager to manage the state of the dialog and automatically restore the dialog when a configuration change occurs.
+	
+The main difference between Dialogs and DialogFragments is the way that they are displayed and the fact that DialogFragments are retained across configuration changes.
 
 ### What is an Intent ?
 
-	An Intent is basically a message ,that message is passed between components (such as Activities, Services, Broadcast Receivers, and Content Providers).
-	There are two types of intents in android:
-	Implicit intent is used to invoke the system components
+An Intent is basically a message ,that message is passed between components (such as Activities, Services, Broadcast Receivers, and Content Providers).
+
+There are two types of intents in android:
+
+Implicit intent is used to invoke the system components
+
+```java
 		Intent i = newIntent(android.content.Intent.ACTION_VIEW,Uri.parse(“http://www.amazon.com”));
 		startActivity(i);
-	Explicit intent is used to invoke the activity class
+        
+```	
+Explicit intent is used to invoke the activity class
+
+```java
 		Intent intent = newIntent (this, SecondActivity.class);
 		startActivity(intent);
-
+```
 ### Pass data between activities-in-android-application
 
-	There are several ways to pass data between Activitys in an Android application:
-		1.	Use Intent extras: You can pass data between Activitys using Intent extras. To pass data using Intent extras, you can use the putExtra() method of the Intent to add data to the Intent, and then start the Activity using the Intent. To retrieve the data in the receiving Activity, you can use the getIntent() method to get the Intent that started the Activity, and then use the getXXXExtra() methods to retrieve the data from the Intent.
-		2.	Use a shared view model: You can use a shared ViewModel to pass data between Activitys. A ViewModel is a class that is responsible for preparing and managing the data for an Activity or Fragment. To use a shared ViewModel, you can create a ViewModel class that extends the AndroidViewModel class, and then use the ViewModelProvider class to create a shared instance of the ViewModel. You can then use the ViewModel to store and retrieve data that needs to be shared between Activitys.
-		3.	Use a shared repository: You can use a shared repository to pass data between Activitys. A repository is a class that is responsible for managing data sources and providing a clean API for data access. To use a shared repository, you can create a repository class and use it to store and retrieve data that needs to be shared between Activitys.
-		4.	Use a global singleton: You can use a global singleton to pass data between Activitys. A singleton is a class that can only have one instance at any given time. To use a singleton to pass data between Activitys, you can create a singleton class and use it to store and retrieve data that needs to be shared between Activitys.
-	By using these strategies, you can pass data between Activitys in your Android application.
+There are several ways to pass data between Activitys in an Android application:
 
-	In your current Activity, create a new Intent:
+1.	Use Intent extras: You can pass data between Activitys using Intent extras. To pass data using Intent extras, you can use the putExtra() method of the Intent to add data to the Intent, and then start the Activity using the Intent. To retrieve the data in the receiving Activity, you can use the getIntent() method to get the Intent that started the Activity, and then use the getXXXExtra() methods to retrieve the data from the Intent.
+2.	Use a shared view model: You can use a shared ViewModel to pass data between Activitys. A ViewModel is a class that is responsible for preparing and managing the data for an Activity or Fragment. To use a shared ViewModel, you can create a ViewModel class that extends the AndroidViewModel class, and then use the ViewModelProvider class to create a shared instance of the ViewModel. You can then use the ViewModel to store and retrieve data that needs to be shared between Activitys.
+3.	Use a shared repository: You can use a shared repository to pass data between Activitys. A repository is a class that is responsible for managing data sources and providing a clean API for data access. To use a shared repository, you can create a repository class and use it to store and retrieve data that needs to be shared between Activitys.
+4.	Use a global singleton: You can use a global singleton to pass data between Activitys. A singleton is a class that can only have one instance at any given time. To use a singleton to pass data between Activitys, you can create a singleton class and use it to store and retrieve data that needs to be shared between Activitys.
+
+By using these strategies, you can pass data between Activitys in your Android application.
+
+In your current Activity, create a new Intent:
+```java
 		String value="Hello world";
 		Intent i = new Intent(CurrentActivity.this, NewActivity.class);    
 		i.putExtra("key",value);
 		startActivity(i);
-	Then in the new Activity, retrieve those values:
+```
+Then in the new Activity, retrieve those values:
+```java
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			String value = extras.getString("key");
 			//The key argument here must match that used in the other activity
 		}
+```
 
 ### how-to-manage-startactivityforresult-on-android
 
-	The startActivityForResult() method is used to start a new Activity and receive a result from the Activity when it finishes. To manage startActivityForResult() on Android, you can follow these steps:
-		1.	Call startActivityForResult(): To start an Activity for a result, you can call the startActivityForResult() method and pass in an Intent that describes the Activity to be started and a request code. The request code is an integer value that is used to identify the request when the result is returned.
-		2.	Implement onActivityResult(): To receive the result from the Activity, you need to implement the onActivityResult() method in the Activity or Fragment that called startActivityForResult(). The onActivityResult() method is called when the started Activity finishes, and it receives the request code, result code, and data as arguments.
-		3.	Check the request code and result code: In the onActivityResult() method, you can check the request code and result code to determine the result of the Activity. The request code is used to identify the request, and the result code is an integer value that indicates the result of the Activity.
-		4.	Extract the data from the intent: If the result code is RESULT_OK, you can extract the data from the Intent using the getXXXExtra() methods. The data is stored in the Intent as extras, and you can retrieve it using the appropriate getXXXExtra() method, depending on the type of data.
-	By following these steps, you can manage startActivityForResult() on Android and receive a result from a started Activity.
+The startActivityForResult() method is used to start a new Activity and receive a result from the Activity when it finishes. To manage startActivityForResult() on Android, you can follow these steps:
+		
+1.	Call startActivityForResult(): To start an Activity for a result, you can call the startActivityForResult() method and pass in an Intent that describes the Activity to be started and a request code. The request code is an integer value that is used to identify the request when the result is returned.
+2.	Implement onActivityResult(): To receive the result from the Activity, you need to implement the onActivityResult() method in the Activity or Fragment that called startActivityForResult(). The onActivityResult() method is called when the started Activity finishes, and it receives the request code, result code, and data as arguments.
+3.	Check the request code and result code: In the onActivityResult() method, you can check the request code and result code to determine the result of the Activity. The request code is used to identify the request, and the result code is an integer value that indicates the result of the Activity.
+4.	Extract the data from the intent: If the result code is RESULT_OK, you can extract the data from the Intent using the getXXXExtra() methods. The data is stored in the Intent as extras, and you can retrieve it using the appropriate getXXXExtra() method, depending on the type of data.
+
+By following these steps, you can manage startActivityForResult() on Android and receive a result from a started Activity.
 	
-	https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
-	From your FirstActivity, call the SecondActivity using the startActivityForResult() method.
-		For example:
+https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
+	
+From your FirstActivity, call the SecondActivity using the startActivityForResult() method.
+		
+For example:
 			int LAUNCH_SECOND_ACTIVITY = 1
 			Intent i = new Intent(this, SecondActivity.class);
 			startActivityForResult(i, LAUNCH_SECOND_ACTIVITY);
-	In your SecondActivity, set the data which you want to return back to FirstActivity. If you don't want to return back, don't set any.
-		For example: In SecondActivity if you want to send back data:
+
+In your SecondActivity, set the data which you want to return back to FirstActivity. If you don't want to return back, don't set any.
+
+For example: In SecondActivity if you want to send back data:
+```java
 			Intent returnIntent = new Intent();
 			returnIntent.putExtra("result",result);
 			setResult(Activity.RESULT_OK,returnIntent);
 			finish();
-	If you don't want to return data:
+```
+If you don't want to return data:
+```java
 			Intent returnIntent = new Intent();
 			setResult(Activity.RESULT_CANCELED, returnIntent);
 			finish();
-	Now in your FirstActivity class, write the following code for the onActivityResult() method.
+```
+Now in your FirstActivity class, write the following code for the onActivityResult() method.
+```java
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -599,39 +697,41 @@ Overall, there are a few different ways you can communicate between Fragments, a
 			}
 		}
 	} 
-
+```
 
 ### What is a BroadcastReceiver?
 
-	A Broadcast Receiver in Android is a component that allows an app to respond to system-wide broadcasts, which are messages sent by the operating system or other apps to notify of certain events or changes in the environment. These events can include things like incoming phone calls, low battery warnings, and changes in network connectivity.
+A Broadcast Receiver in Android is a component that allows an app to respond to system-wide broadcasts, which are messages sent by the operating system or other apps to notify of certain events or changes in the environment. These events can include things like incoming phone calls, low battery warnings, and changes in network connectivity.
 
-	A Broadcast Receiver is a class that extends the BroadcastReceiver class and implements the onReceive() method. The onReceive() method is called when the Broadcast Receiver receives a broadcast, and it is passed an Intent that contains the broadcast data.
+A Broadcast Receiver is a class that extends the BroadcastReceiver class and implements the onReceive() method. The onReceive() method is called when the Broadcast Receiver receives a broadcast, and it is passed an Intent that contains the broadcast data.
 
-	To use a Broadcast Receiver, you need to register it in the app's manifest file, which makes it known to the system and allows it to receive broadcast intents. Additionally, you can register a Broadcast Receiver dynamically in your app code, in which case it will only be active for the duration of the onReceive() method call.
+To use a Broadcast Receiver, you need to register it in the app's manifest file, which makes it known to the system and allows it to receive broadcast intents. Additionally, you can register a Broadcast Receiver dynamically in your app code, in which case it will only be active for the duration of the onReceive() method call.
 
-	Here is an example of how to create a Broadcast Receiver and register it in the app's manifest file:
+Here is an example of how to create a Broadcast Receiver and register it in the app's manifest file:
 
-	Copy code
-		public class MyBroadcastReceiver extends BroadcastReceiver {
-			@Override
-			public void onReceive(Context context, Intent intent) {
-				// perform action here
-				if (intent.getAction().equals(Intent.ACTION_BATTERY_LOW)) {
-					Toast.makeText(context, "Battery is low!", Toast.LENGTH_LONG).show();
-				}
+```java
+	public class MyBroadcastReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// perform action here
+			if (intent.getAction().equals(Intent.ACTION_BATTERY_LOW)) {
+				Toast.makeText(context, "Battery is low!", Toast.LENGTH_LONG).show();
 			}
 		}
-	And in the app's AndroidManifest.xml file:
+	}
+```
+And in the app's AndroidManifest.xml file:
 
-	Copy code
-		<receiver android:name=".MyBroadcastReceiver">
-			<intent-filter>
-				<action android:name="android.intent.action.BATTERY_LOW" />
-			</intent-filter>
-		</receiver>
-	In this example, the MyBroadcastReceiver class is extending the BroadcastReceiver class and overriding the onReceive() method, which will listen to intent action "android.intent.action.BATTERY_LOW" and it will show a toast message when the battery is low.
+```xml
+	<receiver android:name=".MyBroadcastReceiver">
+		<intent-filter>
+			<action android:name="android.intent.action.BATTERY_LOW" />
+		</intent-filter>
+	</receiver>
+```
+In this example, the MyBroadcastReceiver class is extending the BroadcastReceiver class and overriding the onReceive() method, which will listen to intent action "android.intent.action.BATTERY_LOW" and it will show a toast message when the battery is low.
 
-	Broadcast Receivers are useful for responding to system-wide events, such as the device booting up, changes in network connectivity, or low battery warnings. They can also be used to receive broadcasts from other apps and perform actions based on the received data. It's worth noting that Broadcast Receivers are not suitable for long-running tasks or background services. Also, Android 8.0 Oreo introduced background execution limits which will affect the broadcast
+Broadcast Receivers are useful for responding to system-wide events, such as the device booting up, changes in network connectivity, or low battery warnings. They can also be used to receive broadcasts from other apps and perform actions based on the received data. It's worth noting that Broadcast Receivers are not suitable for long-running tasks or background services. Also, Android 8.0 Oreo introduced background execution limits which will affect the broadcast
 
 
 ### What is a LocalBroadcastManager?
