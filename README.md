@@ -736,33 +736,38 @@ Broadcast Receivers are useful for responding to system-wide events, such as the
 
 ### What is a LocalBroadcastManager?
 
-	LocalBroadcastManager is a utility class in Android that allows for the sending and receiving of local broadcasts, which are broadcasts that are limited to the app process in which they were sent. This means that the broadcast is only sent to BroadcastReceivers that are registered within the same app, and it will not be sent to BroadcastReceivers in other apps or to system components.
+LocalBroadcastManager is a utility class in Android that allows for the sending and receiving of local broadcasts, which are broadcasts that are limited to the app process in which they were sent. This means that the broadcast is only sent to BroadcastReceivers that are registered within the same app, and it will not be sent to BroadcastReceivers in other apps or to system components.
 
-	LocalBroadcastManager can be used in place of the standard Context.sendBroadcast() method to send and Context.registerReceiver() method to register for local broadcasts.
+LocalBroadcastManager can be used in place of the standard Context.sendBroadcast() method to send and Context.registerReceiver() method to register for local broadcasts.
 
-	The main advantage of using LocalBroadcastManager is that it provides a more secure and efficient way to communicate between different components within your app, because the broadcasts are not sent outside the app and thus cannot be intercepted by other apps or malicious actors.
+The main advantage of using LocalBroadcastManager is that it provides a more secure and efficient way to communicate between different components within your app, because the broadcasts are not sent outside the app and thus cannot be intercepted by other apps or malicious actors.
 
-	Here's an example of how you might use LocalBroadcastManager to send a local broadcast:
+Here's an example of how you might use LocalBroadcastManager to send a local broadcast:
 
-	Copy code
+```java
 	LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
 	Intent intent = new Intent("my-custom-event");
 	localBroadcastManager.sendBroadcast(intent);
-	And, an example of how you might register a BroadcastReceiver to receive a local broadcast:
+```
+And, an example of how you might register a BroadcastReceiver to receive a local broadcast:
 
-	Copy code
+```java
+
 	LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
 	localBroadcastManager.registerReceiver(myReceiver, new IntentFilter("my-custom-event"));
-	It's worth noting that, LocalBroadcastManager is not suitable for cross-process communication, it's just suitable for communication within the process.
+    
+```
+
+It's worth noting that, LocalBroadcastManager is not suitable for cross-process communication, it's just suitable for communication within the process.
 
 
 ### What is the function of an IntentFilter?
 
-	An IntentFilter is an object used in Android development to register an activity, service, or broadcast receiver for certain actions. It is used to specify the types of intents that an activity, service, or broadcast receiver can respond to. An IntentFilter can be used to specify a combination of actions, categories, and data that an Intent should match.
+An IntentFilter is an object used in Android development to register an activity, service, or broadcast receiver for certain actions. It is used to specify the types of intents that an activity, service, or broadcast receiver can respond to. An IntentFilter can be used to specify a combination of actions, categories, and data that an Intent should match.
 
-	Here is an example of how an IntentFilter is used to register an activity in an Android app:
+Here is an example of how an IntentFilter is used to register an activity in an Android app:
 
-	Copy code
+```xml
 	<activity android:name=".PhotoViewerActivity">
 		<intent-filter>
 			<action android:name="android.intent.action.VIEW" />
@@ -770,468 +775,461 @@ Broadcast Receivers are useful for responding to system-wide events, such as the
 			<data android:mimeType="image/*" />
 		</intent-filter>
 	</activity>
-	In this example, the activity named "PhotoViewerActivity" is being registered with an IntentFilter. The IntentFilter specifies that the activity can handle Intents with the action "android.intent.action.VIEW", and that the data type of the Intent should be "image/*". It also specifies that the activity should be placed in the default category.
+```
+In this example, the activity named "PhotoViewerActivity" is being registered with an IntentFilter. The IntentFilter specifies that the activity can handle Intents with the action "android.intent.action.VIEW", and that the data type of the Intent should be "image/*". It also specifies that the activity should be placed in the default category.
 
-	When an Intent is sent with the action "android.intent.action.VIEW" and the data type "image/*", Android will match this Intent to the IntentFilter registered by the PhotoViewerActivity and launch that activity to display the selected image.
+When an Intent is sent with the action "android.intent.action.VIEW" and the data type "image/*", Android will match this Intent to the IntentFilter registered by the PhotoViewerActivity and launch that activity to display the selected image.
 
-	Here's an example of how an IntentFilter is used to register a broadcast receiver:
+Here's an example of how an IntentFilter is used to register a broadcast receiver:
 
-	Copy code
+```xml
 	<receiver android:name=".BatteryReceiver">
 		<intent-filter>
 			<action android:name="android.intent.action.BATTERY_LOW" />
 		</intent-filter>
 	</receiver>
-	In this example, the broadcast receiver named "BatteryReceiver" is being registered with an IntentFilter. The IntentFilter specifies that the broadcast receiver can handle Intents with the action "android.intent.action.BATTERY_LOW". When the device battery is low the system sends broadcast Intent with the action "android.intent.action.BATTERY_LOW" to all the apps which have registered with that action, thus the broadcast receiver of the app will receive it and can take necessary action.
+```
+In this example, the broadcast receiver named "BatteryReceiver" is being registered with an IntentFilter. The IntentFilter specifies that the broadcast receiver can handle Intents with the action "android.intent.action.BATTERY_LOW". When the device battery is low the system sends broadcast Intent with the action "android.intent.action.BATTERY_LOW" to all the apps which have registered with that action, thus the broadcast receiver of the app will receive it and can take necessary action.
 
-	In summary, an IntentFilter is a powerful tool that allows Android apps to be more modular and flexible by specifying the types of Intents that an activity, service, or broadcast receiver can handle. It is used to register an activity, service, or broadcast receiver for certain actions and it also allows for specifying the types of intents that an activity, service, or broadcast receiver can respond to.
+In summary, an IntentFilter is a powerful tool that allows Android apps to be more modular and flexible by specifying the types of Intents that an activity, service, or broadcast receiver can handle. It is used to register an activity, service, or broadcast receiver for certain actions and it also allows for specifying the types of intents that an activity, service, or broadcast receiver can respond to.
 
 
 ### What is a Sticky Intent?
 
-	Intent - is a message passing mechanism between components of Android, except for Content Provider. You can use Intent to start any component.
+Intent - is a message passing mechanism between components of Android, except for Content Provider. You can use Intent to start any component.
 
-	Sticky Intent - Sticks with Android, for future broadcast listeners. For example if BATTERY_LOW event occurs then that Intent will stick with Android so that any future requests for BATTERY_LOW, will return the Intent.
+Sticky Intent - Sticks with Android, for future broadcast listeners. For example if BATTERY_LOW event occurs then that Intent will stick with Android so that any future requests for BATTERY_LOW, will return the Intent.
 
-	Pending Intent - If you want some one to perform any Intent operation at future point of time on behalf of you, then we will use Pending Intent.
+Pending Intent - If you want some one to perform any Intent operation at future point of time on behalf of you, then we will use Pending Intent.
 
 ### What are the different types of Broadcasts receivers?
 
-	Local broadcasts: These broadcasts are sent within the app and are not transmitted to other apps.
-	System broadcasts: These broadcasts are sent by the Android system and are broadcasted to all registered receivers. Examples of system broadcasts include: battery low, screen on/off, and incoming call.
-	
-	Types of Broadcasts
-	There are two types of broadcasts received by receivers and they are:
-		1. Normal Broadcasts:
-			These are asynchronous broadcasts.
-			Receivers of this type of broadcasts may run in any order, sometimes altogether.
-			This is efficient.
-			Receivers cannot use the result.
-			They cannot abort the included APIs.
-			These broadcasts are sent with Context.sendBroadcas
+Local broadcasts: These broadcasts are sent within the app and are not transmitted to other apps.
 
-		2. Ordered Broadcasts
-			These are synchronous broadcasts.
-			One broadcast is delivered to one receiver at a time.
-			Receivers can use the result. In fact as each receiver executes, result is passed to next receiver.
-			Receiver can abort the broadcast and hence no broadcast is received by other receivers.
-			The order of receivers is managed and controlled by the attribute android:priority in corresponding intent-filter.
-			If receivers will have same priority then they may run in any order.
+System broadcasts: These broadcasts are sent by the Android system and are broadcasted to all registered receivers. Examples of system broadcasts include: battery low, screen on/off, and incoming call.
+
+Types of Broadcasts
+
+There are two types of broadcasts received by receivers and they are:
+
+1. Normal Broadcasts:
+	These are asynchronous broadcasts.
+	Receivers of this type of broadcasts may run in any order, sometimes altogether.
+	This is efficient.
+	Receivers cannot use the result.
+	They cannot abort the included APIs.
+	These broadcasts are sent with Context.sendBroadcas
+
+2. Ordered Broadcasts
+	These are synchronous broadcasts.
+	One broadcast is delivered to one receiver at a time.
+	Receivers can use the result. In fact as each receiver executes, result is passed to next receiver.
+	Receiver can abort the broadcast and hence no broadcast is received by other receivers.
+	The order of receivers is managed and controlled by the attribute android:priority in corresponding intent-filter.
+	If receivers will have same priority then they may run in any order.
 
 
 ### What is service ?
 
 An Android service is a component that is designed to do some work without affecting the user interface. It is designed to run indefinitely.
+
 Services are used to perform long-running operations, such as playing music or downloading data.
+
 Services can also be used for interprocess communication (IPC) between Android applications.
 
 ### Service vs IntentService?
 
 In Android, both Service and IntentService are used for background tasks, but there are some differences between them:
+
 Purpose: A Service runs in the main thread of an application and can be used for long-running operations that don't need to return a result to the caller.
 An IntentService, on the other hand, is specifically designed to handle asynchronous requests (expressed as "intents") on a separate worker thread.
+
 Life cycle: A Service runs indefinitely until it is stopped, while an IntentService automatically stops itself after all start requests have been handled.
+
 Background threads: A Service runs on the main thread, so it can block the UI if not properly managed. An IntentService automatically creates a worker thread to handle background tasks.
+
 Result handling: A Service can't return a result to the caller, while an IntentService can send a result back to the caller using a broadcast intent.
+
 Stopping: A Service can be stopped manually using the stopSelf() or stopService() method, while an IntentService stops itself automatically once all start requests have been handled.
 
 ### What is a JobScheduler?
 
 In Android, JobScheduler is a system service that schedules tasks to run in the background, outside of the main application process. It is designed to run tasks at specific times or in response to certain events, such as network connectivity changes or the device entering a low-power state.
+
 Advantages of the job scheduler API
-Tasks that should be done once the device is connect to a power supply.
-Tasks that require network access or a Wi-Fi connection.
-Task that are not critical or user facing.
-Tasks that should be running on a regular basis as batch where the timing is not critical.
+
+* Tasks that should be done once the device is connect to a power supply.
+* Tasks that require network access or a Wi-Fi connection.
+* Task that are not critical or user facing.
+* Tasks that should be running on a regular basis as batch where the timing is not critical.
 
 
 ### How can two distinct Android apps interact?
 
 Two distinct Android apps can interact with each other through several methods:
+
 1.Intents: An Intent is a message that is sent from one app to another, asking the recipient app to perform an action. Intents can be used to start an activity, deliver data, or execute a background service in another app.
 
-		2.Content Providers: A Content Provider is a component that manages a shared set of data and provides it to other apps through a standardized interface. Apps can use Content Providers to share data, such as contacts or media files, between each other.
+2.Content Providers: A Content Provider is a component that manages a shared set of data and provides it to other apps through a standardized interface. Apps can use Content Providers to share data, such as contacts or media files, between each other.
 
-		3.Broadcast Receivers: Broadcast Receivers are components that listen for broadcast Intents and respond to them. Apps can use broadcast Intents to communicate with each other and share data.
+3.Broadcast Receivers: Broadcast Receivers are components that listen for broadcast Intents and respond to them. Apps can use broadcast Intents to communicate with each other and share data.
 
-		4.Binder IPC (Inter-Process Communication): Binder IPC is a mechanism that enables apps to communicate with each other through a system service running in the Android system. Binder IPC provides a low-level, direct communication channel between apps and is used by many Android system services, such as the Activity Manager and Content Providers.
+4.Binder IPC (Inter-Process Communication): Binder IPC is a mechanism that enables apps to communicate with each other through a system service running in the Android system. Binder IPC provides a low-level, direct communication channel between apps and is used by many Android system services, such as the Activity Manager and Content Providers.
 
-		5.AIDL (Android Interface Definition Language): AIDL is a language that can be used to define remote interfaces for inter-process communication between Android apps. AIDL enables apps to communicate with each other and share complex data structures, even across process boundaries.
+5.AIDL (Android Interface Definition Language): AIDL is a language that can be used to define remote interfaces for inter-process communication between Android apps. AIDL enables apps to communicate with each other and share complex data structures, even across process boundaries.
 
 
 ### Is it possible to run an Android app in multiple processes? How?
 
 Yes, it is possible to run an Android app in multiple processes. This can be accomplished by specifying the android:process attribute in the AndroidManifest.xml file for the component you want to run in a separate process.
 
-	For example, if you want a service to run in a separate process, you can specify the process attribute in the <service> tag as follows:
-		Copy code
+For example, if you want a service to run in a separate process, you can specify the process attribute in the <service> tag as follows:
+```xml
 		<service android:name=".MyService"
 				 android:process=":process_name" />
-				 
-	In this example, the service will run in a separate process with the name "process_name". You can also specify the process attribute for activities, broadcast receivers, and content providers in a similar manner.
+```
 
-	It's important to note that running components in separate processes can impact performance and battery life, as it increases the overhead of inter-process communication. Additionally, it makes the application more complex and harder to manage, as the components in different processes may have different lifecycles and context.
+In this example, the service will run in a separate process with the name "process_name". You can also specify the process attribute for activities, broadcast receivers, and content providers in a similar manner.
 
-	Therefore, it's usually recommended to only use multiple processes when it's necessary for security or functional requirements.
+It's important to note that running components in separate processes can impact performance and battery life, as it increases the overhead of inter-process communication. Additionally, it makes the application more complex and harder to manage, as the components in different processes may have different lifecycles and context.
 
+Therefore, it's usually recommended to only use multiple processes when it's necessary for security or functional requirements.
 
 ### What can you use for background processing in Android?
 
 In Android, there are several options for background processing:
 
-		1.Services: Services are components that run in the background to perform long-running tasks or background work. They can be started by another component or run independently.
+1. Services: Services are components that run in the background to perform long-running tasks or background work. They can be started by another component or run independently.
+2. IntentServices: IntentServices are a type of service that handle each incoming Intent in a separate worker thread. They are well suited for performing background tasks that do not require interaction with the main application process.
+3. AsyncTask: AsyncTask is a helper class that enables you to perform background tasks and publish results on the UI thread without having to manipulate threads and/or handlers.
+4. Threads: Threads are separate paths of execution within an application. You can use threads to perform background tasks without affecting the UI.
+5. Handlers: Handlers are components that allow you to schedule messages and runnables to be executed on a thread's message queue. They are often used in conjunction with threads to perform background work.
+6. JobScheduler: JobScheduler is a system service that schedules tasks to run in the background, outside of the main application process. It provides a convenient way for developers to schedule tasks that are guaranteed to run even if the device is restarted or the application is not running.
+7. WorkManager: WorkManager is a library for Android that provides an API for scheduling deferrable, asynchronous tasks that are guaranteed to execute eventually. WorkManager is suitable for tasks that are guaranteed to run even if the application is restarted.
 
-		2.IntentServices: IntentServices are a type of service that handle each incoming Intent in a separate worker thread. They are well suited for performing background tasks that do not require interaction with the main application process.
-
-		3.AsyncTask: AsyncTask is a helper class that enables you to perform background tasks and publish results on the UI thread without having to manipulate threads and/or handlers.
-
-		4.Threads: Threads are separate paths of execution within an application. You can use threads to perform background tasks without affecting the UI.
-
-		5.Handlers: Handlers are components that allow you to schedule messages and runnables to be executed on a thread's message queue. They are often used in conjunction with threads to perform background work.
-
-		6.JobScheduler: JobScheduler is a system service that schedules tasks to run in the background, outside of the main application process. It provides a convenient way for developers to schedule tasks that are guaranteed to run even if the device is restarted or the application is not running.
-
-		7.WorkManager: WorkManager is a library for Android that provides an API for scheduling deferrable, asynchronous tasks that are guaranteed to execute eventually. WorkManager is suitable for tasks that are guaranteed to run even if the application is restarted.
-
-	The choice of the method for background processing depends on the specific requirements of the task, such as the desired level of control over the execution, the need for a UI thread, the desired battery usage, and the desired compatibility with older versions of Android.
+The choice of the method for background processing depends on the specific requirements of the task, such as the desired level of control over the execution, the need for a UI thread, the desired battery usage, and the desired compatibility with older versions of Android.
 
 
 ### What can you use for background processing in kotlin?
 
 In Kotlin, there are several options for background processing:
 
-		1.Coroutines: Coroutines are a lightweight concurrency construct in Kotlin that allow you to write asynchronous, non-blocking code in a sequential, easy-to-read style. They can be used for background processing and perform long-running tasks.
+1. Coroutines: Coroutines are a lightweight concurrency construct in Kotlin that allow you to write asynchronous, non-blocking code in a sequential, easy-to-read style. They can be used for background processing and perform long-running tasks.
+2. Threads: Threads are separate paths of execution within an application. You can use threads to perform background tasks in Kotlin, just as you would in Java.
+3. Executors: Executors provide a simple way to manage and run background tasks. They allow you to execute tasks in the background using a pool of threads.
+4. AsyncTask: You can use AsyncTask to perform background tasks in Kotlin, just as you would in Java. However, AsyncTask can be less convenient to use than coroutines or other solutions, due to its limitations and the need for thread handling.
 
-		2.Threads: Threads are separate paths of execution within an application. You can use threads to perform background tasks in Kotlin, just as you would in Java.
+The choice of the method for background processing depends on the specific requirements of the task, such as the desired level of control over the execution, the need for a UI thread, and the desired compatibility with other Java libraries and components.
 
-		3.Executors: Executors provide a simple way to manage and run background tasks. They allow you to execute tasks in the background using a pool of threads.
-
-		4.AsyncTask: You can use AsyncTask to perform background tasks in Kotlin, just as you would in Java. However, AsyncTask can be less convenient to use than coroutines or other solutions, due to its limitations and the need for thread handling.
-
-	The choice of the method for background processing depends on the specific requirements of the task, such as the desired level of control over the execution, the need for a UI thread, and the desired compatibility with other Java libraries and components.
-
-	In general, coroutines are the preferred solution for background processing in Kotlin, due to their conciseness, flexibility, and performance. However, you may also consider using threads, executors, or AsyncTask, depending on the specific requirements of your task and your development environment.
+In general, coroutines are the preferred solution for background processing in Kotlin, due to their conciseness, flexibility, and performance. However, you may also consider using threads, executors, or AsyncTask, depending on the specific requirements of your task and your development environment.
 
 
 ### What is a ContentProvider and what is it typically used for?
 
-	ContentProvider is mainly used for access data from one application to another application.
-	For example by using ContentProvider we can get phone contacts,call log from phone to our own application in android.
-	we can also access data which are stored in (sqlite)databases.
+ContentProvider is mainly used for access data from one application to another application.
+
+For example by using ContentProvider we can get phone contacts,call log from phone to our own application in android.
+we can also access data which are stored in (sqlite)databases.
 	
-	A ContentProvider is a component in Android that provides access to a structured set of data. It acts as an intermediary between an application and the data store, enabling data sharing and management between multiple applications.
+A ContentProvider is a component in Android that provides access to a structured set of data. It acts as an intermediary between an application and the data store, enabling data sharing and management between multiple applications.
 
-	ContentProviders are typically used for:
+ContentProviders are typically used for:
 
-		1.Sharing data: ContentProviders allow applications to share data with each other by providing a standardized interface for accessing and modifying the data.
+1. Sharing data: ContentProviders allow applications to share data with each other by providing a standardized interface for accessing and modifying the data.
+2. Centralizing data: ContentProviders allow you to centralize data storage and management in a single location, making it easier to maintain and secure the data.
+3. Protecting data: ContentProviders offer a secure way to access and modify data by controlling access to the data through permissions.
+4. Data synchronization: ContentProviders can be used to keep data synchronized between multiple applications, or between an application and a server.
+5. Querying data: ContentProviders allow you to query data using a standardized SQL-based interface, making it easier to retrieve the data you need.
 
-		2.Centralizing data: ContentProviders allow you to centralize data storage and management in a single location, making it easier to maintain and secure the data.
-
-		3.Protecting data: ContentProviders offer a secure way to access and modify data by controlling access to the data through permissions.
-
-		4.Data synchronization: ContentProviders can be used to keep data synchronized between multiple applications, or between an application and a server.
-
-		5.Querying data: ContentProviders allow you to query data using a standardized SQL-based interface, making it easier to retrieve the data you need.
-
-	In summary, ContentProviders are used in Android to provide a centralized, secure, and flexible way to access and manage structured data. They are an essential component for applications that require data sharing and synchronization, or that need to centralize data storage and management.
+In summary, ContentProviders are used in Android to provide a centralized, secure, and flexible way to access and manage structured data. They are an essential component for applications that require data sharing and synchronization, or that need to centralize data storage and management.
 
 ### Why should you avoid to run non-ui code on the main thread?
 
-	Running non-UI code on the main thread, also known as the UI thread, can lead to several performance issues in Android:
+1. Running non-UI code on the main thread, also known as the UI thread, can lead to several performance issues in Android:
+2. Slow performance: Non-UI code can block the UI thread, causing the user interface to become unresponsive. This can lead to slow performance, janky animations, and an overall poor user experience.
+3. ANR (Application Not Responding) Errors: When the main thread is blocked for too long, the Android system may kill the app and display an "Application Not Responding" (ANR) error message.
+4. Limited Concurrency: The main thread is responsible for handling all UI-related events and updates, so if it is blocked by a long-running task, it cannot perform other tasks in parallel, leading to limited concurrency.
+5. Reduced Battery Life: Running long-running tasks on the main thread can reduce battery life, as the processor must continuously work to keep the app running.
 
-		1.Slow performance: Non-UI code can block the UI thread, causing the user interface to become unresponsive. This can lead to slow performance, janky animations, and an overall poor user experience.
-
-		2.ANR (Application Not Responding) Errors: When the main thread is blocked for too long, the Android system may kill the app and display an "Application Not Responding" (ANR) error message.
-
-		3.Limited Concurrency: The main thread is responsible for handling all UI-related events and updates, so if it is blocked by a long-running task, it cannot perform other tasks in parallel, leading to limited concurrency.
-
-		4.Reduced Battery Life: Running long-running tasks on the main thread can reduce battery life, as the processor must continuously work to keep the app running.
-
-	To avoid these issues, it's recommended to run non-UI code in a separate thread, such as using a worker thread, a Service, an IntentService, a Coroutine, an AsyncTask, or a Handler, depending on the specific requirements of your task and your development environment. This way, the main thread can be free to handle UI-related events and updates, ensuring a smooth and responsive user experience.
+To avoid these issues, it's recommended to run non-UI code in a separate thread, such as using a worker thread, a Service, an IntentService, a Coroutine, an AsyncTask, or a Handler, depending on the specific requirements of your task and your development environment. This way, the main thread can be free to handle UI-related events and updates, ensuring a smooth and responsive user experience.
 
 ### What is ANR? How can the ANR be prevented?
 
 ANR stands for "Application Not Responding." It is an error message displayed by the Android system when an app takes too long to respond to user input or system events.
 
-	ANRs occur when the main thread of an app is blocked for too long by a long-running task, causing the app to become unresponsive. The Android system will kill the app and display the ANR error message if it detects that the main thread has been blocked for a certain period of time (usually 5 seconds).
+ANRs occur when the main thread of an app is blocked for too long by a long-running task, causing the app to become unresponsive. The Android system will kill the app and display the ANR error message if it detects that the main thread has been blocked for a certain period of time (usually 5 seconds).
 
-	To prevent ANRs, you should avoid running long-running tasks, such as network requests or database operations, on the main thread. Instead, you should run these tasks in a separate thread, such as using a worker thread, a Service, an IntentService, a Coroutine, an AsyncTask, or a Handler, depending on the specific requirements of your task and your development environment. This way, the main thread remains free to handle user input and system events, ensuring a responsive user experience.
+To prevent ANRs, you should avoid running long-running tasks, such as network requests or database operations, on the main thread. Instead, you should run these tasks in a separate thread, such as using a worker thread, a Service, an IntentService, a Coroutine, an AsyncTask, or a Handler, depending on the specific requirements of your task and your development environment. This way, the main thread remains free to handle user input and system events, ensuring a responsive user experience.
 
-	In addition, it's also important to optimize your code and to avoid blocking the main thread with excessive computation, I/O operations, or other intensive tasks. You can use tools like Traceview and Systrace to diagnose performance issues and identify areas of your code that can be optimized.
+In addition, it's also important to optimize your code and to avoid blocking the main thread with excessive computation, I/O operations, or other intensive tasks. You can use tools like Traceview and Systrace to diagnose performance issues and identify areas of your code that can be optimized.
 
 ### What is an AsyncTask(Deprecated in API level 30) ?
 
 AsyncTask is a class in the Android framework that allows you to run tasks in the background and update the UI on the main thread. It provides a convenient way to perform background tasks and update the UI without having to manage the lifecycle of separate threads yourself.
 
-	*AsyncTask is designed for short, quick background tasks that do not require a long-running process. It provides an easy way to run code in the background and update the UI on the main thread.
+*AsyncTask is designed for short, quick background tasks that do not require a long-running process. It provides an easy way to run code in the background and update the UI on the main thread.
 
-	*AsyncTask is deprecated in API level 30 and higher, meaning that it is no longer recommended for use in new projects. Instead, other options such as worker threads, Services, IntentServices, Coroutines, or Handlers, should be used for background processing in Android.
+*AsyncTask is deprecated in API level 30 and higher, meaning that it is no longer recommended for use in new projects. Instead, other options such as worker threads, Services, IntentServices, Coroutines, or Handlers, should be used for background processing in Android.
 
-	AsyncTask should only be used in older projects that require backward compatibility with older versions of Android, or for very simple background tasks that do not require a more advanced approach to background processing.
+AsyncTask should only be used in older projects that require backward compatibility with older versions of Android, or for very simple background tasks that do not require a more advanced approach to background processing.
 
 ### What are the problems in AsyncTask?
 
 AsyncTask is a convenient class in the Android framework for running tasks in the background, but it also has several limitations and problems that need to be considered:
 
-	Context Leaks: AsyncTask has a reference to the Activity context, which can cause a memory leak if the Activity is destroyed before the AsyncTask is completed.
+Context Leaks: AsyncTask has a reference to the Activity context, which can cause a memory leak if the Activity is destroyed before the AsyncTask is completed.
 
-	Concurrent Execution: AsyncTask only allows one task to be executed at a time, making it difficult to manage multiple tasks at once.
+Concurrent Execution: AsyncTask only allows one task to be executed at a time, making it difficult to manage multiple tasks at once.
 
-	Configuration Changes: AsyncTask does not handle configuration changes, such as screen rotations, which can result in unexpected behavior.
+Configuration Changes: AsyncTask does not handle configuration changes, such as screen rotations, which can result in unexpected behavior.
 
-	Poor Error Handling: AsyncTask does not provide an effective way to handle errors and exceptions that may occur during background processing.
+Poor Error Handling: AsyncTask does not provide an effective way to handle errors and exceptions that may occur during background processing.
 
-	Deprecated in API level 30: AsyncTask is deprecated in API level 30 and higher, which means it is no longer recommended for use in new projects. Instead, it is recommended to use worker threads, Services, IntentServices, Coroutines, or Handlers for background processing.
+Deprecated in API level 30: AsyncTask is deprecated in API level 30 and higher, which means it is no longer recommended for use in new projects. Instead, it is recommended to use worker threads, Services, IntentServices, Coroutines, or Handlers for background processing.
 
-	For these reasons, it is often recommended to use other methods, such as worker threads, Services, IntentServices, Coroutines, or Handlers, for background processing in Android, rather than relying solely on AsyncTask.
+For these reasons, it is often recommended to use other methods, such as worker threads, Services, IntentServices, Coroutines, or Handlers, for background processing in Android, rather than relying solely on AsyncTask.
 
 
 ### When would you use java thread instead of an AsyncTask?
 
-	You may use a Java Thread instead of an AsyncTask in the following scenarios:
+You may use a Java Thread instead of an AsyncTask in the following scenarios:
 
-	1.Long-running tasks: If you have a task that will take a long time to complete, it is recommended to use a Java Thread instead of an AsyncTask, as AsyncTask is designed for short, quick background tasks.
+1.  Long-running tasks: If you have a task that will take a long time to complete, it is recommended to use a Java Thread instead of an AsyncTask, as AsyncTask is designed for short, quick background tasks.
+2.  Concurrent Execution: If you need to execute multiple tasks concurrently, you should use a Java Thread instead of an AsyncTask, as AsyncTask only allows one task to be executed at a time.
+3.  Handling configuration changes: If you need to handle configuration changes, such as screen rotations, you should use a Java Thread instead of an AsyncTask, as AsyncTask does not handle these changes.
+4.  Error handling: If you need to handle errors and exceptions that may occur during background processing, you should use a Java Thread instead of an AsyncTask, as AsyncTask provides limited error handling capabilities.
+5.  Deprecation in API level 30: If you are developing an app that targets API level 30 or higher, it is recommended to use a Java Thread instead of an AsyncTask, as AsyncTask is deprecated in API level 30 and higher.
 
-	2.Concurrent Execution: If you need to execute multiple tasks concurrently, you should use a Java Thread instead of an AsyncTask, as AsyncTask only allows one task to be executed at a time.
-
-	3.Handling configuration changes: If you need to handle configuration changes, such as screen rotations, you should use a Java Thread instead of an AsyncTask, as AsyncTask does not handle these changes.
-
-	4.Error handling: If you need to handle errors and exceptions that may occur during background processing, you should use a Java Thread instead of an AsyncTask, as AsyncTask provides limited error handling capabilities.
-
-	5.Deprecation in API level 30: If you are developing an app that targets API level 30 or higher, it is recommended to use a Java Thread instead of an AsyncTask, as AsyncTask is deprecated in API level 30 and higher.
-
-	In general, if you need more control and flexibility over your background processing, or if you need to handle more complex scenarios, you should use a Java Thread instead of an AsyncTask.
+In general, if you need more control and flexibility over your background processing, or if you need to handle more complex scenarios, you should use a Java Thread instead of an AsyncTask.
 
 ### What is a Loader? (Deprecated)
 
-	A Loader is a component in the Android framework that allows you to load data asynchronously in the background, so that your app can display the results in the UI without being blocked by the loading process. Loaders were introduced in Android 3.0 (API level 11) as a way to simplify background data loading and provide a mechanism for managing the data load process across the Activity or Fragment lifecycle.
+A Loader is a component in the Android framework that allows you to load data asynchronously in the background, so that your app can display the results in the UI without being blocked by the loading process. Loaders were introduced in Android 3.0 (API level 11) as a way to simplify background data loading and provide a mechanism for managing the data load process across the Activity or Fragment lifecycle.
 	
-	The Loader class provides a simple and convenient way to load data from a ContentProvider or other data source, and it automatically takes care of monitoring the data source for changes and re-loading the data as necessary. Loaders also handle configuration changes, such as screen rotations, so that the data load process is not interrupted or lost.
+The Loader class provides a simple and convenient way to load data from a ContentProvider or other data source, and it automatically takes care of monitoring the data source for changes and re-loading the data as necessary. Loaders also handle configuration changes, such as screen rotations, so that the data load process is not interrupted or lost.
 
-	However, Loaders have been deprecated in API level 30 and higher, and it is recommended to use other methods, such as Coroutines or LiveData, for background data loading in modern Android apps. These newer components provide more robust and flexible ways to manage and update data in response to changes in the underlying data source.
+However, Loaders have been deprecated in API level 30 and higher, and it is recommended to use other methods, such as Coroutines or LiveData, for background data loading in modern Android apps. These newer components provide more robust and flexible ways to manage and update data in response to changes in the underlying data source.
 
 ### What is the relationship between the life cycle of an AsyncTask and an Activity? What problems can this result in? How can these problems be avoided?
 
 
-	An AsyncTask is not tied to the life cycle of the Activity that contains it. 
-	So, for example, if you start an AsyncTask inside an Activity and the user rotates the device, 
-	the Activity will be destroyed (and a new Activity instance will be created) but the AsyncTask will not die but instead goes on living until it complete.
+An AsyncTask is not tied to the life cycle of the Activity that contains it. So, for example, if you start an AsyncTask inside an Activity and the user rotates the device, 
+the Activity will be destroyed (and a new Activity instance will be created) but the AsyncTask will not die but instead goes on living until it complete.
 	
-	For these reasons, using AsyncTasks for long-running background tasks is generally a bad idea . 
-	Rather, for long-running background tasks, a different mechanism (such as a service) should be employed.
+For these reasons, using AsyncTasks for long-running background tasks is generally a bad idea . 
+Rather, for long-running background tasks, a different mechanism (such as a service) should be employed.
 
 ### Explain Looper, Handler and HandlerThread
 
-	Looper, Handler, and HandlerThread are related Android classes that provide a way for executing code in the background on a separate thread from the main thread.
+Looper, Handler, and HandlerThread are related Android classes that provide a way for executing code in the background on a separate thread from the main thread.
 
-		1.Looper: Looper is used to run a message loop for a thread. It's responsible for processing messages in a queue and dispatching them to the appropriate handlers. A Looper object can only be associated with a single thread.
+1. Looper: Looper is used to run a message loop for a thread. It's responsible for processing messages in a queue and dispatching them to the appropriate handlers. A Looper object can only be associated with a single thread.
+2. Handler: A Handler allows you to send and process Message and Runnable objects associated with a thread's MessageQueue. You can use a Handler to post tasks to be executed on the main thread, or to post tasks to be executed on another thread through a HandlerThread.
+3. HandlerThread: A HandlerThread is a subclass of Thread that is specifically designed to be used with a Handler. It's used to create a background thread that can run tasks concurrently with the main thread. The main advantage of using a HandlerThread is that it provides a Looper, making it easier to post tasks to the thread.
 
-		2.Handler: A Handler allows you to send and process Message and Runnable objects associated with a thread's MessageQueue. You can use a Handler to post tasks to be executed on the main thread, or to post tasks to be executed on another thread through a HandlerThread.
-
-		3.HandlerThread: A HandlerThread is a subclass of Thread that is specifically designed to be used with a Handler. It's used to create a background thread that can run tasks concurrently with the main thread. The main advantage of using a HandlerThread is that it provides a Looper, making it easier to post tasks to the thread.
-
-	By using Looper, Handler, and HandlerThread, you can run code in the background and communicate with the main thread in a safe and efficient manner, without the risk of ANR (Application Not Responding) errors.
+By using Looper, Handler, and HandlerThread, you can run code in the background and communicate with the main thread in a safe and efficient manner, without the risk of ANR (Application Not Responding) errors.
 
 
 ### How does the threading work in Android?
 
-	When an application is launched in Android, it creates the first thread of execution, known as the “main” thread. 
-	The main thread is responsible for dispatching events to the appropriate user interface widgets as well as communicating with components from the Android UI toolkit.
+When an application is launched in Android, it creates the first thread of execution, known as the “main” thread. 
+
+The main thread is responsible for dispatching events to the appropriate user interface widgets as well as communicating with components from the Android UI toolkit.
 
 
 ### Android Memory Leak and Garbage Collection
 
-	A memory leak is basically a failure of releasing unused objects from the memory.
-	Android garbage collection is an automatic process which removes unused objects from memory.
+A memory leak is basically a failure of releasing unused objects from the memory.
+
+Android garbage collection is an automatic process which removes unused objects from memory.
 
 ### how to avoid memory leak
 
-	Do not create unnecessary objects.
-	Avoid String Concatenation.
-	Use String Builder.
-	Do not store a massive amount of data in the session.
+* Do not create unnecessary objects.
+* Avoid String Concatenation.
+* Use String Builder.
+* Do not store a massive amount of data in the session.
 
 ### How to persist data in an Android app?
 
-	There are several ways to persist data in an Android app:
+There are several ways to persist data in an Android app:
 
-		1.Shared Preferences: Store simple key-value pairs of primitive data types in a private file on the device.
-
-		2.Internal Storage: Store private data on the device file system.
-
-		3.External Storage: Store public data on the shared external file system.
-
-		4.SQLite Database: Store structured data in a private database.
-
-		5.Room: A library that provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
-
-		6.Network: Store data on a remote server through a network connection, such as RESTful API.
-
+1. Shared Preferences: Store simple key-value pairs of primitive data types in a private file on the device.
+2. Internal Storage: Store private data on the device file system.
+3. External Storage: Store public data on the shared external file system.
+4. SQLite Database: Store structured data in a private database.
+5. Room: A library that provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
+6. Network: Store data on a remote server through a network connection, such as RESTful API.
 
 ### What is ORM? How does it work?
 
-	ORM stands for Object-Relational Mapping. It is a programming technique that maps objects in an application to data stored in a relational database management system. ORM provides an abstract layer between the application and the database, allowing developers to interact with the database through objects and classes rather than writing raw SQL queries.
+ORM stands for Object-Relational Mapping. It is a programming technique that maps objects in an application to data stored in a relational database management system. ORM provides an abstract layer between the application and the database, allowing developers to interact with the database through objects and classes rather than writing raw SQL queries.
 
-	ORM works by taking data from the database and converting it into objects in the application, and vice versa. When an application wants to persist an object to the database, the ORM layer converts the object into SQL statements, which are then executed against the database to persist the data. When the application needs to retrieve data from the database, the ORM layer converts the results of SQL queries into objects in the application. This way, the application can interact with the database using a high-level, object-oriented API, while the ORM layer takes care of the low-level details of converting data between the database and the application.
+ORM works by taking data from the database and converting it into objects in the application, and vice versa. When an application wants to persist an object to the database, the ORM layer converts the object into SQL statements, which are then executed against the database to persist the data. When the application needs to retrieve data from the database, the ORM layer converts the results of SQL queries into objects in the application. This way, the application can interact with the database using a high-level, object-oriented API, while the ORM layer takes care of the low-level details of converting data between the database and the application.
 
 ### How would you preserve Activity state during a screen rotation?
 
-	To preserve the state of an Activity during a screen rotation, you can use the following methods:
+To preserve the state of an Activity during a screen rotation, you can use the following methods:
 
-		1.Use the onSaveInstanceState method: This method is called before an Activity is destroyed, so you can use it to save important data in a Bundle object. When the Activity is recreated after a screen rotation, the saved data can be restored from the Bundle using the onCreate or onRestoreInstanceState method.
+1. Use the onSaveInstanceState method: This method is called before an Activity is destroyed, so you can use it to save important data in a Bundle object. When the Activity is recreated after a screen rotation, the saved data can be restored from the Bundle using the onCreate or onRestoreInstanceState method.
+2. Use a ViewModel: The ViewModel class is part of the Android Architecture Components and provides a way to store data that needs to persist across Activity or Fragment recreations. A ViewModel is scoped to the lifecycle of an Activity, so it can survive a screen rotation and be reused for the recreated Activity.
+3. Use saved instance state bundle: The saved instance state bundle is a bundle that you can use to store any data you want to preserve between activity recreations. This bundle is passed to the onCreate method of the recreated activity so that you can use it to restore your saved data.
 
-		2.Use a ViewModel: The ViewModel class is part of the Android Architecture Components and provides a way to store data that needs to persist across Activity or Fragment recreations. A ViewModel is scoped to the lifecycle of an Activity, so it can survive a screen rotation and be reused for the recreated Activity.
-
-		3.Use saved instance state bundle: The saved instance state bundle is a bundle that you can use to store any data you want to preserve between activity recreations. This bundle is passed to the onCreate method of the recreated activity so that you can use it to restore your saved data.
-
-	Note: It's also important to keep in mind that preserving the state of an Activity during a screen rotation can consume additional resources, so it's important to only store the data that's necessary for the correct functioning of the Activity.
+Note: It's also important to keep in mind that preserving the state of an Activity during a screen rotation can consume additional resources, so it's important to only store the data that's necessary for the correct functioning of the Activity.
 
 
 ### What are different ways to store data in your Android app?
 
-	In an Android app, data can be stored in several ways:
+In an Android app, data can be stored in several ways:
 
-	Shared Preferences: Store small amounts of key-value pairs of primitive data types.
+Shared Preferences: Store small amounts of key-value pairs of primitive data types.
 
-		1.Internal Storage: Store data on the device's internal storage.
-
-		2.External Storage: Store data on external storage (SD card) if it's available.
-
-		3.SQLite Database: Store structured data using a private database.
-
-		4.Room Persistence Library: A library built on top of SQLite that provides an abstract layer for interacting with a database.
-
-		5.Cloud Storage: Store data on cloud servers, such as Firebase Realtime Database or Firebase Storage.
-
-		6.Network Connection: Fetch data from a remote server over a network connection.
+1. Internal Storage: Store data on the device's internal storage.
+2. External Storage: Store data on external storage (SD card) if it's available.
+3. SQLite Database: Store structured data using a private database.
+4. Room Persistence Library: A library built on top of SQLite that provides an abstract layer for interacting with a database.
+5. Cloud Storage: Store data on cloud servers, such as Firebase Realtime Database or Firebase Storage.
+6. Network Connection: Fetch data from a remote server over a network connection.
 
 
 ### Explain Scoped Storage in Android?
 
-	Scoped Storage is a storage feature introduced in Android 10 (API level 29) that changes the way apps access external storage on a device. The main goal of Scoped Storage is to enhance privacy and security for users by limiting access to external storage by apps.
+Scoped Storage is a storage feature introduced in Android 10 (API level 29) that changes the way apps access external storage on a device. The main goal of Scoped Storage is to enhance privacy and security for users by limiting access to external storage by apps.
 
-	With Scoped Storage, each app has its own private directory on external storage, and other apps cannot access these directories. In addition, apps can access only specific directories that are scoped to the app's use case, such as music, photos, or downloads.
+With Scoped Storage, each app has its own private directory on external storage, and other apps cannot access these directories. In addition, apps can access only specific directories that are scoped to the app's use case, such as music, photos, or downloads.
 
-	Apps can request access to specific files or directories using the Storage Access Framework (SAF), which displays a system dialog to the user asking for permission to access the specific files. Once granted, the app can access the requested files.
+Apps can request access to specific files or directories using the Storage Access Framework (SAF), which displays a system dialog to the user asking for permission to access the specific files. Once granted, the app can access the requested files.
 
-	Scoped Storage also introduces a new file-selection UI, making it easier for users to pick files and share them with apps.
+Scoped Storage also introduces a new file-selection UI, making it easier for users to pick files and share them with apps.
 
-	Overall, Scoped Storage is aimed at improving the privacy and security of user data while still allowing apps to access external storage.
+Overall, Scoped Storage is aimed at improving the privacy and security of user data while still allowing apps to access external storage.
 
 
 ### What is commit() and apply() in SharedPreferences?
 
-	commit() and apply() are two methods in Android's SharedPreferences class that allow you to save data in the form of key-value pairs. Both methods are used to persist changes made to the shared preferences.
+commit() and apply() are two methods in Android's SharedPreferences class that allow you to save data in the form of key-value pairs. Both methods are used to persist changes made to the shared preferences.
 
-	The main difference between the two methods is the way they save the data:
+The main difference between the two methods is the way they save the data:
 
-		1.commit(): This method writes the data synchronously to the shared preferences file, blocking the calling thread until the write operation is complete. commit() returns a boolean value indicating whether the write operation was successful.
+1. commit(): This method writes the data synchronously to the shared preferences file, blocking the calling thread until the write operation is complete. commit() returns a boolean value indicating whether the write operation was successful.
+2. apply(): This method writes the data asynchronously to the shared preferences file, without blocking the calling thread. apply() does not return a value, so there is no way to know whether the write operation was successful or not.
 
-		2.apply(): This method writes the data asynchronously to the shared preferences file, without blocking the calling thread. apply() does not return a value, so there is no way to know whether the write operation was successful or not.
-
-	In general, apply() is recommended for most use cases because it is faster than commit(), and it does not block the calling thread. However, if you need to ensure that the data is written to the shared preferences before moving on to other tasks, you should use commit().
+In general, apply() is recommended for most use cases because it is faster than commit(), and it does not block the calling thread. However, if you need to ensure that the data is written to the shared preferences before moving on to other tasks, you should use commit().
 
 
 ### What is a SpannableString?
 
-	A SpannableString has immutable text, but its span information is mutable. 
-	Use a SpannableString when your text doesn't need to be changed but the styling does. 
-	Spans are ranges over the text that include styling information like color, heighliting, italics, links, etc
+A SpannableString has immutable text, but its span information is mutable. 
+
+Use a SpannableString when your text doesn't need to be changed but the styling does. 
+
+Spans are ranges over the text that include styling information like color, heighliting, italics, links, etc
 
 
 ### How to implement Dark mode in any application?
 
-	Make sure to change the default theme from Theme.AppCompat.Light.DarkActionBar to Theme.AppCompat.DayNight.DarkActionBar in the styles.xml file 
-	and then do AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES) to switch to the night mode.
+Make sure to change the default theme from Theme.AppCompat.Light.DarkActionBar to Theme.AppCompat.DayNight.DarkActionBar in the styles.xml file 
+and then do AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES) to switch to the night mode.
 
 ### How to generate dynamic colors based in image?
 
-	To generate dynamic colors based on an image in Android, you can follow these steps:
-		1.Load the image into a Bitmap object.
-		2.Use the Palette library to extract the dominant colors from the Bitmap.
-		3.Choose the color that you want to use for your dynamic color.
-		4.Apply the chosen color to your UI elements.
-	Here's some code to get you started:
-		Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.my_image);
-		Palette palette = Palette.from(myBitmap).generate();
-		int color = palette.getDominantColor(ContextCompat.getColor(this, R.color.default_color));
-		// Use color as the background color for your UI element
-		myView.setBackgroundColor(color);
-		
-	Note: In the example code, R.drawable.my_image should be replaced with the image you want to use, and myView should be replaced with the name of your UI element.
+To generate dynamic colors based on an image in Android, you can follow these steps:
+1. Load the image into a Bitmap object.
+2. Use the Palette library to extract the dominant colors from the Bitmap.
+3. Choose the color that you want to use for your dynamic color.
+4. Apply the chosen color to your UI elements.
+
+Here's some code to get you started:
+```java
+	Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.my_image);
+	Palette palette = Palette.from(myBitmap).generate();
+	int color = palette.getDominantColor(ContextCompat.getColor(this, R.color.default_color));
+	// Use color as the background color for your UI element
+	myView.setBackgroundColor(color);
+```
+
+Note: In the example code, R.drawable.my_image should be replaced with the image you want to use, and myView should be replaced with the name of your UI element.
 
 
 ### Explain about Density Independence Pixel
 
-	Density-independent pixels, written as dp (pronounced "dips"), are flexible units that scale to have uniform dimensions on any screen.
-	They provide a flexible way to accommodate a design across platforms. 
-	Material UIs use density-independent pixels to display elements consistently on screens with different densities.
+Density-independent pixels, written as dp (pronounced "dips"), are flexible units that scale to have uniform dimensions on any screen.
+
+They provide a flexible way to accommodate a design across platforms. 
+
+Material UIs use density-independent pixels to display elements consistently on screens with different densities.
 
 
 ### What is the onTrimMemory() method?
 
-	onTrimMemory(): Called when the operating system has determined that it is a good time for a process to trim unneeded memory from its process.
-	This will happen for example when it goes in the background and there is not enough memory to keep as many background processes running as desired.
+onTrimMemory(): Called when the operating system has determined that it is a good time for a process to trim unneeded memory from its process.
+
+This will happen for example when it goes in the background and there is not enough memory to keep as many background processes running as desired.
 
 
 ### What causes OutOfMemoryError?
 
-	An OutOfMemoryError occurs when a Java program attempts to allocate more memory than is available in the heap, causing the JVM to crash. This can happen if a program creates too many objects, the objects are too large, or if the memory leak exists in the program. 
-	It can also occur if the maximum heap size is set too low.
+An OutOfMemoryError occurs when a Java program attempts to allocate more memory than is available in the heap, causing the JVM to crash. 
+
+This can happen if a program creates too many objects, the objects are too large, or if the memory leak exists in the program. 
+
+It can also occur if the maximum heap size is set too low.
 
 ### How do you find memory leaks in Android applications?
 
-	To find memory leaks in Android applications, you can use tools like the Android Profiler in Android Studio, MAT (Memory Analyzer Tool) or LeakCanary.
-	These tools allow you to monitor memory usage, track memory allocations, and identify potential memory leaks by analyzing the heap dump.
-	Additionally, you can also use logcat to check for memory warnings and use methods such as the Traceview tool to analyze the performance of your app. 
-	By identifying the source of the leak, you can fix the code that is causing the leak and improve the overall performance of your app.
+To find memory leaks in Android applications, you can use tools like the Android Profiler in Android Studio, MAT (Memory Analyzer Tool) or LeakCanary.
+
+These tools allow you to monitor memory usage, track memory allocations, and identify potential memory leaks by analyzing the heap dump.
+
+Additionally, you can also use logcat to check for memory warnings and use methods such as the Traceview tool to analyze the performance of your app. 
+
+By identifying the source of the leak, you can fix the code that is causing the leak and improve the overall performance of your app.
 
 
 
 ### How do you overcome memory leaks?
 
-	Memory leaks can be overcome by following best practices and techniques such as:
+Memory leaks can be overcome by following best practices and techniques such as:
 
-		Avoiding memory leaks by using weak references, static references, and static inner classes.
+Avoiding memory leaks by using weak references, static references, and static inner classes.
 
-		Releasing resources when they are no longer needed, such as closing database connections, unregistering broadcast receivers, and removing callbacks.
+Releasing resources when they are no longer needed, such as closing database connections, unregistering broadcast receivers, and removing callbacks.
 
-		Using efficient data structures, such as recycling views in ListViews, instead of creating new objects.
+Using efficient data structures, such as recycling views in ListViews, instead of creating new objects.
 
-		Avoiding memory-intensive operations on the main thread and using background threads instead.
+Avoiding memory-intensive operations on the main thread and using background threads instead.
 
-		Avoiding memory leaks caused by retaining anonymous inner classes by making them static or using a weak reference.
+Avoiding memory leaks caused by retaining anonymous inner classes by making them static or using a weak reference.
 
-		Avoiding memory leaks caused by retain cycles by using a weak reference for one of the references.
+Avoiding memory leaks caused by retain cycles by using a weak reference for one of the references.
 
-		Monitoring memory usage and heap dumps to identify the source of the leak and fix it.
+Monitoring memory usage and heap dumps to identify the source of the leak and fix it.
 
-	By following these best practices, you can minimize the risk of memory leaks in your app and ensure that it performs well and runs smoothly.
+By following these best practices, you can minimize the risk of memory leaks in your app and ensure that it performs well and runs smoothly.
 
 ### How to reduce battery usage in an android application?
 
-	There are several ways to reduce battery usage in an Android application:
+There are several ways to reduce battery usage in an Android application:
 
-		1.Optimize your code for efficiency and reduce resource usage.
-		2.Minimize the use of background services, or only use them when necessary.
-		3.Use wake locks judiciously to keep the device awake only when necessary.
-		4.Avoid using high-frequency location updates and use lower-power alternatives like Geofencing API.
-		5.Minimize network usage by using efficient network calls and caching data when appropriate.
-		6.Use Google Play's Battery Saver feature to automatically reduce battery usage when the device's battery is low.
-		7.Use the JobScheduler API to schedule tasks to run in the background.
-		8.Unregister receivers and listeners when they're no longer needed.
+1. Optimize your code for efficiency and reduce resource usage.
+2. Minimize the use of background services, or only use them when necessary.
+3. Use wake locks judiciously to keep the device awake only when necessary.
+4. Avoid using high-frequency location updates and use lower-power alternatives like Geofencing API.
+5. Minimize network usage by using efficient network calls and caching data when appropriate.
+6. Use Google Play's Battery Saver feature to automatically reduce battery usage when the device's battery is low.
+7. Use the JobScheduler API to schedule tasks to run in the background.
+8. Unregister receivers and listeners when they're no longer needed.
 	
-	These are some of the ways to reduce battery usage in an Android application. Implementing these suggestions will help you create more energy-efficient applications that conserve battery life for users.
+These are some of the ways to reduce battery usage in an Android application. Implementing these suggestions will help you create more energy-efficient applications that conserve battery life for users.
 
 ### What is Doze? What about App Standby?
 
-	Doze and App Standby are two battery optimization features in Android that help to conserve battery life by reducing resource usage when the device is idle.
+Doze and App Standby are two battery optimization features in Android that help to conserve battery life by reducing resource usage when the device is idle.
 
-		1.Doze: Doze is a battery optimization feature in Android that limits the background activity of apps when the device is not being used. When the device enters Doze mode, network access and background processing are limited, and alarms and syncing are deferred. This results in a significant reduction in battery usage.
+1. Doze: Doze is a battery optimization feature in Android that limits the background activity of apps when the device is not being used. When the device enters Doze mode, network access and background processing are limited, and alarms and syncing are deferred. This results in a significant reduction in battery usage.
+2. App Standby: App Standby is a battery optimization feature in Android that restricts the background activity of rarely used apps. When the system determines that an app is not being used, it will place the app in App Standby mode, which restricts its network access and background processing. This helps to conserve battery life.
 
-		2.App Standby: App Standby is a battery optimization feature in Android that restricts the background activity of rarely used apps. When the system determines that an app is not being used, it will place the app in App Standby mode, which restricts its network access and background processing. This helps to conserve battery life.
-
-	Both Doze and App Standby help to conserve battery life, but they do so in different ways. Doze is focused on reducing battery usage when the device is idle, while App Standby is focused on restricting the background activity of rarely used apps.
+Both Doze and App Standby help to conserve battery life, but they do so in different ways. Doze is focused on reducing battery usage when the device is idle, while App Standby is focused on restricting the background activity of rarely used apps.
 
 
 ### How do you support different types of resolutions?
@@ -1249,54 +1247,81 @@ AsyncTask is a convenient class in the Android framework for running tasks in th
 ### What are the different protection levels in permission?
 
 In Android, there are several protection levels that can be assigned to permissions:
-1.Normal: These permissions pose minimal risk to the user's privacy or the device's operation.
-Normal Permissions:INTERNET,SET_ALARM,SET_WALLPAPER,BLUETOOTH,ACCESS_NETWORK_STATE,ACCESS_WIFI_STATE
 
-		2.Dangerous: These permissions pose a potential risk to the user's privacy or the device's operation, and therefore require the user to grant the permission explicitly.
+1.Normal: These permissions pose minimal risk to the user's privacy or the device's operation.
+
+ 			Normal Permissions:INTERNET,SET_ALARM,SET_WALLPAPER,BLUETOOTH,ACCESS_NETWORK_STATE,ACCESS_WIFI_STATE
+
+2.Dangerous: These permissions pose a potential risk to the user's privacy or the device's operation, and therefore require the user to grant the permission explicitly.
+
 			Dangerous Permissions:READ_CALENDAR,WRITE_CALENDAR,CAMERA,ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION,SEND_SMS,RECEIVE_SMS
-		3.Signature: These permissions are automatically granted to apps signed with the same certificate as the app requesting the permission.
+
+3.Signature: These permissions are automatically granted to apps signed with the same certificate as the app requesting the permission.
+
 			Signature Permissions:BIND_AUTOFILL_SERVICE,BIND_ACCESSIBILITY_SERVICE,BIND_INPUT_METHOD,BIND_WALLPAPER,READ_VOICEMAIL,WRITE_VOICEMAIL
-		4.Signature Or System: These permissions are automatically granted to apps signed with the same certificate as the app requesting the permission, or to apps pre-installed on the system image.
-		5.System: These permissions are only available to apps pre-installed on the system image.
+
+4.Signature Or System: These permissions are automatically granted to apps signed with the same certificate as the app requesting the permission, or to apps pre-installed on the system image.
+
+5.System: These permissions are only available to apps pre-installed on the system image.
 
 
 ### What are the differences between Dalvik and ART?
 
-	DALVIK VIRTUAL MACHINE
-		DVM converts bytecode every time you launch a specific app.
+DALVIK VIRTUAL MACHINE
+
+DVM converts bytecode every time you launch a specific app.
 		
-	ANDROID RUN TIME
-		ART converts it just once at the time of app installation. That makes CPU execution easier. Improved battery life due to faster execution.		
+ANDROID RUN TIME
+
+ART converts it just once at the time of app installation. That makes CPU execution easier. Improved battery life due to faster execution.		
 
 
 ### What is DEX?
 
-	In the context of Android, DEX refers to Dalvik Executable format, which is a file format used by the Android operating system to store compiled Android application code. The DEX format is optimized for memory-limited devices, such as smartphones, and allows multiple DEX files to be packaged in an APK (Android Package) file. The DEX files contain bytecode that is executed by the Dalvik virtual machine on the Android device, which enables the execution of Android apps. The DEX format has been replaced by the Android Runtime (ART) since Android 4.4 KitKat, but the DEX format is still supported for compatibility reasons.
+In the context of Android, DEX refers to Dalvik Executable format, which is a file format used by the Android operating system to store compiled Android application code. 
+
+The DEX format is optimized for memory-limited devices, such as smartphones, and allows multiple DEX files to be packaged in an APK (Android Package) file. 
+
+The DEX files contain bytecode that is executed by the Dalvik virtual machine on the Android device, which enables the execution of Android apps.
+
+The DEX format has been replaced by the Android Runtime (ART) since Android 4.4 KitKat, but the DEX format is still supported for compatibility reasons.
 
 
 ### Can you manually call the Garbage collector?
 
-	Yes, you can manually call the garbage collector in Android using System.gc(), but it is generally not recommended to do so. 
-	The Android system manages the memory used by your app and automatically runs the garbage collector when necessary. 
-	By manually calling the garbage collector, you may interfere with the normal operation of the system and cause unexpected behavior.
-	Instead, it's best to let the system handle memory management and focus on optimizing your app's performance through other means such as reducing memory usage, avoiding memory leaks, and avoiding memory-intensive operations.
+Yes, you can manually call the garbage collector in Android using System.gc(), but it is generally not recommended to do so. 
+
+The Android system manages the memory used by your app and automatically runs the garbage collector when necessary. 
+
+By manually calling the garbage collector, you may interfere with the normal operation of the system and cause unexpected behavior.
+
+Instead, it's best to let the system handle memory management and focus on optimizing your app's performance through other means such as reducing memory usage, avoiding memory leaks, and avoiding memory-intensive operations.
 
 ### What is Android Jetpack ?
 
-	Android Jetpack is a set of libraries, tools, and guidance for Android app development. 
-	It was introduced by Google to provide developers with a modern and robust set of components that make it easier to build high-quality apps for Android. 
-	Jetpack includes libraries for tasks such as data binding, navigation, and live data, as well as tools for app testing and architecture. 
-	The libraries are designed to work together, and provide a consistent, compatible, and testable set of components for building Android apps. 
-	The goal of Android Jetpack is to help developers write better code, faster, and with less effort, by taking care of many of the underlying complexities of the Android platform.
-	These software components have been arranged in 4 categories which are as follows:
-		Foundation Components:
+Android Jetpack is a set of libraries, tools, and guidance for Android app development. 
+
+It was introduced by Google to provide developers with a modern and robust set of components that make it easier to build high-quality apps for Android. 
+
+Jetpack includes libraries for tasks such as data binding, navigation, and live data, as well as tools for app testing and architecture. 
+
+The libraries are designed to work together, and provide a consistent, compatible, and testable set of components for building Android apps. 
+
+The goal of Android Jetpack is to help developers write better code, faster, and with less effort, by taking care of many of the underlying complexities of the Android platform.
+
+These software components have been arranged in 4 categories which are as follows:
+
+Foundation Components:
+
 			Backward compatibility,Testing,Kotlin language support.
 			All the foundation components are as follows:
 				App Compat
 				Android KTX
 				Multidex
-				Test		
-		Architecture Components
+				Test	
+
+Architecture Components
+
 			The architecture components help us in building:
 				Robust Apps
 				Testable Apps
@@ -1309,8 +1334,10 @@ Normal Permissions:INTERNET,SET_ALARM,SET_WALLPAPER,BLUETOOTH,ACCESS_NETWORK_STA
 				Paging
 				Room
 				ViewModel
-				WorkManager		
-		Behavior Components
+				WorkManager	
+
+Behavior Components
+
 			The behavior components help in the integration with standard Android services like
 				Notifications
 				Permissions
@@ -1325,7 +1352,8 @@ Normal Permissions:INTERNET,SET_ALARM,SET_WALLPAPER,BLUETOOTH,ACCESS_NETWORK_STA
 				Sharing
 				Slices		
 
-		UI Components
+UI Components
+
 			The UI components provide widgets and helpers to make your app not only easy, but delightful to use.
 			All the UI components are as follows:
 				Animation and transitions
@@ -1339,69 +1367,68 @@ Normal Permissions:INTERNET,SET_ALARM,SET_WALLPAPER,BLUETOOTH,ACCESS_NETWORK_STA
 
 ### What is the room database in Android?
 
-	Room is an Android library that provides an abstraction layer over SQLite, making it easier to interact with databases in Android apps. 
-	Room provides a simple and efficient way to access relational data in your app, allowing you to define your data using Java objects (entities) and the relationships between them. Room takes care of creating the database tables and performing common database operations, such as inserting, updating, and deleting data. 
-	Room also provides compile-time checks, making it easier to catch errors early in development. 
-	This helps to minimize the number of runtime errors and improve the overall quality of your app. 
-	Room also integrates well with other Android architecture components, such as LiveData and ViewModel, making it easier to build robust and maintainable Android apps.
+Room is an Android library that provides an abstraction layer over SQLite, making it easier to interact with databases in Android apps. 
+
+Room provides a simple and efficient way to access relational data in your app, allowing you to define your data using Java objects (entities) and the relationships between them. Room takes care of creating the database tables and performing common database operations, such as inserting, updating, and deleting data. 
+
+Room also provides compile-time checks, making it easier to catch errors early in development. 
+
+This helps to minimize the number of runtime errors and improve the overall quality of your app. 
+
+Room also integrates well with other Android architecture components, such as LiveData and ViewModel, making it easier to build robust and maintainable Android apps.
 
 ### What is Data Binding?
 
-	Data binding is a technique in Android development that allows you to bind data from your app's logic to its layout, making it easier to keep the UI in sync with the data it displays. With data binding, you can write expressions that reference variables and values from your code directly in the XML layout file, eliminating the need to write boilerplate code to update the UI. The data binding library then generates the code needed to update the UI automatically, freeing you from the manual labor of updating the UI every time the data changes.
+Data binding is a technique in Android development that allows you to bind data from your app's logic to its layout, making it easier to keep the UI in sync with the data it displays. With data binding, you can write expressions that reference variables and values from your code directly in the XML layout file, eliminating the need to write boilerplate code to update the UI. The data binding library then generates the code needed to update the UI automatically, freeing you from the manual labor of updating the UI every time the data changes.
 
-	For example, you can bind a text view to a string value in your code, and the data binding library will take care of updating the text view whenever the value changes. This can make your code more readable, maintainable, and easier to test, as well as reducing the amount of code you need to write. Data binding also supports two-way binding, allowing you to update values in the code whenever the user interacts with the UI, making it easier to build interactive apps. Overall, data binding is a powerful tool for simplifying the process of updating the UI in Android development.
+For example, you can bind a text view to a string value in your code, and the data binding library will take care of updating the text view whenever the value changes. This can make your code more readable, maintainable, and easier to test, as well as reducing the amount of code you need to write. Data binding also supports two-way binding, allowing you to update values in the code whenever the user interacts with the UI, making it easier to build interactive apps. Overall, data binding is a powerful tool for simplifying the process of updating the UI in Android development.
 
 ### What is LiveData in Android?
 
 LiveData is a data holder class that is part of the Android Architecture Components library. It's a lifecycle-aware data holder class that holds data and notifies the observers when the data changes.
 
-	One of the main advantages of using LiveData is that it is aware of the lifecycle of the observing component, for example, an Activity or a Fragment, and will automatically remove itself as an observer when the component is destroyed. This helps to prevent memory leaks and ensures that the data is updated only when the component is in an active state.
+One of the main advantages of using LiveData is that it is aware of the lifecycle of the observing component, for example, an Activity or a Fragment, and will automatically remove itself as an observer when the component is destroyed. This helps to prevent memory leaks and ensures that the data is updated only when the component is in an active state.
 
-	Additionally, LiveData can be observed on the main thread or on a background thread, making it easy to update the UI based on the data changes. Overall, LiveData is a convenient way to handle data in Android that integrates well with the Android architecture and helps to promote good architecture practices.
+Additionally, LiveData can be observed on the main thread or on a background thread, making it easy to update the UI based on the data changes. Overall, LiveData is a convenient way to handle data in Android that integrates well with the Android architecture and helps to promote good architecture practices.
 
 ### How LiveData is different from ObservableField?
 
-	LiveData and ObservableField are both part of the Android Architecture Components library and are used for observing data changes in an Android app, but they have some important differences:
+LiveData and ObservableField are both part of the Android Architecture Components library and are used for observing data changes in an Android app, but they have some important differences:
 
-		1.Lifecycle Awareness: LiveData is lifecycle aware, meaning it automatically removes itself as an observer when the observing component (e.g., an Activity or a Fragment) is destroyed. ObservableField does not have this feature and the developer must manually remove the observer when the component is destroyed to prevent memory leaks.
+1. Lifecycle Awareness: LiveData is lifecycle aware, meaning it automatically removes itself as an observer when the observing component (e.g., an Activity or a Fragment) is destroyed. ObservableField does not have this feature and the developer must manually remove the observer when the component is destroyed to prevent memory leaks.
+2. Data Type: LiveData can hold any type of data, while ObservableField is limited to holding a single value of a specific type, such as ObservableField<String> or ObservableField<Integer>
+3. Update Notification: LiveData notifies its observers of updates when the data changes and it only updates its observers if the data has actually changed. ObservableField always notifies its observers of updates, even if the new value is the same as the previous value.
+4. Threading: LiveData can be observed on the main thread or on a background thread, making it easy to update the UI based on data changes. ObservableField can only be observed on the main thread.
 
-		2.Data Type: LiveData can hold any type of data, while ObservableField is limited to holding a single value of a specific type, such as ObservableField<String> or ObservableField<Integer>.
-
-		3.Update Notification: LiveData notifies its observers of updates when the data changes and it only updates its observers if the data has actually changed. ObservableField always notifies its observers of updates, even if the new value is the same as the previous value.
-
-		4.Threading: LiveData can be observed on the main thread or on a background thread, making it easy to update the UI based on data changes. ObservableField can only be observed on the main thread.
-
-	In general, LiveData is a more robust and flexible data holder class compared to ObservableField and is recommended for most use cases. ObservableField can still be useful in simple cases where a single value needs to be observed, but for more complex data structures, LiveData is the better choice.
+In general, LiveData is a more robust and flexible data holder class compared to ObservableField and is recommended for most use cases. ObservableField can still be useful in simple cases where a single value needs to be observed, but for more complex data structures, LiveData is the better choice.
 
 
 ### What is the difference between setValue and postValue in LiveData?
 
-	setValue() and postValue() are methods used to update the value of a LiveData object in Android. The main difference between them is the way they update the value and how the observers are notified:
+setValue() and postValue() are methods used to update the value of a LiveData object in Android. The main difference between them is the way they update the value and how the observers are notified:
 
-	setValue(): This method is used to update the value of a LiveData object and must be called from the main thread. It immediately notifies all the active observers of the change.
+setValue(): This method is used to update the value of a LiveData object and must be called from the main thread. It immediately notifies all the active observers of the change.
 
-	postValue(): This method is used to update the value of a LiveData object from a background thread. It will post the value to the main thread and then notify all the active observers. This is useful when you want to update the LiveData value from a background thread without blocking the main thread.
+postValue(): This method is used to update the value of a LiveData object from a background thread. It will post the value to the main thread and then notify all the active observers. This is useful when you want to update the LiveData value from a background thread without blocking the main thread.
 
-	So, in general, if you want to update the value of a LiveData object from the main thread, you should use setValue(), and if you want to update it from a background thread, you should use postValue().
+So, in general, if you want to update the value of a LiveData object from the main thread, you should use setValue(), and if you want to update it from a background thread, you should use postValue().
 
 
 ### How to share ViewModel between Fragments in Android?
 
-	Using SharedViewModel, we can communicate between fragments. 
-	If we consider two fragments, both the fragments can access the ViewModel through their activity. 
-	Here, one fragment updates the data within the ViewModel which is shared between both the fragments and another fragment observes the changes on that data.
+Using SharedViewModel, we can communicate between fragments. 
+If we consider two fragments, both the fragments can access the ViewModel through their activity. 
+Here, one fragment updates the data within the ViewModel which is shared between both the fragments and another fragment observes the changes on that data.
 	
 	
-	Here is how to do it:
+Here is how to do it:
 
-	1.Create a ViewModel: Create a ViewModel class that will hold the data you want to share between fragments.
+1. Create a ViewModel: Create a ViewModel class that will hold the data you want to share between fragments.
+2. Initialize the ViewModelStore: Initialize the ViewModelStore in your activity. You can do this in the onCreate() method of your activity.
+3. Create a ViewModelProvider: In each fragment, create a ViewModelProvider instance, passing in the activity's ViewModelStore and a factory method to instantiate the ViewModel.
+4. Get the ViewModel instance: Call the get() method on the ViewModelProvider instance to get the shared ViewModel instance.
 
-	2.Initialize the ViewModelStore: Initialize the ViewModelStore in your activity. You can do this in the onCreate() method of your activity.
-
-	3.Create a ViewModelProvider: In each fragment, create a ViewModelProvider instance, passing in the activity's ViewModelStore and a factory method to instantiate the ViewModel.
-
-	4.Get the ViewModel instance: Call the get() method on the ViewModelProvider instance to get the shared ViewModel instance.
-	
+```java
 	class MyActivity : AppCompatActivity() {
 
 		  private val viewModelStore = ViewModelStore()
@@ -1411,6 +1438,7 @@ LiveData is a data holder class that is part of the Android Architecture Compone
 			setContentView(R.layout.activity_main)
 		  }
 		}
+
 
 	class MyFragment : Fragment() {
 
@@ -1427,164 +1455,169 @@ LiveData is a data holder class that is part of the Android Architecture Compone
 			return inflater.inflate(R.layout.fragment_main, container, false)
 		  }
 		}
+```
 
-
-	Now, both fragments can access and modify the same instance of the SharedViewModel.
+Now, both fragments can access and modify the same instance of the SharedViewModel.
 
 
 ### Explain Work Manager in Android
 
-	WorkManager is part of Android Jetpack. WorkManager helps us to execute our tasks immediately or an appropriate time.
+WorkManager is part of Android Jetpack. WorkManager helps us to execute our tasks immediately or an appropriate time.
 	
-	WorkManager is basically a task scheduler, It makes it easy to specify the asynchronous task and when they should run. 
-	The Work Manager API helps create the task and hand it to the Work Manager to run immediately or at an appropriate time as mentioned.
-	For example, you might point your app to download new resources from the network from time to time and now the downloading is a task and you can set up this task to run at an appropriate time depending on the availability of the WIFI network or when the device is charging. 
-	So this way you can schedule a task using WorkManager.
+WorkManager is basically a task scheduler, It makes it easy to specify the asynchronous task and when they should run. 
+The Work Manager API helps create the task and hand it to the Work Manager to run immediately or at an appropriate time as mentioned.
+For example, you might point your app to download new resources from the network from time to time and now the downloading is a task and you can set up this task to run at an appropriate time depending on the availability of the WIFI network or when the device is charging. 
+So this way you can schedule a task using WorkManager.
 	
-	https://androidwave.com/android-workmanager-tutorial/
+https://androidwave.com/android-workmanager-tutorial/
 
 ### Use-cases of WorkManager in Android
 
-	WorkManager is a part of Android Jetpack and it is used for the following use-cases:
+WorkManager is a part of Android Jetpack and it is used for the following use-cases:
 
-		1.Deferred & Background Work: It allows you to schedule one-off or periodic tasks that are executed in the background, even if the app is not running.
+1.Deferred & Background Work: It allows you to schedule one-off or periodic tasks that are executed in the background, even if the app is not running.
 
-		2.Chained & Sequential Tasks: It allows you to chain multiple tasks together and run them in a specific order.
+2.Chained & Sequential Tasks: It allows you to chain multiple tasks together and run them in a specific order.
 
-		3.Guaranteed Task Execution: WorkManager guarantees task execution, even if the device restarts, by using a combination of JobScheduler, AlarmManager, and broadcast receivers.
+3.Guaranteed Task Execution: WorkManager guarantees task execution, even if the device restarts, by using a combination of JobScheduler, AlarmManager, and broadcast receivers.
 
-		4.Battery-Friendly: WorkManager is optimized for battery efficiency, and it will not run tasks if the device is in low-power mode or not connected to a power source.
+4.Battery-Friendly: WorkManager is optimized for battery efficiency, and it will not run tasks if the device is in low-power mode or not connected to a power source.
 
-		5.Simplified Task Scheduling: WorkManager provides a simple and easy-to-use API for scheduling tasks, which makes it a great choice for developers who want to avoid the complexity of handling task scheduling on their own.
+5.Simplified Task Scheduling: WorkManager provides a simple and easy-to-use API for scheduling tasks, which makes it a great choice for developers who want to avoid the complexity of handling task scheduling on their own.
 
-		6.Cancellation & Chaining Support: It allows you to cancel tasks, or chain them with other tasks, based on specific criteria.
+6.Cancellation & Chaining Support: It allows you to cancel tasks, or chain them with other tasks, based on specific criteria.
 
-		7.Safe & Automatic Task Processing: WorkManager automatically manages the execution of tasks, ensuring that they are run in a safe and predictable manner.
+7.Safe & Automatic Task Processing: WorkManager automatically manages the execution of tasks, ensuring that they are run in a safe and predictable manner.
 
 ### How ViewModel work internally?
 
-	The ViewModel is part of the Android Architecture Components and is designed to store and manage UI-related data in a lifecycle-conscious way.
+The ViewModel is part of the Android Architecture Components and is designed to store and manage UI-related data in a lifecycle-conscious way.
 	
-	Benefits:
+Benefits:
+
 	Lifecycle awared
-		Hold and share UI data
-		Survives in rotation and retains data
+	Hold and share UI data
+	Survives in rotation and retains data
 
 ### Why do we use bundles?
 
-	Bundles in Android are used to pass data between activities, fragments, services, and other components of an Android app. 
-	A Bundle is essentially a map of key-value pairs, where the keys are strings and the values can be of various types such as primitive data types, arrays, or custom objects that implement the Parcelable interface.
+Bundles in Android are used to pass data between activities, fragments, services, and other components of an Android app. 
+
+A Bundle is essentially a map of key-value pairs, where the keys are strings and the values can be of various types such as primitive data types, arrays, or custom objects that implement the Parcelable interface.
 
 ### What is the difference between Serializable and Parcelable? Which is the best approach in Android?
 
-	Serializable and Parcelable are two mechanisms for serializing objects in Android to be passed between activities, services, or stored in memory.
+Serializable and Parcelable are two mechanisms for serializing objects in Android to be passed between activities, services, or stored in memory.
 	
-	Serializable is a simple Java interface that provides a standard way of serializing objects to be saved and restored. Objects that implement the Serializable interface can be saved to disk or passed between activities using intents.
+Serializable is a simple Java interface that provides a standard way of serializing objects to be saved and restored. Objects that implement the Serializable interface can be saved to disk or passed between activities using intents.
 	
-	Parcelable is an Android-specific interface that provides a more optimized and efficient way of serializing and deserializing objects. Parcelable is faster and more memory-efficient than Serializable because it directly writes the object's data to a Parcel, rather than creating a temporary copy of the object like Serializable does.
+Parcelable is an Android-specific interface that provides a more optimized and efficient way of serializing and deserializing objects. Parcelable is faster and more memory-efficient than Serializable because it directly writes the object's data to a Parcel, rather than creating a temporary copy of the object like Serializable does.
 
 ### What is AAPT?
 
-	In the context of Android, AAPT stands for "Android Asset Packaging Tool". 
-	It's a tool used by Android developers to compile resources for Android applications. 
-	AAPT is responsible for generating the R.java file, which is a reference to all the resources used in the app, 
-	and for packaging the compiled resources into the final APK (Android Package) file that can be installed on an Android device.
+In the context of Android, AAPT stands for "Android Asset Packaging Tool". 
+
+It's a tool used by Android developers to compile resources for Android applications. 
+
+AAPT is responsible for generating the R.java file, which is a reference to all the resources used in the app,
+and for packaging the compiled resources into the final APK (Android Package) file that can be installed on an Android device.
 
 ### What is the best way to update the screen periodically in android?
 
-	In Android, the best way to update the screen periodically is to use a combination of event-driven programming and multithreading. Here's how you can do this:
+In Android, the best way to update the screen periodically is to use a combination of event-driven programming and multithreading. Here's how you can do this:
 
-		1.Use the Android View framework to display the data on the screen. The framework provides a way to bind the data to the screen and update it automatically when the data changes.
+1. Use the Android View framework to display the data on the screen. The framework provides a way to bind the data to the screen and update it automatically when the data changes.
+2. Use the Handler and Looper classes to create a background thread to periodically update the data. The Handler class can be used to send messages to the main thread to update the UI.
+3. Use the AsyncTask class to run a background task that periodically updates the data. The AsyncTask class automatically runs the task on a background thread and allows you to easily update the UI when the data changes.
+4. Use the Runnable interface and Thread class to create a separate thread that periodically updates the data. The runOnUiThread method can be used to update the UI from the background thread.
 
-		2.Use the Handler and Looper classes to create a background thread to periodically update the data. The Handler class can be used to send messages to the main thread to update the UI.
-
-		3.Use the AsyncTask class to run a background task that periodically updates the data. The AsyncTask class automatically runs the task on a background thread and allows you to easily update the UI when the data changes.
-
-		4.Use the Runnable interface and Thread class to create a separate thread that periodically updates the data. The runOnUiThread method can be used to update the UI from the background thread.
-
-	It's important to note that updating the UI too frequently can lead to lower performance, so it's recommended to update the screen only when necessary. Additionally, it's recommended to use postInvalidate instead of invalidate for smooth and efficient screen updates.
+It's important to note that updating the UI too frequently can lead to lower performance, so it's recommended to update the screen only when necessary. Additionally, it's recommended to use postInvalidate instead of invalidate for smooth and efficient screen updates.
 
 
 ### What is RxJava in Android?
 
-	RxJava is a Java-based reactive programming library used in Android development. 
-	It allows developers to write asynchronous, event-based, and concurrent code in a more concise, readable, and expressive way.
-	RxJava helps to manage multi-threading and handle data streams, making it a popular choice for developing complex, data-driven apps in Android.
+RxJava is a Java-based reactive programming library used in Android development.
+
+It allows developers to write asynchronous, event-based, and concurrent code in a more concise, readable, and expressive way.
+
+RxJava helps to manage multi-threading and handle data streams, making it a popular choice for developing complex, data-driven apps in Android.
 
 ### image loading library glide advantages:
 
-	Glide is an image loading library for Android that provides several advantages over other libraries or built-in solutions:
+Glide is an image loading library for Android that provides several advantages over other libraries or built-in solutions:
 
-		1.Performance: Glide uses a custom memory and disk cache to efficiently load images, even for large sizes.
+1. Performance: Glide uses a custom memory and disk cache to efficiently load images, even for large sizes.
+2. Easy to use: Glide provides a simple API to load and display images with a few lines of code.
+3. Flexibility: Glide can handle a wide range of image sources and can easily display images from different sources, such as network, local storage, or resources.
+4. Resource Management: Glide automatically manages and reuses resources to avoid memory leaks and improve performance.
+5. Image Transformation: Glide provides several built-in transformations, such as cropping, resizing, and rounded corners, that can be applied to images easily.
+6. Error handling: Glide provides a customizable error placeholder that can be displayed when an image fails to load.
+7. Support for GIFs and Video Frames: Glide supports loading and displaying GIFs and video frames as images.
 
-		2.Easy to use: Glide provides a simple API to load and display images with a few lines of code.
-
-		3.Flexibility: Glide can handle a wide range of image sources and can easily display images from different sources, such as network, local storage, or resources.
-
-		4.Resource Management: Glide automatically manages and reuses resources to avoid memory leaks and improve performance.
-
-		5.Image Transformation: Glide provides several built-in transformations, such as cropping, resizing, and rounded corners, that can be applied to images easily.
-
-		6.Error handling: Glide provides a customizable error placeholder that can be displayed when an image fails to load.
-
-		7.Support for GIFs and Video Frames: Glide supports loading and displaying GIFs and video frames as images.
-
-	Overall, Glide provides a comprehensive solution for loading and displaying images in Android, making it a popular choice among developers.
+Overall, Glide provides a comprehensive solution for loading and displaying images in Android, making it a popular choice among developers.
 
 
 ### What is Dagger in Android?
 
-	Dagger is a dependency injection framework for Android and Java. 
-	It allows developers to manage the dependencies between objects in their applications by automatically constructing objects and satisfying the dependencies required by other objects. 
-	This helps to increase code reuse and modularity, making applications easier to maintain and test.
-	Dagger uses annotations and code generation to provide an efficient, type-safe, and readable way to manage dependencies in an Android app.
+Dagger is a dependency injection framework for Android and Java. 
+
+It allows developers to manage the dependencies between objects in their applications by automatically constructing objects and satisfying the dependencies required by other objects. 
+
+This helps to increase code reuse and modularity, making applications easier to maintain and test.
+
+Dagger uses annotations and code generation to provide an efficient, type-safe, and readable way to manage dependencies in an Android app.
 
 ### design pattern in android
 
-	In software engineering, a design pattern is a general repeatable solution to a commonly occurring problem in software design.
+In software engineering, a design pattern is a general repeatable solution to a commonly occurring problem in software design.
 
-	In the context of Android development, some common design patterns include:
+In the context of Android development, some common design patterns include:
 
-		1.Model-View-Controller (MVC) - Separates the application into three components: the model (data), the view (user interface), and the controller (logic)
+1. Model-View-Controller (MVC) - Separates the application into three components: the model (data), the view (user interface), and the controller (logic)
+2. Model-View-Presenter (MVP) - An evolution of MVC, separates the view and the model into separate components and introduces a presenter to act as the middleman.
+3. Model-View-ViewModel (MVVM) - A variation of MVP, uses the data-binding library to bind the view and the model.
+4. Singleton - Enforces a single instance of a class across the entire application.
+5. Factory Method - Defines an interface for creating objects, but lets subclasses decide which class to instantiate.
 
-		2.Model-View-Presenter (MVP) - An evolution of MVC, separates the view and the model into separate components and introduces a presenter to act as the middleman.
-
-		3.Model-View-ViewModel (MVVM) - A variation of MVP, uses the data-binding library to bind the view and the model.
-
-		4.Singleton - Enforces a single instance of a class across the entire application.
-
-		5.Factory Method - Defines an interface for creating objects, but lets subclasses decide which class to instantiate.
-
-	These design patterns help developers to write organized, reusable, and maintainable code for their Android applications.
+These design patterns help developers to write organized, reusable, and maintainable code for their Android applications.
 
 ### MVC vs MVP vs MVVM architecture.
 
-	MVC (Model-View-Controller), MVP (Model-View-Presenter), and MVVM (Model-View-ViewModel) are all architectural patterns used in software development to separate the different concerns of an application and make it easier to develop, test, and maintain.
+MVC (Model-View-Controller), MVP (Model-View-Presenter), and MVVM (Model-View-ViewModel) are all architectural patterns used in software development to separate the different concerns of an application and make it easier to develop, test, and maintain.
 
-		1.MVC is the simplest of the three, with a clear separation between the Model (data), View (user interface), and Controller (logic to control the View and Model).
+1.MVC is the simplest of the three, with a clear separation between the Model (data), View (user interface), and Controller (logic to control the View and Model).
 
-		2.MVP extends MVC by adding a separate layer called the Presenter, which handles the communication between the Model and View, making the View less dependent on the Model.
+2.MVP extends MVC by adding a separate layer called the Presenter, which handles the communication between the Model and View, making the View less dependent on the Model.
 
-		3.MVVM goes further by using data-binding to automatically update the View when the Model changes, reducing the need for the Presenter to manually manage updates. This makes MVVM particularly useful for building dynamic and responsive user interfaces.
+3.MVVM goes further by using data-binding to automatically update the View when the Model changes, reducing the need for the Presenter to manually manage updates. This makes MVVM particularly useful for building dynamic and responsive user interfaces.
 
-	In summary, the choice between MVC, MVP, or MVVM will depend on the specific requirements of your project, including the complexity of the user interface, the need for testing and maintainability, and the use of data-binding.
+In summary, the choice between MVC, MVP, or MVVM will depend on the specific requirements of your project, including the complexity of the user interface, the need for testing and maintainability, and the use of data-binding.
 
 
 
-	MVC:It is a Model-View-Controller. The most commonly used architecture. These are the three components used in MVC.
-		Model- It is business logic and Data State. Getting and manipulating the data, communicates with the controller, interacts with the database, sometimes update the views.
-		View- What we see. User Interface consists of HTML/CSS/XML. It communicates with the controller and sometimes interacts with the model. It passed some dynamic views through the controller.
-		Controller- It is Activity/Fragment. It communicates with view and model. It takes the user input from view/REST services. Process request Get data from the model and passes to the view.
-		Advantages
+MVC:It is a Model-View-Controller. The most commonly used architecture. These are the three components used in MVC.
+
+Model- It is business logic and Data State. Getting and manipulating the data, communicates with the controller, interacts with the database, sometimes update the views.
+
+View- What we see. User Interface consists of HTML/CSS/XML. It communicates with the controller and sometimes interacts with the model. It passed some dynamic views through the controller.
+
+Controller- It is Activity/Fragment. It communicates with view and model. It takes the user input from view/REST services. Process request Get data from the model and passes to the view.
+		
+Advantages
+
 			It keeps business logic separate in the model.
 			Support asynchronous techniques
 			The modification does not affect the entire model
 			Faster development process
-		Disadvantages
+
+Disadvantages
+
 			Due to large code controller is unmanageable.
 			Hinders the Unit testing
 			Increased Complexity	
-	MVP:It as Model-View-Presenter. For the phase of developing time or for the phase of developers it is vital to divide the architecture into layers. It breaks the dependency on what we have on view.
+
+
+MVP:It as Model-View-Presenter. For the phase of developing time or for the phase of developers it is vital to divide the architecture into layers. It breaks the dependency on what we have on view.
 		Model- It is business logic and Data State. Getting and manipulating the data, communicates with the presenter, interacts with the database. It doesn't interact with the view.
 		View - Consists of UI, activity, and fragment. It interacts with the presenter.
 		Presenter- It presents the data from the model. Control all the behavior that want to display from the app. It drives the view. It tells view what to do. 
@@ -1598,7 +1631,7 @@ LiveData is a data holder class that is part of the Android Architecture Compone
 			Tight coupling between View and Presenter
 			Huge amount of interfaces for interaction between layers.
 			The code size is quite excessive.
-	MVVM:It is a Model-View-ViewModel. It losses the tight coupling between each component and reduces the glue classes. 
+MVVM:It is a Model-View-ViewModel. It losses the tight coupling between each component and reduces the glue classes. 
 		Works on the concept of observables. Children don't have reference to the parent, they only have reference by observables.
 		Model-It has business logic, local and remote data source and repository.Repository: communicate with local or remote data sources according to the request from ViewModel.
 		View -Only user interaction i.e.XML, no business logic. Direct send user action to view model but does not directly get a response. 
