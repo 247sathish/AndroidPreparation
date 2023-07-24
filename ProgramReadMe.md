@@ -752,4 +752,105 @@ fun main() {
     }
 }
 ```
+**find Third Largest Number in an Array**
 
+```java
+public class ThirdLargestInArrayExample {
+    public static int getThirdLargest(int[] array, int size) {
+        if (array == null || size < 3) {
+            throw new IllegalArgumentException("Array should have at least three elements.");
+        }
+
+        int temp;
+        for (int i = 0; i < size; i++) {
+            for (int j = i + 1; j < size; j++) {
+                if (array[i] > array[j]) {
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+        return `array[size - 3]`;
+    }
+
+    public static void main(String args[]) {
+        int numbers[] = {12, 2, 5, 3, 50, 100, 1001, 10, 1000};
+
+        try {
+            int thirdLargest = getThirdLargest(numbers, 9);
+            System.out.println("Third Largest: " + thirdLargest);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+```
+```kotlin
+class ThirdLargestInArrayExample {
+    companion object {
+        fun getThirdLargest(arr: IntArray, total: Int): Int {
+            if (arr.size < 3) {
+                throw IllegalArgumentException("Array should have at least three elements.")
+            }
+
+            for (i in 0 until total) {
+                for (j in i + 1 until total) {
+                    if (arr[i] > arr[j]) {
+                        val temp = arr[i]
+                        arr[i] = arr[j]
+                        arr[j] = temp
+                    }
+                }
+            }
+
+            return `arr[total - 3]`
+        }
+    }
+}
+
+fun main() {
+    val numbers = intArrayOf(12, 2, 5, 3, 50, 100, 1001, 10, 1000)
+
+    try {
+        val thirdLargest = ThirdLargestInArrayExample.getThirdLargest(numbers, 9)
+        println("Third Largest: $thirdLargest")
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+    }
+}
+
+```
+
+
+**find Second Smallest Number in an Array**
+
+```java
+public class SecondSmallestInArrayExample{  
+	public static int getSecondSmallest(int[] a, int total){  
+	    int temp;  
+            for (int i = 0; i < total; i++)   
+                    {  
+                        for (int j = i + 1; j < total; j++)   
+                        {  
+                            if (a[i] > a[j])   
+                            {  
+                                temp = a[i];  
+                                a[i] = a[j];  
+                                a[j] = temp;  
+                            }  
+                        }  
+                    }  
+                   return `a[1]`;//2nd element because index starts from 0  
+            }  
+	public static void main(String args[]){  
+	int a[]={1,2,5,6,3,2};  
+	System.out.println("Second smallest: "+getSecondSmallest(a,6));  
+	}
+}
+//return a[total-1] means finding largest number in array
+//return a[total-3] means finding third largest number in array
+//return a[0] means finding smallest number in array
+//return a[3] means finding third smallest number in array
+
+```

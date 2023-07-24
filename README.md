@@ -2079,8 +2079,8 @@ Here are a few ways to ensure null safety in Kotlin:
 
 1. `Use nullable and non-nullable types:` By default, variables in Kotlin are non-nullable. You can make a variable nullable by adding a `"?"` after the type.
 2. `Safe calls:` Use the `"?."` operator to access properties or call methods on an object that might be null. This will return null if the object is null, instead of throwing a NullPointerException.
-3. Non-null assertions: Use the `"!!"` operator to force a nullable reference to a non-null reference. This will throw a NullPointerException if the reference is null.
-4. Elvis operator: Use the `"?:"` operator to provide a default value if a nullable reference is null.
+3. `Non-null assertions:` Use the `"!!"` operator to force a nullable reference to a non-null reference. This will throw a NullPointerException if the reference is null.
+4. `Elvis operator:` Use the `"?:"` operator to provide a default value if a nullable reference is null.
 
 By using these techniques, you can write safer, more readable code that is less prone to null pointer exceptions.
 	
@@ -2652,7 +2652,7 @@ Immutable collection also called Collection supports `read only functionalities`
 			
 #### Mutable Collection
 
-Mutable collections supports both r`ead and write functionalities`. Methods of mutable collections that supports read and write functionalities are:
+Mutable collections supports both `read and write functionalities`. Methods of mutable collections that supports read and write functionalities are:
 
 				List-ArrayList(),arrayListOf(),mutableListOf()
 				Map-HashMap,hashMapOf(),mutableMapOf()
