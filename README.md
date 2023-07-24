@@ -139,14 +139,13 @@ The activity lifecycle is managed by the Android system, and it is important for
 
 https://www.javacodegeeks.com/2020/08/android-activity-life-cycle-the-complete-guide.html
 
-1. #### Activity Life Cycle (on app launch)
+#### Activity Life Cycle (on app launch)
 
 	Activity A: onCreate()
 	Activity A: onStart() 
 	Activity A: onResume() 
 
-
-2. #### Launching ActivityB over ActivityA *Important*
+#### Launching ActivityB over ActivityA *Important*
 
 	Activity A: onPause() 
 	Activity B: onCreate
@@ -157,7 +156,7 @@ https://www.javacodegeeks.com/2020/08/android-activity-life-cycle-the-complete-g
 
 Important point to note here is that ActivityA is stopped (not destroyed) after ActivityB has been created and is interactive.
 
-3. #### Pressing Back Button from ActivityB 
+#### Pressing Back Button from ActivityB 
 
 	Activity B: onPause() 
 	Activity A: onRestart()
@@ -168,31 +167,31 @@ Important point to note here is that ActivityA is stopped (not destroyed) after 
 
 Here we see that at the end, ActivityB is destroyed. Notice that when launching B on A, ActivityA wasn’t destroyed but stopped, and it’s process lived on.
 
-4. #### Pressing Back Button from ActivityA
+#### Pressing Back Button from ActivityA
 
 	Activity A: onPause() 
 	Activity A: onStop() 
 	Activity A: onSaveInstanceState()
 
-5. #### Return back application
+#### Return back application
 
 	Activity A: onRestart()
 	Activity A: onStart() 
 	Activity A: onResume() 
 
-6. #### mobile screen off timing or Pressing home button from  and return back to application
+#### mobile screen off timing or Pressing home button from  and return back to application
 
 	Activity A: onPause() 
 	Activity A: onStop() 
 	Activity A: onSaveInstanceState()
 
-	And when you come back from paused state (by pressing recents button on android), following is the sequence:
+And when you come back from paused state (by pressing recents button on android), following is the sequence:
 
 	Activity A: onRestart()
 	Activity A: onStart() 
 	Activity A: onResume()
 
-7. #### Rotating the device (activity life cycle in orientation change) *Important*
+#### Rotating the device (activity life cycle in orientation change) *Important*
 
 	Activity A: onPause() 
 	Activity A: onStop() 
@@ -205,7 +204,7 @@ Here we see that at the end, ActivityB is destroyed. Notice that when launching 
 
 ->You can get the key value pairs you store from onSaveInstanceState, inside onRestoreInstanceState.
 
-8. #### Receiving a phone call while in ActivityA
+#### Receiving a phone call while in ActivityA
 
 	->onPause() -Activity A
 	->onStop() -Activity A
@@ -225,9 +224,9 @@ https://medium.com/android-news/in-depth-analysis-of-activitys-lifecycle-676179d
 
 onCreate() and onStart() are two methods that are part of the Android Activity lifecycle. They are called when an activity is created and started, respectively.
 
-onCreate() is called when the activity is first created. It is used to perform setup for the activity, such as inflating the activity's user interface and initializing class variables.
+`onCreate()` is called when the activity is first created. It is used to perform setup for the activity, such as inflating the activity's user interface and initializing class variables.
 
-onStart() is called after onCreate(), when the activity is becoming visible to the user. It is used to start any required animations or UI updates, as well as to begin any tasks that need to run while the activity is visible to the user.
+`onStart()` is called after onCreate(), when the activity is becoming visible to the user. It is used to start any required animations or UI updates, as well as to begin any tasks that need to run while the activity is visible to the user.
 
 In general, onCreate() is used for setup that needs to be done when the activity is first created, and onStart() is used for tasks that need to be performed when the activity becomes visible to the user.
 
@@ -278,18 +277,18 @@ The Fragment lifecycle has several methods that are called in different stages o
 
 These methods are:
 
-1. onAttach(Activity)  called only once when it is attached with activity.
-2. onCreate(Bundle)   used to initialize the fragment.
-3. onCreateView(LayoutInflater, ViewGroup, Bundle) creates and returns view hierarchy.
-4. onActivityCreated(Bundle) 	It is invoked after the completion of onCreate() method.
-5. onViewStateRestored(Bundle)  	It provides information to the fragment that all the saved state of fragment view hierarchy has been restored.
-6. onStart() makes the fragment visible.
-7. onResume() makes the fragment interactive.
-8. onPause() is called when fragment is no longer interactive.
-9. onStop() is called when fragment is no longer visible.
-10. onDestroyView() allows the fragment to clean up resources.
-11. onDestroy() allows the fragment to do final clean up of fragment state.
-12. onDetach() It is called immediately prior to the fragment no longer being associated with its activity.
+1. `onAttach(Activity)`  called only once when it is attached with activity.
+2. `onCreate(Bundle)`   used to initialize the fragment.
+3. `onCreateView(LayoutInflater, ViewGroup, Bundle)` creates and returns view hierarchy.
+4. `onActivityCreated(Bundle)` 	It is invoked after the completion of onCreate() method.
+5. `onViewStateRestored(Bundle) ` 	It provides information to the fragment that all the saved state of fragment view hierarchy has been restored.
+6. `onStart(`) makes the fragment visible.
+7. `onResume()` makes the fragment interactive.
+8. `onPause()` is called when fragment is no longer interactive.
+9. `onStop()` is called when fragment is no longer visible.
+10. `onDestroyView()` allows the fragment to clean up resources.
+11. `onDestroy()` allows the fragment to do final clean up of fragment state.
+12. `onDetach()` It is called immediately prior to the fragment no longer being associated with its activity.
 
 
 ### What are "launch modes"?
