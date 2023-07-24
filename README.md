@@ -1,6 +1,6 @@
 ### Tell all the Android application components
 
-Android application components are the building blocks of an Android app. 
+Android application components are the `building blocks of an Android app`. 
 They are the different parts of an app that allow it to perform certain functions and to communicate with other apps and with the system. 
 
 #### There are four main types of Android application components:
