@@ -249,9 +249,9 @@ This happens when we call finish method to activity Example: inside your activit
 
 onSaveInstanceState() and onRestoreInstanceState() are two methods that are part of the Android Activity lifecycle. They are used to save and restore the state of an activity, respectively.
 
-onSaveInstanceState() is called when the activity is about to be destroyed, and is used to save the activity's current state. This can be useful if you want to preserve the activity's state when the activity is being destroyed, for example, if the activity is being destroyed due to a configuration change (such as the device being rotated). The state can be saved in a bundle, which is a mapping from string keys to values, and passed as an argument to onSaveInstanceState().
+`onSaveInstanceState()` is called when the activity is about to be destroyed, and is used to save the activity's current state. This can be useful if you want to preserve the activity's state when the activity is being destroyed, for example, if the activity is being destroyed due to a configuration change (such as the device being rotated). The state can be saved in a bundle, which is a mapping from string keys to values, and passed as an argument to onSaveInstanceState().
 
-onRestoreInstanceState() is called after onStart() when the activity is being recreated, and is used to restore the activity's state from a previously saved bundle. This can be useful if you want to restore the activity's state when the activity is being recreated, for example, if the activity is being recreated due to a configuration change.
+`onRestoreInstanceState()` is called after onStart() when the activity is being recreated, and is used to restore the activity's state from a previously saved bundle. This can be useful if you want to restore the activity's state when the activity is being recreated, for example, if the activity is being recreated due to a configuration change.
 
 In general, onSaveInstanceState() is used to save the state of an activity when the activity is being destroyed, and onRestoreInstanceState() is used to restore the saved state when the activity is being recreated.
 
@@ -301,6 +301,7 @@ This is the default launch mode. If you don’t specify any launch mode, activit
 This is the simplest of all. It’ll just launch one activity over the other. Even if the activity is already present.
 
 Let’s say we have five Activities. A, B, C, D, and E all are defined as Standard.
+
 So, our stack can be like this: A-B-C-A-A-B-B.
 	
 #### 2.SingleTop
@@ -348,7 +349,7 @@ An Activity represents a single screen in an Android app. It is typically used t
 
 A Fragment represents a portion of a user interface or a behavior that can be attached to an Activity. A Fragment is a reusable component that can be used in different parts of an app's UI, or in multiple apps.
 
-One key difference between an Activity and a Fragment is that an Activity represents a single screen, while a Fragment represents a portion of a screen. This means that an Activity is typically used to display a complete UI, while a Fragment is used to display a part of a UI.
+One key difference between an Activity and a Fragment is that an `Activity represents a single screen, while a Fragment represents a portion of a screen`. This means that an Activity is typically used to display a complete UI, while a Fragment is used to display a part of a UI.
 
 Another difference is that an Activity has its own lifecycle and receives its own input events, while a Fragment is closely tied to the Activity it is associated with and relies on the Activity to receive input events.
 
@@ -372,9 +373,9 @@ FragmentPagerAdapter and FragmentStatePagerAdapter are both implementations of t
 
 There are a few key differences between FragmentPagerAdapter and FragmentStatePagerAdapter:
 
-1. FragmentPagerAdapter keeps all of the Fragments in memory, while FragmentStatePagerAdapter only keeps the Fragments in memory that are currently visible to the user. This means that FragmentStatePagerAdapter is better suited for handling large numbers of Fragments, as it will use less memory than FragmentPagerAdapter.
-2. FragmentPagerAdapter is generally easier to use and more straightforward than FragmentStatePagerAdapter, as it does not require you to implement additional methods for saving and restoring the state of the Fragments.
-3. FragmentPagerAdapter is generally better suited for situations where the Fragments in the adapter do not change very often, while FragmentStatePagerAdapter is better suited for situations where the Fragments in the adapter are frequently updated or replaced.
+1. `FragmentPagerAdapter` keeps all of the Fragments in memory, while `FragmentStatePagerAdapter` only keeps the Fragments in memory that are currently visible to the user. This means that FragmentStatePagerAdapter is better suited for handling large numbers of Fragments, as it will use less memory than FragmentPagerAdapter.
+2. `FragmentPagerAdapter` is generally easier to use and more straightforward than `FragmentStatePagerAdapter`, as it does not require you to implement additional methods for saving and restoring the state of the Fragments.
+3. `FragmentPagerAdapter` is generally better suited for situations where the Fragments in the adapter do not change very often, while `FragmentStatePagerAdapter` is better suited for situations where the Fragments in the adapter are frequently updated or replaced.
 
 4. Overall, it's important to choose the right PagerAdapter for your use case. If you are dealing with a small number of Fragments that do not change very often, FragmentPagerAdapter may be the best choice. If you are dealing with a large number of Fragments that are frequently updated or replaced, FragmentStatePagerAdapter may be a better choice.
 
@@ -382,28 +383,27 @@ There are a few key differences between FragmentPagerAdapter and FragmentStatePa
 
 add(), replace(), and addToBackStack() are all methods that can be used when performing Fragment transactions in Android.
 
-add() is used to add a Fragment to an Activity. When a Fragment is added to an Activity using add(), it is placed on top of the existing Fragments in the Activity. The Fragment is not added to the back stack, so the user cannot navigate back to the previous Fragment by pressing the back button.
+`add()` is used to add a Fragment to an Activity. When a Fragment is added to an Activity using add(), it is placed on top of the existing Fragments in the Activity. The Fragment is not added to the back stack, so the user cannot navigate back to the previous Fragment by pressing the back button.
 
-replace() is used to replace a Fragment in an Activity. When a Fragment is replaced using replace(), the new Fragment is placed on top of the existing Fragments in the Activity, and the previous Fragment is removed. The Fragment is not added to the back stack, so the user cannot navigate back to the previous Fragment by pressing the back button.
+`replace()` is used to replace a Fragment in an Activity. When a Fragment is replaced using replace(), the new Fragment is placed on top of the existing Fragments in the Activity, and the previous Fragment is removed. The Fragment is not added to the back stack, so the user cannot navigate back to the previous Fragment by pressing the back button.
 
-addToBackStack() is used to add a Fragment transaction to the back stack. When a Fragment transaction is added to the back stack, the user can navigate back to the previous Fragment by pressing the back button.
+`addToBackStack()` is used to add a Fragment transaction to the back stack. When a Fragment transaction is added to the back stack, the user can navigate back to the previous Fragment by pressing the back button.
 
-Overall, add() and replace() are used to add or replace Fragments in an Activity, while addToBackStack() is used to allow the user to navigate back to the previous Fragment by pressing the back button.
+Overall, add() and replace() are used to `add or replace Fragments in an Activity`, while addToBackStack() is used to allow the `user to navigate back to the previous Fragment` by pressing the back button.
 
 
 ### Why is it recommended to use only the default constructor to create a Fragment?
 
-It is recommended to use only the default constructor to create a Fragment because the system may need to re-create the Fragment after it has been destroyed, and it will do so using the default constructor.
+It is recommended to use only the default constructor to create a Fragment because the `system may need to re-create the Fragment after it has been destroyed`, and it will do so using the default constructor.
 
 If you need to pass arguments to a Fragment, you should use the setArguments() method to supply the arguments after the Fragment has been created, but before it is added to the FragmentManager. This will allow the system to properly recreate the Fragment if it needs to.
 
 Here is an example of how you might use the default constructor and setArguments() to pass arguments to a Fragment:
 ```java
-MyFragment fragment = new MyFragment();
-Bundle args = new Bundle();
-args.putInt("key", value);
-fragment.setArguments(args);
-
+	MyFragment fragment = new MyFragment();
+	Bundle args = new Bundle();
+	args.putInt("key", value);
+	fragment.setArguments(args);
 ```
 By using the default constructor and setArguments(), you can ensure that your Fragment is properly initialized and that it can be properly recreated if necessary.
 
@@ -412,16 +412,16 @@ By using the default constructor and setArguments(), you can ensure that your Fr
 
 There are a few different ways you can communicate between two Fragments:
 
-1.	Use an interface: You can define an interface in the Fragment that needs to communicate with another Fragment, and implement that interface in the host Activity. The first Fragment can then call methods on the interface to send data to the second Fragment, which will be received by the host Activity and forwarded to the second Fragment.
-2.	Use a ViewModel: You can use a ViewModel to store shared data and communicate between Fragments. The ViewModel will survive configuration changes, so it is a good choice for storing data that needs to be shared between Fragments.
-3.	Use a shared ViewModel: If you are using the Android Architecture Components library, you can use the sharedViewModel attribute to share a ViewModel between Fragments. This allows you to store shared data in a ViewModel and have it automatically shared between Fragments.
-4.	Use arguments: You can pass data between Fragments by using the arguments Bundle. You can put data in the Bundle when you create the first Fragment, and then access the data in the second Fragment by reading the arguments from the Bundle.
+1.	`Use an interface:` You can define an interface in the Fragment that needs to communicate with another Fragment, and implement that interface in the host Activity. The first Fragment can then call methods on the interface to send data to the second Fragment, which will be received by the host Activity and forwarded to the second Fragment.
+2.	`Use a ViewModel:` You can use a ViewModel to store shared data and communicate between Fragments. The ViewModel will survive configuration changes, so it is a good choice for storing data that needs to be shared between Fragments.
+3.	`Use a shared ViewModel:` If you are using the Android Architecture Components library, you can use the sharedViewModel attribute to share a ViewModel between Fragments. This allows you to store shared data in a ViewModel and have it automatically shared between Fragments.
+4.	`Use arguments: `You can pass data between Fragments by using the arguments Bundle. You can put data in the Bundle when you create the first Fragment, and then access the data in the second Fragment by reading the arguments from the Bundle.
 
 Overall, there are a few different ways you can communicate between Fragments, and the best approach will depend on your specific needs.
 
 ### What is retained Fragment?
 
-A retained Fragment is a Fragment that is not destroyed when the host Activity is destroyed. Retained Fragments are useful for storing data that needs to be shared between Fragments or between an Activity and a Fragment.
+A retained Fragment is a `Fragment that is not destroyed when the host Activity is destroyed`. Retained Fragments are useful for storing data that needs to be shared between Fragments or between an Activity and a Fragment.
 
 To create a retained Fragment, you should override the onCreate() method and set the setRetainInstance() method to true. This will prevent the Fragment from being destroyed when the host Activity is destroyed.
 
