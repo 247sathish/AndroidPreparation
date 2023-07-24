@@ -1618,27 +1618,44 @@ Disadvantages
 
 
 MVP:It as Model-View-Presenter. For the phase of developing time or for the phase of developers it is vital to divide the architecture into layers. It breaks the dependency on what we have on view.
-		Model- It is business logic and Data State. Getting and manipulating the data, communicates with the presenter, interacts with the database. It doesn't interact with the view.
-		View - Consists of UI, activity, and fragment. It interacts with the presenter.
-		Presenter- It presents the data from the model. Control all the behavior that want to display from the app. It drives the view. It tells view what to do. 
-		Any interaction between the model and the view is handled by the presenter. Saves the data back to the model.
-		Advantages
+
+		
+Model- It is business logic and Data State. Getting and manipulating the data, communicates with the presenter, interacts with the database. It doesn't interact with the view.
+		
+View - Consists of UI, activity, and fragment. It interacts with the presenter.
+		
+Presenter- It presents the data from the model. Control all the behavior that want to display from the app. It drives the view. It tells view what to do. 
+		
+Any interaction between the model and the view is handled by the presenter. Saves the data back to the model.
+		
+Advantages
+
 			It makes view dumb so that you can swap the view easily.
 			Reusable of View and Presenter
 			Code is more readable and maintainable
 			Easy testing as business logic separated from UI
-		Disadvantages
+		
+Disadvantages
+
 			Tight coupling between View and Presenter
 			Huge amount of interfaces for interaction between layers.
 			The code size is quite excessive.
+
 MVVM:It is a Model-View-ViewModel. It losses the tight coupling between each component and reduces the glue classes. 
-		Works on the concept of observables. Children don't have reference to the parent, they only have reference by observables.
-		Model-It has business logic, local and remote data source and repository.Repository: communicate with local or remote data sources according to the request from ViewModel.
-		View -Only user interaction i.e.XML, no business logic. Direct send user action to view model but does not directly get a response. 
-			  To get a response view observes some data which ViewModel exposes.
-		ViewModel- Most of the user interface logic center it here. It is a bridge between a view and a business logic. 
-			  It does not have any clue which view has to use it. As it does not have a direct reference to the view. Thus, good in testing and has loose coupling. 
-			  But still, it needs to update the UI this interaction done by observables. When data changes observable notifies.
+
+Works on the concept of observables. Children don't have reference to the parent, they only have reference by observables.
+		
+Model-It has business logic, local and remote data source and repository.Repository: communicate with local or remote data sources according to the request from ViewModel.
+		
+View -Only user interaction i.e.XML, no business logic. Direct send user action to view model but does not directly get a response. 
+			  
+To get a response view observes some data which ViewModel exposes.
+		
+ViewModel- Most of the user interface logic center it here. It is a bridge between a view and a business logic. 
+			  
+It does not have any clue which view has to use it. As it does not have a direct reference to the view. Thus, good in testing and has loose coupling. 
+			  
+But still, it needs to update the UI this interaction done by observables. When data changes observable notifies.
 
 
 
@@ -1650,227 +1667,259 @@ MVVM:It is a Model-View-ViewModel. It losses the tight coupling between each com
 
 ### What is ADB?
 
-	ADB stands for Android Debug Bridge, it is a command-line tool used to communicate with an Android device for the purpose of debugging and performing advanced operations. 
-	It allows developers to access the device's file system, make changes to it, transfer files, and run shell commands, among other things.
+ADB stands for Android Debug Bridge, it is a command-line tool used to communicate with an Android device for the purpose of debugging and performing advanced operations. 
+
+It allows developers to access the device's file system, make changes to it, transfer files, and run shell commands, among other things.
 
 
 ### What is DDMS and what can you do with it?
 
-	DDMS stands for Dalvik Debug Monitor Server, it is a debugging tool that provides a graphical user interface to perform various actions on an Android device. It is part of the Android SDK (Software Development Kit) and is integrated with the ADB (Android Debug Bridge).
-	With DDMS, you can:
-		Inspect and control processes running on an Android device
-		Monitor logcat output and process detail information
-		Simulate incoming calls and SMS messages
-		View heap and thread updates in real-time
-		Browse file systems on the device
-		Take screenshots of the device
-		Manage port-forwarding and set breakpoints in the code.
+	
+DDMS stands for Dalvik Debug Monitor Server, it is a debugging tool that provides a graphical user interface to perform various actions on an Android device. It is part of the Android SDK (Software Development Kit) and is integrated with the ADB (Android Debug Bridge).
+	
+With DDMS, you can:
+
+* Inspect and control processes running on an Android device
+* Monitor logcat output and process detail information
+* Simulate incoming calls and SMS messages
+* View heap and thread updates in real-time
+* Browse file systems on the device
+* Take screenshots of the device
+* Manage port-forwarding and set breakpoints in the code.
 
 
 ### Firebase.
 
-	Firebase is a Backend-as-a-Service (BaaS) platform that provides developers with a host of services and tools for building web and mobile applications.
-	It offers features like real-time databases, authentication, storage, hosting, and more, all backed by Google infrastructure. 
-	This allows developers to focus on building their applications without having to worry about the underlying infrastructure and server management. 
-	Firebase is a popular choice for building real-time, collaborative applications and can be integrated into web, Android, and iOS projects.
+Firebase is a Backend-as-a-Service (BaaS) platform that provides developers with a host of services and tools for building web and mobile applications.
+	
+It offers features like real-time databases, authentication, storage, hosting, and more, all backed by Google infrastructure. 
+	
+This allows developers to focus on building their applications without having to worry about the underlying infrastructure and server management. 
+	
+Firebase is a popular choice for building real-time, collaborative applications and can be integrated into web, Android, and iOS projects.
 
 ### What are things that we need to take care while using Proguard?
 
-	So, the Proguard will help you in reducing the size of your APK, remove the unused classes and methods and also make your application difficult to reverse engineer.
-	Things to care while using Proguard in Android application
-	Minify the code.
-	Obfuscate the code.
-	Optimize the code.
+So, the Proguard will help you in reducing the size of your APK, remove the unused classes and methods and also make your application difficult to reverse engineer.
+Things to care while using Proguard in Android application
+	
+Minify the code.
+	
+Obfuscate the code.
+	
+Optimize the code.
 
 ### Multidex in Android
 
-	Multidex is a feature in Android that enables the creation of apps with more than the 64k method limit imposed by the Android runtime.
-	This limit can be exceeded when an app includes many libraries or a large number of code. 
-	To enable Multidex, the main class of the application must extend MultiDexApplication and the android:name attribute in the application element in the AndroidManifest.xml file must be set to "android.support.multidex.MultiDexApplication".
+	
+Multidex is a feature in Android that enables the creation of apps with more than the 64k method limit imposed by the Android runtime.
+	
+This limit can be exceeded when an app includes many libraries or a large number of code. 
+	
+To enable Multidex, the main class of the application must extend MultiDexApplication and the android:name attribute in the application element in the AndroidManifest.xml file must be set to "android.support.multidex.MultiDexApplication".
 
 ### How to use Firebase realtime database in your app?
 
-	To use Firebase Realtime Database in your app, you can follow these steps:
+	
+To use Firebase Realtime Database in your app, you can follow these steps:
 
-		1.Create a Firebase project: Go to the Firebase console, create a new project, and register your app.
+1.Create a Firebase project: Go to the Firebase console, create a new project, and register your app.
 
-		2.Add the Firebase Realtime Database to your app: You can do this by using the Firebase Assistant in Android Studio or manually adding the dependencies to your build.gradle file.
+2.Add the Firebase Realtime Database to your app: You can do this by using the Firebase Assistant in Android Studio or manually adding the dependencies to your build.gradle file.
 
-		3.Initialize Firebase in your app: In your app's main Activity, you need to call FirebaseApp.initializeApp() to initialize the Firebase SDK.
+3.Initialize Firebase in your app: In your app's main Activity, you need to call FirebaseApp.initializeApp() to initialize the Firebase SDK.
 
-		4.Read and write data to the database: Use the Firebase Database API to read and write data to the database. You can use setValue() and addValueEventListener() methods to write and read data, respectively.
+4.Read and write data to the database: Use the Firebase Database API to read and write data to the database. You can use setValue() and addValueEventListener() methods to write and read data, respectively.
 
-		5.Security rules: You can secure your data by defining security rules for your Firebase Realtime Database. These rules define who can access your data and what they can do with it.
+5.Security rules: You can secure your data by defining security rules for your Firebase Realtime Database. These rules define who can access your data and what they can do with it.
 
-	This is a high-level overview of using Firebase Realtime Database in your app. You can find more details and examples in the Firebase documentation.
+	
+This is a high-level overview of using Firebase Realtime Database in your app. You can find more details and examples in the Firebase documentation.
 
 ### About multiple apk for android application.
 
-	Multiple APKs is a feature in the Google Play Store that allows developers to publish multiple versions of their app, each targeting different device configurations. This is useful when different parts of your app require different configurations or when you want to create separate APKs for different regions, for example.
+Multiple APKs is a feature in the Google Play Store that allows developers to publish multiple versions of their app, each targeting different device configurations. This is useful when different parts of your app require different configurations or when you want to create separate APKs for different regions, for example.
 
-	Each APK has its own unique version code, which allows the Google Play Store to determine which version is appropriate for a particular device. The Google Play Store will then download and install the appropriate APK on the device.
+Each APK has its own unique version code, which allows the Google Play Store to determine which version is appropriate for a particular device. The Google Play Store will then download and install the appropriate APK on the device.
 
-	There are a few key things to keep in mind when creating multiple APKs:
+There are a few key things to keep in mind when creating multiple APKs:
 
-		1.Each APK must have a unique version code, so the Google Play Store can determine which APK to install on a particular device.
+1. Each APK must have a unique version code, so the Google Play Store can determine which APK to install on a particular device.
+2. You must ensure that each APK is signed with the same signing key.
+3. Each APK must have the same package name.
+4. You can specify the devices that each APK should target by using filters based on things like screen size, API level, and more.
 
-		2.You must ensure that each APK is signed with the same signing key.
-
-		3.Each APK must have the same package name.
-
-		4.You can specify the devices that each APK should target by using filters based on things like screen size, API level, and more.
-
-	By using multiple APKs, you can create a better user experience for your users by delivering the right version of your app to their devices.
+By using multiple APKs, you can create a better user experience for your users by delivering the right version of your app to their devices.
 
 
 ### What is obfuscation? What is it used for? What about minification?
 
-	Obfuscation is the process of making code difficult to understand or reverse-engineer. 
-	It's often used to protect intellectual property or to conceal malicious behavior. Minification, on the other hand, is the process of removing unnecessary characters from source code without changing its functionality.
-	Minification is commonly used to reduce the size of code, which can lead to improved website performance by reducing load times.
+Obfuscation is the process of making code difficult to understand or reverse-engineer. 
+
+It's often used to protect intellectual property or to conceal malicious behavior. Minification, on the other hand, is the process of removing unnecessary characters from source code without changing its functionality.
+
+Minification is commonly used to reduce the size of code, which can lead to improved website performance by reducing load times.
 
 ### How to change some parameters in an app without app update?
 
-	Some ways to change parameters in an app without updating the app include:
+Some ways to change parameters in an app without updating the app include:
 
-		1.Remote configuration: You can store the configuration parameters on a remote server and fetch them at runtime. This way, you can change the parameters without pushing an update.
+1. Remote configuration: You can store the configuration parameters on a remote server and fetch them at runtime. This way, you can change the parameters without pushing an update.
+2. In-app settings: You can provide in-app settings for the user to change certain parameters.
+3. Use of a third-party library: There are libraries that can help you manage the configuration of your app dynamically, such as Firebase Remote Config.
 
-		2.In-app settings: You can provide in-app settings for the user to change certain parameters.
-
-		3.Use of a third-party library: There are libraries that can help you manage the configuration of your app dynamically, such as Firebase Remote Config.
-
-	It's important to note that these methods may not be suitable for all cases, and the best approach depends on the specifics of the app and the parameters you want to change.
+It's important to note that these methods may not be suitable for all cases, and the best approach depends on the specifics of the app and the parameters you want to change.
 
 
 ### Agile model v/s Waterfall model
 
-	https://www.javatpoint.com/agile-vs-waterfall-model#:~:text=Agile%20model%20is%20flexible%20as,4.&text=In%20Agile%20model%2C%20there%20is%20a%20high%20customer%20interaction.
-	Agile Model:
-		1.The Agile methodology promotes the continuous interaction of the development and testing during the SDLC process of any project.
-		2.Agile methodology allows much communication between the customers, developers, testers, and managers.					
-			plan,design,develop,test,deploy,review,  launch
-		
-		3.Agile model is flexible as there is a possibility of changing the requirements even after starting the development process.
-		4.In Agile model, there is a high customer interaction.
-		5.It has a small team size. As smaller is the team, the fewer people work on it so that they can move faster.
-		6.The test plan is reviewed after each sprint.
-		7.Testing team can take part in the requirements change phase without problems.
-		
-	
-	Waterfall model:
-		1.The waterfall model is a universally accepted SDLC model. 
-			Requirements,design,development,testing,delpoyment,maintenance
-	
-		2.On the other hand, the waterfall model is rigid as it does not allow to modify the requirements once the development process starts.
-		3.Customer interaction in waterfall model is very less.
-		4.In the waterfall model, the team may consist more members.
-		5.Test plan is reviewed after complete development.
-		6.It is difficult for the testing team to initiate any change in needs.
+https://www.javatpoint.com/agile-vs-waterfall-model#:~:text=Agile%20model%20is%20flexible%20as,4.&text=In%20Agile%20model%2C%20there%20is%20a%20high%20customer%20interaction.
+
+Agile Model:
+1. The Agile methodology promotes the continuous interaction of the development and testing during the SDLC process of any project.
+2. Agile methodology allows much communication between the customers, developers, testers, and managers.(plan,design,develop,test,deploy,review,  launch)
+3. Agile model is flexible as there is a possibility of changing the requirements even after starting the development process.
+4. In Agile model, there is a high customer interaction.
+5. It has a small team size. As smaller is the team, the fewer people work on it so that they can move faster.
+6. The test plan is reviewed after each sprint.
+7. Testing team can take part in the requirements change phase without problems.
+
+erfall model:
+1. The waterfall model is a universally accepted SDLC model. (Requirements,design,development,testing,delpoyment,maintenance)
+2. On the other hand, the waterfall model is rigid as it does not allow to modify the requirements once the development process starts.
+3. Customer interaction in waterfall model is very less.
+4. In the waterfall model, the team may consist more members.
+5. Test plan is reviewed after complete development.
+6. It is difficult for the testing team to initiate any change in needs.
 
 
 ### Dagger2	:
 
-	1.dagger2 is a dependency injection framework for android
-	2.@inject annotation is used by a component to declare it wants certain injections.
-	3.Three injection are availble
-		1.constructor injection is used class constructor
-		2.field injection is used with the fields in the class
-		3.method injection is used to funtion/method
-	4.@model annotation defins a component that can provide object to be injected
-	5.@provides annotation tells dagger that the return type can be injected into a component.
-	6.@component annotation ties together the previous  elements providing elements which will inject those dependencies wherever needed
+1.dagger2 is a dependency injection framework for android
+
+2.@inject annotation is used by a component to declare it wants certain injections.
+
+3.Three injection are availble
+
+	1.constructor injection is used class constructor
+	2.field injection is used with the fields in the class
+	3.method injection is used to funtion/method
+
+4.@model annotation defins a component that can provide object to be injected
+
+5.@provides annotation tells dagger that the return type can be injected into a component.
+
+6.@component annotation ties together the previous  elements providing elements which will inject those dependencies wherever needed
 
 
 
 ### What is Retrofit?
 
-	Retrofit is a type safe HTTP client library for Android and Java which makes it relatively easy to retrieve and upload JSON (or other structured data) via a REST based webservice
-		What is REST?
-			REpresentational State Transfer (REST) is an architectural style for providing standards between computer system on the web, making it easier for systems to communicate with each other
-		What is an @GET call?
-			An @Get call is used to request data from a specified resource.
-		What is an @POST call?
-			An @POST call is used to send data to a server to create/update a resource
-		What is OAuth?
-			OAuth is an open standard for access delegation, commonly used as a way for Internet users to grant websites or applications access to their information on other websites but without giving them the passwords.		
-	
-	Using RetroFit is very easy.
+Retrofit is a type safe HTTP client library for Android and Java which makes it relatively easy to retrieve and upload JSON (or other structured data) via a REST based webservice
+What is REST?
 
-		Add dependecy in build.gradle.
+REpresentational State Transfer (REST) is an architectural style for providing standards between computer system on the web, making it easier for systems to communicate with each other
+
+What is an @GET call?
+
+An @Get call is used to request data from a specified resource.
+
+What is an @POST call?
+
+An @POST call is used to send data to a server to create/update a resource
+
+What is OAuth?
+
+OAuth is an open standard for access delegation, commonly used as a way for Internet users to grant websites or applications access to their information on other websites but without giving them the passwords.		
+	
+Using RetroFit is very easy.
+
+Add dependecy in build.gradle.
 
 			compile 'com.squareup.retrofit:retrofit:1.9.0'
 
 			compile 'com.squareup.okhttp:okhttp:2.4.0' 
-		Make an Interface for all http methods.
+Make an Interface for all http methods.
 
-		Copy your json output and create pojo class to recieve json of your
-		response, you can make pojo from JsonSchema2pojo site .
+Copy your json output and create pojo class to recieve json of your response,
 
-		make an adapter and call your method
+you can make pojo from JsonSchema2pojo site .
+
+make an adapter and call your method
 		
-		Refer: https://stackoverflow.com/questions/26500036/using-retrofit-in-android
+Refer: https://stackoverflow.com/questions/26500036/using-retrofit-in-android
 
 
 
 ### What are Design Patterns?
 
-	In software engineering a design pattern is a general repeatable solution to a commonly occuring problem in software design. A design pattern is a description or template for how to solve a problem that can be used in many different situations.
+In software engineering a design pattern is a general repeatable solution to a commonly occuring problem in software design. A design pattern is a description or template for how to solve a problem that can be used in many different situations.
 
-	Why are Design Patterns useful?
-		Design patterns can speed up the development process by providing tested, proven developmment paradigms. Reusing design patterns helps to prevent subtle issues that can cause major problems and improves code readability for coders and architects familiar with the patterns
+#### Why are Design Patterns useful?
+Design patterns can speed up the development process by providing tested, proven developmment paradigms. Reusing design patterns helps to prevent subtle issues that can cause major problems and improves code readability for coders and architects familiar with the patterns
 
-	What are the main categories of Design patterns?
-		There are 4 main categories
-		Creational Design Patterns
-		Structural Design Patterns
-		Behavioural Design Patterns
-		Concurrency Design Patterns
+#### What are the main categories of Design patterns?
+There are 4 main categories
+Creational Design Patterns
+Structural Design Patterns
+Behavioural Design Patterns
+Concurrency Design Patterns
 
-	What is the Singleton pattern?
-		The singleton pattern is a design pattern that restricts the instantiation of a class to one. This is useful when exactly one object is needed to coordinate actions across the system.
+#### What is the Singleton pattern?
 
-	What is the Builder pattern?
-		The builder pattern separates the construction of a complex object from its representation so that the same construction process can create different representations
+The singleton pattern is a design pattern that restricts the instantiation of a class to one. This is useful when exactly one object is needed to coordinate actions across the system.
 
-	What is the Abstract Factory pattern?
-		The Abstract Factory patterns provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+#### What is the Builder pattern?
 
-	What is the Adapter pattern?
-		The Adapter pattern converts the interface of a class into another interface the client expects. Adapter lets classes work together that could not otherwise because of incompatible interfaces
+The builder pattern separates the construction of a complex object from its representation so that the same construction process can create different representations
 
-	What is the Iterator pattern?
-		The Iterator patterns provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+#### What is the Abstract Factory pattern?
 
-	What is the Observer pattern?
-		The Observer patterns defines a one to many dependency between objects so that when one object changes state all its dependents are notified and updated automatically.
+The Abstract Factory patterns provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+#### What is the Adapter pattern?
+
+The Adapter pattern converts the interface of a class into another interface the client expects. Adapter lets classes work together that could not otherwise because of incompatible interfaces
+
+#### What is the Iterator pattern?
+
+The Iterator patterns provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+
+#### What is the Observer pattern?
+
+The Observer patterns defines a one to many dependency between objects so that when one object changes state all its dependents are notified and updated automatically.
 
 
 ### What is Firebase?
 
-
 Firebase is a set of online services developed by Google that provide different tools and utilities for application such as hosting messaging monitoring etc.
 
-	What are some of the services provided by Firebase?
-		Firebase provides a wide range of services, among which are
-		File Storage
-		Authentication
-		Hosting
-		Performance monitoring
-		A/B testing
-		Messaging
-		Analytics
+#### What are some of the services provided by Firebase?
 
-	How do you integrate Firebase into your app?
-		Add the latest firebase library to the build.gradle file in your app
+* Firebase provides a wide range of services, among which are
+* File Storage
+* Authentication
+* Hosting
+* Performance monitoring
+* A/B testing
+* Messaging
+* Analytics
 
-	What is Crashytics?
-		Its an online service that provides crash reporting, application logging, online review and statistical analysis of application logs.
+###### How do you integrate Firebase into your app?
 
-	What is Admob?
-		Admob is an online service provided by Google that supply ads to mobile applications.
+Add the latest firebase library to the build.gradle file in your app
 
-	What is CloudMessaging?
-		Firebase Cloud Messaging (FCM) is a cross platform messaging solution that lets you reliably deliver messages at no cost.
+#### What is Crashytics?
+
+Its an online service that provides crash reporting, application logging, online review and statistical analysis of application logs.
+
+#### What is Admob?
+
+Admob is an online service provided by Google that supply ads to mobile applications.
+
+#### What is CloudMessaging?
+
+Firebase Cloud Messaging (FCM) is a cross platform messaging solution that lets you reliably deliver messages at no cost.
 
 
 
@@ -1879,53 +1928,65 @@ Firebase is a set of online services developed by Google that provide different 
 
 RxJava is a reactive programming library for Java. Reactive programming is a paradigm in which Objects react to events generated by other objects.
 
-	What is the Reactive Manifesto?
-		The Reactive Manifesto is an online document that lays out a high standard for application within the software development industry
-		Responsive - Systems should respond in a timely manner
-		Message Driven - System should use async message passing between components
-		Elastic - System should stay responsive under high load
-		Resilient - System should stay responsive when some components fail.
+#### What is the Reactive Manifesto?
+
+The Reactive Manifesto is an online document that lays out a high standard for application within the software development industry
+
+* Responsive - Systems should respond in a timely manner
+* Message Driven - System should use async message passing between components
+* Elastic - System should stay responsive under high load
+* Resilient - System should stay responsive when some components fail.
 
 
-	What are Observables?
-		Observable represents any object that can get data from a data source and whose state may be of interest in a way that other objects may register an interest.
+#### What are Observables?
 
-	What are Observers?
-		An observer is any object that wishes to be notified when the state of another object changes.
+Observable represents any object that can get data from a data source and whose state may be of interest in a way that other objects may register an interest.
 
-	What are the 3 methods of the Observer interface?
-		OnNext - is called on our observer each time a new event is published to the attached Observable
-		OnCompleted - is called when the sequence of events associated with an Observable is complete
-		OnError - is called when an unhandled exception is thrown.
+#### What are Observers?
 
-	What is the difference between blocking and non blocking Observables?
+An observer is any object that wishes to be notified when the state of another object changes.
+
+#### What are the 3 methods of the Observer interface?
+
+* OnNext - is called on our observer each time a new event is published to the attached Observable
+* OnCompleted - is called when the sequence of events associated with an Observable is complete
+* OnError - is called when an unhandled exception is thrown.
+
+#### What is the difference between blocking and non blocking Observables?
+
 	 Non Blocking means asynchronous execution is supported and an observable is allowed to unsubscribe at any point in the event stream. Blocking means an observer is not allowed to unsubscribe in the middle of an event stream
 
-	What are Operators?
+#### What are Operators?
+
 		An operator is a function that takes one Observable (the source) as its first argument and returns another Observable (the destination)
 
-	What are Subjects?
+#### What are Subjects?
+
 		A Subject is simultaneously two elements, a subscriber and an observable. As a subscriber, a subject can be used to publish the events coming from more than one observable.
 
-	What is RxAndroid?
+#### What is RxAndroid?
+
 		RxAndroid is a library that wraps asynchronous UI events to be more RxJava like
 
 
 ### What patterns have you seen in the Android system and where?
 
-	The Android system uses multiple patterns.Here is a list of some of them
-	Adapter - ListAdapter, CursorAdapter
-	Builder - AlertDialog.Builder()
-	Singleton - R.java class
-	Observer - RxJava	
+The Android system uses multiple patterns.Here is a list of some of them
+* Adapter - ListAdapter, CursorAdapter
+* Builder - AlertDialog.Builder()
+* Singleton - R.java class
+* Observer - RxJava	
 
 
 ### SharedPreferences
 
-	Create SharedPreferences:
-		SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE); 
-		Editor editor = pref.edit();
-	Storing data as KEY/VALUE pair
+#### Create SharedPreferences:
+
+	SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE); 
+	Editor editor = pref.edit();
+
+#### Storing data as KEY/VALUE pair
+
 		editor.putBoolean("key_name1", true);           // Saving boolean - true/false
 		editor.putInt("key_name2", "int value");        // Saving integer
 		editor.putFloat("key_name3", "float value");    // Saving float
@@ -1933,18 +1994,24 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 		editor.putString("key_name5", "string value");  // Saving string
 		// Save the changes in SharedPreferences
 		editor.apply(); // commit changes
-	Get SharedPreferences data
+
+#### Get SharedPreferences data
+
 		boolean userFirstLogin= pref.getBoolean("key_name1", true);  // getting boolean
 		int pageNumber=pref.getInt("key_name2", 0);             // getting Integer
 		float amount=pref.getFloat("key_name3", null);          // getting Float
 		long distance=pref.getLong("key_name4", null);          // getting Long
 		String email=pref.getString("key_name5", null); 
-	Deleting Key value from SharedPreferences
+
+#### Deleting Key value from SharedPreferences
+
 		editor.remove("key_name3"); // will delete key key_name3
 		editor.remove("key_name4"); // will delete key key_name4
 		// Save the changes in SharedPreferences
 		editor.apply(); // commit changes	
-	Clear all data from SharedPreferences
+
+#### Clear all data from SharedPreferences
+
 		editor.clear();
 		editor.apply(); // commit changes
 
@@ -1952,67 +2019,71 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 
 ### Kotlin
 
-	https://github.com/MindorksOpenSource/from-java-to-kotlin
-	https://gist.github.com/paulfranco/4453383cc6df064d03087ce7aa5a0c8c
-	https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers/blob/master/kotlin/README.md
-	https://github.com/MindorksOpenSource/android-interview-questions
+https://github.com/MindorksOpenSource/from-java-to-kotlin
+
+https://gist.github.com/paulfranco/4453383cc6df064d03087ce7aa5a0c8c
+
+https://github.com/vamsitallapudi/Android-Interview-Questions-And-Answers/blob/master/kotlin/README.md
+
+https://github.com/MindorksOpenSource/android-interview-questions
 
 
 ### Tell some advantages of Kotlin
 
-	1.Interoperable with Java: Kotlin code can easily be integrated with existing Java codebases, allowing for a gradual transition to the language.
-
-	2.Concise and expressive: Kotlin's syntax is concise, reducing the amount of code required to perform the same tasks as Java, making it easier to read and maintain.
-
-	3.Null safety: Kotlin has built-in null safety features that help prevent null pointer exceptions, a common source of crashes in Java.
-
-	4.Higher-order functions: Kotlin supports functional programming, making it easier to write clean and readable code.
-
-	5.Improved type inference: Kotlin's type inference system reduces the amount of boilerplate code required, making the code more readable and maintainable.
-
-	6.Android development: Kotlin is a first-class language for Android development, with Google officially supporting it as a preferred language for Android app development.
-
-	7.Growing community: Kotlin has a growing community of developers and companies who are adopting the language, providing a wealth of resources and support.
+1. Interoperable with Java: Kotlin code can easily be integrated with existing Java codebases, allowing for a gradual transition to the language.
+2. Concise and expressive: Kotlin's syntax is concise, reducing the amount of code required to perform the same tasks as Java, making it easier to read and maintain.
+3. Null safety: Kotlin has built-in null safety features that help prevent null pointer exceptions, a common source of crashes in Java.
+4. Higher-order functions: Kotlin supports functional programming, making it easier to write clean and readable code.
+5. Improved type inference: Kotlin's type inference system reduces the amount of boilerplate code required, making the code more readable and maintainable.
+6. Android development: Kotlin is a first-class language for Android development, with Google officially supporting it as a preferred language for Android app development.
+7. Growing community: Kotlin has a growing community of developers and companies who are adopting the language, providing a wealth of resources and support.
 
 ### What is the difference between val and var?
 
-	The difference between val and var is that val makes a variable immutable — like final in Java — and var makes a variable mutable. 
+The difference between val and var is that val makes a variable immutable — like final in Java — and var makes a variable mutable. 
 
 ### What is the difference between const and val?
 
-	Both val and const are immutable.
-	const is used to declare compile-time constants, whereas val for run-time constants.
+Both val and const are immutable.
+
+const is used to declare compile-time constants, whereas val for run-time constants.
 
 ### How to ensure null safety in Kotlin?
 
-	In Kotlin, null safety can be ensured by using nullable and non-nullable types and by using safe calls, non-null assertions, and the Elvis operator.
+In Kotlin, null safety can be ensured by using nullable and non-nullable types and by using safe calls, non-null assertions, and the Elvis operator.
 
-	Here are a few ways to ensure null safety in Kotlin:
+Here are a few ways to ensure null safety in Kotlin:
 
-		1.Use nullable and non-nullable types: By default, variables in Kotlin are non-nullable. You can make a variable nullable by adding a "?" after the type.
+1. Use nullable and non-nullable types: By default, variables in Kotlin are non-nullable. You can make a variable nullable by adding a "?" after the type.
+2. Safe calls: Use the "?." operator to access properties or call methods on an object that might be null. This will return null if the object is null, instead of throwing a NullPointerException.
+3. Non-null assertions: Use the "!!" operator to force a nullable reference to a non-null reference. This will throw a NullPointerException if the reference is null.
+4. Elvis operator: Use the "?:" operator to provide a default value if a nullable reference is null.
 
-		2.Safe calls: Use the "?." operator to access properties or call methods on an object that might be null. This will return null if the object is null, instead of throwing a NullPointerException.
-
-		3.Non-null assertions: Use the "!!" operator to force a nullable reference to a non-null reference. This will throw a NullPointerException if the reference is null.
-
-		4.Elvis operator: Use the "?:" operator to provide a default value if a nullable reference is null.
-
-	By using these techniques, you can write safer, more readable code that is less prone to null pointer exceptions.
+By using these techniques, you can write safer, more readable code that is less prone to null pointer exceptions.
 	
-	Kotlin has a safe call operator (?.) to handle null references.
-		To use or set some variable to null value, we need to append a ? sign to the type of the variable.
-		var name1: String? = "MindOrks" //no error
-		name1 = null //no error
-		var name2: String? = null //no error
+Kotlin has a safe call operator (?.) to handle null references.
+
+To use or set some variable to null value, we need to append a ? sign to the type of the variable.
+
+var name1: String? = "MindOrks" //no error
+
+name1 = null //no error
+
+var name2: String? = null //no error
 
 ### When to use lateint keyword used in Kotlin?
 
-	lateinit means late initialization,we are sure that the variable will be initialized before using it.
-	If we don't initialize a lateinit variable before using it gives an error of “lateinit property has not been initialized”.
-	i) Use it with mutable variable[var]
+lateinit means late initialization,we are sure that the variable will be initialized before using it.
+
+If we don't initialize a lateinit variable before using it gives an error of “lateinit property has not been initialized”.
+
+i) Use it with mutable variable[var]
+
 		lateinit var name: String       //Allowed
 		lateinit val name: String       //Not Allowed
-	ii) Allowed with only non-nullable data types
+	
+ii) Allowed with only non-nullable data types
+
 		lateinit var name: String       //Allowed
 		lateinit var name: String?      //Not Allowed
 
@@ -2020,8 +2091,9 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 
 ### How to check if a lateinit variable has been initialized?
 
-	In Kotlin, you can check if a "lateinit" variable has been initialized using the :: operator followed by the name of the variable.
-	The :: operator returns a KProperty object that provides access to information about the property, including its status.
+In Kotlin, you can check if a "lateinit" variable has been initialized using the :: operator followed by the name of the variable.
+	
+The :: operator returns a KProperty object that provides access to information about the property, including its status.
 	
 	class Example {
     lateinit var name: String
@@ -2042,11 +2114,15 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 
 ### How to do lazy initialization of variables in Kotlin?
 
-	Lazy initialization was designed to prevent unnecessary initialization of objects.
-	Your variable will not be initialized unless you use it.
-	It is initialized only once. Next time when you use it, you get the value from cache memory.
-	It is thread safe.
-	The variable can only be val and non-nullable.
+Lazy initialization was designed to prevent unnecessary initialization of objects.
+
+Your variable will not be initialized unless you use it.
+
+It is initialized only once. Next time when you use it, you get the value from cache memory.
+
+It is thread safe.
+
+The variable can only be val and non-nullable.
 
 	val lazyValue: String by lazy {
     println("Initializing lazy value")
@@ -2066,9 +2142,10 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 
 ### What are companion objects in Kotlin? or What is the equivalent of Java static methods in Kotlin?
 
-	In Kotlin, companion objects provide a way to define static methods and properties, which are similar to static methods and fields in Java. A companion object is a singleton object that is associated with a class and can be accessed using the name of the class.
+In Kotlin, companion objects provide a way to define static methods and properties, which are similar to static methods and fields in Java. A companion object is a singleton object that is associated with a class and can be accessed using the name of the class.
 
-	Here is an example of how to define a companion object in Kotlin:
+Here is an example of how to define a companion object in Kotlin:
+
 		class MyClass {
 			companion object {
 				fun staticMethod() {
@@ -2077,11 +2154,11 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 			}
 		}
 	
-	In this example, the staticMethod function is defined inside the companion object. You can call this function from other parts of the code using the following syntax:
+In this example, the staticMethod function is defined inside the companion object. You can call this function from other parts of the code using the following syntax:
 	
 	MyClass.staticMethod()
 
-	Companion objects can also be used to define static properties, just like in Java:
+Companion objects can also be used to define static properties, just like in Java:
 	
 	class MyClass {
     companion object {
@@ -2089,7 +2166,7 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 		}
 	}
 	
-	In this example, the staticProperty variable is defined inside the companion object. You can access this property from other parts of the code using the following syntax:
+In this example, the staticProperty variable is defined inside the companion object. You can access this property from other parts of the code using the following syntax:
 	
 	println(MyClass.staticProperty)
 
@@ -2097,14 +2174,14 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 
 ### What are the visibility modifiers in Kotlin?
 
-	In Kotlin, visibility modifiers control the visibility and accessibility of classes, objects, interfaces, constructors, functions, properties, and their setters. The following are the visibility modifiers in Kotlin:
+In Kotlin, visibility modifiers control the visibility and accessibility of classes, objects, interfaces, constructors, functions, properties, and their setters. The following are the visibility modifiers in Kotlin:
 
-	1.private: The member is only accessible within the same class.
-	2.protected: The member is only accessible within the same class and its subclasses.
-	3.internal: The member is accessible within the same module. A module is a set of Kotlin files compiled together.
-	4.public: The member is accessible everywhere. This is the default visibility for top-level declarations.
+1. private: The member is only accessible within the same class.
+2. protected: The member is only accessible within the same class and its subclasses.
+3. internal: The member is accessible within the same module. A module is a set of Kotlin files compiled together.
+4. public: The member is accessible everywhere. This is the default visibility for top-level declarations.
 	
-	Here is an example of how to use the visibility modifiers in Kotlin:
+Here is an example of how to use the visibility modifiers in Kotlin:
 	
 		class MyClass {
 			private val privateProperty = 42
@@ -2128,20 +2205,24 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 				println("This is a public method")
 			}
 		}
-	In this example, the privateProperty, protectedProperty, internalProperty, and publicProperty variables are declared with different visibility modifiers. 
-	The privateMethod, protectedMethod, internalMethod, and publicMethod functions are declared with different visibility modifiers as well. 
-	The accessibility of these members depends on their visibility modifiers, as described above.
+In this example, the privateProperty, protectedProperty, internalProperty, and publicProperty variables are declared with different visibility modifiers. 
+
+The privateMethod, protectedMethod, internalMethod, and publicMethod functions are declared with different visibility modifiers as well.
+
+The accessibility of these members depends on their visibility modifiers, as described above.
 
 
 ### What is a data class in Kotlin?
 
-	Data classes are specifically designed to hold the data. (it's similar in Getters and Setters in java)
+Data classes are specifically designed to hold the data. (it's similar in Getters and Setters in java)
 	
 	data class Person(val name: String, val age: Int)
 	
-	In this example, Person is a data class with two properties name and age. 
-	By marking the class as data, the compiler automatically generates a number of functions for us, including toString(), hashCode(), and equals().
-	We can also access the properties of the class directly, like this:
+In this example, Person is a data class with two properties name and age. 
+
+By marking the class as data, the compiler automatically generates a number of functions for us, including toString(), hashCode(), and equals().
+
+We can also access the properties of the class directly, like this:
 	
 	val person = Person("John Doe", 30)
 	println(person.name)  // Output: John Doe
@@ -2149,29 +2230,34 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 
 ### How to create a Singleton class in Kotlin? or Singleton Object
 
-	In Kotlin, there are two ways to create a singleton class:
-		1.Using an object keyword
+In Kotlin, there are two ways to create a singleton class:
+
+1.Using an object keyword
+
 			object SingletonObject {
 				fun doSomething() = println("Singleton object doing something")
 			}
-		2.Using a companion object inside a class
+		
+2.Using a companion object inside a class
+
 			class SingletonClass {
 				companion object {
 					fun doSomething() = println("Singleton class doing something")
 				}
 			}
 		
-	In both cases, you can access the singleton instance without having to explicitly instantiate the class. 
-	Just call the methods directly on the class/object name, e.g. SingletonObject.doSomething() or SingletonClass.doSomething().	
+In both cases, you can access the singleton instance without having to explicitly instantiate the class. 
+
+Just call the methods directly on the class/object name, e.g. SingletonObject.doSomething() or SingletonClass.doSomething().	
 
 
 ### What is the difference between open and public in Kotlin?
 
-	In Kotlin, open and public are both visibility modifiers that control the accessibility of a class, function, property, or constructor.
+In Kotlin, open and public are both visibility modifiers that control the accessibility of a class, function, property, or constructor.
 
-	The difference between open and public is that open allows a class, function, or property to be subclassed or overridden in other classes, while public only allows access within the same module.
+The difference between open and public is that open allows a class, function, or property to be subclassed or overridden in other classes, while public only allows access within the same module.
 
-	By default, classes, functions, and properties in Kotlin are final and cannot be overridden. To allow them to be subclassed or overridden, you need to use the open keyword.
+By default, classes, functions, and properties in Kotlin are final and cannot be overridden. To allow them to be subclassed or overridden, you need to use the open keyword.
 	
 	class Car{....}
 	class Supercar:Car{....} : // give an error
@@ -2179,7 +2265,7 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 	open Car2{....}
 	class Supercar:Car2{....} : // ok
 	
-	and 
+and 
 	 
 		open class Parent {
 		open fun doSomething() = println("Parent doing something")
@@ -2189,43 +2275,56 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 			override fun doSomething() = println("Child doing something")
 		}
 
-	Note that the public keyword is redundant in Kotlin as it is the default visibility level. It is usually omitted.
+Note that the public keyword is redundant in Kotlin as it is the default visibility level. It is usually omitted.
 
 
 ### Explain the use-case of let, run, with, also, apply in Kotlin.(or) scope functions
 
-	Kotlin provides a set of scope functions, also known as "extension functions," that can be used to structure code and simplify common operations on objects. These functions include:
+Kotlin provides a set of scope functions, also known as "extension functions," that can be used to structure code and simplify common operations on objects. These functions include:
 
-	1.let: Used to execute a block of code on an object, with the object passed as an argument to the block. The result of the block is returned, allowing you to chain multiple operations.
-		Example:
+1.let: Used to execute a block of code on an object, with the object passed as an argument to the block. The result of the block is returned, allowing you to chain multiple operations.
+		
+Example:
+
 		val name = "John Doe"
 		val result = name.let {
 			it.toUpperCase()
 		}
 		println(result)  // Output: JOHN DOE
-	2.run: Similar to let, but the receiver object is accessible as this within the block, rather than being passed as an argument.
-		Example:
+
+2.run: Similar to let, but the receiver object is accessible as this within the block, rather than being passed as an argument.
+		
+Example:
+
 		val name = "John Doe"
 		val result = name.run {
 			toUpperCase()
 		}
 		println(result)  // Output: JOHN DOE
-	3.with: Similar to run, but the receiver object is passed as the only argument to the block.
-		Example:
+
+3.with: Similar to run, but the receiver object is passed as the only argument to the block.
+		
+Example:
 		val name = "John Doe"
 		val result = with(name) {
 			toUpperCase()
 		}
 		println(result)  // Output: JOHN DOE
-	4.apply: Similar to run, but the receiver object is returned after the block is executed, allowing you to modify the object and chain multiple operations.
-		Example:
+
+4.apply: Similar to run, but the receiver object is returned after the block is executed, allowing you to modify the object and chain multiple operations.
+		
+Example:
+
 		val name = "John Doe"
 		val result = name.apply {
 			this + " Jr."
 		}.toUpperCase()
 		println(result)  // Output: JOHN DOE JR.
-	5.also: Used to execute a block of code on an object, with the object passed as an argument to the block, but the original object is returned after the block is executed.
-		Example:
+
+5.also: Used to execute a block of code on an object, with the object passed as an argument to the block, but the original object is returned after the block is executed.
+		
+Example:
+
 		val name = "John Doe"
 		val result = name.also {
 			println(it.toUpperCase())
@@ -2237,28 +2336,34 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 
 ### Difference between List and Array types in Kotlin
 
-	In Kotlin, both List and Array are used to represent a collection of elements, but they have some key differences:
+In Kotlin, both List and Array are used to represent a collection of elements, but they have some key differences:
 
-	1.Immutability: List is an immutable collection, which means that once you create a List, you cannot change its elements. On the other hand, Array is a mutable collection, so you can change its elements after creation.
+1.Immutability: List is an immutable collection, which means that once you create a List, you cannot change its elements. On the other hand, Array is a mutable collection, so you can change its elements after creation.
 
-	2.Type: List is a generic type, which means that its elements can have any type. An Array, on the other hand, has a fixed type for its elements, specified when the Array is created.
+2.Type: List is a generic type, which means that its elements can have any type. An Array, on the other hand, has a fixed type for its elements, specified when the Array is created.
 
-	3.Syntax: 
-		Creating an instance of a List in Kotlin is straightforward, as it can be created using the listOf function:
+3.Syntax: 
+Creating an instance of a List in Kotlin is straightforward, as it can be created using the listOf function:
+
 			val names = listOf("John", "Jane", "Jim")
-		An Array can be created using the arrayOf function, or by using the Array class:
-			val numbers = arrayOf(1, 2, 3)
-			val numbers2 = Array(3) { 0 }
+
+An Array can be created using the arrayOf function, or by using the Array class:
+
+val numbers = arrayOf(1, 2, 3)
+val numbers2 = Array(3) { 0 }
 		
-	Performance: Array is generally faster than List in terms of access time, since it's an array at the underlying level, but it may have a higher overhead when it comes to resizing the collection.
-	In general, you should choose List if you need an immutable collection and Array if you need a mutable one. The choice between the two types will depend on your specific requirements and the particular use case.
+Performance: Array is generally faster than List in terms of access time, since it's an array at the underlying level, but it may have a higher overhead when it comes to resizing the collection.
+
+In general, you should choose List if you need an immutable collection and Array if you need a mutable one. The choice between the two types will depend on your specific requirements and the particular use case.
 
 ### What are Labels in Kotlin?
 
 Labels in Kotlin are custom names given to a specific point in the code. They can be used to control the flow of execution in loops and when working with nested structures.
+
 Labels in Kotlin are prefixed with the '@' symbol, followed by the label name.
 
-	Here's an example:
+Here's an example:
+
 		outerLoop@ for (i in 1..3) {
 			innerLoop@ for (j in 1..3) {
 				if (i == 2 && j == 2) {
@@ -2267,26 +2372,33 @@ Labels in Kotlin are prefixed with the '@' symbol, followed by the label name.
 				println("i = $i; j = $j")
 			}
 		}
+
 		Output:
 			i = 1; j = 1
 			i = 1; j = 2
 			i = 1; j = 3
 			
 			
-	outerLoop@ is just a label with the name "outerLoop"
-	whereas @outerLoop is a reference for the labeled loop or block.
+outerLoop@ is just a label with the name "outerLoop"
 
-	In this example, the two loops are labeled outerLoop and innerLoop. The break statement with the @outerLoop label will transfer control out of the entire outerLoop, rather than just breaking out of the inner loop. The output of the code will be:
+whereas @outerLoop is a reference for the labeled loop or block.
+
+In this example, the two loops are labeled outerLoop and innerLoop. The break statement with the @outerLoop label will transfer control out of the entire outerLoop, rather than just breaking out of the inner loop. The output of the code will be:
 	
-	You can use the continue keyword with a label in a similar manner, to transfer control to a specific point in the code.
+You can use the continue keyword with a label in a similar manner, to transfer control to a specific point in the code.
 
 ### What is an Init block in Kotlin?
 
-	An init block in Kotlin is a block of code that is executed when an instance of a class is created. 
-	The init block is used to initialize the state of an object, perform some setup, or run some logic when an object is created. 
-	In Kotlin, you can have multiple init blocks in a class and they are executed in the order in which they appear. 
-	The init block is executed before the constructor is called.
-	Here's an example:
+An init block in Kotlin is a block of code that is executed when an instance of a class is created. 
+	
+The init block is used to initialize the state of an object, perform some setup, or run some logic when an object is created. 
+	
+In Kotlin, you can have multiple init blocks in a class and they are executed in the order in which they appear. 
+	
+The init block is executed before the constructor is called.
+	
+Here's an example:
+
 		class Example {
 			var variable: Int
 
@@ -2315,21 +2427,28 @@ Labels in Kotlin are prefixed with the '@' symbol, followed by the label name.
 		Constructor
 		Variable: 1
 		
-	In this example, two init blocks are defined and they are executed in the order in which they appear. 
-	The init blocks are used to initialize the state of the variable property.
-	The constructor is then called, which prints the "Constructor" message to the console.
+In this example, two init blocks are defined and they are executed in the order in which they appear. 
+	
+The init blocks are used to initialize the state of the variable property.
+	
+The constructor is then called, which prints the "Constructor" message to the console.
 
 ### Explain pair and triple in Kotlin.
 
-	Pair
-		Pair is a predefined class in Kotlin that is used to store and return two variables at a time.Those two variables can be of the same type or of a different type.
+#### Pair
+
+Pair is a predefined class in Kotlin that is used to store and return two variables at a time.Those two variables can be of the same type or of a different type.
+
 			val variable1 = "Declaring String variable"
 			val variable2 = 1 // declaring integer value
 			val variableName = Pair (variable1, variable2) // using declared variable in Pair class
 			println(variableName.first) // will print the value of variable1
 			println(variableName.second) // will print the value of variable2
-	Triple
-		Triple class in Kotlin, you can return 3 variables of same or different type from one function.
+
+#### Triple
+
+Triple class in Kotlin, you can return 3 variables of same or different type from one function.
+
 			val variable1 = "Declaring String variable"
 			val variable2 = 1 // declaring integer value
 			val variable3 = "Declaring second string value"
@@ -2347,7 +2466,8 @@ Labels in Kotlin are prefixed with the '@' symbol, followed by the label name.
 ### How to choose between switch with when?
 
 
-	In Kotlin, when replaces the switch operator of other languages like Java. A certain block of code needs to be executed when some condition is fulfilled. 
+In Kotlin, when replaces the switch operator of other languages like Java. A certain block of code needs to be executed when some condition is fulfilled. 
+
 	when(lb) {
 			"Sun" -> println("Sun is a Star")
 			"Moon" -> println("Moon is a Satellite")
@@ -2357,13 +2477,19 @@ Labels in Kotlin are prefixed with the '@' symbol, followed by the label name.
 
 ### What are Coroutines in Kotlin?
 
-	Coroutine are light-weight threads. A light weight thread means it doesn’t map on native thread, so it doesn’t require context switching on processor, so they are faster.
-	Coroutines and the threads both are multitasking. But the difference is that threads are managed by the OS and coroutines by the users.
-	Basically, there are two types of Coroutines:
+Coroutine are light-weight threads. A light weight thread means it doesn’t map on native thread, so it doesn’t require context switching on processor, so they are faster.
+	
+Coroutines and the threads both are multitasking. But the difference is that threads are managed by the OS and coroutines by the users.
+	
+Basically, there are two types of Coroutines:
+
 		Stackless
 		Stackful
-	Kotlin implements stackless coroutines — it’s mean that the coroutines don’t have own stack, so they don’t map on native thread.
-		These are the functions to start the coroutine:
+
+Kotlin implements stackless coroutines — it’s mean that the coroutines don’t have own stack, so they don’t map on native thread.
+		
+These are the functions to start the coroutine:
+
 			launch{}
 			async{}
 
@@ -2372,68 +2498,78 @@ Labels in Kotlin are prefixed with the '@' symbol, followed by the label name.
 
 ### What is Coroutine Scope?
 
-	Coroutine scope is a tool in the Kotlin programming language for managing the lifecycle of coroutines. Coroutines are a lightweight form of concurrency that can be used to perform tasks in the background, without blocking the main thread. The CoroutineScope class provides a way to organize and manage these background tasks by grouping them together under a common scope.
+Coroutine scope is a tool in the Kotlin programming language for managing the lifecycle of coroutines. Coroutines are a lightweight form of concurrency that can be used to perform tasks in the background, without blocking the main thread. The CoroutineScope class provides a way to organize and manage these background tasks by grouping them together under a common scope.
 
-	When you create an instance of CoroutineScope, you define a boundary for the coroutines that will be launched within it. This boundary can be used to control the lifecycle of the coroutines. For example, you can cancel all coroutines in the scope when the scope is cancelled, which is useful for cleaning up resources or stopping background tasks when they are no longer needed.
+When you create an instance of CoroutineScope, you define a boundary for the coroutines that will be launched within it. This boundary can be used to control the lifecycle of the coroutines. For example, you can cancel all coroutines in the scope when the scope is cancelled, which is useful for cleaning up resources or stopping background tasks when they are no longer needed.
 
-	Additionally, the CoroutineScope class provides methods for launching coroutines, such as launch and async, and it also integrates with the Dispatchers class to control the execution context of the coroutines it launches.
+Additionally, the CoroutineScope class provides methods for launching coroutines, such as launch and async, and it also integrates with the Dispatchers class to control the execution context of the coroutines it launches.
 
-	Overall, CoroutineScope provides a convenient way to manage the lifecycle and execution of coroutines, and it is a crucial part of the coroutine ecosystem in Kotlin.
+Overall, CoroutineScope provides a convenient way to manage the lifecycle and execution of coroutines, and it is a crucial part of the coroutine ecosystem in Kotlin.
 
 
 #### What is Coroutine Context?
 
-	Coroutine Context is a concept in the Kotlin programming language that refers to the set of elements that provide the environment in which a coroutine runs. 
-	It includes information such as the dispatcher (which determines the thread or threads on which a coroutine runs), 
-	the Job (which represents the lifecycle of a coroutine), and elements that can be used to store additional data such as custom attributes or error handling functions. 
-	The coroutine context is important for controlling the behavior of a coroutine, and it can be used to communicate information between coroutines or to manage the lifecycle of a coroutine.
+Coroutine Context is a concept in the Kotlin programming language that refers to the set of elements that provide the environment in which a coroutine runs. 
+	
+It includes information such as the dispatcher (which determines the thread or threads on which a coroutine runs), the Job (which represents the lifecycle of a coroutine), and elements that can be used to store additional data such as custom attributes or error handling functions. 
+	
+The coroutine context is important for controlling the behavior of a coroutine, and it can be used to communicate information between coroutines or to manage the lifecycle of a coroutine.
 
 ### Launch vs Async in Kotlin Coroutines
 
-	Launch:
-		The launch is basically fire and forget.
-		launch{} does not return anything.
-		launch{} cannot be used when you need the parallel execution of network calls.
-		launch{} will not block your main thread.
-	Async
-		Async is basically performing a task and return a result.
-		async{ }, which has an await() function returns the result of the coroutine.
-		Use async only when you need the parallel execution network calls.
-		Async will block the main thread at the entry point of the await() function.
+#### Launch:
+* The launch is basically fire and forget.
+* launch{} does not return anything.
+* launch{} cannot be used when you need the parallel execution of network calls.
+* launch{} will not block your main thread.
+
+#### Async
+
+* Async is basically performing a task and return a result.
+* async{ }, which has an await() function returns the result of the coroutine.
+* Use async only when you need the parallel execution network calls.
+* Async will block the main thread at the entry point of the await() function.
 
 
 ### What is inline function in Kotlin?
 
-	An inline function is declare with a keyword inline. The use of inline function enhances the performance of higher order function. 
-	The inline function tells the compiler to copy parameters and functions to the call site.
-	The virtual function or local function cannot be declared as inline.
+An inline function is declare with a keyword inline. The use of inline function enhances the performance of higher order function. 
+	
+The inline function tells the compiler to copy parameters and functions to the call site.
+	
+The virtual function or local function cannot be declared as inline.
 
 ### When to use Kotlin sealed classes?
 
-	Sealed classes are similar to enum classes which also has restrictive set of types allowed, 
-	except that Sealed classes can contains additional data to be propagated(which we cannot achieve with enum classes)
+Sealed classes are similar to enum classes which also has restrictive set of types allowed, except that Sealed classes can contains additional data to be propagated(which we cannot achieve with enum classes)
+
 		sealed class Result {
 			data class Success(val data: T): Result()
 			data class Error(val exception: Exception): Result()
 		}
-	Sealed classes can contain any other clases like data class, pojo class, or even other sealed classes.
+
+Sealed classes can contain any other clases like data class, pojo class, or even other sealed classes.
 
 
 ### What is the use of infix in Kotlin?
 
-	infix functions are used for declaring a short form notation of a function.
+infix functions are used for declaring a short form notation of a function.
 	
-	For example, consider the following code:
+For example, consider the following code:
+
 		infix fun Int.plus(other: Int): Int = this + other
 		val result = 3 plus 4
-	Here, the plus function is defined as an infix function and can be called using the infix notation, 3 plus 4.
-	This makes the code more readable and concise, compared to the regular function call notation 3.plus(4).
+
+Here, the plus function is defined as an infix function and can be called using the infix notation, 3 plus 4.
+
+This makes the code more readable and concise, compared to the regular function call notation 3.plus(4).
 
 ### Explain function literals with receiver in Kotlin?
 
-	A Function literal is a function that is not declared but that is passed in as an expression. 
-	Lambdas and anonymous functions are function literals. In Kotlin, we can call a function literal with a receiver object, 
-	and we can call methods on the receiver object inside the body of the function literal, quite like extension functions. 
+A Function literal is a function that is not declared but that is passed in as an expression. 
+	
+Lambdas and anonymous functions are function literals. In Kotlin, we can call a function literal with a receiver object, and we can call methods on the receiver object inside the body of the function literal, quite like extension functions. 
+	
 	fun main() {
     val sum = { a: Int, b: Int -> a + b }
 		println(sum(1, 2)) // 3
@@ -2445,9 +2581,9 @@ Tell about Kotlin DSL(Domain-Specific Languages).
 
 ### What are higher-order functions in Kotlin?
 
-	Higher-order functions in Kotlin are functions that take functions as parameters and/or return functions.
+Higher-order functions in Kotlin are functions that take functions as parameters and/or return functions.
 
-	For example, consider the following Kotlin code:
+For example, consider the following Kotlin code:
 
 		fun apply(f: (Int) -> Int, x: Int): Int {
 			return f(x)
@@ -2460,14 +2596,15 @@ Tell about Kotlin DSL(Domain-Specific Languages).
 		val result = apply(::square, 5)
 		println(result) // 25
 		
-	In this example, the apply function takes two parameters: f, which is a function that takes an Int and returns an Int, and x, which is an Int. The apply function then calls f with x as the argument and returns the result.
-	The square function is an example of a function that fits the required signature of f, so it can be passed as an argument to apply. When apply is called with square and 5, it returns 25.
+In this example, the apply function takes two parameters: f, which is a function that takes an Int and returns an Int, and x, which is an Int. The apply function then calls f with x as the argument and returns the result.
+	
+The square function is an example of a function that fits the required signature of f, so it can be passed as an argument to apply. When apply is called with square and 5, it returns 25.
 
 ### What are Lambdas in Kotlin
 
-	Lambdas are anonymous functions in Kotlin that can be passed as values to higher-order functions.
+Lambdas are anonymous functions in Kotlin that can be passed as values to higher-order functions.
 
-	For example, consider the following code:
+For example, consider the following code:
 
 		fun apply(f: (Int) -> Int, x: Int): Int {
 			return f(x)
@@ -2476,20 +2613,26 @@ Tell about Kotlin DSL(Domain-Specific Languages).
 		val result = apply({ x: Int -> x * x }, 5)
 		println(result) // 25
 		
-	In this example, a lambda expression { x: Int -> x * x } is passed as the first argument to the apply function. The lambda expression takes an Int parameter x and returns the square of x.
-	When the apply function is called with this lambda and 5, it returns 25. The lambda expression is equivalent to the square function in the previous example.
+In this example, a lambda expression { x: Int -> x * x } is passed as the first argument to the apply function. The lambda expression takes an Int parameter x and returns the square of x.
+
+When the apply function is called with this lambda and 5, it returns 25. The lambda expression is equivalent to the square function in the previous example.
 
 ### Tell about the Collections in Kotlin
 
-	Collections in Kotlin are used to store group of related objects in a single unit. By using collection, we can store, retrieve manipulate and aggregate data.
-		Immutable Collection (or Collection)
-			Immutable collection also called Collection supports read only functionalities. Methods of immutable collection that supports read functionalities are:
+Collections in Kotlin are used to store group of related objects in a single unit. By using collection, we can store, retrieve manipulate and aggregate data.
+
+#### Immutable Collection (or Collection)
+
+Immutable collection also called Collection supports read only functionalities. Methods of immutable collection that supports read functionalities are:
+
 				List-listOf(),listOf()
 				Map-mapOf()
 				Set-setOf()
 			
-		Mutable Collection
-			Mutable collections supports both read and write functionalities. Methods of mutable collections that supports read and write functionalities are:
+#### Mutable Collection
+
+Mutable collections supports both read and write functionalities. Methods of mutable collections that supports read and write functionalities are:
+
 				List-ArrayList(),arrayListOf(),mutableListOf()
 				Map-HashMap,hashMapOf(),mutableMapOf()
 				Set-hashSetOf(),mutableSetOf()
@@ -2497,17 +2640,19 @@ Tell about Kotlin DSL(Domain-Specific Languages).
 
 ### When would you use Elvis operator in Kotlin?
 
-	The Elvis operator ?: in Kotlin is used as a null check operator, and it returns the expression on its left side if it's not null, or the expression on its right side if the left-side expression is null.
+The Elvis operator ?: in Kotlin is used as a null check operator, and it returns the expression on its left side if it's not null, or the expression on its right side if the left-side expression is null.
 
-	For example, consider the following code:
+For example, consider the following code:
+
 	val a: String? = "hello"
 	val b = a ?: "world"
-	Here, a is a nullable string with the value "hello". The expression a ?: "world" returns "hello", because a is not null.
 
-	So, you would use the Elvis operator when you want to assign a default value to a nullable variable, to prevent a NullPointerException from being thrown.
+Here, a is a nullable string with the value "hello". The expression a ?: "world" returns "hello", because a is not null.
+
+So, you would use the Elvis operator when you want to assign a default value to a nullable variable, to prevent a NullPointerException from being thrown.
 	
-	The Elvis operator is the ternary operator.
+The Elvis operator is the ternary operator.
 
 ### Notes
 
-	https://www.youtube.com/watch?v=tDYZBSSgp1c
+https://www.youtube.com/watch?v=tDYZBSSgp1c
