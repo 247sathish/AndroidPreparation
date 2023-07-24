@@ -139,13 +139,14 @@ The activity lifecycle is managed by the Android system, and it is important for
 
 https://www.javacodegeeks.com/2020/08/android-activity-life-cycle-the-complete-guide.html
 
-#### Activity Life Cycle (on app launch)
+1. #### Activity Life Cycle (on app launch)
 
 	Activity A: onCreate()
 	Activity A: onStart() 
 	Activity A: onResume() 
 
-#### Launching ActivityB over ActivityA *Important*
+
+2. #### Launching ActivityB over ActivityA *Important*
 
 	Activity A: onPause() 
 	Activity B: onCreate
@@ -156,7 +157,7 @@ https://www.javacodegeeks.com/2020/08/android-activity-life-cycle-the-complete-g
 
 Important point to note here is that ActivityA is stopped (not destroyed) after ActivityB has been created and is interactive.
 
-#### Pressing Back Button from ActivityB 
+3. #### Pressing Back Button from ActivityB 
 
 	Activity B: onPause() 
 	Activity A: onRestart()
@@ -167,31 +168,31 @@ Important point to note here is that ActivityA is stopped (not destroyed) after 
 
 Here we see that at the end, ActivityB is destroyed. Notice that when launching B on A, ActivityA wasn’t destroyed but stopped, and it’s process lived on.
 
-#### Pressing Back Button from ActivityA
+4. #### Pressing Back Button from ActivityA
 
 	Activity A: onPause() 
 	Activity A: onStop() 
 	Activity A: onSaveInstanceState()
 
-#### Return back application
+5. #### Return back application
 
 	Activity A: onRestart()
 	Activity A: onStart() 
 	Activity A: onResume() 
 
-#### mobile screen off timing or Pressing home button from  and return back to application
+6. #### mobile screen off timing or Pressing home button from  and return back to application
 
 	Activity A: onPause() 
 	Activity A: onStop() 
 	Activity A: onSaveInstanceState()
 
-And when you come back from paused state (by pressing recents button on android), following is the sequence:
+	And when you come back from paused state (by pressing recents button on android), following is the sequence:
 
 	Activity A: onRestart()
 	Activity A: onStart() 
 	Activity A: onResume()
 
-#### Rotating the device (activity life cycle in orientation change) *Important*
+7. #### Rotating the device (activity life cycle in orientation change) *Important*
 
 	Activity A: onPause() 
 	Activity A: onStop() 
@@ -204,7 +205,7 @@ And when you come back from paused state (by pressing recents button on android)
 
 ->You can get the key value pairs you store from onSaveInstanceState, inside onRestoreInstanceState.
 
-#### Receiving a phone call while in ActivityA
+8. #### Receiving a phone call while in ActivityA
 
 	->onPause() -Activity A
 	->onStop() -Activity A
