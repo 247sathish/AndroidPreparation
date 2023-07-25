@@ -1,3 +1,5 @@
+# **Programe**
+
 **Fibonacci**
 In fibonacci series, next number is the sum of previous two numbers for example 0, 1, 1, 2, 3, 5, 8,
 13, 21, 34, 55 etc.
@@ -467,7 +469,7 @@ fun main() {
 
 ```
 
-Display Even Numbers
+**Display Even Numbers**
 
 ```java
 public class EvenNumbers {
@@ -512,7 +514,9 @@ fun main() {
 
 ```
 
-copy all elements of one array into another array
+# **Array**
+
+**copy all elements of one array into another array**
 
 ```java
 public class ArrayCopy {
@@ -925,23 +929,23 @@ public class RemoveDuplicateInArrayExample {
         if (n == 0 || n == 1) {
             return n;
         }
-        
+
         int[] temp = new int[n];
         int j = 0;
-        
+
         for (int i = 0; i < n - 1; i++) {
             if (arr[i] != arr[i + 1]) {
                 temp[j++] = arr[i];
             }
         }
-        
+
         temp[j++] = arr[n - 1];
-        
+
         // Copying back to the original array
         for (int i = 0; i < j; i++) {
             arr[i] = temp[i];
         }
-        
+
         return j;
     }
 
@@ -949,7 +953,7 @@ public class RemoveDuplicateInArrayExample {
         int[] arr = {10, 20, 20, 30, 30, 40, 50, 50};
         int length = arr.length;
         length = removeDuplicateElements(arr, length);
-        
+
         // Printing array elements
         for (int i = 0; i < length; i++) {
             System.out.print(arr[i] + " ");
@@ -1009,9 +1013,9 @@ public class RemoveDuplicatesFromArrayExample {
 
 ```kotlin
 fun removeDuplicates(arr: IntArray): IntArray {
-if (arr.size < 2) {
-return arr
-}
+    if (arr.size < 2) {
+        return arr
+    }
 
     val uniqueList = mutableListOf<Int>()
 
@@ -1037,13 +1041,12 @@ return arr
 }
 
 fun main() {
-val numbers = intArrayOf(1, 2, 2, 3, 4, 4, 5, 5, 6)
-val result = removeDuplicates(numbers)
+    val numbers = intArrayOf(1, 2, 2, 3, 4, 4, 5, 5, 6)
+    val result = removeDuplicates(numbers)
 
     println("Array without Duplicates: ${result.joinToString(" ")}")
 }
 ```
-
 
 **print Odd and Even Numbers from an Array**
 
@@ -1103,7 +1106,6 @@ fun main() {
 
 ```
 
-
 **Sort an Array using the for Loop**
 
 ```java
@@ -1155,6 +1157,471 @@ fun main() {
     }
 }
 
+
+```
+
+# **String**
+
+**Count the total number of characters in a string**
+
+```java
+public class CharacterCount {
+    public static int countCharacters(String str) {
+        int count = 0;
+        char[] charArray = str.toCharArray();
+
+        for (int i = 0; i < charArray.length; i++) {
+            if (charArray[i] != 'l')//Counts each character except l letter 
+            {
+                count++;
+            }
+
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        String str = "Hello, World!";
+        int totalCharacters = countCharacters(str);
+
+        System.out.println("Total number of characters in the string: " + totalCharacters);
+    }
+}
+
+```
+
+```kotlin
+fun countCharacters(str: String): Int {
+    var count = 0
+    val charArray = str.toCharArray()
+
+    for (i in 0 until charArray.size) {
+        if (charArray[i] != 'l') { // Counts each character except the letter 'l'
+            count++
+        }
+    }
+
+    return count
+}
+
+fun main() {
+    val str = "Hello, World!"
+    val totalCharacters = countCharacters(str)
+
+    println("Total number of characters in the string: $totalCharacters")
+}
+
+```
+
+**count the total number of vowels and consonants in a string**
+
+```java
+public class VowelConsonantCount {
+    public static void countVowelsAndConsonants(String str) {
+        int vowelCount = 0;
+        int consonantCount = 0;
+        String vowels = "AEIOUaeiou";
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isLetter(ch)) {
+                if (vowels.indexOf(ch) != -1)//character avilable in "vowels"  returs that string index or return -1
+                {
+                    vowelCount++;
+                } else {
+                    consonantCount++;
+                }
+            }
+        }
+
+        System.out.println("Total number of vowels: " + vowelCount);
+        System.out.println("Total number of consonants: " + consonantCount);
+    }
+
+    public static void main(String[] args) {
+        String str = "Hue!";
+        countVowelsAndConsonants(str);
+    }
+}
+```
+
+OR
+
+```java
+public class CountVowelConsonant {
+    public static void main(String[] args) {
+
+        //Counter variable to store the count of vowels and consonant    
+        int vCount = 0, cCount = 0;
+
+        //Declare a string    
+        String str = "This is a really simple sentence";
+
+        //Converting entire string to lower case to reduce the comparisons    
+        str = str.toLowerCase();
+
+        for (int i = 0; i < str.length(); i++) {
+            //Checks whether a character is a vowel    
+            if (str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i) == 'u') {
+                //Increments the vowel counter    
+                vCount++;
+            }
+            //Checks whether a character is a consonant    
+            else if (str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
+                //Increments the consonant counter    
+                cCount++;
+            }
+        }
+        System.out.println("Number of vowels: " + vCount);
+        System.out.println("Number of consonants: " + cCount);
+    }
+}
+```
+
+```kotlin
+
+fun countVowelsAndConsonants(str: String) {
+    var vowelCount = 0
+    var consonantCount = 0
+    val vowels = "AEIOUaeiou"
+
+    for (ch in str) {
+        if (ch.isLetter()) {
+            if (vowels.contains(ch)) {
+                vowelCount++
+            } else {
+                consonantCount++
+            }
+        }
+    }
+
+    println("Total number of vowels: $vowelCount")
+    println("Total number of consonants: $consonantCount")
+}
+
+fun main() {
+    val str = "Hello"
+    countVowelsAndConsonants(str)
+}
+```
+
+OR
+
+```kotlin
+fun isVowel(ch: Char): Boolean {
+    return ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' ||
+            ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'
+}
+
+fun countVowelsAndConsonants(str: String) {
+    var vowelCount = 0
+    var consonantCount = 0
+
+    for (ch in str) {
+        if (ch.isLetter()) {
+            if (isVowel(ch)) {
+                vowelCount++
+            } else {
+                consonantCount++
+            }
+        }
+    }
+
+    println("Total number of vowels: $vowelCount")
+    println("Total number of consonants: $consonantCount")
+}
+
+fun main() {
+    val str = "Hello"
+    countVowelsAndConsonants(str)
+}
+
+```
+
+
+**Remove all the white spaces from a string**
+
+```java
+
+	public class removeWhiteSpace {
+		public static void main(String[] args) {
+
+			String str1 = "Remove white spaces";
+
+			//Removes the white spaces using regex    
+			str1 = str1.replaceAll("\\s+", "");
+
+			System.out.println("String after removing all the white spaces : " + str1);
+		}
+	}
+
+```
+
+OR
+
+```java
+public class RemoveWhiteSpaces {
+    public static String removeWhiteSpaces(String str) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (char ch : str.toCharArray()) {
+            if (!Character.isWhitespace(ch)) {
+                stringBuilder.append(ch);
+            }   
+        }
+
+        return stringBuilder.toString();
+    }
+
+    public static void main(String[] args) {
+        String inputString = "Hello, World! How are you?";
+        String result = removeWhiteSpaces(inputString);
+        System.out.println("String without white spaces: " + result);
+    }
+}
+```
+
+```kotlin
+
+fun removeWhiteSpaces(str: String): String {
+    val stringBuilder = StringBuilder()
+
+    for (ch in str) {
+        if (!ch.isWhitespace()) {
+            stringBuilder.append(ch)
+        }
+    }
+
+    return stringBuilder.toString()
+}
+
+fun main() {
+    val inputString = "Hello, World! How are you?"
+    val result = removeWhiteSpaces(inputString)
+    println("String without white spaces: $result")
+}
+
+```
+
+
+**Determine whether a given string is palindrome**
+
+```java
+
+public class PalindromeCheck {
+    public static boolean isPalindrome(String str) {
+        int left = 0;
+        int right = str.length() - 1;
+
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String inputString = "radar";
+
+        if (isPalindrome(inputString)) {
+            System.out.println(inputString + " is a palindrome.");
+        } else {
+            System.out.println(inputString + " is not a palindrome.");
+        }
+    }
+}
+
+
+```
+
+OR
+
+```java
+
+	public class PalindromeString {
+		public static void main(String[] args) {
+			String string = "KayAk";
+			boolean flag = true;
+
+			//Converts the given string into lowercase    
+			string = string.toLowerCase();
+
+			//Iterate the string forward and backward, compare one character at a time     
+			//till middle of the string is reached    
+			for (int i = 0; i < string.length() / 2; i++) {
+				if (string.charAt(i) != string.charAt(string.length() - i - 1)) {
+					flag = false;
+					break;
+				}
+			}
+			if (flag)
+				System.out.println("Given string is palindrome");
+			else
+				System.out.println("Given string is not a palindrome");
+		}
+	}	
+	
+
+```
+
+```kotlin
+
+fun main() {
+    var string = "KayAk"
+    var flag = true
+
+    // Converts the given string into lowercase
+    string = string.toLowerCase()
+
+    // Iterate the string forward and backward, compare one character at a time
+    // till the middle of the string is reached
+    for (i in 0 until string.length / 2) {
+        if (string[i] != string[string.length - i - 1]) {
+            flag = false
+            break
+        }
+    }
+
+    if (flag) {
+        println("Given string is palindrome")
+    } else {
+        println("Given string is not a palindrome")
+    }
+}
+
+
+```
+
+```kotlin
+fun isPalindrome(str: String): Boolean {
+var left = 0
+var right = str.length - 1
+
+    while (left < right) {
+        if (str[left] != str[right]) {
+            return false
+        }
+        left++
+        right--
+    }
+
+    return true
+}
+
+fun main() {
+val inputString = "radar"
+
+    if (isPalindrome(inputString)) {
+        println("$inputString is a palindrome.")
+    } else {
+        println("$inputString is not a palindrome.")
+    }
+}
+
+```
+
+
+**Find Reverse of the string**
+
+```java
+
+public class Reverse {
+		public static void main(String[] args) {
+			String string = "Dream big";
+			//Stores the reverse of given string    
+			String reversedStr = "";
+
+			//Iterate through the string from last and add each character to variable reversedStr    
+			for (int i = string.length() - 1; i >= 0; i--) {
+				reversedStr = reversedStr + string.charAt(i);
+			}
+
+			System.out.println("Original string: " + string);
+			//Displays the reverse of given string    
+			System.out.println("Reverse of given string: " + reversedStr);
+		}
+	}	
+	
+
+```
+
+
+```java
+
+public class ReverseString {
+    public static String reverseString(String str) {
+        char[] charArray = str.toCharArray();
+        int left = 0;
+        int right = charArray.length - 1;
+
+        while (left < right) {
+            char temp = charArray[left];
+            charArray[left] = charArray[right];
+            charArray[right] = temp;
+
+            left++;
+            right--;
+        }
+
+        return new String(charArray);
+    }
+
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        String reversedString = reverseString(inputString);
+        System.out.println("Reversed String: " + reversedString);
+    }
+}
+
+
+```
+
+```kotlin
+fun main() {
+val string = "Dream big"
+// Stores the reverse of the given string
+var reversedStr = ""
+
+    // Iterate through the string from last and add each character to the variable reversedStr
+    for (i in string.length - 1 downTo 0) {
+        reversedStr += string[i]
+    }
+
+    println("Original string: $string")
+    // Display the reverse of the given string
+    println("Reverse of given string: $reversedStr")
+}
+```
+
+```kotlin
+
+fun reverseString(str: String): String {
+    val charArray = str.toCharArray()
+    var left = 0
+    var right = charArray.size - 1
+
+    while (left < right) {
+        val temp = charArray[left]
+        charArray[left] = charArray[right]
+        charArray[right] = temp
+
+        left++
+        right--
+    }
+
+    return String(charArray)
+}
+
+fun main() {
+    val inputString = "Hello, World!"
+    val reversedString = reverseString(inputString)
+    println("Reversed String: $reversedString")
+}
 
 ```
 
