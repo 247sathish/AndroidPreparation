@@ -1,4 +1,4 @@
-# **Programe**
+# **Program**
 
 **Fibonacci**
 In fibonacci series, next number is the sum of previous two numbers for example 0, 1, 1, 2, 3, 5, 8,
@@ -1339,22 +1339,21 @@ fun main() {
 
 ```
 
-
 **Remove all the white spaces from a string**
 
 ```java
 
-	public class removeWhiteSpace {
-		public static void main(String[] args) {
+public class removeWhiteSpace {
+    public static void main(String[] args) {
 
-			String str1 = "Remove white spaces";
+        String str1 = "Remove white spaces";
 
-			//Removes the white spaces using regex    
-			str1 = str1.replaceAll("\\s+", "");
+        //Removes the white spaces using regex    
+        str1 = str1.replaceAll("\\s+", "");
 
-			System.out.println("String after removing all the white spaces : " + str1);
-		}
-	}
+        System.out.println("String after removing all the white spaces : " + str1);
+    }
+}
 
 ```
 
@@ -1368,7 +1367,7 @@ public class RemoveWhiteSpaces {
         for (char ch : str.toCharArray()) {
             if (!Character.isWhitespace(ch)) {
                 stringBuilder.append(ch);
-            }   
+            }
         }
 
         return stringBuilder.toString();
@@ -1403,7 +1402,6 @@ fun main() {
 }
 
 ```
-
 
 **Determine whether a given string is palindrome**
 
@@ -1443,29 +1441,29 @@ OR
 
 ```java
 
-	public class PalindromeString {
-		public static void main(String[] args) {
-			String string = "KayAk";
-			boolean flag = true;
+public class PalindromeString {
+    public static void main(String[] args) {
+        String string = "KayAk";
+        boolean flag = true;
 
-			//Converts the given string into lowercase    
-			string = string.toLowerCase();
+        //Converts the given string into lowercase    
+        string = string.toLowerCase();
 
-			//Iterate the string forward and backward, compare one character at a time     
-			//till middle of the string is reached    
-			for (int i = 0; i < string.length() / 2; i++) {
-				if (string.charAt(i) != string.charAt(string.length() - i - 1)) {
-					flag = false;
-					break;
-				}
-			}
-			if (flag)
-				System.out.println("Given string is palindrome");
-			else
-				System.out.println("Given string is not a palindrome");
-		}
-	}	
-	
+        //Iterate the string forward and backward, compare one character at a time     
+        //till middle of the string is reached    
+        for (int i = 0; i < string.length() / 2; i++) {
+            if (string.charAt(i) != string.charAt(string.length() - i - 1)) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag)
+            System.out.println("Given string is palindrome");
+        else
+            System.out.println("Given string is not a palindrome");
+    }
+}
+
 
 ```
 
@@ -1499,8 +1497,8 @@ fun main() {
 
 ```kotlin
 fun isPalindrome(str: String): Boolean {
-var left = 0
-var right = str.length - 1
+    var left = 0
+    var right = str.length - 1
 
     while (left < right) {
         if (str[left] != str[right]) {
@@ -1514,7 +1512,7 @@ var right = str.length - 1
 }
 
 fun main() {
-val inputString = "radar"
+    val inputString = "radar"
 
     if (isPalindrome(inputString)) {
         println("$inputString is a palindrome.")
@@ -1525,31 +1523,29 @@ val inputString = "radar"
 
 ```
 
-
 **Find Reverse of the string**
 
 ```java
 
 public class Reverse {
-		public static void main(String[] args) {
-			String string = "Dream big";
-			//Stores the reverse of given string    
-			String reversedStr = "";
+    public static void main(String[] args) {
+        String string = "Dream big";
+        //Stores the reverse of given string    
+        String reversedStr = "";
 
-			//Iterate through the string from last and add each character to variable reversedStr    
-			for (int i = string.length() - 1; i >= 0; i--) {
-				reversedStr = reversedStr + string.charAt(i);
-			}
+        //Iterate through the string from last and add each character to variable reversedStr    
+        for (int i = string.length() - 1; i >= 0; i--) {
+            reversedStr = reversedStr + string.charAt(i);
+        }
 
-			System.out.println("Original string: " + string);
-			//Displays the reverse of given string    
-			System.out.println("Reverse of given string: " + reversedStr);
-		}
-	}	
-	
+        System.out.println("Original string: " + string);
+        //Displays the reverse of given string    
+        System.out.println("Reverse of given string: " + reversedStr);
+    }
+}
+
 
 ```
-
 
 ```java
 
@@ -1583,9 +1579,9 @@ public class ReverseString {
 
 ```kotlin
 fun main() {
-val string = "Dream big"
+    val string = "Dream big"
 // Stores the reverse of the given string
-var reversedStr = ""
+    var reversedStr = ""
 
     // Iterate through the string from last and add each character to the variable reversedStr
     for (i in string.length - 1 downTo 0) {
@@ -1624,5 +1620,584 @@ fun main() {
 }
 
 ```
+
+**Find the duplicate word in a string**
+
+```java
+
+public class DuplicateWordsInString {
+    public static void findDuplicateWords(String str) {
+        // Split the string into words using whitespace as the delimiter
+        String[] words = str.split("\\s+");
+        int count;
+
+        System.out.println("Duplicate words in the string:");
+
+        // Iterate through the words and find duplicates
+        for (int i = 0; i < words.length; i++) {
+            count = 1;
+
+            // Check if the word is already checked
+            if (words[i] != null) {
+                for (int j = i + 1; j < words.length; j++) {
+                    if (words[i].equalsIgnoreCase(words[j])) {
+                        count++;
+                        // Mark the word as checked to avoid duplicates
+                        words[j] = null;
+                    }
+                }
+
+                // Display the duplicate word if found
+                if (count > 1) {
+                    System.out.println(words[i]);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        String inputString = "Java is a programming language. Python is also a programming language. Java is versatile.";
+        findDuplicateWords(inputString);
+    }
+}
+
+
+```
+
+```kotlin
+
+fun findDuplicateWords(str: String) {
+    // Split the string into words using whitespace as the delimiter
+    val words = str.split("\\s+".toRegex()).toTypedArray()
+    var count: Int
+
+    println("Duplicate words in the string:")
+
+    // Iterate through the words and find duplicates
+    for (i in 0 until words.size) {
+        count = 1
+
+        // Check if the word is already checked
+        if (words[i] != null) {
+            for (j in i + 1 until words.size) {
+                if (words[i].equals(words[j], ignoreCase = true)) {
+                    count++
+                    // Mark the word as checked to avoid duplicates
+                    words[j] = null
+                }
+            }
+
+            // Display the duplicate word if found
+            if (count > 1) {
+                println(words[i])
+            }
+        }
+    }
+}
+
+fun main() {
+    val inputString =
+        "Java is a programming language. Python is also a programming language. Java is versatile."
+    findDuplicateWords(inputString)
+}
+
+```
+
+**Swap two string variables without using third or temp variable**
+
+```java
+
+public class SwapStringsExample {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "World";
+
+        System.out.println("Before swapping:");
+        System.out.println("str1: " + str1);
+        System.out.println("str2: " + str2);
+
+        // Swap the strings using concatenation
+        str1 = str1 + str2;
+        str2 = str1.substring(0, str1.length() - str2.length());
+        str1 = str1.substring(str2.length());
+
+        System.out.println("After swapping:");
+        System.out.println("str1: " + str1);
+        System.out.println("str2: " + str2);
+    }
+}
+
+```
+
+```kotlin
+
+fun main() {
+    var str1 = "Hello"
+    var str2 = "World"
+
+    println("Before swapping:")
+    println("str1: $str1")
+    println("str2: $str2")
+
+    // Swap the strings using Kotlin's smart string interpolation
+    str1 = "$str2$str1"
+    str2 = str1.substring(str2.length)
+    str1 = str1.substring(0, str1.length - str2.length)
+
+    println("After swapping:")
+    println("str1: $str1")
+    println("str2: $str2")
+}
+
+
+```
+
+**Remove duplicates from ArrayList**
+
+```java
+
+import java.util.ArrayList;
+
+public class RemoveDuplicatesFromArrayList {
+    public static void main(String[] args) {
+        ArrayList<String> words = new ArrayList<>();
+        words.add("apple");
+        words.add("banana");
+        words.add("orange");
+        words.add("apple");
+        words.add("grapes");
+        words.add("banana");
+
+        System.out.println("Original ArrayList: " + words);
+        removeDuplicates(words);
+        System.out.println("ArrayList after removing duplicates: " + words);
+    }
+
+    public static void removeDuplicates(ArrayList<String> list) {
+        int size = list.size();
+
+        for (int i = 0; i < size - 1; i++) {
+            String currentElement = list.get(i);
+            for (int j = i + 1; j < size; j++) {
+                String nextElement = list.get(j);
+                if (currentElement.equals(nextElement)) {
+                    list.remove(j);
+                    size--;
+                    j--;
+                }
+            }
+        }
+    }
+}
+
+
+```
+
+```kotlin
+
+fun main() {
+    val words = ArrayList<String>()
+    words.add("apple")
+    words.add("banana")
+    words.add("orange")
+    words.add("apple")
+    words.add("grapes")
+    words.add("banana")
+
+    println("Original ArrayList: $words")
+    removeDuplicates(words)
+    println("ArrayList after removing duplicates: $words")
+}
+
+fun removeDuplicates(list: ArrayList<String>) {
+    val size = list.size
+
+    for (i in 0 until size - 1) {
+        val currentElement = list[i]
+        for (j in i + 1 until size) {
+            val nextElement = list[j]
+            if (currentElement == nextElement) {
+                list.removeAt(j)
+            }
+        }
+    }
+}
+
+
+```
+
+
+**Find length of string in java without using length()**
+
+
+```java
+public class StringLength {
+public static int getLength(String str) {
+int count = 0;
+
+        // Iterate through the string and count the characters
+        for (char c : str.toCharArray()) {
+            count++;
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        String str = "Hello, World!";
+        int length = getLength(str);
+        System.out.println("Length of the string: " + length);
+    }
+}
+```
+
+
+
+
+**demonstration of try catch and finally**
+
+The try block is used to enclose the code that may raise an exception. 
+
+If an exception occurs within the try block, it is caught and handled by the corresponding catch block. 
+
+The finally block is used to specify a piece of code that will always be executed, whether an exception occurs or not.
+
+```java
+class MyException {
+    public static void main(String args[]) {
+        try {
+            int a = 10, b = 0, c;
+            c = a / b;//exception occurred
+        } catch (ArithmeticException e) {
+            System.out.println("EXception caught:" + e);//exception caught
+        } finally {
+            System.out.println("Statement out of try-catch block");//this will be always executed
+        }
+    }
+}
+```
+
+	Sr.No	Exception Type	                Cause of Exception
+	1.	  ArithmeticException	        Arithmetic error such as diving number by zero.
+	2.	  ArraysOutOfBoundExceptions	Caused when array index is out of bound.
+	3.	  IOException	                Caused by an attempt to access a non existed file.
+	4.	  NullPointerException	        Caused by referencing a null object.
+
+
+
+Sure, I'll provide a demonstration of `try`, `catch`, and `finally` with examples for each exception:
+
+1. `ArithmeticException`:
+```java
+public class ArithmeticExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            int result = divideNumbers(10, 0);
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("ArithmeticException caught: " + e.getMessage());
+        } finally {
+            System.out.println("Finally block executed.");
+        }
+
+        System.out.println("Program continues...");
+    }
+
+    public static int divideNumbers(int dividend, int divisor) {
+        return dividend / divisor;
+    }
+}
+```
+
+Output:
+```
+ArithmeticException caught: / by zero
+Finally block executed.
+Program continues...
+```
+
+2. `ArrayIndexOutOfBoundsException`:
+```java
+public class ArrayIndexOutOfBoundsExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            int[] arr = {1, 2, 3};
+            System.out.println("Element at index 5: " + arr[5]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException caught: " + e.getMessage());
+        } finally {
+            System.out.println("Finally block executed.");
+        }
+
+        System.out.println("Program continues...");
+    }
+}
+```
+
+Output:
+```
+ArrayIndexOutOfBoundsException caught: 5
+Finally block executed.
+Program continues...
+```
+
+3. `IOException`:
+```java
+import java.io.*;
+
+public class IOExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            FileReader fileReader = new FileReader("non_existent_file.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = bufferedReader.readLine();
+            System.out.println("Line from file: " + line);
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println("IOException caught: " + e.getMessage());
+        } finally {
+            System.out.println("Finally block executed.");
+        }
+
+        System.out.println("Program continues...");
+    }
+}
+```
+
+Output:
+```
+IOException caught: non_existent_file.txt (No such file or directory)
+Finally block executed.
+Program continues...
+```
+
+4. `NullPointerException`:
+```java
+public class NullPointerExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            String str = null;
+            System.out.println("Length of string: " + str.length());
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException caught: " + e.getMessage());
+        } finally {
+            System.out.println("Finally block executed.");
+        }
+
+        System.out.println("Program continues...");
+    }
+}
+```
+
+Output:
+```
+NullPointerException caught: null
+Finally block executed.
+Program continues...
+```
+
+In each example, the appropriate exception is caught in the `catch` block, and the `finally` block is executed regardless of whether an exception occurred or not. The program continues after the exception handling.
+
+
+
+
+
+**Print even and odd numbers using threads**
+
+```java
+
+public class EvenOddPrinter {
+    private static final int MAX_NUMBER = 10;
+    private static int currentNumber = 1;
+    private static final Object lock = new Object();
+
+    public static void main(String[] args) {
+        // Create two threads, one for printing even numbers and another for odd numbers
+        Thread evenThread = new Thread(() -> printEvenNumbers(), "EvenThread");
+        Thread oddThread = new Thread(() -> printOddNumbers(), "OddThread");
+
+        // Start both threads
+        evenThread.start();
+        oddThread.start();
+    }
+
+    public static void printEvenNumbers() {
+        while (currentNumber <= MAX_NUMBER) {
+            // Synchronize on the common lock to ensure exclusive access to the shared currentNumber
+            synchronized (lock) {
+                // Check if the current number is even
+                if (currentNumber % 2 == 0) {
+                    // Print the current even number along with the thread name
+                    System.out.println(Thread.currentThread().getName() + ": " + currentNumber);
+                    // Increment the currentNumber for the next iteration
+                    currentNumber++;
+                }
+            }
+        }
+    }
+
+    public static void printOddNumbers() {
+        while (currentNumber <= MAX_NUMBER) {
+            // Synchronize on the common lock to ensure exclusive access to the shared currentNumber
+            synchronized (lock) {
+                // Check if the current number is odd
+                if (currentNumber % 2 != 0) {
+                    // Print the current odd number along with the thread name
+                    System.out.println(Thread.currentThread().getName() + ": " + currentNumber);
+                    // Increment the currentNumber for the next iteration
+                    currentNumber++;
+                }
+            }
+        }
+    }
+}
+
+```
+
+In this code, we have a shared currentNumber variable that starts from 1. Two threads (evenThread
+and oddThread) are created, each responsible for printing either even or odd numbers. Both methods (
+printEvenNumbers() and printOddNumbers()) are executed concurrently by their respective threads.
+
+To ensure that the shared currentNumber variable is accessed safely by both threads without data
+race, we use a common lock object and synchronize on it using the synchronized keyword. This allows
+only one thread to access the synchronized block at a time, preventing any potential conflicts when
+accessing and updating the currentNumber.
+
+The printEvenNumbers() method checks if the current number is even using the % (modulo) operator and
+prints it if it's even. The printOddNumbers() method checks if the current number is odd and prints
+it accordingly. The process repeats until the currentNumber reaches the MAX_NUMBER, which is set to
+10 in this example.
+
+When you run this code, the two threads will print even and odd numbers alternately until the
+maximum number (10) is reached.
+
+```kotlin
+import kotlin.concurrent.thread
+
+object EvenOddPrinter {
+    private const val MAX_NUMBER = 10
+    private var currentNumber = 1
+    private val lock = Any()
+
+    @JvmStatic
+    fun main(args: Array<String>) {
+        // Create two threads, one for printing even numbers and another for odd numbers
+        val evenThread = thread(start = true) { printEvenNumbers() }
+        val oddThread = thread(start = true) { printOddNumbers() }
+
+        // Wait for both threads to complete
+        evenThread.join()
+        oddThread.join()
+    }
+
+    private fun printEvenNumbers() {
+        while (currentNumber <= MAX_NUMBER) {
+            // Synchronize on the common lock to ensure exclusive access to the shared currentNumber
+            synchronized(lock) {
+                // Check if the current number is even
+                if (currentNumber % 2 == 0) {
+                    // Print the current even number along with the thread name
+                    println("${Thread.currentThread().name}: $currentNumber")
+                    // Increment the currentNumber for the next iteration
+                    currentNumber++
+                }
+            }
+        }
+    }
+
+    private fun printOddNumbers() {
+        while (currentNumber <= MAX_NUMBER) {
+            // Synchronize on the common lock to ensure exclusive access to the shared currentNumber
+            synchronized(lock) {
+                // Check if the current number is odd
+                if (currentNumber % 2 != 0) {
+                    // Print the current odd number along with the thread name
+                    println("${Thread.currentThread().name}: $currentNumber")
+                    // Increment the currentNumber for the next iteration
+                    currentNumber++
+                }
+            }
+        }
+    }
+}
+
+```
+
+```java
+
+public class OddEven implements Runnable {
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+
+        for (int i = 1; i <= 10; i++) {
+            synchronized (this) {
+                if (i % 2 == 0 && Thread.currentThread().getName().equals("t2")) {
+                    try {
+                        notifyAll();
+                        System.out.println("Even Thread : " + i);
+                        wait();
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                } else if (i % 2 != 0 && Thread.currentThread().getName().equals("t1")) {
+                    try {
+                        notifyAll();
+                        System.out.println("Odd Thread : " + i);
+                        wait();
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+
+        OddEven obj = new OddEven();
+        Thread t1 = new Thread(obj, "t1");
+        Thread t2 = new Thread(obj, "t2");
+        t1.start();
+        t2.start();
+
+    }
+}
+
+```
+
+
+```java
+public class OddEvenPrinter {
+public static void main(String[] args) {
+// Create two threads, one for printing odd numbers and another for even numbers
+Thread oddThread = new Thread(() -> printNumbers(true), "OddThread");
+Thread evenThread = new Thread(() -> printNumbers(false), "EvenThread");
+
+        // Start both threads
+        oddThread.start();
+        evenThread.start();
+    }
+
+    public static void printNumbers(boolean isOddThread) {
+        // Determine the starting number based on the thread type (odd or even)
+        int start = isOddThread ? 1 : 2;
+
+        // Iterate through the numbers and print the ones for the respective thread type
+        for (int i = start; i <= 10; i += 2) {
+            if (isOddThread) {
+                System.out.println(Thread.currentThread().getName() + ": " + i);
+            } else {
+                System.out.println(Thread.currentThread().getName() + ": " + i);
+            }
+        }
+    }
+}
+```
+
+
 
 

@@ -1757,6 +1757,40 @@ RxJava is a reactive programming library for Java. Reactive programming is a par
 
 
 
+
+### HTTP response status codes
+
+#### Informational responses (100–199)
+
+	100 Continue
+
+#### Successful responses (200–299)
+
+	200 OK The request succeeded. The result meaning of "success"
+	201 Created The request succeeded, and a new resource was created as a result. This is typically the response sent after POST requests, or some PUT requests.
+	202 Accepted
+	
+#### Redirection messages (300–399)
+
+#### Client error responses (400–499)
+
+	400 Bad Request
+	401 Unauthorized
+	404 Not Found
+	405 Method Not Allowed
+	406 Not Acceptable
+	408 Request Timeout
+	415 Unsupported Media Type
+
+#### Server error responses (500–599)
+
+	500 Internal Server Error
+	502 Bad Gateway
+	503 Service Unavailable
+	505 HTTP Version Not Supported
+
+
+
 ### Kotlin
 
 	https://github.com/MindorksOpenSource/from-java-to-kotlin
