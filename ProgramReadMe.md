@@ -286,7 +286,7 @@ fun main() {
 ```
 
 **Factorial**
-4! = 4*3*2*1 = 24
+4! = 4 * 3 * 2 *1 = 24
 
 ```java
 public class Factorial {
