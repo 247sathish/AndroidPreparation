@@ -309,6 +309,48 @@ public class Factorial {
     }
 }
 ```
+OR
+
+```java
+public class Factorial {
+    public static int factorial(int n) {
+        int result = 1;
+        int dec = n;
+        for (int i = 1; i <= n; i++) {
+            result = result * dec;
+            dec--;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int number = 5;
+        int factorialResult = factorial(number);
+        System.out.println("The factorial of " + number + " is: " + factorialResult);
+    }
+}
+```
+
+OR
+
+```java
+public class Factorial {
+    public static int factorial(int n) {
+        int result = 1;
+        for (int i = 1; i <= n; i++) {
+            result = result * i;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int number = 10;
+        int factorialResult = factorial(number);
+        System.out.println("The factorial of " + number + " is: " + factorialResult);
+    }
+}
+```
+
 
 ```kotlin
 fun factorial(n: Int): Int {

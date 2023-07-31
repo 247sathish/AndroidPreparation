@@ -535,12 +535,14 @@ will allow the system to properly recreate the Fragment if it needs to.
 Here is an example of how you might use the default constructor and setArguments() to pass arguments
 to a Fragment:
 
+
 ```java
-    MyFragment fragment=new MyFragment();
-        Bundle args=new Bundle();
-        args.putInt("key",value);
-        fragment.setArguments(args);
+   MyFragment fragment=new MyFragment();
+   Bundle args=new Bundle();
+   args.putInt("key",value);
+   fragment.setArguments(args);
 ```
+
 
 By using the default constructor and setArguments(), you can ensure that your Fragment is properly
 initialized and that it can be properly recreated if necessary.
