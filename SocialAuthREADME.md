@@ -42,7 +42,7 @@ Candidate: "Certainly! Implementing Google Login in Android allows users to sign
 
 
 
-Interviewer: "Can you explain the implementation of Google Login in Android?"
+**Interviewer: "Can you explain the implementation of Google Login in Android?"**
 
 Candidate: "Certainly! Implementing Google Login in Android allows users to sign in to your app using their Google accounts. Here's an overview of the process:
 
