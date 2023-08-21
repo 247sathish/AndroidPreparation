@@ -986,19 +986,20 @@ protected void onActivityResult(int requestCode,int resultCode,Intent data){
 ```
 
 
-public void openActivityForResult() {
-    
- //Instead of startActivityForResult use this one
-        Intent intent = new Intent(this,OtherActivity.class);
-        someActivityResultLauncher.launch(intent);
-    }
-
-
-Yes, the startActivityForResult() method is deprecated in AndroidX. It was deprecated in favor of the ActivityResult API, which provides a more robust and flexible way to start activities and receive results.
+Yes, the `startActivityForResult() method is deprecated` in AndroidX. It was deprecated in favor of the ActivityResult API, which provides a more robust and flexible way to start activities and receive results.
 
 The ActivityResult API uses a callback mechanism to receive results from activities. This makes it easier to test and maintain your code, and it also allows you to receive results from multiple activities at the same time.
 
 To use the ActivityResult API, you need to create an ActivityResultLauncher object. This object can be used to start an activity and receive a result from it.
+
+```java
+public void openActivityForResult() {
+    
+        Intent intent = new Intent(this,OtherActivity.class);
+        someActivityResultLauncher.launch(intent);
+    }
+
+```
 
 ```java
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
