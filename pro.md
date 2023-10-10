@@ -293,6 +293,7 @@ arraylist
 Basic Programs
 
 Check the given number is EVEN or ODD.
+  ```java
 package com.java.basic;
 
 import java.util.Scanner;
@@ -329,7 +330,7 @@ Given number is EVEN
 	Enter the any number : 25
 	Given number is ODD
 */
-
+```
 
 Write a Java Program to find the Factorial of given number.
 package com.java.basic;
