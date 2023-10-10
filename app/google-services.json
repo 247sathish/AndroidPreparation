@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "369921769008",
+    "project_id": "androidpreparation-cc4b2",
+    "storage_bucket": "androidpreparation-cc4b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369921769008:android:6af775eaaea437e1f537f5",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB52wOi1rynuVp6WEpY0iHIOtjrc0X0TLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
