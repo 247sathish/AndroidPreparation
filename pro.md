@@ -157,7 +157,7 @@ public class StringMethodsExample {
 
 
 
-# **arraylist**
+# **Arraylist**
 
 1. **Declaration and Initialization**:
 
@@ -286,6 +286,265 @@ public class StringMethodsExample {
 
 
 
+# **HashSet**
+
+**1. Declaration and Initialization**:
+
+```java
+import java.util.HashSet;
+
+// Declaration
+HashSet<String> set = new HashSet<String>();
+
+// Initialization
+HashSet<Integer> numbers = new HashSet<Integer>();
+numbers.add(1);
+numbers.add(2);
+numbers.add(3);
+```
+
+**2. Adding Elements**:
+
+```java
+set.add("Apple");
+set.add("Banana");
+set.add("Cherry");
+```
+
+**3. Removing Elements**:
+
+```java
+set.remove("Banana");
+```
+
+**4. Checking for Existence**:
+
+```java
+boolean containsCherry = set.contains("Cherry");
+```
+
+**5. Finding Size**:
+
+```java
+int size = set.size();
+```
+
+**6. Iterating Through HashSet**:
+
+```java
+for (String item : set) {
+    System.out.println(item);
+}
+```
+
+**7. Clearing HashSet**:
+
+```java
+set.clear();
+```
+
+**8. Checking if HashSet is Empty**:
+
+```java
+boolean isEmpty = set.isEmpty();
+```
+
+**9. HashSet of Custom Objects**:
+
+```java
+class Person {
+    String name;
+    int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+HashSet<Person> people = new HashSet<Person>();
+people.add(new Person("Alice", 25));
+people.add(new Person("Bob", 30));
+```
+
+**10. Retaining Common Elements Between Two HashSets**:
+
+```java
+HashSet<String> set1 = new HashSet<String>();
+set1.add("Apple");
+set1.add("Banana");
+set1.add("Cherry");
+
+HashSet<String> set2 = new HashSet<String>();
+set2.add("Banana");
+set2.add("Cherry");
+set2.add("Date");
+
+set1.retainAll(set2); // set1 now contains "Banana" and "Cherry"
+```
+
+**11. HashSet Operations (Union, Intersection, Difference)**:
+
+```java
+HashSet<String> setA = new HashSet<String>();
+setA.add("Apple");
+setA.add("Banana");
+setA.add("Cherry");
+
+HashSet<String> setB = new HashSet<String>();
+setB.add("Banana");
+setB.add("Cherry");
+setB.add("Date");
+
+// Union
+HashSet<String> union = new HashSet<String>(setA);
+union.addAll(setB); // union contains all unique elements from setA and setB
+
+// Intersection
+HashSet<String> intersection = new HashSet<String>(setA);
+intersection.retainAll(setB); // intersection contains elements common to setA and setB
+
+// Difference
+HashSet<String> difference = new HashSet<String>(setA);
+difference.removeAll(setB); // difference contains elements in setA but not in setB
+```
+
+# **HashMap**
+
+**1. Declaration and Initialization**:
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+// Declaration
+HashMap<String, Integer> map = new HashMap<String, Integer>();
+
+// Initialization
+HashMap<String, String> countries = new HashMap<String, String>();
+countries.put("US", "United States");
+countries.put("CA", "Canada");
+countries.put("UK", "United Kingdom");
+```
+
+**2. Adding Key-Value Pairs**:
+
+```java
+map.put("Alice", 25);
+map.put("Bob", 30);
+map.put("Charlie", 22);
+```
+
+**3. Accessing Values**:
+
+```java
+int aliceAge = map.get("Alice");
+```
+
+**4. Checking if a Key Exists**:
+
+```java
+boolean containsBob = map.containsKey("Bob");
+```
+
+**5. Iterating Through HashMap**:
+
+```java
+for (Map.Entry<String, Integer> entry : map.entrySet()) {
+    String name = entry.getKey();
+    int age = entry.getValue();
+    System.out.println(name + ": " + age);
+}
+```
+
+**6. Removing Key-Value Pairs**:
+
+```java
+map.remove("Charlie");
+```
+
+**7. Finding Size**:
+
+```java
+int size = map.size();
+```
+
+**8. Checking if HashMap is Empty**:
+
+```java
+boolean isEmpty = map.isEmpty();
+```
+
+**9. HashMap of Custom Objects**:
+
+```java
+class Person {
+    String name;
+    int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+HashMap<String, Person> people = new HashMap<String, Person>();
+people.put("Alice", new Person("Alice", 25));
+people.put("Bob", new Person("Bob", 30));
+```
+
+**10. Replacing a Value**:
+
+```java
+map.replace("Alice", 26); // Replace Alice's age with 26
+```
+
+**11. HashMap with Default Values (Java 8 and later)**:
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+HashMap<String, Integer> scores = new HashMap<>();
+scores.put("Alice", 95);
+scores.put("Bob", 88);
+
+int charlieScore = scores.getOrDefault("Charlie", 0); // Default value is 0 for missing key
+```
+
+**12. Merging Two HashMaps (Java 8 and later)**:
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+HashMap<String, Integer> map1 = new HashMap<>();
+map1.put("Alice", 25);
+
+HashMap<String, Integer> map2 = new HashMap<>();
+map2.put("Bob", 30);
+
+map1.putAll(map2); // Merge map2 into map1
+```
+
+**13. HashMap of Lists**:
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+HashMap<String, List<String>> studentCourses = new HashMap<>();
+List<String> aliceCourses = new ArrayList<>();
+aliceCourses.add("Math");
+aliceCourses.add("Science");
+studentCourses.put("Alice", aliceCourses);
+
+List<String> bobCourses = new ArrayList<>();
+bobCourses.add("History");
+studentCourses.put("Bob", bobCourses);
+```
 
 
 
@@ -3450,7 +3709,7 @@ public class BinarySearch {
 */
 ```
 
-**# Print the Series**
+# **Print the Series**
 
 ## Write the Java Program to print the following series EVEN number Series
   ```java
