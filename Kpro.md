@@ -88,6 +88,9 @@ fun main() {
     al.add(10)
 
     alRemoveDuplicate(al)
+
+
+  
 }
 
 fun alRemoveDuplicate(al: ArrayList<Int>) {
