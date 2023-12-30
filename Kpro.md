@@ -1,7 +1,7 @@
 ```kotlin
 import java.util.ArrayList
 
-fun main() {
+fun main(a:Array<String>) {
     // Uncomment the functions you want to call
     // OddorEven()
     // val isPalindrome = PalindromeString("madam")
@@ -29,6 +29,17 @@ fun main() {
     //     val fib = fibonaicRecursion(i)
     //     println("$fib")
     // }
+ 
+//     	for(i in 1..25)
+//     	{	
+//         	if(isFibonaic(i))
+//             {
+//                 println(i)
+//             }
+//         }
+        
+    
+    
     // val fac = factorialOrdinary(5)
     // println("$fac")
     // val facR = factorialRegression(5)
@@ -80,6 +91,7 @@ fun main() {
     // val cstr = "abc"
     // combinationStr(" ", cstr, 0)
     // permutation(" ", cstr)
+    
 
     val al = ArrayList<Int>()
     al.add(10)
@@ -87,11 +99,185 @@ fun main() {
     al.add(30)
     al.add(10)
 
-    alRemoveDuplicate(al)
+    //alRemoveDuplicate(al)
+    
+    //get distinct characters and their count in a string
+    
+    //distinctChar("hello kotlin")
+    //distinctString("hello world hello kotlin world")
+    
+//     val inputString = "ApPLe"
+//     val toggledString = toggleCase(inputString)
+//     println(toggledString)
+    
+//     val inputString = "Hello123! How are you?"
 
+//     val (vowelCount, consonantCount, specialCharCount) = countVowelsConsonantsAndSpecialChars(inputString)
 
-  
+//     println("Vowel count: $vowelCount")
+//     println("Consonant count: $consonantCount")
+//     println("Special character count: $specialCharCount")
+    
+    
+    //Write a program to print all the unique characters in a String.
+    
+//     val inputString = "abcb"
+//     val uniqueCharacters = findUniqueCharacters(inputString)
+//     println("Unique characters: $uniqueCharacters")
+    
+    
+    
+    val inputString = "Hello Kotlin Programming"
+    val words = inputString.split(" ")
+    var reversedString =""
+    for(i in 0 until words.size)
+    {
+        var inp=words[i].toString()+" "
+        reversedString = reversedString + reverseCharacters(inp)
+    }
+    
+    println("Original String: $inputString")
+    println("Reversed String: $reversedString")
+    
+    
+    
+    
 }
+
+
+fun reverseCharacters(word: String): String {
+    val charArray = word.toCharArray()
+    var start = 0
+    var end = charArray.size - 1
+
+    while (start < end) {
+        // Swap characters
+        val temp = charArray[start]
+        charArray[start] = charArray[end]
+        charArray[end] = temp
+
+        // Move pointers
+        start++
+        end--
+    }
+
+    return String(charArray)
+}
+
+
+fun findUniqueCharacters(input: String): Set<Char> {
+    val seenChars = mutableSetOf<Char>()
+    val uniqueChars = mutableSetOf<Char>()
+
+    for (char in input) {
+        if (!seenChars.add(char)) {
+            // If the character is already in seenChars, it's not unique
+            uniqueChars.remove(char)
+        } else {
+            // If the character is not in seenChars, it's unique
+            uniqueChars.add(char)
+        }
+    }
+
+    return uniqueChars
+}
+
+
+fun countVowelsConsonantsAndSpecialChars(input: String): Triple<Int, Int, Int> {
+    val vowels = "aeiouAEIOU"
+    var vowelCount = 0
+    var consonantCount = 0
+    var specialCharCount = 0
+
+    for (char in input) {
+        when {
+            char.isLetter() -> {
+                if (char.toLowerCase() in vowels) {
+                    vowelCount++
+                } else {
+                    consonantCount++
+                }
+            }
+            char.isWhitespace() -> {
+                // Ignore whitespace
+            }
+            else -> {
+                specialCharCount++
+            }
+        }
+    }
+
+    return Triple(vowelCount, consonantCount, specialCharCount)
+}
+
+
+
+
+
+fun toggleCase(input: String): String {
+    val charArray = input.toCharArray()
+
+    for (i in charArray.indices) {
+        val currentChar = charArray[i]
+
+        if (currentChar.isUpperCase()) {
+            charArray[i] = currentChar.toLowerCase()
+        } else if (currentChar.isLowerCase()) {
+            charArray[i] = currentChar.toUpperCase()
+        }
+    }
+
+    return String(charArray)
+}
+
+
+
+
+
+fun distinctString(mystr:String)
+{
+    
+    val inputString = mystr
+
+    val wordCountMap = mutableMapOf<String, Int>()
+
+    val words = inputString.split("\\s+".toRegex()) // Split the string into words
+
+    for (word in words) {
+        if (wordCountMap.containsKey(word)) {
+            wordCountMap[word] = wordCountMap[word]!! + 1
+        } else {
+            wordCountMap[word] = 1
+        }
+    }
+
+    for ((word, count) in wordCountMap) {
+        println("$word: $count")
+    }
+    
+}
+
+
+fun distinctChar(mystr:String)
+{
+    
+    val inputString = mystr
+
+    val charCountMap = mutableMapOf<Char, Int>()
+
+    for (char in inputString) {
+        if (charCountMap.containsKey(char)) {
+            charCountMap[char] = charCountMap[char]!! + 1
+        } else {
+            charCountMap[char] = 1
+        }
+    }
+
+    for ((char, count) in charCountMap) {
+        println("$char: $count")
+    }
+}
+
 
 fun alRemoveDuplicate(al: ArrayList<Int>) {
     val iterator = al.iterator()
@@ -465,6 +651,29 @@ fun factorialOrdinary(fac: Int): Int {
     return total
 }
 
+
+fun isFibonaic(mynum:Int):Boolean
+{
+	var inputNumber=mynum
+    var firstTerm = 0
+    var secondTerm = 1
+    var thirdTerm = 0
+
+    while (thirdTerm < inputNumber) {
+        thirdTerm = firstTerm + secondTerm
+        firstTerm = secondTerm
+        secondTerm = thirdTerm
+    }
+
+    if (thirdTerm == inputNumber) {
+       return true
+    } else {
+        return false
+    }
+}
+
+
+
 fun fibonaicRecursion(fb: Int): Int {
     if (fb <= 1) {
         return 1
@@ -554,6 +763,10 @@ fun OddorEven() {
         println("odd")
     }
 }
+
+
+
+
 
 
 
