@@ -4,7 +4,7 @@ fun main(args: Array<String>) {
 //Variable 
 
     var i:Int = 5 //Int
-    var l:Int=20//Long
+    var l:Int=20L//Long
     var d:Double=1.1 //Double
     var c:Char='c' //Char
     var b:Boolean=true //Boolean
