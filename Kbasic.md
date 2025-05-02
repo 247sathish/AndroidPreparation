@@ -102,7 +102,8 @@ fun main(args: Array<String>) {
     println(stringList.lastIndexOf("Vijay"))
     println(stringList.size)
     println(stringList.contains("Prakash"))
-    println(stringList.containsAll(list)) //Since there are no elements in list, there’s nothing to disprove — so it returns true by definition (called vacuous truth in logic).
+    println(stringList.containsAll(list)) //Since there are no elements in list, there’s nothing to disprove
+    —so it returns true by definition (called vacuous truth in logic).
     println(stringList.subList(2,4))
     println(stringList.isEmpty())
     println(stringList.drop(1))
